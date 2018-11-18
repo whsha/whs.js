@@ -4,12 +4,14 @@ import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-naviga
 import { INavigationElementProps } from "../App";
 import BlockElement from "../elements/BlockElement";
 import Store from "../redux/Store";
-import { Block, IBlock, LunchBlock, IAdvisory, IFree } from "../types/Block";
+import { Block, IAdvisory, IClassBlock, IFree, LunchBlock } from "../types/Block";
 import { SchoolDay } from "../types/SchoolDay";
 
 type Props = INavigationElementProps<{}, { day: SchoolDay }>;
 
 export default class HomeView extends Component<Props> {
+    private ismounted: boolean;
+
     static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = () => {
         let day = Store.getState().schoolDay.dayNumber;
 
@@ -18,19 +20,30 @@ export default class HomeView extends Component<Props> {
         };
     }
 
+    componentDidMount() {
+        this.ismounted = true;
+    }
+
+    componentWillUnmount() {
+        this.ismounted = false;
+    }
+
     constructor(props: Props, context: any) {
         super(props, context);
 
         Store.subscribe(() => {
             // Update the title when the store changes
             this.props.navigation.setParams({ day: Store.getState().schoolDay });
-            // Reload the screen when the store changes
-            this.forceUpdate();
+
+            if (this.ismounted) {
+                // Reload the screen when the store changes
+                this.forceUpdate();
+            }
         });
     }
 
     render() {
-        let courses1: IBlock[] = [
+        let courses1: IClassBlock[] = [
             {
                 color: "red",
                 name: "Honors Chemistry",
@@ -53,7 +66,7 @@ export default class HomeView extends Component<Props> {
             },
             {
                 color: "orange",
-                name: "AP CSP",
+                name: "AP Computer Science Principals",
                 room: 452,
                 teacher: "Mr. Cohen",
                 blockNumber: Block.Third
@@ -68,7 +81,7 @@ export default class HomeView extends Component<Props> {
             },
             {
                 color: "purple",
-                name: "ACP American Lit",
+                name: "ACP American Literature",
                 room: 231,
                 teacher: "Mrs. Anderson",
                 blockNumber: Block.Sixth
@@ -81,7 +94,7 @@ export default class HomeView extends Component<Props> {
             }
         ];
 
-        let courses2: (IBlock | IAdvisory | IFree)[] = [
+        let courses2: (IClassBlock | IAdvisory | IFree)[] = [
             {
                 name: "Free",
                 blockNumber: Block.First
@@ -102,7 +115,7 @@ export default class HomeView extends Component<Props> {
             },
             {
                 color: "orange",
-                name: "AP CSP",
+                name: "AP Computer Science Principles",
                 room: 452,
                 teacher: "Mr. Cohen",
                 blockNumber: Block.Third
@@ -117,7 +130,7 @@ export default class HomeView extends Component<Props> {
             },
             {
                 color: "purple",
-                name: "ACP American Lit",
+                name: "ACP American Literature",
                 room: 231,
                 teacher: "Mrs. Anderson",
                 blockNumber: Block.Fifth

@@ -1,4 +1,4 @@
-export interface IBlock {
+export interface IClassBlock {
     name: string;
     room: number;
     teacher: string;
@@ -7,19 +7,11 @@ export interface IBlock {
     lunchBlock?: LunchBlock;
 }
 
-export function isAdvisory(input: IBlock | IAdvisory | IFree): input is IAdvisory {
-    return input.blockNumber === Block.Advisory;
-}
-
 export interface IAdvisory {
     name: "Advisory";
     room: number;
     teacher: string;
     blockNumber: Block.Advisory;
-}
-
-export function isFree(input: IBlock | IAdvisory | IFree): input is IFree {
-    return input.name === "Free";
 }
 
 export interface IFree {
@@ -42,3 +34,21 @@ export enum LunchBlock {
     Second,
     Third
 }
+
+export function isFree(block: IBlock): block is IFree {
+    return block.name === "Free";
+}
+
+export function isAdvisory(block: IBlock): block is IAdvisory {
+    return block.blockNumber === Block.Advisory;
+}
+
+export function isClassBlock(block: IBlock): block is IClassBlock {
+    return !isFree(block) && !isAdvisory(block);
+}
+
+export function isLunchBlock(block: IBlock): block is IClassBlock {
+    return isClassBlock(block) && block.lunchBlock !== undefined;
+}
+
+export type IBlock = IFree | IAdvisory | IClassBlock;
