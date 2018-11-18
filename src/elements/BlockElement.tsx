@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { IBlock, isAdvisory, isFree, isLunchBlock } from "../types/Block";
 
 interface IBlockElementProps {
