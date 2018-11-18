@@ -28,8 +28,8 @@ export default class HomeView extends Component<Props> {
         this.ismounted = false;
     }
 
-    constructor(props: Props, context: any) {
-        super(props, context);
+    constructor(props: Props) {
+        super(props);
 
         Store.subscribe(() => {
             // Update the title when the store changes
