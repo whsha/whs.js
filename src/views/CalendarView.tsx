@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View} from "react-native";
 import { NavigationTabScreenOptions } from "react-navigation";
-import TabBarIcon from "../TabBarIcon";
+import TabBarIcon from "../elements/TabBarIcon";
 
 export default class CalendarView extends Component {
     static navigationOptions: NavigationTabScreenOptions = {

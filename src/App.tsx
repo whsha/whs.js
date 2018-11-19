@@ -7,7 +7,7 @@ import {
     NavigationScreenProp,
     NavigationTabScreenOptions
 } from "react-navigation";
-import TabBarIcon from "./TabBarIcon";
+import TabBarIcon from "./elements/TabBarIcon";
 import CalendarView from "./views/CalendarView";
 import HomeView from "./views/HomeView";
 import SettingsView from "./views/SetingsView";

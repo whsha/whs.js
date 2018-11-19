@@ -1,27 +1,29 @@
+import * as ICal from "ical.js";
 import React, { Component } from "react";
-import { ActivityIndicator, Button, SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
+import { ActivityIndicator, Button, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
+import TabBarIcon from "../elements/TabBarIcon";
 import { SetSchoolDay } from "../redux/actions/SchoolDay";
 import Store from "../redux/Store";
-import TabBarIcon from "../TabBarIcon";
 
 interface ISettingsViewState {
-    iCalInfo?: string;
+    iCalInfo?: any[];
     loading: boolean;
 }
 
 // TODO: MOVE
 async function getHighSchoolICal() {
     let response = await fetch("http://goo.gl/FR0zjg");
-    return await response.text();
+    let cal = ICal.parse(await response.text());
+    return cal;
 }
 
 export default class SettingsView extends Component<INavigationElementProps, ISettingsViewState> {
     static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
         title: "Settings",
         swipeEnabled: true,
-        tabBarIcon: ({focused}) => <TabBarIcon name="cog" focused={focused}/>
+        tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />
     };
 
     constructor(props: INavigationElementProps) {
@@ -33,7 +35,6 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
 
     componentDidMount() {
         getHighSchoolICal().then((value) => {
-            console.log(value);
             this.setState({
                 iCalInfo: value,
                 loading: false
@@ -45,7 +46,7 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
         return (
             <SafeAreaView style={styles.container}>
                 <Text>Settings</Text>
-                <Button title="go home" onPress={() => this.props.navigation.navigate("Home")}/>
+                <Button title="go home" onPress={() => this.props.navigation.navigate("Home")} />
                 <Button title={Store.getState().schoolDay.dayNumber === 0 ? "uncancel school" : "cancel school"}
                     onPress={() => {
                         Store.dispatch(SetSchoolDay({
@@ -57,10 +58,29 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
                     }}
                 />
                 {this.state.loading ?
-                    <ActivityIndicator/> :
-                    <ScrollView>
-                        <Text>{this.state.iCalInfo.slice(0, 1000)}</Text>
-                    </ScrollView>
+                    <ActivityIndicator /> :
+                    <View>
+                        <ScrollView>
+                            {(() => {
+                                let comp = new ICal.Component(this.state.iCalInfo);
+                                let vevents = comp.getAllSubcomponents("vevent");
+                                vevents = vevents.slice(0, 1000);
+
+                                function isBeforeNow(x: ICal.Component) {
+                                    return new Date(x.getFirstPropertyValue("dtstart")).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
+                                }
+
+                                return vevents.map((x, i) => <View key={i} style={{ margin: 10 }}>
+                                    <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                                        {x.getFirstPropertyValue("summary")}
+                                    </Text>
+                                    <Text style={{ color: isBeforeNow(x) ? "red" : "green"}}>
+                                        {new Date(x.getFirstPropertyValue("dtstart")).toDateString()}
+                                    </Text>
+                                </View>);
+                            })()}
+                        </ScrollView>
+                    </View>
                 }
             </SafeAreaView>
         );
@@ -71,6 +91,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginBottom: 50
     }
 });

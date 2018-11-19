@@ -112,11 +112,7 @@
             "double",
             "avoid-escape"
         ],
-        "semicolon": [
-            true,
-            "always",
-            "ignore-interfaces"
-        ],
+        "semicolon": true,
         "variable-name": [
             true,
             "allow-leading-underscore",
