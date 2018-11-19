@@ -59,28 +59,26 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
                 />
                 {this.state.loading ?
                     <ActivityIndicator /> :
-                    <View>
-                        <ScrollView>
-                            {(() => {
-                                let comp = new ICal.Component(this.state.iCalInfo);
-                                let vevents = comp.getAllSubcomponents("vevent");
-                                vevents = vevents.slice(0, 1000);
+                    <ScrollView>
+                        {(() => {
+                            let comp = new ICal.Component(this.state.iCalInfo);
+                            let vevents = comp.getAllSubcomponents("vevent");
+                            vevents = vevents.slice(0, 1000);
 
-                                function isBeforeNow(x: ICal.Component) {
-                                    return new Date(x.getFirstPropertyValue("dtstart")).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
-                                }
+                            function isBeforeNow(x: ICal.Component) {
+                                return new Date(x.getFirstPropertyValue("dtstart")).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
+                            }
 
-                                return vevents.map((x, i) => <View key={i} style={{ margin: 10 }}>
-                                    <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                                        {x.getFirstPropertyValue("summary")}
-                                    </Text>
-                                    <Text style={{ color: isBeforeNow(x) ? "red" : "green"}}>
-                                        {new Date(x.getFirstPropertyValue("dtstart")).toDateString()}
-                                    </Text>
-                                </View>);
-                            })()}
-                        </ScrollView>
-                    </View>
+                            return vevents.map((x, i) => <View key={i} style={{ margin: 10 }}>
+                                <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                                    {x.getFirstPropertyValue("summary")}
+                                </Text>
+                                <Text style={{ color: isBeforeNow(x) ? "red" : "green"}}>
+                                    {new Date(x.getFirstPropertyValue("dtstart")).toDateString()}
+                                </Text>
+                            </View>);
+                        })()}
+                    </ScrollView>
                 }
             </SafeAreaView>
         );
