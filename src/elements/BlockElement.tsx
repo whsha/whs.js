@@ -1,9 +1,9 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { IBlock, isAdvisory, isFree, isLunchBlock } from "../types/Block";
+import { IDisplayBlock, isAdvisory, isFree, isLunchBlock } from "../types/DisplayBlock";
 
 interface IBlockElementProps {
-    block: IBlock;
+    block: IDisplayBlock;
 }
 
 export default function BlockElement({ block }: IBlockElementProps) {

@@ -4,10 +4,10 @@ import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-naviga
 import { INavigationElementProps } from "../App";
 import BlockElement from "../elements/BlockElement";
 import Store from "../redux/Store";
-import { Block, IAdvisory, IClassBlock, IFree, LunchBlock } from "../types/Block";
-import { SchoolDay } from "../types/SchoolDay";
+import { Block, BlockColor, IDisplayAdvisory, IDisplayClassBlock, IDisplayFree, LunchBlock } from "../types/DisplayBlock";
+import { ISchoolDay } from "../types/SchoolDay";
 
-type Props = INavigationElementProps<{}, { day: SchoolDay }>;
+type Props = INavigationElementProps<{}, { day: ISchoolDay }>;
 
 export default class HomeView extends Component<Props> {
     private ismounted: boolean;
@@ -43,16 +43,16 @@ export default class HomeView extends Component<Props> {
     }
 
     render() {
-        let courses1: IClassBlock[] = [
+        let courses1: IDisplayClassBlock[] = [
             {
-                color: "red",
+                color: BlockColor.Red,
                 name: "Honors Chemistry",
                 room: 440,
                 teacher: "Mr. Genova",
                 blockNumber: Block.Fifth
             },
             {
-                color: "gold",
+                color: BlockColor.Yellow,
                 name: "History ACP",
                 room: 417,
                 teacher: "Mrs. Gordon",
@@ -65,14 +65,14 @@ export default class HomeView extends Component<Props> {
                 blockNumber: Block.First
             },
             {
-                color: "orange",
+                color: BlockColor.Orange,
                 name: "AP Computer Science Principals",
                 room: 452,
-                teacher: "Mr. Cohen",
+                teacher: "Dr. Cohen",
                 blockNumber: Block.Third
             },
             {
-                color: "tan",
+                color: BlockColor.Tan,
                 name: "Honors Algebra",
                 room: 416,
                 teacher: "Mrs. Burby",
@@ -80,7 +80,7 @@ export default class HomeView extends Component<Props> {
                 lunchBlock: LunchBlock.Third
             },
             {
-                color: "purple",
+                color: BlockColor.Purple,
                 name: "ACP American Literature",
                 room: 231,
                 teacher: "Mrs. Anderson",
@@ -94,34 +94,34 @@ export default class HomeView extends Component<Props> {
             }
         ];
 
-        let courses2: (IClassBlock | IAdvisory | IFree)[] = [
+        let courses2: (IDisplayClassBlock | IDisplayAdvisory | IDisplayFree)[] = [
             {
                 name: "Free",
                 blockNumber: Block.First
             },
             {
-                color: "green",
+                color: BlockColor.Green,
                 name: "Concert Band",
                 room: 163,
                 teacher: "Mr. Steve Scott",
                 blockNumber: Block.Second
             },
             {
-                color: "blue",
+                color: BlockColor.Blue,
                 name: "Spanish 3",
                 room: 332,
                 teacher: "Sr. Travers",
                 blockNumber: Block.Sixth
             },
             {
-                color: "orange",
+                color: BlockColor.Orange,
                 name: "AP Computer Science Principles",
                 room: 452,
-                teacher: "Mr. Cohen",
+                teacher: "Dr. Cohen",
                 blockNumber: Block.Third
             },
             {
-                color: "tan",
+                color: BlockColor.Tan,
                 name: "Honors Algebra",
                 room: 416,
                 teacher: "Mrs. Burby",
@@ -129,7 +129,7 @@ export default class HomeView extends Component<Props> {
                 lunchBlock: LunchBlock.First
             },
             {
-                color: "purple",
+                color: BlockColor.Purple,
                 name: "ACP American Literature",
                 room: 231,
                 teacher: "Mrs. Anderson",

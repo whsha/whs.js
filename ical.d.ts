@@ -700,6 +700,12 @@ declare module "ical.js" {
         constructor(data: Object, zone: Timezone);
 
         /**
+         * Converts the current instance to a Javascript date
+         * @return {Date}
+         */
+        public toJSDate(): Date;
+
+        /**
          * Returns the days in the given month
          *
          * @param {Number} month      The month to check
@@ -1033,7 +1039,7 @@ declare module "ical.js" {
          * @param {String=} name    Lowercase property name
          * @return {?String}        The found property value.
          */
-        public getFirstPropertyValue(name?: string): string | null;
+        public getFirstPropertyValue<T = string>(name?: string): T | null;
 
         /**
          * Get all properties in the component, optionally filtered by name.
