@@ -8,6 +8,7 @@ import {
     NavigationTabScreenOptions
 } from "react-navigation";
 import TabBarIcon from "./elements/TabBarIcon";
+import { fetchAndStoreSchoolDay } from "./util/CalendarUtil";
 import CalendarView from "./views/CalendarView";
 import HomeView from "./views/HomeView";
 import SettingsView from "./views/SetingsView";
@@ -37,3 +38,16 @@ export default createBottomTabNavigator({
     initialRouteName: "Home",
     swipeEnabled: true
 });
+
+fetchAndStoreSchoolDay();
+// Update the school day whenever it changes
+// setInterval(() => {
+//     let storeTime = Store.getState().schoolDay.date.getTime();
+//     let localTime = new Date().setHours(0, 0, 0, 0);
+
+//     console.log(storeTime, localTime);
+
+//     if (storeTime !== localTime) {
+//         fetchAndStoreSchoolDay();
+//     }
+// }, 500);

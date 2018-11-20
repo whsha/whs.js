@@ -1,6 +1,6 @@
 import { createAction } from "typesafe-actions";
-import { SchoolDay } from "../../types/SchoolDay";
+import { ISchoolDay } from "../../types/SchoolDay";
 
 export const SetSchoolDay = createAction("SetSchoolDay", resolve => {
-    return (schoolDay: Partial<SchoolDay>) => resolve(schoolDay);
+    return (schoolDay: Partial<ISchoolDay>) => resolve(schoolDay);
 });

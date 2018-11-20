@@ -36,7 +36,7 @@ export default function BlockElement({ block }: IBlockElementProps) {
             <View style={styles.leftColumn}>
 
                 {/* Course name */}
-                <Text style={[styles.name, { color: blockColor }]}>{block.name}</Text>
+                <Text style={[styles.name, { color: blockColor }]} numberOfLines={1} ellipsizeMode={"tail"}>{block.name}</Text>
 
                 {/* Teacher name */}
                 {!isFree(block) && <Text style={styles.teacher}>{block.teacher}</Text>}
