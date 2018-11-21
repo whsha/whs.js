@@ -1,4 +1,4 @@
-/** A class bloxk that is prepared to be displayed on screen */
+/** A class block that is prepared to be displayed on screen */
 export interface IDisplayClassBlock {
     /** The name of the block */
     name: string;
@@ -17,7 +17,7 @@ export interface IDisplayClassBlock {
 /** A class block that is prepared to be displayed on the screen that has a lunch block */
 export interface IDisplayLunchBlock extends IDisplayClassBlock {
     /** The Lunch block */
-    lunchBlock?: LunchBlock;
+    lunchBlock: LunchBlock;
 }
 
 /** An avisory block that is prepared to be displayed on the screen */

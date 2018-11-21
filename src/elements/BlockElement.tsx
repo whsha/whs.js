@@ -101,15 +101,19 @@ const styles = StyleSheet.create({
         fontSize: 15,
         position: "absolute",
         bottom: 0,
-        left: 0
+        left: 0,
+        color: "#808080"
     },
     room: {
-        textAlign: "right"
+        textAlign: "right",
+        color: "#808080"
     },
     lunchBlock: {
-        textAlign: "right"
+        textAlign: "right",
+        color: "#808080"
     },
     blockTime: {
-        textAlign: "right"
+        textAlign: "right",
+        color: "#808080"
     }
 });
