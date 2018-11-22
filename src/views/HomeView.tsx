@@ -121,7 +121,58 @@ export default class HomeView extends Component<Props, IHomeState> {
             }
         ];
 
-        let courses = courses2;
+        let courses1: IDisplayBlock[] = [
+            {
+                color: BlockColor.Red,
+                name: "Honors Chemistry",
+                room: 440,
+                teacher: "Mr. Genova",
+                blockNumber: Block.Fifth
+            },
+            {
+                color: BlockColor.Yellow,
+                name: "History ACP",
+                room: 417,
+                teacher: "Mrs. Gordon",
+                blockNumber: Block.Second
+            },
+            {
+                name: "Health",
+                room: 211,
+                teacher: "Mr. Mulryan",
+                blockNumber: Block.First
+            },
+            {
+                color: BlockColor.Orange,
+                name: "AP Computer Science Principals",
+                room: 452,
+                teacher: "Dr. Cohen",
+                blockNumber: Block.Third
+            },
+            {
+                color: BlockColor.Tan,
+                name: "Honors Algebra",
+                room: 416,
+                teacher: "Mrs. Burby",
+                blockNumber: Block.Fourth,
+                lunchBlock: LunchBlock.Third
+            },
+            {
+                color: BlockColor.Purple,
+                name: "ACP American Literature",
+                room: 231,
+                teacher: "Mrs. Anderson",
+                blockNumber: Block.Sixth
+            },
+            {
+                blockNumber: Block.Advisory,
+                name: "Advisory",
+                room: 156,
+                teacher: "Prof. Lovett"
+            }
+        ];
+
+        let courses = courses1;
 
         return (
                 <SafeAreaView style={styles.container}>
@@ -132,9 +183,9 @@ export default class HomeView extends Component<Props, IHomeState> {
                         onRefresh={this.refreshDay}/>}
                     />
 
-                    <Modal animationType="slide" transparent={true} visible={!this.state.blocksSetup}>
+                    {/* <Modal animationType="slide" transparent={true} visible={!this.state.blocksSetup}>
                         <SetupModal/>
-                    </Modal>
+                    </Modal> */}
                 </SafeAreaView>
         );
     }

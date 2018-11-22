@@ -27,7 +27,7 @@ export default class SetupModal extends Component<{}, ISetupModalState> {
                 {
                     blockNumber: Block.Advisory,
                     days: [5, 6, 8],
-                    name: "peen",
+                    name: "ee",
                     room: 189,
                     teacher: "ur mome"
                 }
