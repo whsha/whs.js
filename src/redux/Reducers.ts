@@ -4,10 +4,11 @@ import { ISchoolDay } from "../types/SchoolDay";
 import { SchoolDayAction } from "./Actions";
 import * as SchoolActions from "./actions/SchoolDay";
 
-const defaultState = {
+const defaultState: ISchoolDay = {
     dayNumber: 0,
-    isHalf: false
-} as ISchoolDay;
+    isHalf: false,
+    date: new Date()
+};
 
 function SchoolDayReducer(state: ISchoolDay = defaultState, action: SchoolDayAction): ISchoolDay {
     switch (action.type) {

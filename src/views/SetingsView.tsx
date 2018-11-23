@@ -12,7 +12,7 @@ interface ISettingsViewState {
 }
 
 export default class SettingsView extends Component<INavigationElementProps, ISettingsViewState> {
-    static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
+    public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
         title: "Settings",
         swipeEnabled: true,
         tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />
@@ -25,23 +25,11 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
         };
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         // this.refreshICal();
     }
 
-    foceRefreshICal = () => this.refreshICal(true);
-    refreshICal = (force = false) => {
-        this.setState({
-            loading: true
-        });
-        getHighSchoolICal(force).then((value) =>
-            this.setState({
-                iCalInfo: value,
-                loading: false
-            }));
-    }
-
-    render() {
+    public render() {
         return (
             <SafeAreaView style={styles.container}>
                 <Text>Settings</Text>
@@ -71,6 +59,18 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
                 </ScrollView>
             </SafeAreaView>
         );
+    }
+
+    private foceRefreshICal = () => this.refreshICal(true);
+    private refreshICal = (force = false) => {
+        this.setState({
+            loading: true
+        });
+        getHighSchoolICal(force).then((value) =>
+            this.setState({
+                iCalInfo: value,
+                loading: false
+            }));
     }
 }
 

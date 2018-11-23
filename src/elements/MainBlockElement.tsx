@@ -1,12 +1,14 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { IDisplayBlock, isAdvisory, isFree, isLunchBlock } from "../types/DisplayBlock";
+import Store from "../redux/Store";
+import { Block, IBlock, isAdvisory, isFree } from "../types/Block";
 
 interface IBlockElementProps {
-    block: IDisplayBlock;
+    block: IBlock;
+    blockNumber: Block;
 }
 
-export default function BlockElement({ block }: IBlockElementProps) {
+export default function MainBlockElement({ block, blockNumber }: IBlockElementProps) {
     const timeMap = [
         "7:30 AM - 8:29 AM",
         "8:34 AM - 9:33 AM",
@@ -28,6 +30,9 @@ export default function BlockElement({ block }: IBlockElementProps) {
 
     let blockColor = isFree(block) ? "#C0C0C0" : (isAdvisory(block) ? "#A0A0A0" : block.color);
 
+    let blockTime = timeMap[blockNumber];
+    let lunchBlock = Store.getState().schoolDay.lunch;
+
     return (
         // Block element
         <View style={styles.classElementStyles}>
@@ -46,26 +51,21 @@ export default function BlockElement({ block }: IBlockElementProps) {
             <View style={styles.rightColumn}>
 
                 {/* Block times */}
-                <Text style={styles.blockTime}>{timeMap[block.blockNumber]}</Text>
+                <Text style={styles.blockTime}>{blockTime}</Text>
 
                 {/* Room number */}
                 {!isFree(block) && <Text style={styles.room}>Room {block.room}</Text>}
 
                 {/* Lunch block */}
-                {isLunchBlock(block) && <Text style={styles.lunchBlock}>{suffixed[block.lunchBlock]} Lunch</Text>}
+                {blockNumber === Block.Fourth && <Text style={styles.lunchBlock}>{suffixed[lunchBlock]} Lunch</Text>}
             </View>
         </View>
     );
 }
 
 let width = Dimensions.get("window").width; // full width
-let height = Dimensions.get("window").height; // full height
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        margin: 10
-    },
     classElementStyles: {
         borderRadius: 5,
         borderColor: "white",

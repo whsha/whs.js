@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { Button, FlatList, ImageStyle, SafeAreaView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
-import { Block, BlockColor, LunchBlock } from "../types/DisplayBlock";
+import { Button, FlatList, ImageStyle, Modal, Platform, SafeAreaView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
+import IonIcon from "react-native-vector-icons/Ionicons";
+import { classes1 } from "../DemoObjects";
+import { AllDays, IBlock, isAdvisory, isClassBlock } from "../types/Block";
 
 interface ISetupModalState {
     /** The blocks that the user has */
-    blocks: IClassBlock[];
+    blocks: IBlock[];
     /** The block the user is editing */
-    editing?: number;
+    editing?: IBlock;
 }
 
 export default class SetupModal extends Component<{}, ISetupModalState> {
@@ -15,75 +17,59 @@ export default class SetupModal extends Component<{}, ISetupModalState> {
         super(props);
 
         this.state = {
-            blocks: [
-                {
-                    blockNumber: Block.First,
-                    days: [1, 2],
-                    name: "e",
-                    room: 420,
-                    teacher: "ur mome",
-                    color: BlockColor.Red
-                },
-                {
-                    blockNumber: Block.Advisory,
-                    days: [5, 6, 8],
-                    name: "ee",
-                    room: 189,
-                    teacher: "ur mome"
-                }
-            ]
+            blocks: classes1
         };
     }
 
-    render() {
+    public render() {
         return (
             <SafeAreaView>
                 <View style={styles.background}>
                     <Text style={styles.header}>Class Setup</Text>
-                    <View>
-                        <Button title="+" onPress={() => console.log("boop")}/>
-                    </View>
+                    <Button title="Add Class" onPress={() => console.log("boop")} />
 
                     <FlatList
-                        data={this.state.blocks.map(x => ({key: x.name, value: x}))}
-                        renderItem={({item}) => <BlockListView block={item.value}/>}/>
+                        data={this.state.blocks}
+                        keyExtractor={x => x.name}
+                        renderItem={({item}) =>
+                            <BlockListView block={item} onPress={this.startEditing}/>
+                        }/>
                 </View>
+                <Modal visible={this.state.editing !== undefined} animationType="slide">
+                    <BlockEditor block={this.state.editing} onPress={this.stopEditing}/>
+                </Modal>
             </SafeAreaView>
         );
     }
+
+    private readonly startEditing = (block: IBlock) => this.setState({editing: block});
+    private readonly stopEditing = () => this.setState({editing: undefined});
 }
 
-// /** A class block */
-// export interface IClassBlock {
-//     /** The name of the block */
-//     name: string;
-//     /** The room the class is in */
-//     room: number;
-//     /** The teacher for the class */
-//     teacher: string;
-//     /** The class color */
-//     color?: BlockColor;
-//     /** The block number */
-//     blockNumber: Block;
-//     /** The Lunch block  */
-//     lunchBlock?: LunchBlock;
-//     /** The days the class block should be on */
-//     days: SchoolDay[];
-// }
-
-enum SchoolDay {
-    Day1 = 1,
-    Day2,
-    Day3,
-    Day4,
-    Day5,
-    Day6,
-    Day7
-}
-
-function BlockListView({block}: {block: IClassBlock}) {
+function BlockEditor({block, onPress}: {block: IBlock, onPress: () => void}) {
     return (
-        <Text style={{color: block.color}}>{block.name}</Text>
+        <SafeAreaView>
+            <Text>youre ediding {block.name}</Text>
+            <Button title="close" onPress={() => onPress()}/>
+        </SafeAreaView>
+    );
+}
+
+function BlockListView({block, onPress}: {block: IBlock, onPress: (block: IBlock) => void}) {
+    let days = !isAdvisory(block) ? block.days : AllDays;
+
+    return (
+        <View>
+            <View>
+                <Text style={[styles.blockListTitle, isClassBlock(block) ? {color: block.color} : undefined]}>{block.name}</Text>
+                <Text>Meets on Day{days.length !== 1 ? "s" : ""} {days}</Text>
+            </View>
+            <View>
+                <TouchableOpacity onPress={() => onPress(block)}>
+                    <IonIcon name={`${Platform.OS === "ios" ? "ios" : "md"}-information-circle-outline`} size={25} color="#2f95dc"/>
+                </TouchableOpacity>
+            </View>
+        </View>
     );
 }
 
@@ -91,8 +77,6 @@ const styles = StyleSheet.create({
     background: {
         backgroundColor: "#FFFFFF",
         height: "100%",
-        borderRadius: 10,
-        marginTop: 10,
         padding: 10
     } as ViewStyle | TextStyle | ImageStyle,
     header: {
@@ -101,5 +85,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
         textAlign: "center",
         textAlignVertical: "center"
+    } as ViewStyle | TextStyle | ImageStyle,
+    blockListTitle: {
+        fontSize: 25
     } as ViewStyle | TextStyle | ImageStyle
 });
