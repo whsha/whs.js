@@ -8,19 +8,15 @@ export interface IClassBlock {
     teacher: string;
     /** The class color */
     color: BlockColor;
-    // /** The block number */
-    // blockNumber: Block;
-    // /** The Lunch block  */
-    // lunchBlock?: LunchBlock;
     /** The days the class block should be on */
     days: SchoolDay[];
 }
 
-// /** A class block that has a lunch block */
-// export interface ILunchBlock extends IClassBlock {
-//     /** The Lunch block */
-//     lunchBlock: LunchBlock;
-// }
+/** A lab block */
+export interface ILabBlock extends IClassBlock {
+    /** Wheather or not the class is a lab block */
+    isLab: true;
+}
 
 /** An avisory block */
 export interface IAdvisory {
@@ -30,16 +26,12 @@ export interface IAdvisory {
     room: number;
     /** The teacher for the block */
     teacher: string;
-    // /** The number for the block */
-    // blockNumber: Block.Advisory;
 }
 
 /** A free block that is prepared to be displayed on the screen */
 export interface IFreeBlock {
     /** The name of the block */
     name: "Free";
-    // /** The number of the block */
-    // blockNumber: Block;
     /** THe color of the block (if not a first period) */
     color?: BlockColor;
     /** The days the class block should be on */
@@ -104,9 +96,9 @@ export function isClassBlock(block: IBlock): block is IClassBlock {
     return !isFree(block) && !isAdvisory(block);
 }
 
-// /** Check if the display block given is a lunch class block */
-// export function isLunchBlock(block: IBlock): block is ILunchBlock {
-//     return isClassBlock(block) && block.lunchBlock !== undefined;
-// }
+/** Check if the display block given is a lab block */
+export function isLabBlock(block: IBlock): block is ILabBlock {
+    return isClassBlock(block) && (block as ILabBlock).isLab === true;
+}
 
-export type IBlock = IFreeBlock | IAdvisory | IClassBlock/*  | ILunchBlock*/;
+export type IBlock = IFreeBlock | IAdvisory | IClassBlock;

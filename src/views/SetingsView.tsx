@@ -43,7 +43,7 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
                         this.props.navigation.navigate("Home");
                     }}
                 /> */}
-                <ScrollView refreshControl={<RefreshControl refreshing={this.state.loading} onRefresh={this.foceRefreshICal}/>}>
+                {/* <ScrollView refreshControl={<RefreshControl refreshing={this.state.loading} onRefresh={this.foceRefreshICal}/>}>
                     <SafeAreaView>
                         {this.state.iCalInfo ? this.state.iCalInfo.schoolDays.map((x, i) =>
                             <View key={i} style={{ margin: 10, width: "90%" }}>
@@ -56,7 +56,7 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
                             </View>
                         ) : <ActivityIndicator/>}
                     </SafeAreaView>
-                </ScrollView>
+                </ScrollView> */}
             </SafeAreaView>
         );
     }

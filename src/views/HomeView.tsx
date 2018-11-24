@@ -5,9 +5,9 @@ import { INavigationElementProps } from "../App";
 import { classes1 } from "../DemoObjects";
 import MainBlockElement from "../elements/MainBlockElement";
 import Store from "../redux/Store";
-import { isAdvisory, SchoolDay } from "../types/Block";
+import { isAdvisory, SchoolDay, IFreeBlock } from "../types/Block";
 import { ISchoolDay } from "../types/SchoolDay";
-import { getBlockNumber, userHasBlocksSetup } from "../util/BlocksUtil";
+import { getBlockNumber, userHasBlocksSetup, getBlockColorFromNumber } from "../util/BlocksUtil";
 import { fetchAndStoreSchoolDay } from "../util/CalendarUtil";
 import SetupModal from "./SetupModal";
 
@@ -32,11 +32,13 @@ export default class HomeView extends PureComponent<Props, IHomeState> {
     public componentDidMount() {
         this.ismounted = true;
 
-        userHasBlocksSetup().then((setup) => {
-            this.setState({
-                blocksSetup: setup
-            });
-        });
+        this.refreshDay();
+
+        // userHasBlocksSetup().then((setup) => {
+        //     this.setState({
+        //         blocksSetup: setup
+        //     });
+        // });
     }
 
     public componentWillUnmount() {
@@ -69,20 +71,24 @@ export default class HomeView extends PureComponent<Props, IHomeState> {
             .filter(x => this.state.day !== 0 && (isAdvisory(x) || x.days.indexOf(this.state.day) !== -1))
             .sort((a, b) => getBlockNumber(this.state.day, a) - getBlockNumber(this.state.day, b));
 
+            // courses = [].fill({
+            //     days: [],
+            //     name: "Free"
+            // } as IFreeBlock, 0, 7);
+
         return (
                 <SafeAreaView style={styles.container}>
                     <FlatList
                         data={courses}
                         renderItem={({item}) => <MainBlockElement block={item} blockNumber={getBlockNumber(this.state.day, item)}/>}
-                        keyExtractor={x => x.name}
-                        refreshControl={<RefreshControl refreshing={this.state.refreshing}
-                        onRefresh={this.refreshDay}/>}
-                        ListEmptyComponent={<Text>No classes</Text>}
+                        keyExtractor={(x, i) => `${x.name}@${i}` }
+                        refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.refreshDay}/>}
+                        ListEmptyComponent={<Text style={{flex: 1}}>No classes</Text>}
                     />
 
-                    {/* <Modal animationType="slide" transparent={true} visible={!this.state.blocksSetup}>
+                    <Modal animationType="slide" transparent={true} visible={!this.state.blocksSetup}>
                         <SetupModal/>
-                    </Modal> */}
+                    </Modal>
                 </SafeAreaView>
         );
     }

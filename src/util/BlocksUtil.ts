@@ -1,6 +1,6 @@
 import { AsyncStorage } from "react-native";
 import AsyncStorageKey from "../types/AsyncStorageKeys";
-import { Block, BlockColor, IBlock, isAdvisory, SchoolDay } from "../types/Block";
+import { Block, BlockColor, IBlock, isAdvisory, isLabBlock, SchoolDay } from "../types/Block";
 
 export async function userHasBlocksSetup(): Promise<boolean> {
     return await AsyncStorage.getItem(AsyncStorageKey.Blocks) !== null;
@@ -69,7 +69,11 @@ export function getBlockNumber(day: SchoolDay, block: IBlock): Block {
     if (isAdvisory(block)) {
         return Block.Advisory;
     } else if (block.color !== undefined) {
-        return getBlockNumberFromColor(day, block.color);
+        if (isLabBlock(block)) {
+            return Block.First;
+        } else {
+            return getBlockNumberFromColor(day, block.color);
+        }
     } else {
         return Block.First;
     }

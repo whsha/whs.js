@@ -1,4 +1,4 @@
-import { Block, BlockColor, IAdvisory, IBlock, IClassBlock } from "./types/Block";
+import { BlockColor, IAdvisory, IBlock, IClassBlock, ILabBlock, IFreeBlock } from "./types/Block";
 
 export const classes1: IBlock[] = [
     {
@@ -13,9 +13,9 @@ export const classes1: IBlock[] = [
         name: "Honors Chemistry Lab",
         room: 440,
         teacher: "Mr. Genova",
-        blockNumber: Block.First,
-        days: [5]
-    } as IClassBlock,
+        days: [5],
+        isLab: true
+    } as ILabBlock,
     {
         color: BlockColor.Yellow,
         name: "History ACP",
@@ -69,5 +69,9 @@ export const classes1: IBlock[] = [
         room: 332,
         teacher: "Sr. Travers"
 
-    } as IClassBlock
+    } as IClassBlock,
+    {
+        days: [1, 3, 7],
+        name: "Free"
+    } as IFreeBlock
 ];
