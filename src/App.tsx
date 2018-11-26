@@ -8,13 +8,11 @@ import {
     NavigationTabScreenOptions
 } from "react-navigation";
 import TabBarIcon from "./elements/TabBarIcon";
-import { fetchAndStoreSchoolDay } from "./util/CalendarUtil";
 import CalendarView from "./views/CalendarView";
+import ClassEditorView from "./views/ClassEditorView";
 import ClassSetupView from "./views/ClassSetupView";
 import SettingsView from "./views/SetingsView";
 import TodayView from "./views/TodayView";
-
-fetchAndStoreSchoolDay();
 
 export interface INavigationElementProps<S = {}, P = NavigationParams> {
     navigation: NavigationScreenProp<S, P>;
@@ -38,18 +36,19 @@ HomeStackNavigator.navigationOptions = {
 // The stack navigator for the Settings page
 const SettingsStackNavigator = createStackNavigator({
     MainSettings: SettingsView,
-    ClassSettings: ClassSetupView
+    ClassSetup: ClassSetupView,
+    EditClass: ClassEditorView
 }, {
-        cardStyle: {
-            backfaceVisibility: "visible",
-            backgroundColor: "white"
-        },
-        initialRouteName: "MainSettings"
-    });
+    cardStyle: {
+        backfaceVisibility: "visible",
+        backgroundColor: "white"
+    },
+    initialRouteName: "MainSettings"
+});
 SettingsStackNavigator.navigationOptions = {
     tabBarLabel: "Settings",
     tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />,
-    tabBarVisible: false // TODO: REDUX STORE FOR TAB BAR VISIBILITY OR SMTHN
+    tabBarVisible: true // TODO: REDUX STORE FOR TAB BAR VISIBILITY OR SMTHN
 } as NavigationScreenConfig<NavigationTabScreenOptions>;
 
 // The tab navigator
@@ -66,10 +65,11 @@ export default createBottomTabNavigator({
  * ROUTES
  *
  * BottomTabNavigator
- * | Calendar => Calendar View
+ * | Calendar                           => Calendar View
  * | Home (StackNavigator)
- * | | Today => Today View
+ * | | Today                            => Today View
  * | Settings (StackNavigator)
- * | | MainSettings
- * | | ClassSettings
+ * | | MainSettings                     => SettingsView
+ * | | ClassSetup                       => ClassSetupView
+ * | | EditClass                        => ClassEditorView
  */

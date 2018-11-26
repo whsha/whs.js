@@ -1,28 +1,30 @@
-import React, { Component } from "react";
-import { Button, FlatList, ImageStyle, Modal, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
+import React, { PureComponent } from "react";
+import { FlatList, ImageStyle, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
-import { classes } from "../DemoObjects";
-import { AllDays, IBlock, isAdvisory, isClassBlock } from "../types/Block";
+import { INavigationElementProps } from "../App";
+import { DEMOOBJECT_advisory, DEMOOBJECT_classes } from "../DemoObjects";
+import { AllDays, IAdvisory, IBlock, IClassBlock, isAdvisory, isClassBlock } from "../types/Block";
 
 interface IClassSetupViewState {
     /** The blocks that the user has */
-    blocks: IBlock[];
-    /** The block the user is editing */
-    editing?: IBlock;
+    blocks: IClassBlock[];
+    /** The users advisory */
+    advisory: IAdvisory;
 }
 
-export default class ClassSetupView extends Component<{}, IClassSetupViewState> {
+export default class ClassSetupView extends PureComponent<INavigationElementProps, IClassSetupViewState> {
     public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
         title: "Class Setup"
     };
 
-    constructor(props: {}) {
+    constructor(props: INavigationElementProps) {
         super(props);
 
         this.state = {
-            blocks: classes
+            blocks: DEMOOBJECT_classes,
+            advisory: DEMOOBJECT_advisory
         };
     }
 
@@ -63,25 +65,11 @@ export default class ClassSetupView extends Component<{}, IClassSetupViewState> 
                         />
                     </Section>
                 </ScrollView>
-
-                <Modal visible={this.state.editing !== undefined} animationType="slide">
-                    <BlockEditor block={this.state.editing} onPress={this.stopEditing} />
-                </Modal>
             </SafeAreaView>
         );
     }
 
-    private readonly startEditing = (block: IBlock) => this.setState({ editing: block });
-    private readonly stopEditing = () => this.setState({ editing: undefined });
-}
-
-function BlockEditor({ block, onPress }: { block: IBlock, onPress: () => void }) {
-    return (
-        <SafeAreaView>
-            <Text>youre ediding {block.name}</Text>
-            <Button title="close" onPress={() => onPress()} />
-        </SafeAreaView>
-    );
+    // private readonly startEditing = (block: IBlock) => this.setState({ editing: block });
 }
 
 function BlockListView({ block, onPress }: { block: IBlock, onPress: (block: IBlock) => void }) {

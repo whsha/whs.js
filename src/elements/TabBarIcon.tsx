@@ -1,8 +1,8 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { Platform } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
-export default class TabBarIcon extends React.Component<{name: string, focused: boolean}> {
+export default class TabBarIcon extends PureComponent<{name: string, focused: boolean}> {
     public render() {
         return (
             <IonIcon

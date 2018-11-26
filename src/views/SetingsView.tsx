@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import React, { PureComponent } from "react";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { Cell, Section } from "react-native-tableview-simple";
 import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
 import { ICalendarInformation } from "../types/Calendar";
@@ -10,7 +11,7 @@ interface ISettingsViewState {
     loading: boolean;
 }
 
-export default class SettingsView extends Component<INavigationElementProps, ISettingsViewState> {
+export default class SettingsView extends PureComponent<INavigationElementProps, ISettingsViewState> {
     public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
         title: "Settings"
     };
@@ -29,7 +30,16 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
     public render() {
         return (
             <SafeAreaView style={styles.container}>
-                <Text>Settings</Text>
+                <ScrollView style={{paddingTop: 10}}>
+                    <Section header="Classes" sectionPaddingTop={5}>
+                        <Cell
+                            title="Configure Classes"
+                            cellStyle="Basic"
+                            accessory="DisclosureIndicator"
+                            onPress={() => this.props.navigation.navigate("ClassSetup") ? false : false}
+                        />
+                    </Section>
+                </ScrollView>
                 {/* <Button title={Store.getState().schoolDay.dayNumber === 0 ? "uncancel school" : "cancel school"}
                     onPress={() => {
                         Store.dispatch(SetSchoolDay({
@@ -72,8 +82,8 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center"
+        backgroundColor: "#EFEFF4",
+        height: "100%",
+        padding: 10
     }
 });

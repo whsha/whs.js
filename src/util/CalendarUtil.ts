@@ -1,7 +1,5 @@
 import ICal from "ical.js";
 import { AsyncStorage } from "react-native";
-import { SetSchoolDay } from "../redux/actions/SchoolDay";
-import Store from "../redux/Store";
 import AsyncStorageKey from "../types/AsyncStorageKeys";
 import { ICalendarInformation, IEvent } from "../types/Calendar";
 import { ISchoolDay, ValidSchoolDayNumber } from "../types/SchoolDay";
@@ -96,19 +94,19 @@ export function stripTime(date: Date): Date {
 }
 
 /** Load the calendar into the global Redux store */
-export function fetchAndStoreSchoolDay() {
-    getHighSchoolICal().then((value) => {
-        let schoolDay = value.schoolDays.find(x =>
-            x.date.getTime() === new Date().setHours(0, 0, 0, 0)
-        );
+export async function fetchSchoolDay(): Promise<ISchoolDay> {
+    let value = await getHighSchoolICal();
+    let schoolDay = value.schoolDays.find(x =>
+        x.date.getTime() === new Date().setHours(0, 0, 0, 0)
+    );
 
-        if (!schoolDay) {
-            schoolDay = {
-                date: new Date(new Date().setHours(0, 0, 0, 0)),
-                dayNumber: 0,
-                isHalf: false
-            };
-        }
-        Store.dispatch(SetSchoolDay(schoolDay));
-    });
+    if (!schoolDay) {
+        schoolDay = {
+            date: new Date(new Date().setHours(0, 0, 0, 0)),
+            dayNumber: 0,
+            isHalf: false
+        };
+    }
+
+    return schoolDay;
 }

@@ -1,8 +1,8 @@
-import { BlockColor, IAdvisory, IBlock, IClassBlock, IFreeBlock, ILabBlock, LunchBlock } from "./types/Block";
+import { BlockColor, IAdvisory, IClassBlock, ILabBlock, LunchBlock } from "./types/Block";
 
 // FIXME: SHOULD NOT EXIST
 
-export const classes: IBlock[] = [
+export const DEMOOBJECT_classes: IClassBlock[] = [
     {
         color: BlockColor.Red,
         name: "Honors Chemistry",
@@ -53,11 +53,6 @@ export const classes: IBlock[] = [
         days: [2, 3, 5, 6, 7]
     } as IClassBlock,
     {
-        name: "Advisory",
-        room: 156,
-        teacher: "Prof. Lovett"
-    } as IAdvisory,
-    {
         color: BlockColor.Green,
         days: [1, 3, 4, 6, 7],
         name: "Concert Band",
@@ -71,14 +66,16 @@ export const classes: IBlock[] = [
         room: 332,
         teacher: "Sr. Travers"
 
-    } as IClassBlock,
-    {
-        days: [1, 3, 7],
-        name: "Free"
-    } as IFreeBlock
+    } as IClassBlock
 ];
 
-export const lunches: LunchBlock[] = [
+export const DEMOOBJECT_advisory: IAdvisory = {
+    name: "Advisory",
+    room: 156,
+    teacher: "Prof. Lovett"
+};
+
+export const DEMOOBJECT_lunches: LunchBlock[] = [
     LunchBlock.Third,
     LunchBlock.Third,
     LunchBlock.Third,

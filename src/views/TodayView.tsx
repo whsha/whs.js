@@ -1,26 +1,29 @@
-import React, { PureComponent } from "react";
+import { reaction } from "mobx";
+import { observer } from "mobx-react";
+import React, { Component } from "react";
 import { FlatList, RefreshControl, SafeAreaView, StyleSheet, Text } from "react-native";
-import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
+import { NavigationRoute, NavigationScreenProp } from "react-navigation";
 import { INavigationElementProps } from "../App";
-import { classes, lunches } from "../DemoObjects";
+import { Store } from "../AppState";
+import { DEMOOBJECT_advisory, DEMOOBJECT_classes, DEMOOBJECT_lunches } from "../DemoObjects";
 import BlockElement from "../elements/BlockElement";
-import Store from "../redux/Store";
-import { isAdvisory, SchoolDay } from "../types/Block";
-import { ISchoolDay } from "../types/SchoolDay";
-import { getBlockNumber, userHasBlocksSetup } from "../util/BlocksUtil";
-import { fetchAndStoreSchoolDay } from "../util/CalendarUtil";
+import { IBlock, isAdvisory, Block, IFreeBlock } from "../types/Block";
+import { defaultSchoolDay, ISchoolDay } from "../types/SchoolDay";
+import { getBlockNumber, userHasBlocksSetup, getBlockColorFromNumber } from "../util/BlocksUtil";
 
-type Props = INavigationElementProps<{}, { day: ISchoolDay }>;
+interface ITodayNavigationProps {
+    day: ISchoolDay;
+}
+type Props = INavigationElementProps<{}, ITodayNavigationProps>;
 interface ITodayViewState {
     refreshing: boolean;
-    day: SchoolDay;
+    day: ISchoolDay;
 }
 
-export default class TodayView extends PureComponent<Props, ITodayViewState> {
-    private ismounted: boolean;
-
-    public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = () => {
-        let day = Store.getState().schoolDay;
+@observer
+class TodayView extends Component<Props, ITodayViewState> {
+    public static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<NavigationRoute, ITodayNavigationProps> }) => {
+        let day = navigation.getParam("day", defaultSchoolDay) as ISchoolDay;
 
         return {
             title: day.dayNumber === 0 ? "No School" : `${day.isHalf ? "Half " : ""}Day ${day.dayNumber}`
@@ -28,72 +31,80 @@ export default class TodayView extends PureComponent<Props, ITodayViewState> {
     }
 
     public componentDidMount() {
-        this.ismounted = true;
-
-        this.refreshDay();
-
-        userHasBlocksSetup().then((setup) => {
-            if (!setup) {
-                this.props.navigation.navigate("ClassSettings");
-            }
+        Store.updateSchoolDay().then(() => {
+            userHasBlocksSetup().then((setup) => {
+                if (!setup) {
+                    this.props.navigation.navigate("ClassSetup");
+                }
+            });
         });
-    }
-
-    public componentWillUnmount() {
-        this.ismounted = false;
     }
 
     constructor(props: Props) {
         super(props);
 
-        Store.subscribe(() => {
-            // Update the title when the store changes
-            this.props.navigation.setParams({ day: Store.getState().schoolDay });
-            this.setState({ day: Store.getState().schoolDay.dayNumber });
-
-            if (this.ismounted) {
-                // Reload the screen when the store changes
-                this.forceUpdate();
-            }
-        });
-
         this.state = {
             refreshing: false,
-            day: 0
+            day: defaultSchoolDay
         };
+
+        reaction(
+            () => Store.schoolDay,
+            schoolDay => this.props.navigation.setParams({ day: schoolDay })
+        );
     }
 
     public render() {
-        let courses = classes
-            .filter(x => this.state.day !== 0 && (isAdvisory(x) || x.days.indexOf(this.state.day) !== -1))
-            .sort((a, b) => getBlockNumber(this.state.day, a) - getBlockNumber(this.state.day, b));
+        let blocks: IBlock[];
+        if (Store.schoolDay.dayNumber !== 0) {
+            blocks = (DEMOOBJECT_classes
+                .filter(x => x.days.indexOf(Store.schoolDay.dayNumber) !== -1) as IBlock[])
+                .concat(DEMOOBJECT_advisory);
 
-        let lunch = lunches[this.state.day - 1];
+            let filledblocks: Block[] = blocks.map(x => getBlockNumber(Store.schoolDay.dayNumber, x));
+
+            console.log(filledblocks);
+            for (let i = Block.First; i <= Block.Sixth; i++) {
+                if (filledblocks.indexOf(i) === -1) {
+                    blocks.push({
+                        name: "Free",
+                        color: i === Block.First ? undefined : getBlockColorFromNumber(Store.schoolDay.dayNumber, i);
+                    } as IFreeBlock);
+                }
+            }
+
+            blocks = blocks.sort((a, b) => getBlockNumber(Store.schoolDay.dayNumber, a) - getBlockNumber(Store.schoolDay.dayNumber, b))
+        } else {
+            blocks = [];
+        }
+
+        let lunch = DEMOOBJECT_lunches[Store.schoolDay.dayNumber - 1];
 
         return (
             <SafeAreaView style={styles.container}>
                 <FlatList
-                    data={courses}
-                    renderItem={({ item }) => <BlockElement block={item} blockNumber={getBlockNumber(this.state.day, item)} lunch={lunch} />}
+                    data={blocks}
+                    renderItem={({ item }) => <BlockElement block={item} blockNumber={getBlockNumber(Store.schoolDay.dayNumber, item)} lunch={lunch} />}
                     keyExtractor={(x, i) => `${x.name}@${i}`}
-                    refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.refreshDay} />}
+                    refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={() => this.showRefresh(Store.updateSchoolDay)} />}
                     ListEmptyComponent={<Text style={{ flex: 1 }}>No classes</Text>}
                 />
             </SafeAreaView>
         );
     }
 
-    private readonly refreshDay = () => {
+    private readonly showRefresh = (fn: Function) => {
         this.setState({
             refreshing: true
         }, () => {
-            fetchAndStoreSchoolDay();
+            fn();
             this.setState({
                 refreshing: false
             });
         });
     }
 }
+export default TodayView;
 
 const styles = StyleSheet.create({
     container: {

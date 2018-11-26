@@ -64,6 +64,10 @@ export function getBlockMap(day: SchoolDay) {
 export function getBlockNumberFromColor(day: SchoolDay, blockcolor: BlockColor): Block {
     return getBlockMap(day).get(blockcolor);
 }
+// TODO:
+export function getBlockColorFromNumber(day: SchoolDay, blocknum: Block): Block {
+    // return getBlockMap(day).get(blockcolor);
+}
 
 export function getBlockNumber(day: SchoolDay, block: IBlock): Block {
     if (isAdvisory(block)) {

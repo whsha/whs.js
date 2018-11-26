@@ -34,8 +34,6 @@ export interface IFreeBlock {
     name: "Free";
     /** THe color of the block (if not a first period) */
     color?: BlockColor;
-    /** The days the class block should be on */
-    days: SchoolDay[];
 }
 
 /** The block numbers */
