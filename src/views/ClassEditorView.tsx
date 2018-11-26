@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Button, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity } from "react-native";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
 import { IBlock } from "../types/Block";
