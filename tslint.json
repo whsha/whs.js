@@ -125,6 +125,7 @@
             "check-type"
         ],
         "prefer-readonly": true,
-        "arrow-return-shorthand": true
+        "arrow-return-shorthand": true,
+        "import-spacing": true
     }
 }

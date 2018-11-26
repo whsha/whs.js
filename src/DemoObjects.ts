@@ -1,6 +1,8 @@
-import { BlockColor, IAdvisory, IBlock, IClassBlock, ILabBlock, IFreeBlock } from "./types/Block";
+import { BlockColor, IAdvisory, IBlock, IClassBlock, IFreeBlock, ILabBlock, LunchBlock } from "./types/Block";
 
-export const classes1: IBlock[] = [
+// FIXME: SHOULD NOT EXIST
+
+export const classes: IBlock[] = [
     {
         color: BlockColor.Red,
         name: "Honors Chemistry",
@@ -74,4 +76,14 @@ export const classes1: IBlock[] = [
         days: [1, 3, 7],
         name: "Free"
     } as IFreeBlock
+];
+
+export const lunches: LunchBlock[] = [
+    LunchBlock.Third,
+    LunchBlock.Third,
+    LunchBlock.Third,
+    LunchBlock.First,
+    LunchBlock.Third,
+    LunchBlock.First,
+    LunchBlock.Third
 ];

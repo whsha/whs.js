@@ -63,7 +63,7 @@ export enum BlockColor {
 
 /** The lunch blocks */
 export enum LunchBlock {
-    First = 1,
+    First,
     Second,
     Third
 }

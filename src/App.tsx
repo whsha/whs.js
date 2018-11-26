@@ -10,44 +10,66 @@ import {
 import TabBarIcon from "./elements/TabBarIcon";
 import { fetchAndStoreSchoolDay } from "./util/CalendarUtil";
 import CalendarView from "./views/CalendarView";
-import HomeView from "./views/HomeView";
+import ClassSetupView from "./views/ClassSetupView";
 import SettingsView from "./views/SetingsView";
+import TodayView from "./views/TodayView";
+
+fetchAndStoreSchoolDay();
 
 export interface INavigationElementProps<S = {}, P = NavigationParams> {
     navigation: NavigationScreenProp<S, P>;
 }
 
 // The stack navigator for the Home page
-const HomeStackNavigator = createStackNavigator({ Home: HomeView }, {
+const HomeStackNavigator = createStackNavigator({
+    Today: TodayView
+}, {
     cardStyle: {
         backfaceVisibility: "visible",
         backgroundColor: "white"
-    }
+    },
+    initialRouteName: "Today"
 });
 HomeStackNavigator.navigationOptions = {
     tabBarLabel: "Home",
-    tabBarIcon: ({focused}) => <TabBarIcon name="list" focused={focused}/>
+    tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
+} as NavigationScreenConfig<NavigationTabScreenOptions>;
+
+// The stack navigator for the Settings page
+const SettingsStackNavigator = createStackNavigator({
+    MainSettings: SettingsView,
+    ClassSettings: ClassSetupView
+}, {
+        cardStyle: {
+            backfaceVisibility: "visible",
+            backgroundColor: "white"
+        },
+        initialRouteName: "MainSettings"
+    });
+SettingsStackNavigator.navigationOptions = {
+    tabBarLabel: "Settings",
+    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />,
+    tabBarVisible: false // TODO: REDUX STORE FOR TAB BAR VISIBILITY OR SMTHN
 } as NavigationScreenConfig<NavigationTabScreenOptions>;
 
 // The tab navigator
 export default createBottomTabNavigator({
     Calendar: CalendarView,
     Home: HomeStackNavigator,
-    Settings: SettingsView
+    Settings: SettingsStackNavigator
 }, {
     initialRouteName: "Home",
     swipeEnabled: true
 });
 
-fetchAndStoreSchoolDay();
-// Update the school day whenever it changes
-// setInterval(() => {
-//     let storeTime = Store.getState().schoolDay.date.getTime();
-//     let localTime = new Date().setHours(0, 0, 0, 0);
-
-//     console.log(storeTime, localTime);
-
-//     if (storeTime !== localTime) {
-//         fetchAndStoreSchoolDay();
-//     }
-// }, 500);
+/**
+ * ROUTES
+ *
+ * BottomTabNavigator
+ * | Calendar => Calendar View
+ * | Home (StackNavigator)
+ * | | Today => Today View
+ * | Settings (StackNavigator)
+ * | | MainSettings
+ * | | ClassSettings
+ */

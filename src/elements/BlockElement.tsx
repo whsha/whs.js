@@ -1,14 +1,14 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import Store from "../redux/Store";
-import { Block, IBlock, isAdvisory, isFree } from "../types/Block";
+import { Block, IBlock, isAdvisory, isFree, LunchBlock } from "../types/Block";
 
 interface IBlockElementProps {
     block: IBlock;
     blockNumber: Block;
+    lunch: LunchBlock;
 }
 
-export default function MainBlockElement({ block, blockNumber }: IBlockElementProps) {
+export default function BlockElement({ block, blockNumber, lunch }: IBlockElementProps) {
     const timeMap = [
         "7:30 AM - 8:29 AM",
         "8:34 AM - 9:33 AM",
@@ -31,7 +31,6 @@ export default function MainBlockElement({ block, blockNumber }: IBlockElementPr
     let blockColor = isFree(block) ? "#C0C0C0" : (isAdvisory(block) ? "#A0A0A0" : block.color);
 
     let blockTime = timeMap[blockNumber];
-    let lunchBlock = Store.getState().schoolDay.lunch;
 
     return (
         // Block element
@@ -44,20 +43,20 @@ export default function MainBlockElement({ block, blockNumber }: IBlockElementPr
                 <Text style={[styles.name, { color: blockColor }]} numberOfLines={1} ellipsizeMode={"tail"}>{block.name}</Text>
 
                 {/* Teacher name */}
-                {!isFree(block) && <Text style={styles.teacher}>{block.teacher}</Text>}
+                {!isFree(block) && <Text style={styles.teacher} numberOfLines={1}>{block.teacher}</Text>}
             </View>
 
             {/* Right Column */}
             <View style={styles.rightColumn}>
 
                 {/* Block times */}
-                <Text style={styles.blockTime}>{blockTime}</Text>
+                <Text style={styles.blockTime} numberOfLines={1}>{blockTime}</Text>
 
                 {/* Room number */}
-                {!isFree(block) && <Text style={styles.room}>Room {block.room}</Text>}
+                {!isFree(block) && <Text style={styles.room} numberOfLines={1}>Room {block.room}</Text>}
 
                 {/* Lunch block */}
-                {blockNumber === Block.Fourth && <Text style={styles.lunchBlock}>{suffixed[lunchBlock]} Lunch</Text>}
+                {blockNumber === Block.Fourth && <Text style={styles.lunchBlock} numberOfLines={1}>{suffixed[lunch]} Lunch</Text>}
             </View>
         </View>
     );

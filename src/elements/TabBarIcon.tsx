@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 export default class TabBarIcon extends React.Component<{name: string, focused: boolean}> {
-    render() {
+    public render() {
         return (
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${this.props.name}`}

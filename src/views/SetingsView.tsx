@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
-import TabBarIcon from "../elements/TabBarIcon";
 import { ICalendarInformation } from "../types/Calendar";
 import { getHighSchoolICal } from "../util/CalendarUtil";
 
@@ -13,9 +12,7 @@ interface ISettingsViewState {
 
 export default class SettingsView extends Component<INavigationElementProps, ISettingsViewState> {
     public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-        title: "Settings",
-        swipeEnabled: true,
-        tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />
+        title: "Settings"
     };
 
     constructor(props: INavigationElementProps) {
@@ -61,7 +58,6 @@ export default class SettingsView extends Component<INavigationElementProps, ISe
         );
     }
 
-    private foceRefreshICal = () => this.refreshICal(true);
     private refreshICal = (force = false) => {
         this.setState({
             loading: true

@@ -1,24 +1,22 @@
 import React, { PureComponent } from "react";
-import { FlatList, Modal, RefreshControl, SafeAreaView, StyleSheet, Text } from "react-native";
+import { FlatList, RefreshControl, SafeAreaView, StyleSheet, Text } from "react-native";
 import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
-import { classes1 } from "../DemoObjects";
-import MainBlockElement from "../elements/MainBlockElement";
+import { classes, lunches } from "../DemoObjects";
+import BlockElement from "../elements/BlockElement";
 import Store from "../redux/Store";
-import { isAdvisory, SchoolDay, IFreeBlock } from "../types/Block";
+import { isAdvisory, SchoolDay } from "../types/Block";
 import { ISchoolDay } from "../types/SchoolDay";
-import { getBlockNumber, userHasBlocksSetup, getBlockColorFromNumber } from "../util/BlocksUtil";
+import { getBlockNumber, userHasBlocksSetup } from "../util/BlocksUtil";
 import { fetchAndStoreSchoolDay } from "../util/CalendarUtil";
-import SetupModal from "./SetupModal";
 
 type Props = INavigationElementProps<{}, { day: ISchoolDay }>;
-interface IHomeState {
+interface ITodayViewState {
     refreshing: boolean;
-    blocksSetup: boolean;
     day: SchoolDay;
 }
 
-export default class HomeView extends PureComponent<Props, IHomeState> {
+export default class TodayView extends PureComponent<Props, ITodayViewState> {
     private ismounted: boolean;
 
     public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = () => {
@@ -34,11 +32,11 @@ export default class HomeView extends PureComponent<Props, IHomeState> {
 
         this.refreshDay();
 
-        // userHasBlocksSetup().then((setup) => {
-        //     this.setState({
-        //         blocksSetup: setup
-        //     });
-        // });
+        userHasBlocksSetup().then((setup) => {
+            if (!setup) {
+                this.props.navigation.navigate("ClassSettings");
+            }
+        });
     }
 
     public componentWillUnmount() {
@@ -61,35 +59,27 @@ export default class HomeView extends PureComponent<Props, IHomeState> {
 
         this.state = {
             refreshing: false,
-            blocksSetup: true,
             day: 0
         };
     }
 
     public render() {
-        let courses = classes1
+        let courses = classes
             .filter(x => this.state.day !== 0 && (isAdvisory(x) || x.days.indexOf(this.state.day) !== -1))
             .sort((a, b) => getBlockNumber(this.state.day, a) - getBlockNumber(this.state.day, b));
 
-            // courses = [].fill({
-            //     days: [],
-            //     name: "Free"
-            // } as IFreeBlock, 0, 7);
+        let lunch = lunches[this.state.day - 1];
 
         return (
-                <SafeAreaView style={styles.container}>
-                    <FlatList
-                        data={courses}
-                        renderItem={({item}) => <MainBlockElement block={item} blockNumber={getBlockNumber(this.state.day, item)}/>}
-                        keyExtractor={(x, i) => `${x.name}@${i}` }
-                        refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.refreshDay}/>}
-                        ListEmptyComponent={<Text style={{flex: 1}}>No classes</Text>}
-                    />
-
-                    <Modal animationType="slide" transparent={true} visible={!this.state.blocksSetup}>
-                        <SetupModal/>
-                    </Modal>
-                </SafeAreaView>
+            <SafeAreaView style={styles.container}>
+                <FlatList
+                    data={courses}
+                    renderItem={({ item }) => <BlockElement block={item} blockNumber={getBlockNumber(this.state.day, item)} lunch={lunch} />}
+                    keyExtractor={(x, i) => `${x.name}@${i}`}
+                    refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.refreshDay} />}
+                    ListEmptyComponent={<Text style={{ flex: 1 }}>No classes</Text>}
+                />
+            </SafeAreaView>
         );
     }
 

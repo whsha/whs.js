@@ -1,8 +1,5 @@
-import { LunchBlock } from "./Block";
-
 export interface ISchoolDay {
     dayNumber: ValidSchoolDayNumber;
-    lunch?: LunchBlock;
     isHalf: boolean;
     meta?: string;
     date: Date;
