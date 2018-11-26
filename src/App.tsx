@@ -47,8 +47,7 @@ const SettingsStackNavigator = createStackNavigator({
 });
 SettingsStackNavigator.navigationOptions = {
     tabBarLabel: "Settings",
-    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />,
-    tabBarVisible: true // TODO: REDUX STORE FOR TAB BAR VISIBILITY OR SMTHN
+    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />
 } as NavigationScreenConfig<NavigationTabScreenOptions>;
 
 // The tab navigator

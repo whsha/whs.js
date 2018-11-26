@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
-import { Button, SafeAreaView, Text } from "react-native";
+import { Button, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
 import { IBlock } from "../types/Block";
 
@@ -8,22 +9,24 @@ interface IClassEditorViewNavigationProps {
 }
 
 export default class ClassEditorView extends PureComponent<INavigationElementProps<{}, IClassEditorViewNavigationProps>> {
-    public render() {
-        if (this.props.navigation.state.params.block === undefined) {
-            this.cancel();
-        }
+    public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({navigation}) => ({
+        headerRight: (
+            <TouchableOpacity style={{marginVertical: 10, marginHorizontal: 15}} onPress={() => navigation.goBack() /* TODO: SAVE */}>
+                <Text style={{color: "#2f95dc", fontSize: 17, fontWeight: "bold"}}>Done</Text>
+            </TouchableOpacity>
+        ),
+        headerLeft: (
+            <TouchableOpacity style={{marginVertical: 10, marginHorizontal: 15}} onPress={() => navigation.goBack()}>
+                <Text style={{color: "#2f95dc", fontSize: 17}}>Cancel</Text>
+            </TouchableOpacity>
+        )
+    })
 
+    public render() {
         return (
             <SafeAreaView>
                 <Text>youre ediding {this.props.navigation.state.params.block.name}</Text>
-                <Button title="close" onPress={() => this.cancel} />
             </SafeAreaView>
         );
-    }
-
-    private readonly cancel = () => this.props.navigation.goBack();
-    private readonly done = () => {
-        // Save
-        this.props.navigation.goBack();
     }
 }

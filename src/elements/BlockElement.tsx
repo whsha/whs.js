@@ -19,16 +19,9 @@ export default function BlockElement({ block, blockNumber, lunch }: IBlockElemen
         "1:31 PM - 2:30 PM"
     ];
 
-    // TODO: REMOVE?
-    // const lunchTimeMap = [
-    //     "10:55 AM - 11:22 AM",
-    //     "11:25 AM - 11:52 AM",
-    //     "11:55 AM - 12:22 PM"
-    // ];
-
     const suffixed = ["1st", "2nd", "3rd"];
 
-    let blockColor = isFree(block) ? "#C0C0C0" : (isAdvisory(block) ? "#A0A0A0" : block.color);
+    let blockColor = isFree(block) ? (block.color ? block.color : "#C0C0C0") : (isAdvisory(block) ? "#A0A0A0" : block.color);
 
     let blockTime = timeMap[blockNumber];
 

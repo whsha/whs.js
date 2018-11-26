@@ -1,11 +1,11 @@
 import React, { PureComponent } from "react";
-import { FlatList, ImageStyle, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
+import { FlatList, Platform, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import IonIcon from "react-native-vector-icons/Ionicons";
-import { NavigationScreenConfig, NavigationTabScreenOptions } from "react-navigation";
+import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
 import { DEMOOBJECT_advisory, DEMOOBJECT_classes } from "../DemoObjects";
-import { AllDays, IAdvisory, IBlock, IClassBlock, isAdvisory, isClassBlock } from "../types/Block";
+import { IAdvisory, IClassBlock } from "../types/Block";
 
 interface IClassSetupViewState {
     /** The blocks that the user has */
@@ -15,8 +15,13 @@ interface IClassSetupViewState {
 }
 
 export default class ClassSetupView extends PureComponent<INavigationElementProps, IClassSetupViewState> {
-    public static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-        title: "Class Setup"
+    public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = {
+        title: "Class Setup",
+        headerRight: (
+            <TouchableOpacity style={{marginVertical: 10, marginHorizontal: 15}} onPress={() => console.log("e")}>
+                <IonIcon name={`${Platform.OS === "ios" ? "ios" : "md"}-add`} size={26} color="#2f95dc"/>
+            </TouchableOpacity>
+        )
     };
 
     constructor(props: INavigationElementProps) {
@@ -31,28 +36,28 @@ export default class ClassSetupView extends PureComponent<INavigationElementProp
     public render() {
         return (
             <SafeAreaView style={styles.background}>
-                {/* <Button title="Add Class" onPress={() => console.log("boop")} /> */}
-
                 <ScrollView style={{paddingTop: 10}}>
                     <Section header="Advisory" sectionPaddingTop={5}>
                         <Cell
                             title="Advisory"
-                            // detail={!isAdvisory(item) ? item.days.join(", ") : AllDays.join(", ")}
                             cellStyle="Basic"
                             accessory="DisclosureIndicator"
-                            onPress={() => console.log("e")}
+                            onPress={() => void this.props.navigation.navigate("EditClass", {
+                                block: this.state.advisory
+                            })}
                         />
                     </Section>
                     <Section header="Classes" sectionPaddingTop={5}>
                         <FlatList
-                            data={this.state.blocks}
+                            data={[]/* this.state.blocks.sort((a, b) => a.name.localeCompare(b.name)) */}
                             keyExtractor={x => x.name}
                             renderItem={({ item, separators }) =>
                                 <Cell
                                     title={item.name}
-                                    detail={!isAdvisory(item) ? item.days.join(", ") : AllDays.join(", ")}
+                                    detail={`Meets on day${item.days.length === 1 ? "" : "s"} ${item.days.sort((a, b) => a - b).join(", ")}`}
                                     cellStyle="Subtitle"
                                     accessory="DisclosureIndicator"
+                                    titleTextColor={item.color}
                                     onPress={() => console.log("e")}
                                     onHighlightRow={separators.highlight}
                                     onUnHighlightRow={separators.unhighlight}
@@ -62,32 +67,19 @@ export default class ClassSetupView extends PureComponent<INavigationElementProp
                                 <Separator isHidden={highlighted} />
                             }
                             scrollEnabled={false}
+                            ListEmptyComponent={
+                                <Cell
+                                    title={"No Classes"}
+                                    cellStyle="Basic"
+                                    isDisabled
+                                />
+                            }
                         />
                     </Section>
                 </ScrollView>
             </SafeAreaView>
         );
     }
-
-    // private readonly startEditing = (block: IBlock) => this.setState({ editing: block });
-}
-
-function BlockListView({ block, onPress }: { block: IBlock, onPress: (block: IBlock) => void }) {
-    let days = !isAdvisory(block) ? block.days : AllDays;
-
-    return (
-        <View>
-            <View>
-                <Text style={[styles.blockListTitle, isClassBlock(block) ? { color: block.color } : undefined]}>{block.name}</Text>
-                <Text>Meets on Day{days.length !== 1 ? "s" : ""} {days}</Text>
-            </View>
-            <View>
-                <TouchableOpacity onPress={() => onPress(block)}>
-                    <IonIcon name={`${Platform.OS === "ios" ? "ios" : "md"}-information-circle-outline`} size={25} color="#2f95dc" />
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
 }
 
 const styles = StyleSheet.create({
@@ -95,8 +87,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#EFEFF4",
         height: "100%",
         padding: 10
-    } as ViewStyle | TextStyle | ImageStyle,
+    },
     blockListTitle: {
         fontSize: 25
-    } as ViewStyle | TextStyle | ImageStyle
+    }
 });

@@ -7,9 +7,9 @@ import { INavigationElementProps } from "../App";
 import { Store } from "../AppState";
 import { DEMOOBJECT_advisory, DEMOOBJECT_classes, DEMOOBJECT_lunches } from "../DemoObjects";
 import BlockElement from "../elements/BlockElement";
-import { IBlock, isAdvisory, Block, IFreeBlock } from "../types/Block";
+import { Block, IBlock, IFreeBlock } from "../types/Block";
 import { defaultSchoolDay, ISchoolDay } from "../types/SchoolDay";
-import { getBlockNumber, userHasBlocksSetup, getBlockColorFromNumber } from "../util/BlocksUtil";
+import { getBlockColorFromNumber, getBlockNumber, userHasBlocksSetup } from "../util/BlocksUtil";
 
 interface ITodayNavigationProps {
     day: ISchoolDay;
@@ -57,23 +57,23 @@ class TodayView extends Component<Props, ITodayViewState> {
     public render() {
         let blocks: IBlock[];
         if (Store.schoolDay.dayNumber !== 0) {
+            // Get classes and filter ones that dont meet on the given day
             blocks = (DEMOOBJECT_classes
                 .filter(x => x.days.indexOf(Store.schoolDay.dayNumber) !== -1) as IBlock[])
                 .concat(DEMOOBJECT_advisory);
 
             let filledblocks: Block[] = blocks.map(x => getBlockNumber(Store.schoolDay.dayNumber, x));
 
-            console.log(filledblocks);
             for (let i = Block.First; i <= Block.Sixth; i++) {
                 if (filledblocks.indexOf(i) === -1) {
                     blocks.push({
                         name: "Free",
-                        color: i === Block.First ? undefined : getBlockColorFromNumber(Store.schoolDay.dayNumber, i);
+                        color: i === Block.First ? undefined : getBlockColorFromNumber(Store.schoolDay.dayNumber, i)
                     } as IFreeBlock);
                 }
             }
 
-            blocks = blocks.sort((a, b) => getBlockNumber(Store.schoolDay.dayNumber, a) - getBlockNumber(Store.schoolDay.dayNumber, b))
+            blocks = blocks.sort((a, b) => getBlockNumber(Store.schoolDay.dayNumber, a) - getBlockNumber(Store.schoolDay.dayNumber, b));
         } else {
             blocks = [];
         }
