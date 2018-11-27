@@ -27,7 +27,6 @@
             "supportsTablet": true
         },
         "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
-        "scheme": "whs",
-        "entryPoint": "src/index"
+        "scheme": "whs"
     }
 }
