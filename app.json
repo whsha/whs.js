@@ -28,6 +28,6 @@
         },
         "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
         "scheme": "whs",
-        "entryPoint": "src/App"
+        "entryPoint": "src/index"
     }
 }
