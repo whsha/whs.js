@@ -45,10 +45,12 @@ const SettingsStackNavigator = createStackNavigator({
     },
     initialRouteName: "MainSettings"
 });
-SettingsStackNavigator.navigationOptions = {
+let navops: NavigationScreenConfig<NavigationTabScreenOptions> = ({navigation}) => ({
     tabBarLabel: "Settings",
-    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />
-} as NavigationScreenConfig<NavigationTabScreenOptions>;
+    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />,
+    tabBarVisible: navigation.state.index === 0
+});
+SettingsStackNavigator.navigationOptions = navops;
 
 // The tab navigator
 export default createBottomTabNavigator({

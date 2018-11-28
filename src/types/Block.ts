@@ -7,7 +7,7 @@ export interface IClassBlock {
     /** The teacher for the class */
     teacher: string;
     /** The class color */
-    color: BlockColor;
+    color?: BlockColor;
     /** The days the class block should be on */
     days: SchoolDay[];
 }
@@ -58,6 +58,16 @@ export enum BlockColor {
     Purple = "purple",
     Tan = "tan"
 }
+
+export const BlockColors: Array<keyof typeof BlockColor> = [
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Blue",
+    "Purple",
+    "Tan"
+];
 
 /** The lunch blocks */
 export enum LunchBlock {

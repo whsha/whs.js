@@ -1,6 +1,7 @@
 enum AsyncStorageKey {
     Calendar = "@whs/calendar",
-    Blocks = "@whs/blocks"
+    Classes = "@whs/classes",
+    Advisory = "@whs/advisory"
 }
 
 export default AsyncStorageKey;

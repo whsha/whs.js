@@ -1,9 +1,9 @@
 import { AsyncStorage } from "react-native";
 import AsyncStorageKey from "../types/AsyncStorageKeys";
-import { Block, BlockColor, IBlock, isAdvisory, isLabBlock, SchoolDay } from "../types/Block";
+import { AllDays, Block, BlockColor, IAdvisory, IBlock, IClassBlock, isAdvisory, isLabBlock, SchoolDay } from "../types/Block";
 
 export async function userHasBlocksSetup(): Promise<boolean> {
-    return await AsyncStorage.getItem(AsyncStorageKey.Blocks) !== null;
+    return await AsyncStorage.getItem(AsyncStorageKey.Classes) !== null;
 }
 
 /** Mappings for the classes per day */
@@ -67,6 +67,12 @@ export function getBlockNumberFromColor(day: SchoolDay, blockcolor: BlockColor):
 export function getBlockColorFromNumber(day: SchoolDay, blocknum: Block): BlockColor {
     return getKeyByValue(getBlockMap(day), blocknum);
 }
+export function canBlockMeetToday(day: SchoolDay, blockcolor: BlockColor): boolean {
+    return Array.from(getBlockMap(day).keys()).indexOf(blockcolor) !== -1;
+}
+export function whenDoesBlockMeet(blockcolor: BlockColor): SchoolDay[] {
+    return AllDays.filter(x => canBlockMeetToday(x, blockcolor));
+}
 
 function getKeyByValue<K, V>(map: Map<K, V>, value: V): K {
     return Array.from(map.keys()).find(key => map.get(key) === value);
@@ -84,4 +90,20 @@ export function getBlockNumber(day: SchoolDay, block: IBlock): Block {
     } else {
         return Block.First;
     }
+}
+
+export async function saveClasses(classes: IClassBlock[]) {
+    return AsyncStorage.setItem(AsyncStorageKey.Classes, JSON.stringify(classes));
+}
+
+export async function loadClasses() {
+    return JSON.parse(await AsyncStorage.getItem(AsyncStorageKey.Classes)) as IClassBlock[];
+}
+
+export async function saveAdvisory(advisory: IAdvisory) {
+    return AsyncStorage.setItem(AsyncStorageKey.Advisory, JSON.stringify(advisory));
+}
+
+export async function loadAdvisory() {
+    return JSON.parse(await AsyncStorage.getItem(AsyncStorageKey.Advisory)) as IAdvisory;
 }

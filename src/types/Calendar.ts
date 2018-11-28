@@ -5,6 +5,8 @@ export interface ICalendarInformation {
     schoolDays: ISchoolDay[];
     /** Events that take place */
     events: IEvent[];
+    /** When the calendar was updated */
+    updated: Date;
 }
 
 /** An event */

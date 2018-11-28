@@ -5,7 +5,7 @@ import { FlatList, RefreshControl, SafeAreaView, StyleSheet, Text } from "react-
 import { NavigationRoute, NavigationScreenProp } from "react-navigation";
 import { INavigationElementProps } from "../App";
 import { Store } from "../AppState";
-import { DEMOOBJECT_advisory, DEMOOBJECT_classes, DEMOOBJECT_lunches } from "../DemoObjects";
+import { DEMOOBJECT_advisory, DEMOOBJECT_lunches } from "../DemoObjects";
 import BlockElement from "../elements/BlockElement";
 import { Block, IBlock, IFreeBlock } from "../types/Block";
 import { defaultSchoolDay, ISchoolDay } from "../types/SchoolDay";
@@ -17,7 +17,6 @@ interface ITodayNavigationProps {
 type Props = INavigationElementProps<{}, ITodayNavigationProps>;
 interface ITodayViewState {
     refreshing: boolean;
-    day: ISchoolDay;
 }
 
 @observer
@@ -44,8 +43,7 @@ class TodayView extends Component<Props, ITodayViewState> {
         super(props);
 
         this.state = {
-            refreshing: false,
-            day: defaultSchoolDay
+            refreshing: false
         };
 
         reaction(
@@ -58,7 +56,7 @@ class TodayView extends Component<Props, ITodayViewState> {
         let blocks: IBlock[];
         if (Store.schoolDay.dayNumber !== 0) {
             // Get classes and filter ones that dont meet on the given day
-            blocks = (DEMOOBJECT_classes
+            blocks = (Store.classes
                 .filter(x => x.days.indexOf(Store.schoolDay.dayNumber) !== -1) as IBlock[])
                 .concat(DEMOOBJECT_advisory);
 

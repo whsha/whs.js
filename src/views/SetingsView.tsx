@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { PureComponent } from "react";
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Cell, Section } from "react-native-tableview-simple";
@@ -8,7 +9,6 @@ import { getHighSchoolICal } from "../util/CalendarUtil";
 
 interface ISettingsViewState {
     iCalInfo?: ICalendarInformation;
-    loading: boolean;
 }
 
 export default class SettingsView extends PureComponent<INavigationElementProps, ISettingsViewState> {
@@ -18,64 +18,44 @@ export default class SettingsView extends PureComponent<INavigationElementProps,
 
     constructor(props: INavigationElementProps) {
         super(props);
-        this.state = {
-            loading: false
-        };
+        this.state = {};
     }
 
     public componentDidMount() {
-        // this.refreshICal();
+        this.refreshICal();
     }
 
     public render() {
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView style={{paddingTop: 10}}>
-                    <Section header="Classes" sectionPaddingTop={5}>
+                    <Section header="Classes">
                         <Cell
                             title="Configure Classes"
                             cellStyle="Basic"
                             accessory="DisclosureIndicator"
-                            onPress={() => this.props.navigation.navigate("ClassSetup") ? false : false}
+                            onPress={() => void this.props.navigation.navigate("ClassSetup")}
+                        />
+                    </Section>
+                    <Section header="Storage">
+                    {/* FIXME: Make app show calendar loading. Stop the app from doing anything else */}
+                        <Cell
+                            title="Update WHS Calendar (FIXME)"
+                            cellStyle="Subtitle"
+                            titleTextColor="#2f95dc"
+                            onPress={this.refreshICal}
+                            detail={`Last Updated ${this.state.iCalInfo && moment(this.state.iCalInfo.updated).fromNow()}`}
                         />
                     </Section>
                 </ScrollView>
-                {/* <Button title={Store.getState().schoolDay.dayNumber === 0 ? "uncancel school" : "cancel school"}
-                    onPress={() => {
-                        Store.dispatch(SetSchoolDay({
-                            dayNumber: Store.getState().schoolDay.dayNumber === 0 ? 1 : 0
-                        }));
-                        console.log(Store.getState());
-                        this.forceUpdate();
-                        this.props.navigation.navigate("Home");
-                    }}
-                /> */}
-                {/* <ScrollView refreshControl={<RefreshControl refreshing={this.state.loading} onRefresh={this.foceRefreshICal}/>}>
-                    <SafeAreaView>
-                        {this.state.iCalInfo ? this.state.iCalInfo.schoolDays.map((x, i) =>
-                            <View key={i} style={{ margin: 10, width: "90%" }}>
-                                <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                                    {x.dayNumber}
-                                </Text>
-                                <Text>
-                                    {x.date.toString()}
-                                </Text>
-                            </View>
-                        ) : <ActivityIndicator/>}
-                    </SafeAreaView>
-                </ScrollView> */}
             </SafeAreaView>
         );
     }
 
     private refreshICal = (force = false) => {
-        this.setState({
-            loading: true
-        });
         getHighSchoolICal(force).then((value) =>
             this.setState({
-                iCalInfo: value,
-                loading: false
+                iCalInfo: value
             }));
     }
 }

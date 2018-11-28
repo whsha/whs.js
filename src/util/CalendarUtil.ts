@@ -84,7 +84,8 @@ export function parseICal(rawical: string): ICalendarInformation {
 
     return {
         schoolDays,
-        events
+        events,
+        updated: new Date()
     };
 }
 
@@ -93,7 +94,7 @@ export function stripTime(date: Date): Date {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
 }
 
-/** Load the calendar into the global Redux store */
+/** Fetch the current school day */
 export async function fetchSchoolDay(): Promise<ISchoolDay> {
     let value = await getHighSchoolICal();
     let schoolDay = value.schoolDays.find(x =>

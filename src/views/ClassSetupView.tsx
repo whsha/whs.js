@@ -1,64 +1,78 @@
-import React, { PureComponent } from "react";
-import { FlatList, Platform, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { EventEmitter } from "fbemitter";
+import { observer } from "mobx-react";
+import React, { Component, RefObject } from "react";
+import { Alert, FlatList, Platform, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../App";
-import { DEMOOBJECT_advisory, DEMOOBJECT_classes } from "../DemoObjects";
-import { IAdvisory, IClassBlock } from "../types/Block";
+import { Store } from "../AppState";
+import { DEMOOBJECT_classes } from "../DemoObjects";
+import { AllDays } from "../types/Block";
+import { saveClasses } from "../util/BlocksUtil";
 
-interface IClassSetupViewState {
-    /** The blocks that the user has */
-    blocks: IClassBlock[];
-    /** The users advisory */
-    advisory: IAdvisory;
-}
-
-export default class ClassSetupView extends PureComponent<INavigationElementProps, IClassSetupViewState> {
+@observer
+class ClassSetupView extends Component<INavigationElementProps> {
     public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = {
         title: "Class Setup",
         headerRight: (
-            <TouchableOpacity style={{marginVertical: 10, marginHorizontal: 15}} onPress={() => console.log("e")}>
-                <IonIcon name={`${Platform.OS === "ios" ? "ios" : "md"}-add`} size={26} color="#2f95dc"/>
+            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassSetupView.eventEmittter.emit("addpress")}>
+                <IonIcon name={`${Platform.OS === "ios" ? "ios" : "md"}-add`} size={26} color="#2f95dc" />
             </TouchableOpacity>
         )
     };
+    private static eventEmittter = new EventEmitter();
+
+    public scrollView: RefObject<ScrollView>;
 
     constructor(props: INavigationElementProps) {
         super(props);
 
-        this.state = {
-            blocks: DEMOOBJECT_classes,
-            advisory: DEMOOBJECT_advisory
-        };
+        ClassSetupView.eventEmittter.addListener("addpress", this.addClass);
+
+        this.scrollView = React.createRef();
+    }
+
+    public addClass = () => {
+       Store.addClass({
+            days: AllDays,
+            name: `New Class ${Store.classes.length + 1}`,
+            room: 0,
+            teacher: ""
+        });
     }
 
     public render() {
         return (
             <SafeAreaView style={styles.background}>
-                <ScrollView style={{paddingTop: 10}}>
-                    <Section header="Advisory" sectionPaddingTop={5}>
+                <ScrollView style={{ paddingTop: 10 }} ref={this.scrollView}>
+                    <Section header="Advisory">
                         <Cell
                             title="Advisory"
                             cellStyle="Basic"
                             accessory="DisclosureIndicator"
-                            onPress={() => void this.props.navigation.navigate("EditClass", {
-                                block: this.state.advisory
-                            })}
+                            // TODO:
+                            // onPress={() => void this.props.navigation.navigate("EditClass", {
+                            //     block: this.state.advisory
+                            // })}
+                            isDisabled
                         />
                     </Section>
-                    <Section header="Classes" sectionPaddingTop={5}>
+                    <Section header="Classes">
                         <FlatList
-                            data={[]/* this.state.blocks.sort((a, b) => a.name.localeCompare(b.name)) */}
+                            data={Store.classes.slice().sort((a, b) => a.name.localeCompare(b.name))}
                             keyExtractor={x => x.name}
                             renderItem={({ item, separators }) =>
                                 <Cell
                                     title={item.name}
-                                    detail={`Meets on day${item.days.length === 1 ? "" : "s"} ${item.days.sort((a, b) => a - b).join(", ")}`}
+                                    detail={`Meets on day${item.days.length === 1 ? "" : "s"} ${item.days.slice().sort((a, b) => a - b).join(", ")}`}
                                     cellStyle="Subtitle"
                                     accessory="DisclosureIndicator"
                                     titleTextColor={item.color}
-                                    onPress={() => console.log("e")}
+                                    onPress={() => void this.props.navigation.navigate("EditClass", {
+                                        block: item,
+                                        index: Store.classes.indexOf(item)
+                                    })}
                                     onHighlightRow={separators.highlight}
                                     onUnHighlightRow={separators.unhighlight}
                                 />
@@ -76,11 +90,51 @@ export default class ClassSetupView extends PureComponent<INavigationElementProp
                             }
                         />
                     </Section>
+                    <Section header="Lunch">
+                        <Cell title="Lunch" accessory="DisclosureIndicator" isDisabled/>
+                    </Section>
+                    {/* TODO: REMOVE */}
+                    <Section header="Dev Utils">
+                        <Cell
+                            title="Use demo classes"
+                            titleTextColor="#2f95dc"
+                            onPress={() => {
+                                Store.classes = DEMOOBJECT_classes;
+                                saveClasses(Store.classes);
+                            }}
+                        />
+                    </Section>
+                    <Section>
+                        <Cell
+                            title="Delete All Classes"
+                            titleTextColor="red"
+                            onPress={() => {
+                                Alert.alert(
+                                    "Delete Confirmation",
+                                    `Are you sure you want to delete all classes?`,
+                                    [
+                                        {
+                                            text: "Cancel",
+                                            style: "cancel"
+                                        },
+                                        {
+                                            text: "Delete",
+                                            style: "destructive",
+                                            onPress: () => {
+                                                Store.clearClasses();
+                                            }
+                                        }
+                                    ]
+                                );
+                            }}
+                        />
+                    </Section>
                 </ScrollView>
             </SafeAreaView>
         );
     }
 }
+export default ClassSetupView;
 
 const styles = StyleSheet.create({
     background: {
