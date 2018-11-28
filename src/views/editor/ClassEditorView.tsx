@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { Alert, FlatList, SafeAreaView, ScrollView, Switch, Text, TextInput, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
-import { INavigationElementProps } from "../App";
-import { Store } from "../AppState";
-import { AllDays, BlockColor, BlockColors, IClassBlock } from "../types/Block";
-import { canBlockMeetToday, whenDoesBlockMeet } from "../util/BlocksUtil";
+import { INavigationElementProps } from "../../App";
+import { Store } from "../../AppState";
+import { AllDays, BlockColor, BlockColors, IClassBlock } from "../../types/Block";
+import { canBlockMeetToday, whenDoesBlockMeet } from "../../util/BlocksUtil";
 
 interface IClassEditorViewNavigationProps {
     block: IClassBlock;
@@ -16,25 +16,24 @@ type Props = INavigationElementProps<{}, IClassEditorViewNavigationProps>;
 
 export default class ClassEditorView extends Component<Props, IClassBlock> {
     public static eventEmitter = new EventEmitter();
-    public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = () => {
-        return {
-            headerRight: (
-                <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("done")}>
-                    <Text style={{ color: "#2f95dc", fontSize: 17, fontWeight: "bold" }}>Done</Text>
-                </TouchableOpacity>
-            ),
-            headerLeft: (
-                <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("cancel")}>
-                    <Text style={{ color: "#2f95dc", fontSize: 17 }}>Cancel</Text>
-                </TouchableOpacity>
-            )
-        };
-    }
+    public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = {
+        title: "Edit Class",
+        headerRight: (
+            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("done")}>
+                <Text style={{ color: "#2f95dc", fontSize: 17, fontWeight: "bold" }}>Done</Text>
+            </TouchableOpacity>
+        ),
+        headerLeft: (
+            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("cancel")}>
+                <Text style={{ color: "#2f95dc", fontSize: 17 }}>Cancel</Text>
+            </TouchableOpacity>
+        )
+    };
 
     constructor(props: Props) {
         super(props);
 
-        this.state = this.props.navigation.getParam("block") as IClassBlock;
+        this.state = this.props.navigation.getParam("block");
 
         ClassEditorView.eventEmitter.addListener("done", () => {
             Store.editClass(this.props.navigation.getParam("index"), this.state);
@@ -52,17 +51,17 @@ export default class ClassEditorView extends Component<Props, IClassBlock> {
                 <ScrollView style={{ paddingTop: 10 }}>
                     <Section header="Class Name">
                         <Cell cellContentView={
-                                <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Class Name" value={this.state.name} onChangeText={(x) => this.setState({name: x})} />
+                            <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Class Name" value={this.state.name} onChangeText={(x) => this.setState({name: x})} />
                         }/>
                     </Section>
                     <Section header="Teacher's Name">
                         <Cell cellContentView={
-                                <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Teacher's Name" value={this.state.teacher} onChangeText={(x) => this.setState({teacher: x})} />
+                            <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Teacher's Name" value={this.state.teacher} onChangeText={(x) => this.setState({teacher: x})} />
                         }/>
                     </Section>
-                    <Section header="Class Name">
+                    <Section header="Room Number">
                         <Cell cellContentView={
-                                <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Block Name" value={this.state.name} onChangeText={(x) => this.setState({name: x})} />
+                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room} onChangeText={(x) => this.setState({room: x})} />
                         }/>
                     </Section>
                     <Section header="Class Color">

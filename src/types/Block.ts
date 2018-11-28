@@ -3,7 +3,7 @@ export interface IClassBlock {
     /** The name of the block */
     name: string;
     /** The room the class is in */
-    room: number;
+    room: string;
     /** The teacher for the class */
     teacher: string;
     /** The class color */
@@ -23,7 +23,7 @@ export interface IAdvisory {
     /** The name of the block */
     name: "Advisory";
     /** The room number of the block */
-    room: number;
+    room: string;
     /** The teacher for the block */
     teacher: string;
 }

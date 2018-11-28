@@ -1,6 +1,6 @@
 import { AsyncStorage } from "react-native";
 import AsyncStorageKey from "../types/AsyncStorageKeys";
-import { AllDays, Block, BlockColor, IAdvisory, IBlock, IClassBlock, isAdvisory, isLabBlock, SchoolDay } from "../types/Block";
+import { AllDays, Block, BlockColor, IAdvisory, IBlock, IClassBlock, isAdvisory, isLabBlock, LunchBlock, SchoolDay } from "../types/Block";
 
 export async function userHasBlocksSetup(): Promise<boolean> {
     return await AsyncStorage.getItem(AsyncStorageKey.Classes) !== null;
@@ -106,4 +106,12 @@ export async function saveAdvisory(advisory: IAdvisory) {
 
 export async function loadAdvisory() {
     return JSON.parse(await AsyncStorage.getItem(AsyncStorageKey.Advisory)) as IAdvisory;
+}
+
+export async function saveLunches(lunches: LunchBlock[]) {
+    return AsyncStorage.setItem(AsyncStorageKey.Lunches, JSON.stringify(lunches));
+}
+
+export async function loadLunches() {
+    return JSON.parse(await AsyncStorage.getItem(AsyncStorageKey.Lunches)) as LunchBlock[];
 }

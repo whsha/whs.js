@@ -9,8 +9,10 @@ import {
 } from "react-navigation";
 import TabBarIcon from "./elements/TabBarIcon";
 import CalendarView from "./views/CalendarView";
-import ClassEditorView from "./views/ClassEditorView";
 import ClassSetupView from "./views/ClassSetupView";
+import AdvisoryEditorView from "./views/editor/AdvisoryEditorView";
+import ClassEditorView from "./views/editor/ClassEditorView";
+import LunchEditorView from "./views/editor/LunchEditorView";
 import SettingsView from "./views/SetingsView";
 import TodayView from "./views/TodayView";
 
@@ -37,7 +39,10 @@ HomeStackNavigator.navigationOptions = {
 const SettingsStackNavigator = createStackNavigator({
     MainSettings: SettingsView,
     ClassSetup: ClassSetupView,
-    EditClass: ClassEditorView
+    // Editors
+    EditClass: ClassEditorView,
+    EditAdvisory: AdvisoryEditorView,
+    EditLunches: LunchEditorView
 }, {
     cardStyle: {
         backfaceVisibility: "visible",

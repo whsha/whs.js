@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import { IAdvisory, IClassBlock } from "./types/Block";
+import { IAdvisory, IClassBlock, LunchBlock } from "./types/Block";
 import { defaultSchoolDay, ISchoolDay } from "./types/SchoolDay";
 import { loadAdvisory, loadClasses, saveAdvisory, saveClasses } from "./util/BlocksUtil";
 import { fetchSchoolDay } from "./util/CalendarUtil";
@@ -17,9 +17,13 @@ export class AppState {
     /** The users advisory */
     public advisory: IAdvisory = {
         name: "Advisory",
-        room: 0,
+        room: "",
         teacher: ""
     };
+
+    @observable
+    /** The users advisory */
+    public lunches: LunchBlock[] = [0, 0, 0, 0, 0, 0, 0];
 
     @action.bound
     /** Edit the given class */
@@ -36,8 +40,9 @@ export class AppState {
     @action.bound
     /** Add a class */
     public async addClass(newClass: IClassBlock) {
-        this.classes.push(newClass);
+        let index = this.classes.push(newClass);
         await saveClasses(this.classes);
+        return index;
     }
 
     @action.bound
@@ -64,6 +69,13 @@ export class AppState {
     /** Edit the users advisory */
     public async editAdvisory(advisory: IAdvisory) {
         this.advisory = advisory;
+        await saveAdvisory(this.advisory);
+    }
+
+    @action.bound
+    /** Edit the users advisory */
+    public async editLunches(lunches: LunchBlock[]) {
+        this.lunches = lunches;
         await saveAdvisory(this.advisory);
     }
 

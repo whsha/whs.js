@@ -1,6 +1,6 @@
 import { EventEmitter } from "fbemitter";
 import { observer } from "mobx-react";
-import React, { Component, RefObject } from "react";
+import React, { Component } from "react";
 import { Alert, FlatList, Platform, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import IonIcon from "react-native-vector-icons/Ionicons";
@@ -23,39 +23,36 @@ class ClassSetupView extends Component<INavigationElementProps> {
     };
     private static eventEmittter = new EventEmitter();
 
-    public scrollView: RefObject<ScrollView>;
-
     constructor(props: INavigationElementProps) {
         super(props);
 
         ClassSetupView.eventEmittter.addListener("addpress", this.addClass);
-
-        this.scrollView = React.createRef();
     }
 
-    public addClass = () => {
-       Store.addClass({
+    public addClass = async () => {
+        let classindex = await Store.addClass({
             days: AllDays,
             name: `New Class ${Store.classes.length + 1}`,
-            room: 0,
+            room: "",
             teacher: ""
+        });
+
+        this.props.navigation.navigate("EditClass", {
+            block: Store.classes[classindex],
+            index: classindex
         });
     }
 
     public render() {
         return (
             <SafeAreaView style={styles.background}>
-                <ScrollView style={{ paddingTop: 10 }} ref={this.scrollView}>
+                <ScrollView style={{ paddingTop: 10 }}>
                     <Section header="Advisory">
                         <Cell
                             title="Advisory"
                             cellStyle="Basic"
                             accessory="DisclosureIndicator"
-                            // TODO:
-                            // onPress={() => void this.props.navigation.navigate("EditClass", {
-                            //     block: this.state.advisory
-                            // })}
-                            isDisabled
+                            onPress={() => void this.props.navigation.navigate("EditAdvisory")}
                         />
                     </Section>
                     <Section header="Classes">
@@ -91,7 +88,12 @@ class ClassSetupView extends Component<INavigationElementProps> {
                         />
                     </Section>
                     <Section header="Lunch">
-                        <Cell title="Lunch" accessory="DisclosureIndicator" isDisabled/>
+                        <Cell
+                            title="Lunches"
+                            accessory="DisclosureIndicator"
+                            cellStyle="Basic"
+                            onPress={() => void this.props.navigation.navigate("EditLunches")}
+                        />
                     </Section>
                     {/* TODO: REMOVE */}
                     <Section header="Dev Utils">
