@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { Alert, FlatList, SafeAreaView, ScrollView, Switch, Text, TextInput, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
-import { INavigationElementProps } from "../../App";
-import { Store } from "../../AppState";
-import { AllDays, BlockColor, BlockColors, IClassBlock } from "../../types/Block";
-import { canBlockMeetToday, whenDoesBlockMeet } from "../../util/BlocksUtil";
+import { INavigationElementProps } from "../../../App";
+import { Store } from "../../../AppState";
+import { AllDays, BlockColor, BlockColors, IClassBlock } from "../../../types/Block";
+import { canBlockMeetToday, whenDoesBlockMeet } from "../../../util/BlocksUtil";
 
 interface IClassEditorViewNavigationProps {
     block: IClassBlock;
@@ -61,7 +61,7 @@ export default class ClassEditorView extends Component<Props, IClassBlock> {
                     </Section>
                     <Section header="Room Number">
                         <Cell cellContentView={
-                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room} onChangeText={(x) => this.setState({room: x})} />
+                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room.toString()} onChangeText={(x) => this.setState({room: isNaN(parseInt(x, 10)) ? 0 : parseInt(x, 10)})} />
                         }/>
                     </Section>
                     <Section header="Class Color">

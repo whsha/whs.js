@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import { Cell, Section } from "react-native-tableview-simple";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
-import { INavigationElementProps } from "../../App";
-import { Store } from "../../AppState";
-import { IAdvisory } from "../../types/Block";
+import { INavigationElementProps } from "../../../App";
+import { Store } from "../../../AppState";
+import { IAdvisory } from "../../../types/Block";
 
 interface IAdvisoryEditorViewNavigationProps {
     advisory: IAdvisory;
@@ -56,7 +56,7 @@ class AdvisoryEditorView extends Component<Props, IAdvisory> {
                     </Section>
                     <Section header="Room Number">
                         <Cell cellContentView={
-                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room} onChangeText={(x) => this.setState({room: x})} />
+                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room.toString()} onChangeText={(x) => this.setState({room: isNaN(parseInt(x, 10)) ? 0 : parseInt(x, 10)})} />
                         }/>
                     </Section>
                 </ScrollView>

@@ -47,6 +47,14 @@ export default class SettingsView extends PureComponent<INavigationElementProps,
                             detail={`Last Updated ${this.state.iCalInfo && moment(this.state.iCalInfo.updated).fromNow()}`}
                         />
                     </Section>
+                    <Section header="About">
+                        <Cell
+                            title="License"
+                            cellStyle="Basic"
+                            accessory="DisclosureIndicator"
+                            onPress={() => void this.props.navigation.navigate("License")}
+                        />
+                    </Section>
                 </ScrollView>
             </SafeAreaView>
         );

@@ -1,7 +1,7 @@
 import { action, observable } from "mobx";
 import { IAdvisory, IClassBlock, LunchBlock } from "./types/Block";
 import { defaultSchoolDay, ISchoolDay } from "./types/SchoolDay";
-import { loadAdvisory, loadClasses, saveAdvisory, saveClasses } from "./util/BlocksUtil";
+import { loadAdvisory, loadClasses, loadLunches, saveAdvisory, saveClasses, saveLunches } from "./util/BlocksUtil";
 import { fetchSchoolDay } from "./util/CalendarUtil";
 
 export class AppState {
@@ -17,7 +17,7 @@ export class AppState {
     /** The users advisory */
     public advisory: IAdvisory = {
         name: "Advisory",
-        room: "",
+        room: 0,
         teacher: ""
     };
 
@@ -40,9 +40,8 @@ export class AppState {
     @action.bound
     /** Add a class */
     public async addClass(newClass: IClassBlock) {
-        let index = this.classes.push(newClass);
+        this.classes.push(newClass);
         await saveClasses(this.classes);
-        return index;
     }
 
     @action.bound
@@ -73,10 +72,10 @@ export class AppState {
     }
 
     @action.bound
-    /** Edit the users advisory */
+    /** Edit the users lunches */
     public async editLunches(lunches: LunchBlock[]) {
         this.lunches = lunches;
-        await saveAdvisory(this.advisory);
+        await saveLunches(this.lunches);
     }
 
     @action.bound
@@ -87,8 +86,9 @@ export class AppState {
     }
 
     constructor() {
-        loadClasses().then((classes) => this.classes = classes || []);
+        loadClasses().then((classes) => this.classes = classes || this.classes);
         loadAdvisory().then((advisory) => this.advisory = advisory || this.advisory);
+        loadLunches().then((lunches) => this.lunches = lunches || this.lunches);
     }
 }
 

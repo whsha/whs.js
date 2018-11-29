@@ -58,7 +58,7 @@ class TodayView extends Component<Props, ITodayViewState> {
             // Get classes and filter ones that dont meet on the given day
             blocks = (Store.classes
                 .filter(x => x.days.indexOf(Store.schoolDay.dayNumber) !== -1) as IBlock[])
-                .concat(DEMOOBJECT_advisory);
+                .concat(Store.advisory);
 
             let filledblocks: Block[] = blocks.map(x => getBlockNumber(Store.schoolDay.dayNumber, x));
 

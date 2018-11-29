@@ -9,11 +9,12 @@ import {
 } from "react-navigation";
 import TabBarIcon from "./elements/TabBarIcon";
 import CalendarView from "./views/CalendarView";
-import ClassSetupView from "./views/ClassSetupView";
-import AdvisoryEditorView from "./views/editor/AdvisoryEditorView";
-import ClassEditorView from "./views/editor/ClassEditorView";
-import LunchEditorView from "./views/editor/LunchEditorView";
 import SettingsView from "./views/SetingsView";
+import { AboutView, LicenseView } from "./views/settings/AboutViews";
+import ClassSetupView from "./views/settings/ClassSetupView";
+import AdvisoryEditorView from "./views/settings/editor/AdvisoryEditorView";
+import ClassEditorView from "./views/settings/editor/ClassEditorView";
+import LunchEditorView from "./views/settings/editor/LunchEditorView";
 import TodayView from "./views/TodayView";
 
 export interface INavigationElementProps<S = {}, P = NavigationParams> {
@@ -38,11 +39,12 @@ HomeStackNavigator.navigationOptions = {
 // The stack navigator for the Settings page
 const SettingsStackNavigator = createStackNavigator({
     MainSettings: SettingsView,
-    ClassSetup: ClassSetupView,
-    // Editors
-    EditClass: ClassEditorView,
-    EditAdvisory: AdvisoryEditorView,
-    EditLunches: LunchEditorView
+        ClassSetup: ClassSetupView,
+            EditClass: ClassEditorView,
+            EditAdvisory: AdvisoryEditorView,
+            EditLunches: LunchEditorView,
+        About: { screen: AboutView, navigationOptions: { title: "About" }},
+        License: { screen: LicenseView, navigationOptions: { title: "License" }}
 }, {
     cardStyle: {
         backfaceVisibility: "visible",
@@ -76,6 +78,10 @@ export default createBottomTabNavigator({
  * | | Today                            => Today View
  * | Settings (StackNavigator)
  * | | MainSettings                     => SettingsView
- * | | ClassSetup                       => ClassSetupView
- * | | EditClass                        => ClassEditorView
+ * | |  ClassSetup                       => ClassSetupView
+ * | |    EditClass                        => ClassEditorView
+ * | |    EditAdvisory                     => AdvisoryEditorView
+ * | |    EditLunches                      => LunchEditorView
+ * | |  About                            => AboutView
+ * | |  License                          => LicenseView
  */

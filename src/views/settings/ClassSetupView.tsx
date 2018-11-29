@@ -5,11 +5,11 @@ import { Alert, FlatList, Platform, SafeAreaView, ScrollView, StyleSheet, Toucha
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
-import { INavigationElementProps } from "../App";
-import { Store } from "../AppState";
-import { DEMOOBJECT_classes } from "../DemoObjects";
-import { AllDays } from "../types/Block";
-import { saveClasses } from "../util/BlocksUtil";
+import { INavigationElementProps } from "../../App";
+import { Store } from "../../AppState";
+import { DEMOOBJECT_advisory, DEMOOBJECT_classes, DEMOOBJECT_lunches } from "../../DemoObjects";
+import { AllDays } from "../../types/Block";
+import { saveAdvisory, saveClasses, saveLunches } from "../../util/BlocksUtil";
 
 @observer
 class ClassSetupView extends Component<INavigationElementProps> {
@@ -30,16 +30,16 @@ class ClassSetupView extends Component<INavigationElementProps> {
     }
 
     public addClass = async () => {
-        let classindex = await Store.addClass({
+        await Store.addClass({
             days: AllDays,
             name: `New Class ${Store.classes.length + 1}`,
-            room: "",
+            room: 0,
             teacher: ""
         });
 
         this.props.navigation.navigate("EditClass", {
-            block: Store.classes[classindex],
-            index: classindex
+            block: Store.classes[Store.classes.length - 1],
+            index: Store.classes.length
         });
     }
 
@@ -102,7 +102,11 @@ class ClassSetupView extends Component<INavigationElementProps> {
                             titleTextColor="#2f95dc"
                             onPress={() => {
                                 Store.classes = DEMOOBJECT_classes;
+                                Store.advisory = DEMOOBJECT_advisory;
+                                Store.lunches = DEMOOBJECT_lunches;
                                 saveClasses(Store.classes);
+                                saveLunches(Store.lunches);
+                                saveAdvisory(Store.advisory);
                             }}
                         />
                     </Section>
