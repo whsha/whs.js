@@ -1,6 +1,10 @@
+/*!
+ * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ */
+
 import { AsyncStorage } from "react-native";
 import AsyncStorageKey from "../types/AsyncStorageKeys";
-import { AllDays, Block, BlockColor, IAdvisory, IBlock, IClassBlock, isAdvisory, isLabBlock, LunchBlock, SchoolDay } from "../types/Block";
+import { AllDays, Block, BlockColor, ColorBlockMap, IAdvisory, IClassBlock, LunchBlock, SchoolDay } from "../types/Block";
 
 export async function userHasBlocksSetup(): Promise<boolean> {
     return await AsyncStorage.getItem(AsyncStorageKey.Classes) !== null;
@@ -61,36 +65,49 @@ const dayblockmap = new Map<SchoolDay, Map<BlockColor, Block>>()
 export function getBlockMap(day: SchoolDay) {
     return dayblockmap.get(day);
 }
-export function getBlockNumberFromColor(day: SchoolDay, blockcolor: BlockColor): Block {
-    return getBlockMap(day).get(blockcolor);
+export function getColorsForDay(day: SchoolDay) {
+    return Array.from(getBlockMap(day).keys());
 }
-export function getBlockColorFromNumber(day: SchoolDay, blocknum: Block): BlockColor {
-    return getKeyByValue(getBlockMap(day), blocknum);
+
+export function blocksForDay(day: SchoolDay, blocks: ColorBlockMap): Map<BlockColor, IClassBlock> {
+    let map = new Map<BlockColor, IClassBlock>();
+
+    for (let color of getColorsForDay(day)) {
+        map.set(color, blocks[color]);
+    }
+
+    return map;
 }
-export function canBlockMeetToday(day: SchoolDay, blockcolor: BlockColor): boolean {
-    return Array.from(getBlockMap(day).keys()).indexOf(blockcolor) !== -1;
-}
-export function whenDoesBlockMeet(blockcolor: BlockColor): SchoolDay[] {
-    return AllDays.filter(x => canBlockMeetToday(x, blockcolor));
-}
+// export function getBlockNumberFromColor(day: SchoolDay, blockcolor: BlockColor): Block {
+//     return getBlockMap(day).get(blockcolor);
+// }
+// export function getBlockColorFromNumber(day: SchoolDay, blocknum: Block): BlockColor {
+//     return getKeyByValue(getBlockMap(day), blocknum);
+// }
+// export function canBlockMeetToday(day: SchoolDay, blockcolor: BlockColor): boolean {
+//     return Array.from(getBlockMap(day).keys()).indexOf(blockcolor) !== -1;
+// }
+// export function whenDoesBlockMeet(blockcolor: BlockColor): SchoolDay[] {
+//     return AllDays.filter(x => canBlockMeetToday(x, blockcolor));
+// }
 
 function getKeyByValue<K, V>(map: Map<K, V>, value: V): K {
     return Array.from(map.keys()).find(key => map.get(key) === value);
 }
 
-export function getBlockNumber(day: SchoolDay, block: IBlock): Block {
-    if (isAdvisory(block)) {
-        return Block.Advisory;
-    } else if (block.color !== undefined) {
-        if (isLabBlock(block)) {
-            return Block.First;
-        } else {
-            return getBlockNumberFromColor(day, block.color);
-        }
-    } else {
-        return Block.First;
-    }
-}
+// export function getBlockNumber<T extends BlockColor>(day: SchoolDay, block: IClassBlock<T>): Block {
+//     if (isAdvisory(block)) {
+//         return Block.Advisory;
+//     } else if (block.color !== undefined) {
+//         if (isLabBlock(block)) {
+//             return Block.First;
+//         } else {
+//             return getBlockNumberFromColor(day, block.color);
+//         }
+//     } else {
+//         return Block.First;
+//     }
+// }
 
 export async function saveClasses(classes: IClassBlock[]) {
     return AsyncStorage.setItem(AsyncStorageKey.Classes, JSON.stringify(classes));

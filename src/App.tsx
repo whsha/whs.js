@@ -31,10 +31,12 @@ const HomeStackNavigator = createStackNavigator({
     },
     initialRouteName: "Today"
 });
-HomeStackNavigator.navigationOptions = {
-    tabBarLabel: "Home",
-    tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
-} as NavigationScreenConfig<NavigationTabScreenOptions>;
+HomeStackNavigator.navigationOptions = (): NavigationScreenConfig<NavigationTabScreenOptions> => {
+    return {
+        tabBarLabel: "Home",
+        tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
+    };
+};
 
 // The stack navigator for the Settings page
 const SettingsStackNavigator = createStackNavigator({

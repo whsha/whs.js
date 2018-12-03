@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import { IAdvisory, IClassBlock, LunchBlock } from "./types/Block";
+import { IAdvisory, IClassBlock, LunchBlock, ColorBlockMap } from "./types/Block";
 import { defaultSchoolDay, ISchoolDay } from "./types/SchoolDay";
 import { loadAdvisory, loadClasses, loadLunches, saveAdvisory, saveClasses, saveLunches } from "./util/BlocksUtil";
 import { fetchSchoolDay } from "./util/CalendarUtil";
@@ -11,12 +11,11 @@ export class AppState {
 
     @observable
     /** The users classes */
-    public classes: IClassBlock[] = [];
+    public classes: ColorBlockMap;
 
     @observable
     /** The users advisory */
     public advisory: IAdvisory = {
-        name: "Advisory",
         room: 0,
         teacher: ""
     };

@@ -1,6 +1,6 @@
 import { EventEmitter } from "fbemitter";
-import React, { Component } from "react";
-import { Alert, FlatList, SafeAreaView, ScrollView, Switch, Text, TextInput, TouchableOpacity } from "react-native";
+import React, { Component, ComponentType } from "react";
+import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView, Switch, Text, TextInput, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator } from "react-native-tableview-simple";
 import { NavigationScreenConfig, NavigationStackScreenOptions } from "react-navigation";
 import { INavigationElementProps } from "../../../App";
@@ -19,16 +19,17 @@ export default class ClassEditorView extends Component<Props, IClassBlock> {
     public static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = {
         title: "Edit Class",
         headerRight: (
-            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("done")}>
+            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={ClassEditorView.emit("done")}>
                 <Text style={{ color: "#2f95dc", fontSize: 17, fontWeight: "bold" }}>Done</Text>
             </TouchableOpacity>
         ),
         headerLeft: (
-            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={() => ClassEditorView.eventEmitter.emit("cancel")}>
+            <TouchableOpacity style={{ marginVertical: 10, marginHorizontal: 15 }} onPress={ClassEditorView.emit("cancel")}>
                 <Text style={{ color: "#2f95dc", fontSize: 17 }}>Cancel</Text>
             </TouchableOpacity>
         )
     };
+    public static emit = (event: string) => () => ClassEditorView.eventEmitter.emit(event);
 
     constructor(props: Props) {
         super(props);
@@ -50,38 +51,19 @@ export default class ClassEditorView extends Component<Props, IClassBlock> {
             <SafeAreaView style={{ backgroundColor: "#EFEFF4", height: "100%" }}>
                 <ScrollView style={{ paddingTop: 10 }}>
                     <Section header="Class Name">
-                        <Cell cellContentView={
-                            <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Class Name" value={this.state.name} onChangeText={(x) => this.setState({name: x})} />
-                        }/>
+                        <Cell cellContentView={<TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Class Name" value={this.state.name} onChangeText={this.updateName} />}/>
                     </Section>
                     <Section header="Teacher's Name">
-                        <Cell cellContentView={
-                            <TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Teacher's Name" value={this.state.teacher} onChangeText={(x) => this.setState({teacher: x})} />
-                        }/>
+                        <Cell cellContentView={<TextInput style={{ fontSize: 16, flex: 1 }} placeholder="Teacher's Name" value={this.state.teacher} onChangeText={this.updateTeacher} />}/>
                     </Section>
                     <Section header="Room Number">
-                        <Cell cellContentView={
-                            <TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room.toString()} onChangeText={(x) => this.setState({room: isNaN(parseInt(x, 10)) ? 0 : parseInt(x, 10)})} />
-                        }/>
+                        <Cell cellContentView={<TextInput keyboardType="numeric" style={{ fontSize: 16, flex: 1 }} placeholder="Class Room" value={this.state.room.toString()} onChangeText={this.updateRoom} />}/>
                     </Section>
                     <Section header="Class Color">
                         <FlatList
-                            data={BlockColors}
-                            keyExtractor={x => x}
-                            renderItem={({item}) =>
-                                <Cell
-                                    accessory={this.state.color === BlockColor[item] ? "Checkmark" : undefined}
-                                    title={item}
-                                    titleTextColor={BlockColor[item]}
-                                    onPress={() => this.setState({
-                                        color: BlockColor[item],
-                                        days: whenDoesBlockMeet(BlockColor[item])
-                                    })}
-                                />
-                            }
-                            ItemSeparatorComponent={({ highlighted }) =>
-                                <Separator isHidden={highlighted} />
-                            }
+                            data={BlockColors.map(x => ({key: x, value: x}))}
+                            renderItem={this.blockColorSelector}
+                            ItemSeparatorComponent={SeperatorComponent}
                         />
                         <Cell
                             accessory={this.state.color === undefined ? "Checkmark" : undefined}
@@ -156,4 +138,47 @@ export default class ClassEditorView extends Component<Props, IClassBlock> {
             </SafeAreaView>
         );
     }
+
+    private readonly updateName = (name: string) => {
+        this.setState({name});
+    }
+
+    private readonly updateTeacher = (teacher: string) => {
+        this.setState({teacher});
+    }
+
+    private readonly updateRoom = (room: string) => {
+        this.setState({
+            room: isNaN(parseInt(room, 10))
+                    ? 0
+                    : parseInt(room, 10)
+        });
+    }
+
+    private readonly setBlockColor = (color: BlockColor) => {
+        this.setState({
+            color,
+            days: whenDoesBlockMeet(color)
+        });
+    }
+
+    private readonly blockColorSelector: ListRenderItem<IKV<keyof typeof BlockColor>> = ({item}) => {
+        return (
+            <Cell
+                accessory={this.state.color === BlockColor[item.value] ? "Checkmark" : undefined}
+                title={item}
+                titleTextColor={BlockColor[item.value]}
+                onPress={this.setBlockColor.bind(this, BlockColor[item.value])}
+            />
+        );
+    }
+}
+
+export interface IKV<K, V = K> {
+    key: K;
+    value: V;
+}
+
+export function SeperatorComponent({ highlighted }: { highlighted: boolean}) {
+    return <Separator isHidden={highlighted} />;
 }

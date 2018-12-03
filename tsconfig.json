@@ -15,7 +15,12 @@
         "noUnusedParameters": true,
         "noImplicitReturns": true,
         "moduleResolution": "Node",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "plugins": [
+            {
+                "name": "tslint-language-service"
+            }
+        ]
     },
     "filesGlob": [
         "typings/index.d.ts",

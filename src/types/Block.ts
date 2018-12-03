@@ -1,5 +1,9 @@
+/*!
+ * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ */
+
 /** A class block */
-export interface IClassBlock {
+export interface IClassBlock<T extends BlockColor = BlockColor> {
     /** The name of the block */
     name: string;
     /** The room the class is in */
@@ -7,16 +11,16 @@ export interface IClassBlock {
     /** The teacher for the class */
     teacher: string;
     /** The class color */
-    color?: BlockColor;
+    color: T;
     /** The days the class block should be on */
     days: SchoolDay[];
+    /** If the class block has a lab */
+    hasLab: boolean;
 }
 
-/** A lab block */
-export interface ILabBlock extends IClassBlock {
-    /** Wheather or not the class is a lab block */
-    isLab: true;
-}
+export type ColorBlockMap = {
+    [T in BlockColor]: IClassBlock<T>
+};
 
 /** An avisory block */
 export interface IAdvisory {
@@ -26,14 +30,6 @@ export interface IAdvisory {
     room: number;
     /** The teacher for the block */
     teacher: string;
-}
-
-/** A free block that is prepared to be displayed on the screen */
-export interface IFreeBlock {
-    /** The name of the block */
-    name: "Free";
-    /** THe color of the block (if not a first period) */
-    color?: BlockColor;
 }
 
 /** The block numbers */
@@ -56,18 +52,20 @@ export enum BlockColor {
     Green = "green",
     Blue = "blue",
     Purple = "purple",
-    Tan = "tan"
+    Tan = "tan",
+    None = "none"
 }
 
-export const BlockColors: Array<keyof typeof BlockColor> = [
-    "Red",
-    "Orange",
-    "Yellow",
-    "Green",
-    "Blue",
-    "Purple",
-    "Tan"
-];
+export enum BlockColorColors {
+    Red = "#FF8080",
+    Orange = "orange",
+    Yellow = "gold",
+    Green = "green",
+    Blue = "blue",
+    Purple = "purple",
+    Tan = "tan",
+    None = "none"
+}
 
 /** The lunch blocks */
 export enum LunchBlock {
@@ -87,26 +85,34 @@ export enum SchoolDay {
     Day7
 }
 
-export const AllDays: SchoolDay[] = [1, 2, 3, 4, 5, 6, 7];
+export const AllDays: SchoolDay[] = [
+    SchoolDay.Day1,
+    SchoolDay.Day2,
+    SchoolDay.Day3,
+    SchoolDay.Day4,
+    SchoolDay.Day5,
+    SchoolDay.Day6,
+    SchoolDay.Day7
+];
 
-/** Check if the display block given is a free block */
-export function isFree(block: IBlock): block is IFreeBlock {
-    return block.name === "Free";
-}
+// /** Check if the display block given is a free block */
+// export function isFree(block: IBlock): block is IFreeBlock {
+//     return block.name === "Free";
+// }
 
-/** Check if the display block given is an advisory block */
-export function isAdvisory(block: IBlock): block is IAdvisory {
-    return block.name === "Advisory";
-}
+// /** Check if the display block given is an advisory block */
+// export function isAdvisory(block: IBlock): block is IAdvisory {
+//     return block.name === "Advisory";
+// }
 
-/** Check if the display block given is a class block */
-export function isClassBlock(block: IBlock): block is IClassBlock {
-    return !isFree(block) && !isAdvisory(block);
-}
+// /** Check if the display block given is a class block */
+// export function isClassBlock(block: IBlock): block is IClassBlock {
+//     return !isFree(block) && !isAdvisory(block);
+// }
 
-/** Check if the display block given is a lab block */
-export function isLabBlock(block: IBlock): block is ILabBlock {
-    return isClassBlock(block) && (block as ILabBlock).isLab === true;
-}
+// /** Check if the display block given is a lab block */
+// export function isLabBlock(block: IBlock): block is ILabBlock {
+//     return isClassBlock(block) && (block as ILabBlock).isLab === true;
+// }
 
-export type IBlock = IFreeBlock | IAdvisory | IClassBlock;
+// export type IBlock = IFreeBlock | IAdvisory | IClassBlock;
