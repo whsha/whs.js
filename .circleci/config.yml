@@ -1,15 +1,9 @@
 # Javascript Node CircleCI 2.0 configuration file
-version: 2.1
+version: 2
 jobs:
   test:
     docker:
-      # specify the version you desire here
       - image: circleci/node:10.4.1
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
 
     working_directory: ~/whs.js
 
