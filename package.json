@@ -7,7 +7,8 @@
         "start": "expo start",
         "android": "expo start --android",
         "ios": "expo start --ios",
-        "eject": "expo eject"
+        "eject": "expo eject",
+        "ci-test": "npm ci & npx jest --ci"
     },
     "dependencies": {
         "@babel/preset-typescript": "^7.1.0",
