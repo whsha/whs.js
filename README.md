@@ -1,5 +1,7 @@
 # Wellesley High School Helper App
 
+In development
+
 # License
     whs.js - Wellesley High School helper application
     Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
