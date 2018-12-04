@@ -1,82 +1,82 @@
 # Javascript Node CircleCI 2.0 configuration file
 version: 2.1
 jobs:
-    test:
-        docker:
-            # specify the version you desire here
-            - image: circleci/node:10.4.1
-            
-            # Specify service dependencies here if necessary
-            # CircleCI maintains a library of pre-built images
-            # documented at https://circleci.com/docs/2.0/circleci-images/
-            # - image: circleci/mongo:3.4.4
+  test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.4.1
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
 
-        working_directory: ~/repo
+    working_directory: ~/whs.js
 
-        steps:
-            - checkout
+    steps:
+      - checkout
 
-        # Download and cache dependencies
-        - restore_cache:
-            keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+    # Download and cache dependencies
+    - restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
 
-        - run: 
-            name: Install Dependencies
-            command: npm install
+    - run: 
+      name: Install Dependencies
+      command: npm install
 
-        - save_cache:
-            paths:
-                - node_modules
-                - .jest
-            key: v1-dependencies-{{ checksum "package.json" }}
-            
-        # run tests!
-        - run: 
-            name: Run Tests
-            command: npm ci-test
+    - save_cache:
+      paths:
+        - node_modules
+        - .jest
+      key: v1-dependencies-{{ checksum "package.json" }}
+        
+    # run tests!
+    - run: 
+      name: Run Tests
+      command: npm ci-test
 
 publish: &publish
-    working_directory: ~/my-app
+  working_directory: ~/whs.js
     docker:
-        - image: circleci/node:10.4.1
+      - image: circleci/node:10.4.1
     steps:
-        - checkout
+      - checkout
 
     - run:
-        name: Installing dependencies
-        command: npm install
+      name: Installing dependencies
+      command: npm install
 
     - run:
-        name: Login into Expo
-        command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+      name: Login into Expo
+      command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
 
     - run:
-        name: Publish to Expo
-        command: npx expo publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
+      name: Publish to Expo
+      command: npx expo publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
 
 jobs:
-    publish_to_expo_dev:
-        environment:
-            EXPO_RELEASE_CHANNEL: dev
-        <<: *publish
+  publish_to_expo_dev:
+    environment:
+      EXPO_RELEASE_CHANNEL: dev
+    <<: *publish
 
   publish_to_expo_prod:
-        environment:
-            EXPO_RELEASE_CHANNEL: default
-        <<: *publish
+    environment:
+      EXPO_RELEASE_CHANNEL: default
+    <<: *publish
 
 workflows:
-    version: 2
-    whs.js:
-        jobs:
-            - publish_to_expo_dev:
-                filters:
-                    branches:
-                    only: development
-            - publish_to_expo_prod:
-                filters:
-                    branches:
-                    only: master
+  version: 2
+  whs.js:
+    jobs:
+      - publish_to_expo_dev:
+        filters:
+          branches:
+            only: development
+      - publish_to_expo_prod:
+        filters:
+          branches:
+            only: master
