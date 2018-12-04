@@ -12,25 +12,25 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run: 
-        name: Install Dependencies
-        command: "npm install"
+          name: Install Dependencies
+          command: "npm install"
 
       - save_cache:
-        paths:
-          - node_modules
-          - .jest
-        key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - .jest
+          key: v1-dependencies-{{ checksum "package.json" }}
           
       # run tests!
       - run: 
-        name: Run Tests
-        command: "npm ci-test"
+          name: Run Tests
+          command: "npm ci-test"
 
 # publish: &publish
 #   working_directory: ~/whs.js
