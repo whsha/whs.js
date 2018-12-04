@@ -30,7 +30,7 @@ jobs:
       # run tests!
       - run: 
           name: Run Tests
-          command: "npm ci-test"
+          command: "npm run ci-test"
 
 # publish: &publish
 #   working_directory: ~/whs.js
