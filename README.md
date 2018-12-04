@@ -1,5 +1,12 @@
 # Wellesley High School Helper App
 
+[![CircleCI](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite.svg?style=svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite)
+
+![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)
+![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)
+![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)
+
 In development
 
 # License
