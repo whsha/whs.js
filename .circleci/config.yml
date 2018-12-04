@@ -66,12 +66,12 @@ workflows:
   version: 2
   whs.js:
     jobs:
-      - publish_to_expo_dev:
-        filters:
-          branches:
-            only: development
-      - publish_to_expo_prod:
-        filters:
-          branches:
-            only: master
       - test
+      # - publish_to_expo_dev:
+      #   filters:
+      #     branches:
+      #       only: development
+      # - publish_to_expo_prod:
+      #   filters:
+      #     branches:
+      #       only: master
