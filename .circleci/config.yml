@@ -2,10 +2,10 @@
 version: 2
 jobs:
   test:
+    working_directory: ~/whs.js
+
     docker:
       - image: circleci/node:10.4.1
-
-    working_directory: ~/whs.js
 
     steps:
       - checkout
@@ -19,7 +19,7 @@ jobs:
 
       - run: 
         name: Install Dependencies
-        command: npm install
+        command: "npm install"
 
       - save_cache:
         paths:
@@ -30,7 +30,7 @@ jobs:
       # run tests!
       - run: 
         name: Run Tests
-        command: npm ci-test
+        command: "npm ci-test"
 
 publish: &publish
   working_directory: ~/whs.js
