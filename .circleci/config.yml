@@ -50,7 +50,7 @@ jobs:
 
 workflows:
     version: 2
-    whs.js:
+    whs.js-dev-tests:
         jobs:
             - test
             - lint
