@@ -39,7 +39,7 @@ jobs:
                 name: Run Tests
                 command: npm run ci-test
 
-  lint:
+    lint:
         docker:
             - image: circleci/node:latest
         steps:
@@ -49,9 +49,9 @@ jobs:
             - run: npm lint
 
 workflows:
-  version: 2
-  whs.js:
-    jobs:
-      - test
-      - lint
-      - doctor
+    version: 2
+    whs.js:
+        jobs:
+            - test
+            - lint
+            - doctor
