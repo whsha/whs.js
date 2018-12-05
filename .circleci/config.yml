@@ -15,7 +15,7 @@ jobs:
                 key: dependency-cache-{{ checksum "package.json" }}
                 paths:
                     - node_modules
-            - run: node doctor
+            - run: npm run doctor
 
     test:
         docker:
@@ -46,7 +46,7 @@ jobs:
             - checkout
             - restore_cache:
                 key: dependency-cache-{{ checksum "package.json" }}
-            - run: npm lint
+            - run: npm run lint
 
 workflows:
     version: 2
