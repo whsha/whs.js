@@ -1,4 +1,4 @@
-# Wellesley High School Helper App
+# Wellesley High School Helper App (REWRITTEN)
 
 [![CircleCI](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite.svg?style=svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite)
 

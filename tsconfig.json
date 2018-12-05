@@ -14,13 +14,15 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": true,
-        "moduleResolution": "Node",
+        "moduleResolution": "node",
         "resolveJsonModule": true,
         "plugins": [
             {
                 "name": "tslint-language-service"
             }
-        ]
+        ],
+        "noEmit": true,
+        "types": ["jest"]
     },
     "filesGlob": [
         "typings/index.d.ts",
@@ -37,7 +39,8 @@
         "build",
         "node_modules",
         "App.js",
-        "babel.config.js"
+        "babel.config.js",
+        "jest.config.js"
     ],
     "compileOnSave": false
 }

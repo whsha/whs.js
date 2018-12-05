@@ -1,77 +1,57 @@
 # Javascript Node CircleCI 2.0 configuration file
 version: 2
 jobs:
-  test:
-    working_directory: ~/whs.js
+    doctor:
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - checkout
+            - restore_cache:
+                key: dependency-cache-{{ checksum "yarn.lock" }}
+            - run:
+                name: Install dependencies
+                command: npm i
+            - save_cache:
+                key: dependency-cache-{{ checksum "yarn.lock" }}
+                paths:
+                    - node_modules
+            - run: node doctor
 
-    docker:
-      - image: circleci/node:10.4.1
+    test:
+        docker:
+            - image: circleci/node:latest
 
-    steps:
-      - checkout
+        steps:
+            - checkout
+            - restore_cache:
+                keys:
+                    - dependency-cache-{{ checksum "package.json" }}
+                    - dependency-cache-
+            - run: 
+                name: Install Dependencies
+                command: npm i
+            - save_cache:
+                paths:
+                    - node_modules
+                    - .jest
+                key: dependency-cache-{{ checksum "package.json" }}
+            - run: 
+                name: Run Tests
+                command: npm run ci-test
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: 
-          name: Install Dependencies
-          command: "npm install"
-
-      - save_cache:
-          paths:
-            - node_modules
-            - .jest
-          key: v1-dependencies-{{ checksum "package.json" }}
-          
-      # run tests!
-      - run: 
-          name: Run Tests
-          command: "npm run ci-test"
-
-# publish: &publish
-#   working_directory: ~/whs.js
-#     docker:
-#       - image: circleci/node:10.4.1
-#     steps:
-#       - checkout
-
-#     - run:
-#       name: Installing dependencies
-#       command: npm install
-
-#     - run:
-#       name: Login into Expo
-#       command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
-
-#     - run:
-#       name: Publish to Expo
-#       command: npx expo publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
-
-# jobs:
-#   publish_to_expo_dev:
-#     environment:
-#       EXPO_RELEASE_CHANNEL: dev
-#     <<: *publish
-
-#   publish_to_expo_prod:
-#     environment:
-#       EXPO_RELEASE_CHANNEL: default
-#     <<: *publish
+  lint:
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - checkout
+            - restore_cache:
+                key: dependency-cache-{{ checksum "package.json" }}
+            - run: npm lint
 
 workflows:
   version: 2
   whs.js:
     jobs:
       - test
-      # - publish_to_expo_dev:
-      #   filters:
-      #     branches:
-      #       only: development
-      # - publish_to_expo_prod:
-      #   filters:
-      #     branches:
-      #       only: master
+      - lint
+      - doctor
