@@ -25,6 +25,7 @@ interface IMultilineHeaderProps {
     title: string;
     subtitle: string;
 }
+/** A header with multiple lines. A Title and a subtitle */
 export default function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
     return (
         <View style={styles.headerContainer}>
