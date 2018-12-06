@@ -12,7 +12,9 @@ export default createBottomTabNavigator({
         screen: HomeStackNavigator,
         navigationOptions: {
             tabBarLabel: "Home",
-            tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
-        } as NavigationScreenConfig<NavigationTabScreenOptions>
+            tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} >
+        } as NavigationScreenConfig<NavigationTabScreenOptionss>
     }
 });
+
+adsfasdfasdfa
