@@ -48,10 +48,22 @@ jobs:
                 key: dependency-cache-{{ checksum "package.json" }}
             - run: npm run lint -s
 
-# workflows:
-#     version: 2
-#     whs.js-dev-tests:
-#         jobs:
-#             - test
-#             - lint
-#             - doctor
+    audit:
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - checkout
+            - restore_cache:
+                key: dependency-cache-{{ checksum "package.json" }}
+            - run: npm audit
+
+workflows:
+    version: 2
+    tests:
+        jobs:
+            - test
+            - lint
+    audits:
+        jobs:
+            - doctor
+            - audit
