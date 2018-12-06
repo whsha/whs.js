@@ -15,7 +15,7 @@ jobs:
                 key: dependency-cache-{{ checksum "package.json" }}
                 paths:
                     - node_modules
-            - run: npm run doctor
+            - run: npm run doctor -s
 
     test:
         docker:
@@ -37,7 +37,7 @@ jobs:
                 key: dependency-cache-{{ checksum "package.json" }}
             - run: 
                 name: Run Tests
-                command: npm run ci-test
+                command: npm run ci-test -s
 
     lint:
         docker:
@@ -46,12 +46,12 @@ jobs:
             - checkout
             - restore_cache:
                 key: dependency-cache-{{ checksum "package.json" }}
-            - run: npm run lint
+            - run: npm run lint -s
 
-workflows:
-    version: 2
-    whs.js-dev-tests:
-        jobs:
-            - test
-            - lint
-            - doctor
+# workflows:
+#     version: 2
+#     whs.js-dev-tests:
+#         jobs:
+#             - test
+#             - lint
+#             - doctor

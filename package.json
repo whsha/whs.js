@@ -11,7 +11,8 @@
         "ci-test": "npm ci & npx jest --ci",
         "test": "npx jest",
         "lint": "tslint --project ./tsconfig.json",
-        "doctor": "expo doctor"
+        "doctor": "expo doctor",
+        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*"
     },
     "dependencies": {
         "expo": "^31.0.2",
