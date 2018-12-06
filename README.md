@@ -1,4 +1,4 @@
-# Wellesley High School Helper App (STABLE)
+# Wellesley High School Helper App (dev)
 
 ![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)
 ![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)
