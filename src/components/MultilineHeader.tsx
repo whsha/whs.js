@@ -6,9 +6,6 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
-    headerContainer: {
-        textAlign: "center"
-    },
     headerTitle: {
         textAlign: "center",
         fontWeight: "bold",
@@ -28,7 +25,7 @@ interface IMultilineHeaderProps {
 /** A header with multiple lines. A Title and a subtitle */
 export default function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
     return (
-        <View style={styles.headerContainer}>
+        <View>
             <Text style={styles.headerTitle}>{title}</Text>
             <Text style={styles.headerSubtitle}>{subtitle}</Text>
         </View>

@@ -13,7 +13,7 @@
         "lint": "tslint --project ./tsconfig.json",
         "doctor": "expo doctor",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
-        "build": "tsc"
+        "compile": "tsc"
     },
     "dependencies": {
         "enzyme": "^3.7.0",

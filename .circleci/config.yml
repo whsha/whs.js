@@ -54,7 +54,7 @@ jobs:
                 at: "."
             - run: 
                 name: TypeScript Compile
-                command: npm run build -s
+                command: npm run compile -s
 
     install-deps:
         docker:
