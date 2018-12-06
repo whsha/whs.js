@@ -81,7 +81,7 @@ jobs:
 
 workflows:
     version: 2
-    tests:
+    test:
         jobs:
             - install-deps
             - test:
@@ -90,7 +90,7 @@ workflows:
             - lint:
                 requires:
                     - install-deps
-    audits:
+    audit:
         jobs:
             - install-deps
             - doctor:
