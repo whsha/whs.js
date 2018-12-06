@@ -146,14 +146,14 @@
         "ban-types": false,
         "binary-expression-operand-order": true,
         "callable-types": true,
-        "completed-docs": true,
+        "completed-docs": false, // TODO: More?
         "cyclomatic-complexity": false,
         "deprecation": true,
         "file-name-casing": true,
         "import-blacklist": false,
         "interface-over-type-literal": true,
         "linebreak-style": true,
-        "match-default-export-name": true,
+        "match-default-export-name": false,
         "max-classes-per-file": [
             true,
             5
