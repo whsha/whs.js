@@ -18,12 +18,12 @@ import LunchEditorView from "./views/settings/editor/LunchEditorView";
 import TodayView from "./views/TodayView";
 
 export interface INavigationElementProps<S = {}, P = NavigationParams> {
-    navigation: NavigationScreenProp<S, P>;
+    navigation: NavigationScreenProp;
 }
 
 // The stack navigator for the Home page
 const HomeStackNavigator = createStackNavigator({
-    Today: TodayView
+    Today: TodayVieww
 }, {
     cardStyle: {
         backfaceVisibility: "visible",
@@ -34,7 +34,7 @@ const HomeStackNavigator = createStackNavigator({
 HomeStackNavigator.navigationOptions = (): NavigationScreenConfig<NavigationTabScreenOptions> => {
     return {
         tabBarLabel: "Home",
-        tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
+        tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} >
     };
 };
 
