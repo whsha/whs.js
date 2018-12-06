@@ -43,7 +43,7 @@ jobs:
                 at: "."
             - run: 
                 name: NPM Audit
-                command: npm audit
+                command: npx audit-ci
 
     compile:
         docker:
@@ -63,6 +63,9 @@ jobs:
             - checkout
             - restore_cache:
                 key: dependency-cache-{{ checksum "package.json" }}
+            - run:
+                name: Update NPM
+                command: sudo npm i -g npm@latest
             - run: 
                 name: Install Dependencies
                 command: npm i
