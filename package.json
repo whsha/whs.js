@@ -12,7 +12,8 @@
         "test": "npx jest",
         "lint": "tslint --project ./tsconfig.json",
         "doctor": "expo doctor",
-        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*"
+        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
+        "build": "tsc"
     },
     "dependencies": {
         "expo": "^31.0.2",
