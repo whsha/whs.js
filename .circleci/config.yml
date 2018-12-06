@@ -45,7 +45,7 @@ jobs:
                 name: NPM Audit
                 command: npm audit
 
-    build:
+    compile:
         docker:
             - image: circleci/node:latest
         steps:
@@ -85,24 +85,22 @@ workflows:
     test:
         jobs:
             - install-deps
-            - test:
-                requires:
-                    - install-deps
-            - lint:
-                requires:
-                    - install-deps
-    audit:
-        jobs:
-            - install-deps
             - doctor:
                 requires:
                     - install-deps
             - audit:
                 requires:
                     - install-deps
-    build:
+            - test:
+                requires:
+                    - doctor
+                    - audit
+            - lint:
+                requires:
+                    - test
+    compile:
         jobs:
             - install-deps
-            - build:
+            - compile:
                 requires:
                     - install-deps
