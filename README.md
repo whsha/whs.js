@@ -8,8 +8,8 @@
 
 |Branch|Status|
 |-|-|
-| master |[![CircleCI (master Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/stable.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/master)|
-| dev |[![CircleCI (dev Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/master.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/dev)|
+| master |[![CircleCI (master Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/master.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/master)|
+| dev |[![CircleCI (dev Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/dev.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/dev)|
 
 In development
 
