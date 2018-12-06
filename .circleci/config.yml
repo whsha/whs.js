@@ -96,11 +96,15 @@ workflows:
                     - install-deps
             - test:
                 requires:
+                    - install-deps
                     - doctor
                     - audit
+    lint:
+        jobs:
+            - install-deps
             - lint:
                 requires:
-                    - test
+                    - install-deps
     compile:
         jobs:
             - install-deps
