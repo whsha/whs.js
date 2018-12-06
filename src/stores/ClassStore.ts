@@ -1,5 +1,11 @@
-// This should fail lint and compile
+/*!
+ * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ */
 
-export default class Pee extends classthatdoesnotexistanywhere {
-    
+import { observable } from "mobx";
+import { persist } from "mobx-persist";
+
+export default class ClassStore {
+    @persist @observable
+    public classes = [];
 }

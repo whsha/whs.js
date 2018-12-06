@@ -1,6 +1,11 @@
-# Wellesley High School Helper App (REWRITTEN)
+# Wellesley High School Helper App (STABLE)
 
-[![CircleCI](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite.svg?style=svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/rigid-rewrite)
+|Branch|Status|
+|-|-|
+| All | [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js.svg)](https://circleci.com/gh/DusterTheFirst/whs.js)|
+| Stable |[![CircleCI (Stable Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/stable.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/stable)|
+| Master |[![CircleCI (Stable Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/master.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/master)|
+
 
 ![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)
 ![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)
