@@ -22,7 +22,8 @@
             }
         ],
         "noEmit": true,
-        "types": ["jest"]
+        "types": ["jest"],
+        "strict": true
     },
     "filesGlob": [
         "typings/index.d.ts",

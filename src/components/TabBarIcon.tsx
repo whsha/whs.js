@@ -12,6 +12,7 @@ export default class TabBarIcon extends PureComponent<{name: string; focused: bo
         return (
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${this.props.name}`}
+                // tslint:disable-next-line:no-magic-numbers
                 size={26}
                 style={{ marginBottom: -3 }}
                 color={this.props.focused ? "#2f95dc" : "#ccc"}
