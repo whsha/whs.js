@@ -54,12 +54,13 @@ jobs:
                 at: "."
             - run: 
                 name: TypeScript Compile
-                command: npm run build
+                command: npm run build -s
 
     install-deps:
         docker:
             - image: circleci/node:latest
         steps:
+            - checkout
             - restore_cache:
                 key: dependency-cache-{{ checksum "package.json" }}
             - run: 
