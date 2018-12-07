@@ -68,7 +68,7 @@ workflows:
             - install-deps
             - test:
                 requires:
-                    - compile
+                    - install-deps
     lint:
         jobs:
             - install-deps
