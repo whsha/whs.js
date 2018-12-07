@@ -45,7 +45,7 @@ jobs:
                 command: sudo npm i -g npm@latest
             - run: 
                 name: Install Dependencies
-                command: npm cli
+                command: npm ci
             - run:
                 name: Audit
                 command: npm audit
