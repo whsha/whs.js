@@ -9,7 +9,7 @@
         "ios": "expo start --ios",
         "doctor": "expo doctor",
         "eject": "expo eject",
-        "ci-test": "npm ci & npx jest --ci",
+        "test:ci": "npx jest --ci",
         "test": "npx jest --watch",
         "lint": "tslint --project ./tsconfig.json",
         "compile": "tsc",

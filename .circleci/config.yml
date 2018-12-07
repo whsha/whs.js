@@ -9,7 +9,7 @@ jobs:
                 at: "."
             - run: 
                 name: Run Tests
-                command: npm run ci-test -s
+                command: npm run test:ci -s
 
     lint:
         docker:
