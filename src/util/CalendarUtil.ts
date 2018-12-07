@@ -5,7 +5,7 @@
 import ICal from "ical.js";
 
 /** Parse an ICal */
-export function parseICal(rawical: string): ICalendarInformation {
+export function parseCalendar(rawical: string): ICalendarInformation {
     // Parse the ICal into a JCal
     let cal = ICal.parse(rawical);
     // Get the top level component
@@ -47,4 +47,12 @@ export function parseICal(rawical: string): ICalendarInformation {
         events,
         updated: new Date()
     };
+}
+
+export async function fetchCalendar() {
+    // Get the calendar
+    let response = await fetch("http://goo.gl/FR0zjg");
+
+    // Get the full text body
+    return response.text();
 }
