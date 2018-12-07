@@ -1,20 +1,8 @@
 version: 2
 jobs:
-    doctor:
-        docker:
-            - image: circleci/node:latest
-        steps:
-            - checkout
-            - attach_workspace:
-                at: "."
-            - run: 
-                name: Doctor
-                command: npm run doctor -s
-
     test:
         docker:
             - image: circleci/node:latest
-
         steps:
             - checkout
             - attach_workspace:
@@ -34,17 +22,6 @@ jobs:
                 name: TSLint
                 command: npm run lint -s
 
-    audit:
-        docker:
-            - image: circleci/node:latest
-        steps:
-            - checkout
-            - attach_workspace:
-                at: "."
-            - run: 
-                name: NPM Audit
-                command: npx audit-ci
-
     compile:
         docker:
             - image: circleci/node:latest
@@ -62,21 +39,22 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                key: dependency-cache-{{ checksum "package.json" }}
+                key: dependency-cache-{{ checksum "package-lock.json" }}
             - run:
                 name: Update NPM
                 command: sudo npm i -g npm@latest
             - run: 
                 name: Install Dependencies
-                command: npm i
+                command: npm cli
             - run:
-                name: Create Package Lock
-                command: npm i --package-lock-only
+                name: Audit
+                command: npm audit
             - save_cache:
                 paths:
                     - node_modules
                     - package-lock.json
-                key: dependency-cache-{{ checksum "package.json" }}
+                    - ~/.npm
+                key: dependency-cache-{{ checksum "package-lock.json" }}
             - persist_to_workspace:
                     root: "."
                     paths:
@@ -88,26 +66,16 @@ workflows:
     test:
         jobs:
             - install-deps
-            - doctor:
-                requires:
-                    - install-deps
-            - audit:
+            - compile:
                 requires:
                     - install-deps
             - test:
                 requires:
-                    - install-deps
-                    - doctor
-                    - audit
+                    - compile
     lint:
         jobs:
             - install-deps
             - lint:
                 requires:
                     - install-deps
-    compile:
-        jobs:
-            - install-deps
-            - compile:
-                requires:
-                    - install-deps
+            
