@@ -63,21 +63,15 @@ jobs:
 
 workflows:
     version: 2
-    test:
+    test-lint-compile:
         jobs:
             - install-deps
             - test:
                 requires:
                     - install-deps
-    lint:
-        jobs:
-            - install-deps
             - lint:
                 requires:
                     - install-deps
-    compile:
-        jobs:
-            - install-deps
             - compile:
                 requires:
                     - install-deps
