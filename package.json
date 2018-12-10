@@ -14,7 +14,7 @@
         "compile": "tsc",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
         "lint:ci": "npm run lint -- -t junit -o reports/junit/tslint-results.xml",
-        "test:ci": "npx jest --ci --reporter=default --reporter=jest-junit --runInBand"
+        "test:ci": "npx jest --ci --reporters=default --reporters=jest-junit --runInBand"
     },
     "dependencies": {
         "expo": "^31.0.2",
