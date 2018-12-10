@@ -9,7 +9,7 @@
         "ios": "expo start --ios",
         "doctor": "expo doctor",
         "eject": "expo eject",
-        "test": "npx jest --watch",
+        "test": "npx jest",
         "lint": "tslint --project ./tsconfig.json",
         "compile": "tsc",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
@@ -70,10 +70,6 @@
             "<rootDir>/node_modules/"
         ],
         "cacheDirectory": ".jest/cache",
-        "automock": false,
-        "reporters": [
-            "default",
-            "jest-junit"
-        ]
+        "automock": false
     }
 }
