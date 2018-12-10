@@ -1039,7 +1039,7 @@ declare module "ical.js" {
          * @param {String=} name    Lowercase property name
          * @return {?String}        The found property value.
          */
-        public getFirstPropertyValue<T = string>(name?: string): T | null;
+        public getFirstPropertyValue<T = string>(name?: string): T | undefined;
 
         /**
          * Get all properties in the component, optionally filtered by name.

@@ -6,15 +6,15 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
-    headerTitle: {
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 15
-    },
     headerSubtitle: {
-        textAlign: "center",
         color: "#808080",
-        fontSize: 12
+        fontSize: 12,
+        textAlign: "center"
+    },
+    headerTitle: {
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center"
     }
 });
 
