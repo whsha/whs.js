@@ -1,7 +1,3 @@
-/*!
- * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
- */
-
 import { fetchCalendar, ICalendarInformation, parseCalendar, SchoolDay } from "./CalendarUtil";
 
 import fetchMock from "fetch-mock";
@@ -62,6 +58,10 @@ describe("Loads the school calendar", () => {
         it("Has only valid school day numbers", () => {
             // Make sure all school days have valid school day numbers
             expect(calendar.schoolDays.every(x => x.dayNumber <= SchoolDay.Seven && x.dayNumber >= SchoolDay.One)).toBeTruthy();
+        });
+
+        it("Fails", () => {
+            expect(undefined).toBeTruthy();
         });
     });
 });
