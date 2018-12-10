@@ -9,11 +9,12 @@
         "ios": "expo start --ios",
         "doctor": "expo doctor",
         "eject": "expo eject",
-        "test:ci": "npx jest --ci --reporters=default --reporters=jest-junit --runInBand",
         "test": "npx jest --watch",
-        "lint": "tslint --project ./tsconfig.json -t verbose",
+        "lint": "tslint --project ./tsconfig.json",
         "compile": "tsc",
-        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*"
+        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
+        "lint:ci": "npm run lint -- -t junit -o reports/junit/tslint-results.xml",
+        "test:ci": "npx jest --ci --testResultsProcessor='jest-junit' --runInBand"
     },
     "dependencies": {
         "expo": "^31.0.2",
@@ -44,6 +45,7 @@
         "babel-preset-expo": "^5.0.0",
         "expo-cli": "^2.6.5",
         "jest": "^23.6.0",
+        "jest-junit": "^5.2.0",
         "react-native-typescript-transformer": "^1.2.10",
         "ts-jest": "^23.10.5",
         "tslint": "^5.11.0",

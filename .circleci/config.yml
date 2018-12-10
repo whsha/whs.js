@@ -8,13 +8,14 @@ jobs:
             - attach_workspace:
                 at: "."
             - run:
-                name: Install JUnit coverage reporter
-                command: npm i -D jest-junit
-            - run:
                 name: Run tests with JUnit as reporter
                 command: npm run test:ci -s
                 environment:
                     JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+            - store_test_results:
+                path: reports/junit
+            - store_artifacts:
+                path: reports/junit
                 
 
     lint:
@@ -26,7 +27,11 @@ jobs:
                 at: "."
             - run: 
                 name: TSLint
-                command: npm run lint -s
+                command: npm run lint:ci -s
+            - store_test_results:
+                path: reports/junit
+            - store_artifacts:
+                path: reports/junit
 
     compile:
         docker:
