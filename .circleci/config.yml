@@ -26,6 +26,9 @@ jobs:
             - attach_workspace:
                 at: "."
             - run: 
+                name: Make report directory
+                command: mkdir -p reports/junit
+            - run: 
                 name: TSLint
                 command: npm run lint:ci -s
             - store_test_results:
