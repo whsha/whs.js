@@ -90,7 +90,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
         let summary = event.getFirstPropertyValue("summary");
 
         // The event needs a summary and start date in order to be processed
-        if (!date || !summary) {
+        if (date === null || summary === null) {
             // Skip the event if it cannot be processed
             console.error("No 'date' or 'summary'");
             continue;
@@ -109,7 +109,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
                 // The day number from the regex match, parsed as an intager
                 dayNumber: parseInt(match[SchoolDayRegexMatch.SchoolDay], 10) as SchoolDay,
                 // If the day is a half day
-                isHalf: match[SchoolDayRegexMatch.IsHalf] !== undefined,
+                isHalf: (match[SchoolDayRegexMatch.IsHalf] as any) !== undefined,
                 // Any metadata about the school day
                 meta: match[SchoolDayRegexMatch.Meta]
             });
@@ -126,17 +126,17 @@ export function parseCalendar(rawical: string): ICalendarInformation {
             // Add the event to the list of events
             events.push({
                 // The description of the event
-                description,
+                description: description === null ? undefined : description,
                 // The end date of the event, if any
-                end: end == undefined ? undefined : end.toJSDate(),
+                end: end === null ? undefined : end.toJSDate(),
                 // If there is no end date, that makes the event all day
                 isAllDay: end === undefined,
                 // The location of the event
-                location,
+                location: location === null ? undefined : location,
                 // The summary (title) of the event
                 name: summary,
                 // The timestamp of the events
-                stamp: stamp === undefined ? undefined : stamp.toJSDate(),
+                stamp: stamp === null ? undefined : stamp.toJSDate(),
                 // The start date of the event
                 start: date.toJSDate()
             });

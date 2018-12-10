@@ -9,9 +9,9 @@
         "ios": "expo start --ios",
         "doctor": "expo doctor",
         "eject": "expo eject",
-        "test:ci": "npx jest --ci",
+        "test:ci": "npx jest --ci --reporters=default --reporters=jest-junit --runInBand",
         "test": "npx jest --watch",
-        "lint": "tslint --project ./tsconfig.json",
+        "lint": "tslint --project ./tsconfig.json -t verbose",
         "compile": "tsc",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*"
     },
@@ -60,7 +60,7 @@
         ],
         "transform": {
             "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
-            "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+            "\\.(ts|tsx)$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
         "testPathIgnorePatterns": [
@@ -68,6 +68,10 @@
             "<rootDir>/node_modules/"
         ],
         "cacheDirectory": ".jest/cache",
-        "automock": false
+        "automock": false,
+        "reporters": [
+            "default",
+            "jest-junit"
+        ]
     }
 }

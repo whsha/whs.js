@@ -9,10 +9,10 @@ import HomeStackNavigator from "./screens/HomeStackNavigator";
 
 export default createBottomTabNavigator({
     Home: {
-        screen: HomeStackNavigator,
         navigationOptions: {
-            tabBarLabel: "Home",
-            tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
-        } as NavigationScreenConfig<NavigationTabScreenOptions>
+            tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />,
+            tabBarLabel: "Home"
+        } as NavigationScreenConfig<NavigationTabScreenOptions>,
+        screen: HomeStackNavigator
     }
 });

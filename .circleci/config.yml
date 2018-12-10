@@ -7,9 +7,15 @@ jobs:
             - checkout
             - attach_workspace:
                 at: "."
-            - run: 
-                name: Run Tests
+            - run:
+                name: Install JUnit coverage reporter
+                command: yarn add --dev jest-junit
+            - run:
+                name: Run tests with JUnit as reporter
                 command: npm run test:ci -s
+                environment:
+                    JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+                
 
     lint:
         docker:
