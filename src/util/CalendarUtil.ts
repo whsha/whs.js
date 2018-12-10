@@ -130,7 +130,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
                 // The end date of the event, if any
                 end: end === null ? undefined : end.toJSDate(),
                 // If there is no end date, that makes the event all day
-                isAllDay: end === undefined,
+                isAllDay: end === null,
                 // The location of the event
                 location: location === null ? undefined : location,
                 // The summary (title) of the event
