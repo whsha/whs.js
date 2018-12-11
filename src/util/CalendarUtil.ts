@@ -41,7 +41,7 @@ export interface ICalendarSchoolDay {
     isHalf: boolean;
     /** Any meta information regarding the day */
     meta?: string;
-    /** The date the day is on formatted as DD-MM-YYYY */
+    /** The date the day is on formatted as YYYY-MM-DD */
     date: string;
 }
 
@@ -105,7 +105,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
             // If the summary matched, Add the school day to the array of school days
             schoolDays.push({
                 // The date that the school day is on, parsed from the event date
-                date: moment(date.toJSDate()).format("DD-MM-YYYY"),
+                date: moment(date.toJSDate()).format("YYYY-MM-DD"),
                 // The day number from the regex match, parsed as an intager
                 dayNumber: parseInt(match[SchoolDayRegexMatch.SchoolDay], 10) as SchoolDay,
                 // If the day is a half day

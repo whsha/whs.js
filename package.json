@@ -33,6 +33,7 @@
         "react-navigation": "^2.18.2"
     },
     "devDependencies": {
+        "@babel/preset-typescript": "^7.1.0",
         "@types/expo": "^30.0.0",
         "@types/fetch-mock": "^6.0.4",
         "@types/jest": "^23.3.10",
@@ -43,10 +44,9 @@
         "@types/react-navigation": "^2.13.1",
         "babel-jest": "^23.6.0",
         "babel-preset-expo": "^5.0.0",
-        "expo-cli": "^2.6.5",
+        "expo-cli": "^2.6.11",
         "jest": "^23.6.0",
         "jest-junit": "^5.2.0",
-        "react-native-typescript-transformer": "^1.2.10",
         "ts-jest": "^23.10.5",
         "tslint": "^5.11.0",
         "tslint-react": "^3.6.0",
