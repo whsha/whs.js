@@ -13,11 +13,14 @@ describe("Test the CalendarStore", () => {
     it("Updates the calendar", async () => {
         let store = new CalendarStore();
 
-        expect(await store.updateCalendar()).toBeUndefined();
+        let storespy = jest.spyOn(store, "updateCalendar");
+        await store.updateCalendar();
+
+        expect(storespy).toHaveBeenCalled();
+        expect(store.updated.getTime()).toBeGreaterThan(0);
     });
     it("Gets the current school day", async () => {
         let store = new CalendarStore();
-
         await store.updateCalendar();
 
         let storespy = jest.spyOn(store, "currentSchoolDay", "get");
@@ -37,5 +40,17 @@ describe("Test the CalendarStore", () => {
 
         expect(storespy).toHaveBeenCalled();
         expect(schoolday).toBeTruthy();
+    });
+    it("Gets the current events", async () => {
+        let store = new CalendarStore();
+
+        await store.updateCalendar();
+
+        let storespy = jest.spyOn(store, "currentEvents", "get");
+
+        let events = store.currentEvents;
+
+        expect(storespy).toHaveBeenCalled();
+        expect(events).toBeDefined();
     });
 });

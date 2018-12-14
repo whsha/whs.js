@@ -46,7 +46,7 @@ export interface ICalendarSchoolDay {
 }
 
 /** A numeric value denoting the school day in the 7 day cycle */
-export const enum SchoolDay {
+export enum SchoolDay {
     One = 1,
     Two = 2,
     Three = 3,
@@ -60,7 +60,7 @@ export const enum SchoolDay {
 export const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
 
 /** The values in the array of the school day match */
-const enum SchoolDayRegexMatch {
+enum SchoolDayRegexMatch {
     /** All of the summary matched against */
     All,
     /** If the school day is a half day */
@@ -129,8 +129,8 @@ export function parseCalendar(rawical: string): ICalendarInformation {
                 description: description === null ? undefined : description,
                 // The end date of the event, if any
                 end: end === null ? undefined : end.toJSDate(),
-                // If there is no end date, that makes the event all day
-                isAllDay: end === null,
+                // If there is no end date or the event lasts 24 hours, that makes the event all day
+                isAllDay: end === null || moment(end.toJSDate()).diff(date.toJSDate(), "days") === 1,
                 // The location of the event
                 location: location === null ? undefined : location,
                 // The summary (title) of the event
