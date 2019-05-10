@@ -196,7 +196,10 @@
         "no-unnecessary-type-assertion": true,
         "no-unsafe-any": true,
         "no-unsafe-finally": true,
-        "no-void-expression": true,
+        "no-void-expression": [
+            true,
+            "ignore-arrow-function-shorthand"
+        ],
         "number-literal-format": true,
         "object-literal-key-quotes": false,
         "object-literal-shorthand": true,

@@ -5,6 +5,23 @@
 import React from "react";
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from "react-native";
 
+const styles = StyleSheet.create({
+    button: {
+        color: "#2f95dc",
+        fontSize: 17
+    },
+    buttonContainer: {
+        marginHorizontal: 15,
+        marginVertical: 10
+    },
+    disabled: {
+        color: "#dadada"
+    },
+    doneButton: {
+        fontWeight: "bold"
+    }
+});
+
 interface IHeaderDoneButtonProps {
     disabled?: boolean;
     onPress(event: GestureResponderEvent): void;
@@ -27,20 +44,3 @@ export function HeaderBackButton({onPress}: IHeaderBackButtonProps) {
         </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    button: {
-        color: "#2f95dc",
-        fontSize: 17
-    },
-    buttonContainer: {
-        marginHorizontal: 15,
-        marginVertical: 10
-    },
-    disabled: {
-        color: "#dadada"
-    },
-    doneButton: {
-        fontWeight: "bold"
-    }
-});

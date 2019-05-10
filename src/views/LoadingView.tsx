@@ -3,57 +3,12 @@
  */
 
 import { create } from "mobx-persist";
-import React, { PureComponent } from "react";
+import React, { useEffect, useState } from "react";
 import { AsyncStorage, Image, StyleSheet, Text, View } from "react-native";
+import { NavigationScreenProp } from "react-navigation";
 import Splash from "../../assets/splash.png";
-import { PureNavigationComponent } from "../components/NavigationComponent";
 import { GlobalCalendarStore } from "../stores";
 import StorageKey from "../stores/StorageKey";
-
-export default class LoadingView extends PureNavigationComponent<{}, { currentTask: string }> {
-    constructor(props: any) {
-        super(props);
-
-        this.state = {
-            currentTask: "Setting Up..."
-        };
-    }
-
-    public async componentDidMount() {
-        this.setState({ currentTask: "Preparing mobx-persist" });
-
-        const hydrate = create({
-            jsonify: true,
-            storage: AsyncStorage
-        });
-
-        // Logic to load data
-        this.setState({ currentTask: "Loading Calendar" });
-
-        await hydrate(StorageKey.Calendar, GlobalCalendarStore);
-
-        if (GlobalCalendarStore.updated.getTime() === 0) {
-            this.setState({ currentTask: "Downloading Calendar" });
-
-            await GlobalCalendarStore.updateCalendar();
-        }
-
-        this.setState({ currentTask: "Opening App" });
-
-        this.props.navigation.navigate("App");
-    }
-
-    public render() {
-        return (
-            <View>
-                <Image source={Splash} style={styles.image} resizeMode={"contain"} />
-                <View style={styles.overlay}>
-                    <Text style={styles.taskText}>{this.state.currentTask}...</Text>
-                </View>
-            </View>
-        );
-    }
-}
 
 const styles = StyleSheet.create({
     image: {
@@ -76,3 +31,51 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
+export enum Task {
+    Setup = "Setting Up",
+    PreparingMP = "Preparing mobx-persist",
+    LoadingCal = "Loading Calendar",
+    DoanloadingCal = "Downloading Calendar",
+    Opening = "Opening App",
+    Errored = "ERRORED"
+}
+
+export default function LoadingView({ navigation }: {navigation: NavigationScreenProp<{}>}) {
+    let [currentTask, setCurrentTask] = useState<Task>(Task.Setup);
+
+    useEffect(() => {
+        (async () => {
+            setCurrentTask(Task.PreparingMP);
+
+            const hydrate = create({
+                jsonify: true,
+                storage: AsyncStorage
+            });
+
+            // Logic to load data
+            setCurrentTask(Task.LoadingCal);
+
+            await hydrate(StorageKey.Calendar, GlobalCalendarStore);
+
+            if (GlobalCalendarStore.updated.getTime() === 0) {
+                setCurrentTask(Task.DoanloadingCal);
+
+                await GlobalCalendarStore.updateCalendar();
+            }
+
+            setCurrentTask(Task.Opening);
+
+            navigation.navigate("App");
+        })().catch(() => setCurrentTask(Task.Errored));
+    }, []);
+
+    return (
+        <View>
+            <Image source={Splash} style={styles.image} resizeMode={"contain"} />
+            <View style={styles.overlay}>
+                <Text style={styles.taskText}>{currentTask}...</Text>
+            </View>
+        </View>
+    );
+}

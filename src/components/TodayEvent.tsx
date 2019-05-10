@@ -7,22 +7,6 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { ICalendarEvent } from "../util/CalendarUtil";
 
-interface ITodayEventProps {
-    event: ICalendarEvent;
-}
-export default function TodayEvent({event}: ITodayEventProps) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.titleView}>
-                <Text style={styles.title}>{event.name}</Text>
-                <Text style={styles.times}>{moment(event.start).format("hh:MM A")} - {moment(event.end).format("hh:MM A")}</Text>
-            </View>
-            <Text>{event.description}</Text>
-            <Text>{event.location}</Text>
-        </View>
-    );
-}
-
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#FFEEFF",
@@ -46,3 +30,19 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     }
 });
+
+interface ITodayEventProps {
+    event: ICalendarEvent;
+}
+export default function TodayEvent({event}: ITodayEventProps) {
+    return (
+        <View style={styles.container}>
+            <View style={styles.titleView}>
+                <Text style={styles.title}>{event.name}</Text>
+                <Text style={styles.times}>{moment(event.start).format("hh:MM A")} - {moment(event.end).format("hh:MM A")}</Text>
+            </View>
+            <Text>{event.description}</Text>
+            <Text>{event.location}</Text>
+        </View>
+    );
+}
