@@ -4,12 +4,6 @@
 ![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)
 ![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js.svg)](https://circleci.com/gh/DusterTheFirst/whs.js)
-
-|Branch|Status|
-|-|-|
-| master |[![CircleCI (master Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/master.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/master)|
-| dev |[![CircleCI (dev Branch)](https://img.shields.io/circleci/project/github/DusterTheFirst/whs.js/dev.svg)](https://circleci.com/gh/DusterTheFirst/whs.js/tree/dev)|
 
 In development
 
