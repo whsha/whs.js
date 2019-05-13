@@ -29,8 +29,9 @@
         "react-native-picker-select": "^6.1.0",
         "react-native-tableview-simple": "^2.0.1",
         "react-native-vector-icons": "^6.4.2",
-        "react-navigation": "^3.9.1",
-        "schedule": "0.4.0"
+        "react-router-native": "^5.0.0",
+        "schedule": "0.4.0",
+        "use-react-router": "^1.0.6"
     },
     "devDependencies": {
         "@kevinwolf/expo-enable-hooks": "^1.0.0",
@@ -40,7 +41,7 @@
         "@types/react-dom": "^16.8.4",
         "@types/react-native": "^0.57.1",
         "@types/react-native-vector-icons": "^6.4.0",
-        "@types/react-navigation": "^3.0.7",
+        "@types/react-router-native": "^4.2.4",
         "babel-preset-expo": "^5.0.0",
         "expo-cli": "^2.17.1",
         "tslint": "^5.16.0",

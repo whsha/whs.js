@@ -5,13 +5,8 @@
 import React, { FC } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { NavigationScreenConfig, NavigationScreenProp, NavigationStackScreenOptions } from "react-navigation";
 import AdvisoryComponent from "../../components/AdvisoryComponent";
 import { HeaderBackButton, HeaderDoneButton } from "../../components/StackNavigatorButtons";
-
-export interface INavFC extends FC<{ navigation: NavigationScreenProp<{}> }> {
-    navigationOptions?: NavigationScreenConfig<NavigationStackScreenOptions>;
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -20,7 +15,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const AdvisoryConfigureView: INavFC = () => {
+const AdvisoryConfigureView = () => {
     return (
         <SafeAreaView style={styles.container}>
             <TableView>
@@ -38,11 +33,11 @@ const AdvisoryConfigureView: INavFC = () => {
     );
 };
 
-AdvisoryConfigureView.navigationOptions = ({ navigation }) => ({
-    // TODO: Save logic
-    headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />,
-    headerRight: <HeaderDoneButton onPress={() => navigation.goBack()} disabled={true} />,
-    title: "Advisory Settings"
-});
+// AdvisoryConfigureView.navigationOptions = ({ navigation }) => ({
+//     // TODO: Save logic
+//     headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />,
+//     headerRight: <HeaderDoneButton onPress={() => navigation.goBack()} disabled={true} />,
+//     title: "Advisory Settings"
+// });
 
 export default AdvisoryComponent;

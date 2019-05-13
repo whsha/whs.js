@@ -2,12 +2,11 @@
  * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
  */
 
-import { observer } from "mobx-react";
 import React from "react";
 import { AsyncStorage, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
+import useReactRouter from "use-react-router";
 import StorageKey from "../stores/StorageKey";
-import { INavFC } from "./settings/AdvisoryConfigureView";
 
 const styles = StyleSheet.create({
     container: {
@@ -19,13 +18,18 @@ const styles = StyleSheet.create({
     }
 });
 
-const SettingsView: INavFC = ({ navigation }) => {
+const SettingsView = () => {
+    const { history } = useReactRouter();
     function navigateTo(to: string) {
-        return () => void navigation.navigate(to);
+        return () => {
+            history.push(to);
+        };
     }
 
     function deleteKey(key: StorageKey) {
-        return () => void AsyncStorage.removeItem(key).catch((e) => console.error(e));
+        return () => {
+            AsyncStorage.removeItem(key).catch((e) => console.error(e));
+        };
     }
 
     return (
@@ -46,8 +50,8 @@ const SettingsView: INavFC = ({ navigation }) => {
     );
 };
 
-SettingsView.navigationOptions = {
-    title: "Settings"
-};
+// SettingsView.navigationOptions = {
+//     title: "Settings"
+// };
 
 export default SettingsView;

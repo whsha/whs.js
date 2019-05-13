@@ -6,6 +6,10 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
+    header: {
+        marginBottom: 10,
+        marginTop: 10
+    },
     headerSubtitle: {
         color: "#808080",
         fontSize: 12,
@@ -13,6 +17,11 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    singleHeaderTitle: {
+        fontSize: 20,
         fontWeight: "bold",
         textAlign: "center"
     }
@@ -24,11 +33,25 @@ interface IMultilineHeaderProps {
 }
 
 /** A header with multiple lines. A Title and a subtitle */
-export default function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
+export function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
     return (
-        <View>
+        <View style={styles.header}>
             <Text style={styles.headerTitle}>{title}</Text>
             <Text style={styles.headerSubtitle}>{subtitle}</Text>
+        </View>
+    );
+}
+
+interface ISinglelineHeader {
+    title: string;
+    subtitle: string;
+}
+
+/** A header with a single line: a Title */
+export function SinglelineHeader({ title }: ISinglelineHeader) {
+    return (
+        <View style={styles.header}>
+            <Text style={styles.singleHeaderTitle}>{title}</Text>
         </View>
     );
 }
