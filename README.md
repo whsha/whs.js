@@ -5,6 +5,11 @@
 ![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)
 
+| Branch | Status |
+|:------:|:------:|
+| master | todo   |
+| stable | todo   |
+
 In development
 
 # License
