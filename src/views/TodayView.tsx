@@ -9,19 +9,24 @@ import AdvisoryComponent from "../components/AdvisoryComponent";
 import { MultilineHeader } from "../components/Header";
 import TodayEvent from "../components/TodayEvent";
 import { GlobalCalendarStore } from "../stores";
-import { ICalendarEvent } from "../util/CalendarUtil";
+import { ICalendarEvent } from "../util/calendarUtil";
 
-const classesViewHeight = 500;
+const classesViewHeight = 50;
 
 const styles = StyleSheet.create({
     classesView: {
         backgroundColor: "red",
         borderBottomWidth: 2,
         borderColor: "#EFEFF4",
-        height: classesViewHeight
+        flex: 1
     },
     eventsList: {
-        backgroundColor: "blue"
+        backgroundColor: "blue",
+        height: 100
+    },
+    todayView: {
+        backgroundColor: "purple",
+        flex: 1,
     }
 });
 
@@ -30,10 +35,9 @@ const TodayView = () => {
     const todayEventRenderItem: ListRenderItem<ICalendarEvent> = ({ item }) => <TodayEvent event={item} />;
 
     return (
-        <View>
+        <View style={styles.todayView}>
             <MultilineHeader title={GlobalCalendarStore.currentSchoolDay === undefined ? "No School" : `${GlobalCalendarStore.currentSchoolDay.isHalf ? "Half " : ""}Day ${GlobalCalendarStore.currentSchoolDay.dayNumber}`} subtitle={moment().format("dddd, MMMM Do")} />
             <View style={styles.classesView}>
-                <Text>Classes</Text>
                 <AdvisoryComponent room={0} teacher={"this is a realluy long teacher name as well as a big room number aa a a a a a a a a a a a a a"} />
             </View>
             <FlatList

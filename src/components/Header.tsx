@@ -7,8 +7,11 @@ import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
     header: {
-        marginBottom: 10,
-        marginTop: 10
+        backgroundColor: "#fff",
+        borderBottomColor: "#eee",
+        borderBottomWidth: 1,
+        paddingBottom: 10,
+        paddingTop: 10
     },
     headerSubtitle: {
         color: "#808080",
@@ -44,7 +47,6 @@ export function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
 
 interface ISinglelineHeader {
     title: string;
-    subtitle: string;
 }
 
 /** A header with a single line: a Title */

@@ -6,7 +6,8 @@ import React from "react";
 import { AsyncStorage, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useReactRouter from "use-react-router";
-import StorageKey from "../stores/StorageKey";
+import { SinglelineHeader } from "../components/Header";
+import StorageKey from "../stores/storageKey";
 
 const styles = StyleSheet.create({
     container: {
@@ -34,6 +35,7 @@ const SettingsView = () => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <SinglelineHeader title="Settings"/>
             <ScrollView>
                 <TableView>
                     <Section header="Class Settings">
@@ -49,9 +51,5 @@ const SettingsView = () => {
         </SafeAreaView>
     );
 };
-
-// SettingsView.navigationOptions = {
-//     title: "Settings"
-// };
 
 export default SettingsView;

@@ -109,7 +109,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
                 // The day number from the regex match, parsed as an intager
                 dayNumber: parseInt(match[SchoolDayRegexMatch.SchoolDay], 10) as SchoolDay,
                 // If the day is a half day
-                isHalf: (match[SchoolDayRegexMatch.IsHalf] as any) !== undefined,
+                isHalf: (match[SchoolDayRegexMatch.IsHalf] as string | undefined) !== undefined,
                 // Any metadata about the school day
                 meta: match[SchoolDayRegexMatch.Meta]
             });

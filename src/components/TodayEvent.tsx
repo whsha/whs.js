@@ -5,7 +5,7 @@
 import moment from "moment";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { ICalendarEvent } from "../util/CalendarUtil";
+import { ICalendarEvent } from "../util/calendarUtil";
 
 const styles = StyleSheet.create({
     container: {
@@ -39,7 +39,7 @@ export default function TodayEvent({event}: ITodayEventProps) {
         <View style={styles.container}>
             <View style={styles.titleView}>
                 <Text style={styles.title}>{event.name}</Text>
-                <Text style={styles.times}>{moment(event.start).format("hh:MM A")} - {moment(event.end).format("hh:MM A")}</Text>
+                <Text style={styles.times}>{event.isAllDay ? "All Day" : `${moment(event.start).format("hh:mm A")} - ${moment(event.end).format("hh:mm A")}`}</Text>
             </View>
             <Text>{event.description}</Text>
             <Text>{event.location}</Text>

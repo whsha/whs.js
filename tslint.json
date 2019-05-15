@@ -2,14 +2,8 @@
     "extends": [
         "tslint:latest",
         "tslint:recommended",
-        "tslint-react",
+        "tslint-react"
     ],
-    "linterOptions": {
-        "exclude": [
-            "config/**/*.js",
-            "node_modules/**/*.ts"
-        ]
-    },
     "rules": {
         "adjacent-overload-signatures": true,
         "align": true,
@@ -38,7 +32,7 @@
         "eofline": false,
         "file-header": [
             true,
-            "Copyright \\(C\\) \\d{4}  Zachary Kohnen (DusterTheFirst)[\\s\\S]*",
+            "Copyright \\(C\\) \\d{4}  Zachary Kohnen \\(DusterTheFirst\\)",
             "Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)"
         ],
         "file-name-casing": [

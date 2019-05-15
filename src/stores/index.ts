@@ -2,6 +2,6 @@
  * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
  */
 
-import CalendarStore from "./CalendarStore";
+import CalendarStore from "./calendarStore";
 
 export const GlobalCalendarStore = new CalendarStore();

@@ -1,91 +1,40 @@
 /*!
- * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)
  */
 
 import { create } from "mobx-persist";
 import React, { useEffect, useState } from "react";
-import { AsyncStorage, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { BackButton, Link, NativeRouter, Redirect, Route, Switch } from "react-router-native";
-import useReactRouter from "use-react-router";
+import { AsyncStorage, SafeAreaView, StyleSheet, View } from "react-native";
+import { BackButton, NativeRouter, Redirect, Route, Switch } from "react-router-native";
+import TabBar from "./components/tabBar/TabBar";
 import { GlobalCalendarStore } from "./stores";
-import StorageKey from "./stores/StorageKey";
+import StorageKey from "./stores/storageKey";
+import { fetchCalendar } from "./util/calendarUtil";
 import LoadingView from "./views/LoadingView";
 import SettingsView from "./views/SettingsView";
 import TodayView from "./views/TodayView";
-import TabBarIcon from "./components/TabBarIcon";
-
-// const BottomTabNav = createBottomTabNavigator({
-//     Home: createBottomTabNavigatorScreen(HomeStackNavigator, "Home", "list"),
-//     Settings: createBottomTabNavigatorScreen(SettingsStackNavigator, "Settings", "cog")
-// }, {
-//     initialRouteName: "Home",
-//     order: [
-//         "Home",
-//         "Settings"
-//     ]
-// });
 
 const styles = StyleSheet.create({
     body: {
-        height: "50%",
-        overflow: "scroll"
-    },
-    bottomTabNav: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
-    },
-    bottomTabNavLink: {
-        margin: "auto"
+        flex: 1
     },
     screen: {
-        height: "50%",
-        backgroundColor: "green"
+        backgroundColor: "green",
+        flex: 1
     }
 });
-
-function BottomTabNav() {
-    const { location } = useReactRouter();
-
-    return (
-        <View style={styles.bottomTabNav}>
-            <Link to="/calendar" style={styles.bottomTabNavLink}>
-                <View>
-                    <Text>Calendar</Text>
-                    <TabBarIcon name="calendar" focused={location.pathname === "/calendar"} /></View>
-            </Link>
-            <Link to="/today">
-                <View>
-                    <Text>Today</Text>
-                    <TabBarIcon name="list" focused={location.pathname === "/today"} />
-                </View>
-            </Link>
-            <Link to="/settings">
-                <View>
-                    <Text>Settings</Text>
-                    <TabBarIcon name="cog" focused={location.pathname === "/settings"} />
-                </View>
-            </Link>
-        </View>
-    );
-}
 
 function MainView() {
     return (
         <SafeAreaView style={styles.body}>
             <View style={styles.screen}>
-                {/* <Switch>
-                    <Redirect exact={true} from="/" to="/today" />
+                <Switch>
                     <Route path="/today" component={TodayView} />
                     <Route path="/settings" component={SettingsView} />
-                    <Route component={() => <Text>404</Text>} />
-                </Switch> */}
+                    <Redirect to="/today" />
+                </Switch>
             </View>
-            <BottomTabNav />
+            <TabBar />
         </SafeAreaView>
     );
 }
@@ -94,7 +43,8 @@ export enum ApplicationState {
     Setup = "Setting Up",
     PreparingMP = "Preparing mobx-persist",
     LoadingCal = "Loading Calendar",
-    DoanloadingCal = "Downloading Calendar",
+    DownloadingCal = "Downloading Calendar",
+    ParsingCal = "Parsing Calendar",
     Opening = "Opening App",
     Errored = "ERRORED",
     Loaded = "LOADED"
@@ -106,20 +56,26 @@ export default function App() {
     async function Load() {
         setCurrentTask(ApplicationState.PreparingMP);
 
+        // Setup Mobx-Persist
         const hydrate = create({
             jsonify: true,
             storage: AsyncStorage
         });
 
-        // Logic to load data
         setCurrentTask(ApplicationState.LoadingCal);
 
+        // Load from cache if exists
         await hydrate(StorageKey.Calendar, GlobalCalendarStore);
 
+        // If not loaded, download it
         if (GlobalCalendarStore.updated.getTime() === 0) {
-            setCurrentTask(ApplicationState.DoanloadingCal);
+            setCurrentTask(ApplicationState.DownloadingCal);
 
-            await GlobalCalendarStore.updateCalendar();
+            // Fetch the calendar off of the interweb
+            let rawcal = await fetchCalendar();
+
+            setCurrentTask(ApplicationState.ParsingCal);
+            await GlobalCalendarStore.updateCalendar(rawcal);
         }
 
         setCurrentTask(ApplicationState.Opening);

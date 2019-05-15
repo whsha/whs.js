@@ -2,7 +2,7 @@
  * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, {  } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";

@@ -15,7 +15,8 @@
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
         "lint:ci": "npm run lint -- -t junit -o reports/junit/tslint-results.xml",
         "test:ci": "npx jest --ci --reporters=default --reporters=jest-junit --runInBand",
-        "postinstall": "expo-enable-hooks"
+        "postinstall": "expo-enable-hooks",
+        "prestart": "expo-enable-hooks"
     },
     "dependencies": {
         "expo": "^32.0.0",
