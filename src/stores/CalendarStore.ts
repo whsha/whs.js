@@ -1,5 +1,5 @@
 /*!
- * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
 import { action, computed, observable } from "mobx";
@@ -59,6 +59,7 @@ export default class CalendarStore {
     private _updated = 0;
 
     /** Update the stored calendar to match the live version */
+    // tslint:disable-next-line: no-unbound-method
     @action.bound
     public async updateCalendar(rawcalendar: string) {
         // Parse the calendar

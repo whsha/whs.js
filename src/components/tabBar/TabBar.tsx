@@ -1,6 +1,7 @@
 /*!
- * Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
+
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import TabBarLink from "./TabBarLink";
@@ -10,8 +11,8 @@ const styles = StyleSheet.create({
         // backgroundColor: "#fff",
         borderTopColor: "#eee",
         borderTopWidth: 1,
-        height: 50,
         flexDirection: "row",
+        height: 50,
         justifyContent: "space-around",
     },
 });

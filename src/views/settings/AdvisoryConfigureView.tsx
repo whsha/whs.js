@@ -1,43 +1,45 @@
 /*!
- * Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { FC } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
+import { Prompt } from "react-router-native";
+import useRouter from "use-react-router";
 import AdvisoryComponent from "../../components/AdvisoryComponent";
-import { HeaderBackButton, HeaderDoneButton } from "../../components/StackNavigatorButtons";
+import { SinglelineHeader } from "../../components/header/Header";
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#EFEFF4",
         flex: 1
+    },
+    text: {
+        flex: 1,
+        height: 40
     }
 });
 
-const AdvisoryConfigureView = () => {
+export default function AdvisoryConfigureView() {
+    const { history } = useRouter();
+    let [teacher, setTeacher] = useState("Hello there");
+    let [room, setRoom] = useState(1);
+
     return (
         <SafeAreaView style={styles.container}>
+            <SinglelineHeader title="Advisory Settings" back={() => history.goBack()} done={() => history.push("/settings")} canDone={true} />
             <TableView>
                 <Section header="Advisory Teacher">
-                    <Cell title="e" />
+                    <Cell cellContentView={<TextInput value={teacher} onChangeText={setTeacher} style={styles.text} />} />
                 </Section>
                 <Section header="Room Number">
-                    <Cell title="e" />
+                    <Cell cellContentView={<TextInput value={room.toString()} maxLength={3} onChangeText={(x) => setRoom(x.length > 0 ? parseInt(x, 10) : 0)} keyboardType="numeric" style={styles.text} />} />
                 </Section>
-                <Section header="Example View">
-                    <Cell cellContentView={<AdvisoryComponent teacher={"this is a realluy long teacher name as well as a big room number aa a a a a a a a a a a a a a"} room={1} />} />
+                <Section header="Example">
+                    <Cell cellContentView={<AdvisoryComponent teacher={teacher} room={room} />} />
                 </Section>
             </TableView>
         </SafeAreaView>
     );
-};
-
-// AdvisoryConfigureView.navigationOptions = ({ navigation }) => ({
-//     // TODO: Save logic
-//     headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />,
-//     headerRight: <HeaderDoneButton onPress={() => navigation.goBack()} disabled={true} />,
-//     title: "Advisory Settings"
-// });
-
-export default AdvisoryComponent;
+}

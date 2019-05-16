@@ -1,53 +1,29 @@
 /*!
- * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
 import React from "react";
-import { AsyncStorage, SafeAreaView, ScrollView, StyleSheet } from "react-native";
-import { Cell, Section, TableView } from "react-native-tableview-simple";
-import useReactRouter from "use-react-router";
-import { SinglelineHeader } from "../components/Header";
-import StorageKey from "../stores/storageKey";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Route, Switch } from "react-router-native";
+import AdvisoryConfigureView from "./settings/AdvisoryConfigureView";
+import LicenseView from "./settings/LicenseView";
+import MainView from "./settings/MainView";
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#EFEFF4",
-        height: "100%"
-    },
-    redbutton: {
-        color: "#FF5050"
+        flex: 1
     }
 });
 
 const SettingsView = () => {
-    const { history } = useReactRouter();
-    function navigateTo(to: string) {
-        return () => {
-            history.push(to);
-        };
-    }
-
-    function deleteKey(key: StorageKey) {
-        return () => {
-            AsyncStorage.removeItem(key).catch((e) => console.error(e));
-        };
-    }
-
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Settings"/>
-            <ScrollView>
-                <TableView>
-                    <Section header="Class Settings">
-                        <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("")} />
-                        <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={navigateTo("")} />
-                        <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={navigateTo("ConfigureAdvisory")} />
-                    </Section>
-                    <Section header="Cache">
-                        <Cell title="Clear Calendar Cache" titleTextStyle={styles.redbutton} onPress={deleteKey(StorageKey.Calendar)} />
-                    </Section>
-                </TableView>
-            </ScrollView>
+            <Switch>
+                <Route path="/settings/advisory" exact={true} component={AdvisoryConfigureView}/>
+                <Route path="/settings/license" exact={true} component={LicenseView}/>
+                <Route path="/settings" component={MainView}/>
+            </Switch>
         </SafeAreaView>
     );
 };

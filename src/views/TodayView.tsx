@@ -1,17 +1,15 @@
 /*!
- * Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
 import moment from "moment";
 import React from "react";
 import { FlatList, ListRenderItem, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import AdvisoryComponent from "../components/AdvisoryComponent";
-import { MultilineHeader } from "../components/Header";
+import { MultilineHeader } from "../components/header/Header";
 import TodayEvent from "../components/TodayEvent";
 import { GlobalCalendarStore } from "../stores";
 import { ICalendarEvent } from "../util/calendarUtil";
-
-const classesViewHeight = 50;
 
 const styles = StyleSheet.create({
     classesView: {

@@ -1,5 +1,5 @@
 /*!
- * Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
 import { create } from "mobx-persist";
@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { AsyncStorage, SafeAreaView, StyleSheet, View } from "react-native";
 import { BackButton, NativeRouter, Redirect, Route, Switch } from "react-router-native";
 import TabBar from "./components/tabBar/TabBar";
+import { ReloadFunctionContext } from "./contexts";
 import { GlobalCalendarStore } from "./stores";
 import StorageKey from "./stores/storageKey";
 import { fetchCalendar } from "./util/calendarUtil";
@@ -53,7 +54,7 @@ export enum ApplicationState {
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
 
-    async function Load() {
+    async function Load(reset = false) {
         setCurrentTask(ApplicationState.PreparingMP);
 
         // Setup Mobx-Persist
@@ -68,8 +69,9 @@ export default function App() {
         await hydrate(StorageKey.Calendar, GlobalCalendarStore);
 
         // If not loaded, download it
-        if (GlobalCalendarStore.updated.getTime() === 0) {
+        if (GlobalCalendarStore.updated.getTime() === 0 || reset) {
             setCurrentTask(ApplicationState.DownloadingCal);
+            console.log("Downloading");
 
             // Fetch the calendar off of the interweb
             let rawcal = await fetchCalendar();
@@ -91,7 +93,9 @@ export default function App() {
         return (
             <NativeRouter>
                 <BackButton >
-                    <MainView />
+                    <ReloadFunctionContext.Provider value={Load}>
+                        <MainView />
+                    </ReloadFunctionContext.Provider>
                 </BackButton >
             </NativeRouter>
         );

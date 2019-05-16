@@ -32,13 +32,14 @@
         "eofline": false,
         "file-header": [
             true,
-            "Copyright \\(C\\) \\d{4}  Zachary Kohnen \\(DusterTheFirst\\)",
-            "Copyright (C) 2019  Zachary Kohnen (DusterTheFirst)"
+            "Copyright \\(C\\) 2018-2019  Zachary Kohnen \\(DusterTheFirst\\)",
+            "Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)"
         ],
         "file-name-casing": [
             true,
             {
                 "index.ts(x)": "camel-case",
+                "App.ts": "pascal-case",
                 ".tsx": "pascal-case",
                 ".ts": "camel-case"
             }
