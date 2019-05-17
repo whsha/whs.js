@@ -2,12 +2,16 @@ language: node_js
 node_js:
   - node
 cache: yarn
+before_script:
+ - yarn global add expo-cli expo
 deploy:
   - provider: script
     script: bash scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
+    skip_cleanup: true
     on:
       branch: master
   - provider: script
     script: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
+    skip_cleanup: true
     on:
       branch: stable
