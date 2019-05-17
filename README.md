@@ -1,16 +1,15 @@
-# Wellesley High School Helper App (dev)
+# Wellesley High School Helper App
 
-![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)
-![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)
-![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)
+[![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/network/dependencies)
+[![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
 
-| Branch | Status |
-|:------:|:------:|
-| master | todo   |
-| stable | todo   |
+| Branch | Status | Latest Stable Build |
+|:------:|:------:|:--------------------|
+| staging| [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=master)](https://travis-ci.org/DusterTheFirst/whs.js) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>[iOS Download]()<br>[Android Download]() |
+| stable | [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=stable)](https://travis-ci.org/DusterTheFirst/whs.js)   | [Expo Link](https://exp.host/@dusterthefirst/WHS)<br>[iOS Download]()<br>[Android Download]() |
 
-In development
 
 # License
     whs.js - Wellesley High School helper application

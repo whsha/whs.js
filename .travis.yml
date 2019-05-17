@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - node
-  - lts/*
 cache: yarn
 deploy:
   - provider: script
@@ -9,6 +8,6 @@ deploy:
     on:
       branch: master
   - provider: script
-    script: bash scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
+    script: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
     on:
-      branch: master
+      branch: stable
