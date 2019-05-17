@@ -13,7 +13,8 @@
         "compile": "tsc --noEmit",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
         "postinstall": "expo-enable-hooks",
-        "prestart": "expo-enable-hooks"
+        "prestart": "expo-enable-hooks",
+        "test": "echo Tests not written yet"
     },
     "dependencies": {
         "expo": "^32.0.0",
