@@ -12,7 +12,8 @@ jobs:
       script: yarn test
     - stage: lint
       script: yarn run lint
-    - deploy:
+    - stage: deploy
+      deploy:
       - provider: script
         script: bash scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
         skip_cleanup: true
