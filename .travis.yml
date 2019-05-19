@@ -4,6 +4,11 @@ node_js:
 cache: yarn
 before_script:
  - yarn global add expo-cli
+# Fix 'ENOSPC: System limit for number of file watchers reached'
+before_deploy:
+ - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+sudo: true
+# endFix
 jobs:
   include:
     - stage: typecheck
