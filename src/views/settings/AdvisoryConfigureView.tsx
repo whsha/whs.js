@@ -26,15 +26,19 @@ export default function AdvisoryConfigureView() {
     let [teacher, setTeacher] = useState("Hello there");
     let [room, setRoom] = useState(1);
 
+    const goBack = () => history.goBack();
+    const done = () => history.push("/settings");
+    const roomNumberChange = (x: string) => setRoom(x.length > 0 ? parseInt(x, 10) : 0);
+
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Advisory Settings" back={() => history.goBack()} done={() => history.push("/settings")} canDone={true} />
+            <SinglelineHeader title="Advisory Settings" back={goBack} done={done} canDone={true} />
             <TableView>
                 <Section header="Advisory Teacher">
                     <Cell cellContentView={<TextInput value={teacher} onChangeText={setTeacher} style={styles.text} />} />
                 </Section>
                 <Section header="Room Number">
-                    <Cell cellContentView={<TextInput value={room.toString()} maxLength={3} onChangeText={(x) => setRoom(x.length > 0 ? parseInt(x, 10) : 0)} keyboardType="numeric" style={styles.text} />} />
+                    <Cell cellContentView={<TextInput value={room.toString()} maxLength={3} onChangeText={roomNumberChange} keyboardType="numeric" style={styles.text} />} />
                 </Section>
                 <Section header="Example">
                     <Cell cellContentView={<AdvisoryComponent teacher={teacher} room={room} />} />

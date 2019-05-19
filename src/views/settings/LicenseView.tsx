@@ -17,9 +17,11 @@ const styles = StyleSheet.create({
 export default function LicenseView() {
     const { history } = useRouter();
 
+    const back = () => history.goBack();
+
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="License" back={() => history.goBack()}/>
+            <SinglelineHeader title="License" back={back}/>
             <Text>LICENSE GOES HERE</Text>
         </SafeAreaView>
     );
