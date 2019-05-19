@@ -3,7 +3,7 @@ node_js:
   - node
 cache: yarn
 before_script:
- - yarn global add expo-cli expo
+ - yarn global add expo-cli
 jobs:
   include:
     - stage: typecheck

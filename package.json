@@ -10,7 +10,7 @@
         "doctor": "expo doctor",
         "eject": "expo eject",
         "lint": "tslint --project ./tsconfig.json",
-        "check": "pwd && tree && ls -la && tsc --noEmit",
+        "check": "pwd && ls -la && tsc --noEmit",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :^.*",
         "postinstall": "expo-enable-hooks",
         "prestart": "expo-enable-hooks",
