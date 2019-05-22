@@ -5,11 +5,30 @@
 [![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
 
+## Builds
 | Branch | Status | Latest Stable Build |
 |:------:|:------:|:--------------------|
 | staging| [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=master)](https://travis-ci.org/DusterTheFirst/whs.js) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>iOS Download<br>Android Download |
 | stable | [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=stable)](https://travis-ci.org/DusterTheFirst/whs.js)   | [Expo Link](https://exp.host/@dusterthefirst/WHS)<br>iOS Download<br>Android Download |
 
+# Roadmap
+> [See **Rewrite** project for more info](https://github.com/DusterTheFirst/whs.js/projects/1)
+### June 1st
+- Closed Alpha
+    - Team of people to test a buggy version of the app with their schedules
+    - Lots of feedback and UX improvments
+    - Debug info still in build
+
+### August 1st
+- Open Beta
+    - Anyone can use the app
+    - Not gaurenteed to be stable
+    - LOTS of feedback
+
+### December
+- Full Release
+    - Published IPA and APKs
+    - Advertisment on school announements
 
 # License
     whs.js - Wellesley High School helper application
