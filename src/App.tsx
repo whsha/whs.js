@@ -3,42 +3,14 @@
  */
 
 import { create } from "mobx-persist";
-import React, { useEffect, useState } from "react";
-import { AsyncStorage, SafeAreaView, StyleSheet, View } from "react-native";
-import { BackButton, NativeRouter, Redirect, Route, Switch } from "react-router-native";
-import TabBar from "./components/tabBar/TabBar";
-import { ReloadFunctionContext } from "./contexts";
-import { GlobalCalendarStore } from "./stores";
-import StorageKey from "./stores/storageKey";
+import React, { useContext, useEffect, useState } from "react";
+import { AsyncStorage } from "react-native";
+import { BackButton, NativeRouter } from "react-router-native";
+import { CalendarContext, ReloadFunctionContext } from "./contexts";
+import StorageKey from "./storageKey";
 import { fetchCalendar } from "./util/calendarUtil";
 import LoadingView from "./views/LoadingView";
-import SettingsView from "./views/SettingsView";
-import TodayView from "./views/TodayView";
-
-const styles = StyleSheet.create({
-    body: {
-        flex: 1
-    },
-    screen: {
-        backgroundColor: "green",
-        flex: 1
-    }
-});
-
-function MainView() {
-    return (
-        <SafeAreaView style={styles.body}>
-            <View style={styles.screen}>
-                <Switch>
-                    <Route path="/today" component={TodayView} />
-                    <Route path="/settings" component={SettingsView} />
-                    <Redirect to="/today" />
-                </Switch>
-            </View>
-            <TabBar />
-        </SafeAreaView>
-    );
-}
+import MainView from "./views/MainView";
 
 export enum ApplicationState {
     Setup = "Setting Up",
@@ -53,6 +25,7 @@ export enum ApplicationState {
 
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
+    const calendar = useContext(CalendarContext);
 
     async function Load(reset = false) {
         setCurrentTask(ApplicationState.PreparingMP);
@@ -66,18 +39,17 @@ export default function App() {
         setCurrentTask(ApplicationState.LoadingCal);
 
         // Load from cache if exists
-        await hydrate(StorageKey.Calendar, GlobalCalendarStore);
+        await hydrate(StorageKey.Calendar, calendar);
 
         // If not loaded, download it
-        if (GlobalCalendarStore.updated.getTime() === 0 || reset) {
+        if (calendar.updated.getTime() === 0 || reset) {
             setCurrentTask(ApplicationState.DownloadingCal);
-            console.log("Downloading");
 
             // Fetch the calendar off of the interweb
             let rawcal = await fetchCalendar();
 
             setCurrentTask(ApplicationState.ParsingCal);
-            await GlobalCalendarStore.updateCalendar(rawcal);
+            await calendar.updateCalendar(rawcal);
         }
 
         setCurrentTask(ApplicationState.Opening);
@@ -92,14 +64,14 @@ export default function App() {
     if (currentTask === ApplicationState.Loaded) {
         return (
             <NativeRouter>
-                <BackButton >
+                <BackButton>
                     <ReloadFunctionContext.Provider value={Load}>
                         <MainView />
                     </ReloadFunctionContext.Provider>
-                </BackButton >
+                </BackButton>
             </NativeRouter>
         );
     } else {
-        return <LoadingView task={currentTask} />;
+        return <LoadingView task={currentTask}/>;
     }
 }

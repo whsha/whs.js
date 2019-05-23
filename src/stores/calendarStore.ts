@@ -2,44 +2,37 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { action, computed, observable } from "mobx";
+import { action, computed, IComputedValue, observable } from "mobx";
 import { persist } from "mobx-persist";
-import moment from "moment";
+import moment, { Moment } from "moment";
 import { ICalendarEvent, ICalendarSchoolDay, parseCalendar } from "../util/calendarUtil";
 
 export default class CalendarStore {
     /** Get the current school day */
-    @computed
-    public get currentSchoolDay(): ICalendarSchoolDay | undefined {
-        let currentDate = moment().format("YYYY-MM-DD");
-
-        return this.schoolDays.get(currentDate);
+    public schoolDay(date: Moment): IComputedValue<ICalendarSchoolDay | undefined> {
+        return computed(() => this.schoolDays.get(date.format("YYYY-MM-DD")));
     }
 
-    // /** Get the next school day in the schedule */
-    // @computed
-    // public get nextSchoolDay(): ICalendarSchoolDay {
-    //     let currentDate = moment().format("YYYY-MM-DD");
+    /** Get the next day which has a school day after the given date */
+    public nextSchoolDayAfter(date: string): IComputedValue<string | undefined> {
+        return computed(() => {
+            let currentDate = moment(date).format("YYYY-MM-DD");
 
-    //     let nextschoolday = this.schoolDays.slice().sort(
-    //         (a, b) => moment(a.date).diff(moment(b.date))
-    //     ).find(x => moment(x.date).isAfter(currentDate));
+            let nextschoolday = Array.from(this.schoolDays.keys()).sort(
+                (a, b) => moment(a).diff(moment(b))
+            ).find(x => moment(x).isAfter(currentDate));
 
-    //     return nextschoolday === undefined ? {
-    //         date: currentDate,
-    //         dayNumber: SchoolDay.One,
-    //         isHalf: false
-    //     } : nextschoolday;
-    // }
+            return nextschoolday;
+        });
+    }
 
-     /** Get the current events */
-    @computed
-    public get currentEvents(): ICalendarEvent[] {
-        let currentDate = moment().format("YYYY-MM-DD");
+    /** Get the events for a day */
+    public eventsOn(date: Moment): IComputedValue<ICalendarEvent[]> {
+        return computed(() => {
+            let events = this.events.get(date.format("YYYY-MM-DD"));
 
-        let events = this.events.get(currentDate);
-
-        return events === undefined ? [] : events;
+            return events === undefined ? [] : events;
+        });
     }
 
     /** The date this store was last updated */
@@ -55,7 +48,7 @@ export default class CalendarStore {
     @persist("map") @observable
     private schoolDays = observable.map<string, ICalendarSchoolDay>();
     /** The last data this store was updated */
-    @persist("object") @observable
+    @persist @observable
     private _updated = 0;
 
     /** Update the stored calendar to match the live version */

@@ -4,9 +4,9 @@
 
 enum StorageKey {
     /** The WHS Calendar caches */
-    Calendar = "@whs/calendar",
+    Calendar = "@whs.js/calendar",
     /** The Users Classes */
-    Classes = "@whs/classes"
+    Classes = "@whs.js/classes"
 }
 
 export default StorageKey;

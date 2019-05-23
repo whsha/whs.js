@@ -5,7 +5,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { Prompt } from "react-router-native";
 import useRouter from "use-react-router";
 import AdvisoryComponent from "../../components/AdvisoryComponent";
 import { SinglelineHeader } from "../../components/header/Header";
