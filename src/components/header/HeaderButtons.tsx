@@ -29,7 +29,7 @@ interface IHeaderDoneButtonProps {
 }
 export function HeaderDoneButton({ onPress, disabled }: IHeaderDoneButtonProps) {
     return (
-        <TouchableOpacity style={[styles.buttonContainer, { right: 0 }]} onPress={onPress} disabled={disabled}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={onPress} disabled={disabled}>
             <Text style={[styles.button, styles.doneButton, disabled === true ? styles.disabled : undefined]}>Save</Text>
         </TouchableOpacity>
     );
@@ -40,7 +40,7 @@ interface IHeaderBackButtonProps {
 }
 export function HeaderBackButton({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity style={[styles.buttonContainer, { left: 0 }]} onPress={onPress}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
             <Text style={styles.button}>Cancel</Text>
         </TouchableOpacity>
     );

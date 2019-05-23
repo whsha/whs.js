@@ -5,7 +5,7 @@
 import { Linking } from "expo";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
@@ -20,9 +20,10 @@ const styles = StyleSheet.create({
     }
 });
 
-function LastUpdate() {
+function ClearCalCacheCell() {
     const calendar = useContext(CalendarContext);
     let [fromNow, setFromNow] = useState(moment(calendar.updated).fromNow());
+    const load = useContext(ReloadFunctionContext);
 
     useEffect(() => {
         let interval = setInterval(() => setFromNow(moment(calendar.updated).fromNow()), 1000);
@@ -30,16 +31,17 @@ function LastUpdate() {
         return () => clearInterval(interval);
     }, []);
 
+    const clearCalendarCache = () => {
+        load(true);
+    };
+
     return (
-        <Text>
-            Last update: {fromNow}
-        </Text>
+        <Cell title="Clear Calendar Cache" detail={`Last update: ${fromNow}`} cellStyle="Subtitle" titleTextStyle={styles.redbutton} onPress={clearCalendarCache} />
     );
 }
 
 export default function MainView() {
     const { history, match, location } = useRouter();
-    const load = useContext(ReloadFunctionContext);
 
     function navigateTo(to: string) {
         return () => {
@@ -52,10 +54,6 @@ export default function MainView() {
             Linking.openURL(link);
         };
     }
-
-    const clearCalendarCache = () => {
-        load(true);
-    };
 
     return (
         <View style={styles.container}>
@@ -77,7 +75,7 @@ export default function MainView() {
                         <Cell title="Source Code" accessory="Detail" onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
                     </Section>
                     <Section header="Cache" footer="If your schedule shows up incorrectly, clearing the caches may help.">
-                        <Cell title="Clear Calendar Cache" cellAccessoryView={<LastUpdate/>} cellStyle="Subtitle" titleTextStyle={styles.redbutton} onPress={clearCalendarCache} />
+                        <ClearCalCacheCell/>
                     </Section>
                     <Section header="Debugging Tools">
                         <Cell title="Current Match" cellStyle="RightDetail" detail={match.path} />

@@ -4,7 +4,6 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { HeaderBackButton, HeaderDoneButton } from "./HeaderButtons";
 
 const styles = StyleSheet.create({
     header: {
@@ -35,32 +34,43 @@ const styles = StyleSheet.create({
 interface IMultilineHeaderProps {
     title: string;
     subtitle: string;
+    leftButton?: JSX.Element;
+    rightButton?: JSX.Element;
 }
 
 /** A header with multiple lines. A Title and a subtitle */
-export function MultilineHeader({ title, subtitle }: IMultilineHeaderProps) {
+export function MultilineHeader({ title, subtitle, leftButton, rightButton }: IMultilineHeaderProps) {
     return (
         <View style={styles.header}>
+            <View style={{ left: 0 }}>
+                {leftButton}
+            </View>
             <Text style={styles.headerTitle}>{title}</Text>
             <Text style={styles.headerSubtitle}>{subtitle}</Text>
+            <View style={{ right: 0 }}>
+                {rightButton}
+            </View>
         </View>
     );
 }
 
 interface ISinglelineHeader {
     title: string;
-    back?(): void;
-    done?(): void;
-    canDone?: boolean;
+    leftButton?: JSX.Element;
+    rightButton?: JSX.Element;
 }
 
 /** A header with a single line: a Title */
-export function SinglelineHeader({ title, back, done, canDone }: ISinglelineHeader) {
+export function SinglelineHeader({ title, leftButton, rightButton }: ISinglelineHeader) {
     return (
         <View style={styles.header}>
-            {back === undefined ? undefined : <HeaderBackButton onPress={back} />}
+            <View style={{ left: 0 }}>
+                {leftButton}
+            </View>
             <Text style={styles.singleHeaderTitle}>{title}</Text>
-            {done === undefined ? undefined : <HeaderDoneButton onPress={done} disabled={canDone !== true} />}
+            <View style={{ right: 0 }}>
+                {rightButton}
+            </View>
         </View>
     );
 }
