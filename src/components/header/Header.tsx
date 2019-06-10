@@ -24,6 +24,18 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center"
     },
+    leftButton: {
+        left: 0,
+        marginHorizontal: 15,
+        marginVertical: 10,
+        position: "absolute",
+    },
+    rightButton: {
+        marginHorizontal: 15,
+        marginVertical: 10,
+        position: "absolute",
+        right: 0
+    },
     singleHeaderTitle: {
         fontSize: 18,
         fontWeight: "500",
@@ -42,12 +54,12 @@ interface IMultilineHeaderProps {
 export function MultilineHeader({ title, subtitle, leftButton, rightButton }: IMultilineHeaderProps) {
     return (
         <View style={styles.header}>
-            <View style={{ left: 0 }}>
+            <View style={styles.leftButton}>
                 {leftButton}
             </View>
             <Text style={styles.headerTitle}>{title}</Text>
             <Text style={styles.headerSubtitle}>{subtitle}</Text>
-            <View style={{ right: 0 }}>
+            <View style={styles.rightButton}>
                 {rightButton}
             </View>
         </View>
@@ -64,11 +76,11 @@ interface ISinglelineHeader {
 export function SinglelineHeader({ title, leftButton, rightButton }: ISinglelineHeader) {
     return (
         <View style={styles.header}>
-            <View style={{ left: 0 }}>
+            <View style={styles.leftButton}>
                 {leftButton}
             </View>
             <Text style={styles.singleHeaderTitle}>{title}</Text>
-            <View style={{ right: 0 }}>
+            <View style={styles.rightButton}>
                 {rightButton}
             </View>
         </View>

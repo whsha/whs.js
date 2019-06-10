@@ -8,7 +8,7 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import AdvisoryComponent from "../../components/AdvisoryComponent";
 import { SinglelineHeader } from "../../components/header/Header";
-import { HeaderBackButton, HeaderDoneButton } from "../../components/header/HeaderButtons";
+import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 
 const styles = StyleSheet.create({
     container: {
@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
         flex: 1
     },
     text: {
+        backgroundColor: "red",
         flex: 1,
-        height: 40
+        height: 40,
     }
 });
 
@@ -32,7 +33,7 @@ export default function AdvisoryConfigureView() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Advisory Settings" leftButton={<HeaderBackButton onPress={goBack}/>} rightButton={<HeaderDoneButton onPress={done} disabled={true}/>} />
+            <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={true}/>} />
             <TableView>
                 <Section header="Advisory Teacher">
                     <Cell cellContentView={<TextInput value={teacher} onChangeText={setTeacher} style={styles.text} />} />

@@ -2,7 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Linking } from "expo";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -51,7 +50,9 @@ export default function MainView() {
 
     function openLink(link: string) {
         return () => {
-            Linking.openURL(link);
+            console.log(link);
+            // FIXME:
+            // Linking.openURL(link);
         };
     }
 
