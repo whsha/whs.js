@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
     }
 });
 
-interface IProps {
+export interface IAdvisory {
     teacher: string;
     room: number;
 }
-export default function AdvisoryComponent({teacher, room}: IProps) {
+export default function AdvisoryComponent({teacher, room}: IAdvisory) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>

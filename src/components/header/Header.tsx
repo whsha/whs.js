@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const styles = StyleSheet.create({
     header: {
@@ -48,17 +48,20 @@ interface IMultilineHeaderProps {
     subtitle: string;
     leftButton?: JSX.Element;
     rightButton?: JSX.Element;
+    onClick?(event: GestureResponderEvent): void;
 }
 
 /** A header with multiple lines. A Title and a subtitle */
-export function MultilineHeader({ title, subtitle, leftButton, rightButton }: IMultilineHeaderProps) {
+export function MultilineHeader({ title, subtitle, leftButton, rightButton, onClick }: IMultilineHeaderProps) {
     return (
         <View style={styles.header}>
             <View style={styles.leftButton}>
                 {leftButton}
             </View>
-            <Text style={styles.headerTitle}>{title}</Text>
-            <Text style={styles.headerSubtitle}>{subtitle}</Text>
+            <TouchableOpacity onPress={onClick}>
+                <Text style={styles.headerTitle}>{title}</Text>
+                <Text style={styles.headerSubtitle}>{subtitle}</Text>
+            </TouchableOpacity>
             <View style={styles.rightButton}>
                 {rightButton}
             </View>

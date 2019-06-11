@@ -9,7 +9,7 @@ import AdvisoryComponent from "../components/AdvisoryComponent";
 import { MultilineHeader } from "../components/header/Header";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import TodayEvent from "../components/TodayEvent";
-import { CalendarContext } from "../contexts";
+import { AdvisoryContext, CalendarContext } from "../contexts";
 import { Block } from "../util/blocks/block";
 import { BlockColor } from "../util/blocks/blockColor";
 import { ICalendarEvent, SchoolDay } from "../util/calendarUtil";
@@ -38,7 +38,8 @@ function useDate(start: Moment) {
     return {
         date: moment.unix(date),
         decrementDate: () => setDate(predate => moment.unix(predate).subtract(1, "day").unix()),
-        incrementDate: () => setDate(predate => moment.unix(predate).add(1, "day").unix())
+        incrementDate: () => setDate(predate => moment.unix(predate).add(1, "day").unix()),
+        setToToday: () => setDate(moment().unix())
     };
 }
 
@@ -50,10 +51,13 @@ export default function TodayView() {
     let {
         date,
         decrementDate,
-        incrementDate
+        incrementDate,
+        setToToday
     } = useDate(moment(Date.now()));
 
     const schoolDay = calendar.schoolDay(date).get();
+
+    const [advisory] = useContext(AdvisoryContext);
 
     return (
         <View style={styles.todayView}>
@@ -62,9 +66,10 @@ export default function TodayView() {
                 subtitle={date.format("dddd, MMMM Do")}
                 leftButton={<HeaderLeftArrow onPress={decrementDate}/>}
                 rightButton={<HeaderRightArrow onPress={incrementDate}/>}
+                onClick={setToToday}
             />
             <View style={styles.classesView}>
-                <AdvisoryComponent room={0} teacher={"this is a realluy long teacher name as well as a big room number aa a a a a a a a a a a a a a"} />
+                <AdvisoryComponent {...advisory} />
                 <Text>
                     {schoolDay === undefined ? "No School" : JSON.stringify(Object.keys(Block).filter(x => isNaN(parseInt(x, 10))).map((x) => MapOfBlocksToColor[x as keyof typeof Block][SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]).map(x => BlockColor[x]), undefined, 4)}
                 </Text>

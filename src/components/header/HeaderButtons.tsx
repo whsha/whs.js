@@ -7,6 +7,13 @@ import { GestureResponderEvent, Platform, StyleSheet, Text, TouchableOpacity } f
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 const styles = StyleSheet.create({
+    arrowButton: {
+        alignItems: "center",
+        flex: 1,
+        height: 30,
+        justifyContent: "center",
+        width: 30,
+    },
     button: {
         color: "#2f95dc",
         fontSize: 17
@@ -46,7 +53,7 @@ export function HeaderCancelButton({ onPress }: IHeaderBackButtonProps) {
 
 export function HeaderLeftArrow({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress} style={styles.arrowButton}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-back`}
                 // tslint:disable-next-line:no-magic-numbers
@@ -59,7 +66,7 @@ export function HeaderLeftArrow({ onPress }: IHeaderBackButtonProps) {
 
 export function HeaderRightArrow({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress} style={styles.arrowButton}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-forward`}
                 // tslint:disable-next-line:no-magic-numbers

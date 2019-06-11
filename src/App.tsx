@@ -6,7 +6,8 @@ import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
 import { BackButton, NativeRouter } from "react-router-native";
-import { CalendarContext, ReloadFunctionContext } from "./contexts";
+import { IAdvisory } from "./components/AdvisoryComponent";
+import { AdvisoryContext, CalendarContext, ReloadFunctionContext } from "./contexts";
 import StorageKey from "./storageKey";
 import { fetchCalendar } from "./util/calendarUtil";
 import LoadingView from "./views/LoadingView";
@@ -61,17 +62,21 @@ export default function App() {
         Load().catch(() => setCurrentTask(ApplicationState.Errored));
     }, []);
 
+    const advisoryState = useState<IAdvisory>({ room: 0, teacher: "" });
+
     if (currentTask === ApplicationState.Loaded) {
         return (
             <NativeRouter>
                 <BackButton>
                     <ReloadFunctionContext.Provider value={Load}>
-                        <MainView />
+                        <AdvisoryContext.Provider value={advisoryState}>
+                            <MainView />
+                        </AdvisoryContext.Provider>
                     </ReloadFunctionContext.Provider>
                 </BackButton>
             </NativeRouter>
         );
     } else {
-        return <LoadingView task={currentTask}/>;
+        return <LoadingView task={currentTask} />;
     }
 }
