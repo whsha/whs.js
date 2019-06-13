@@ -28,6 +28,7 @@
         "react-native-tableview-simple": "^2.0.1",
         "react-native-vector-icons": "^6.4.2",
         "react-router-native": "^5.0.0",
+        "sentry-expo": "^1.13.0",
         "use-react-router": "^1.0.6"
     },
     "devDependencies": {

@@ -6,8 +6,8 @@ import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
 import { BackButton, NativeRouter } from "react-router-native";
-import { IAdvisory } from "./components/AdvisoryComponent";
-import { AdvisoryContext, CalendarContext, ReloadFunctionContext } from "./contexts";
+import Sentry from "sentry-expo";
+import { CalendarContext, ClassesContext, ReloadFunctionContext } from "./contexts";
 import StorageKey from "./storageKey";
 import { fetchCalendar } from "./util/calendarUtil";
 import LoadingView from "./views/LoadingView";
@@ -19,14 +19,20 @@ export enum ApplicationState {
     LoadingCal = "Loading Calendar",
     DownloadingCal = "Downloading Calendar",
     ParsingCal = "Parsing Calendar",
+    LoadingClasses = "Loading Classes",
     Opening = "Opening App",
     Errored = "ERRORED",
     Loaded = "LOADED"
 }
 
+Sentry.enableInExpoDevelopment = true;
+
+Sentry.config("https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747").install();
+
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
     const calendar = useContext(CalendarContext);
+    const classes = useContext(ClassesContext);
 
     async function Load(reset = false) {
         setCurrentTask(ApplicationState.PreparingMP);
@@ -53,6 +59,9 @@ export default function App() {
             await calendar.updateCalendar(rawcal);
         }
 
+        setCurrentTask(ApplicationState.LoadingClasses);
+        await hydrate(StorageKey.Classes, classes);
+
         setCurrentTask(ApplicationState.Opening);
 
         setCurrentTask(ApplicationState.Loaded);
@@ -62,16 +71,12 @@ export default function App() {
         Load().catch(() => setCurrentTask(ApplicationState.Errored));
     }, []);
 
-    const advisoryState = useState<IAdvisory>({ room: 0, teacher: "" });
-
     if (currentTask === ApplicationState.Loaded) {
         return (
             <NativeRouter>
                 <BackButton>
                     <ReloadFunctionContext.Provider value={Load}>
-                        <AdvisoryContext.Provider value={advisoryState}>
-                            <MainView />
-                        </AdvisoryContext.Provider>
+                        <MainView />
                     </ReloadFunctionContext.Provider>
                 </BackButton>
             </NativeRouter>

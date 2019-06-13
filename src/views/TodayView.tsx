@@ -4,12 +4,13 @@
 
 import moment, { Moment } from "moment";
 import React, { useContext, useState } from "react";
-import { FlatList, ListRenderItem, Modal, StyleSheet, Text, View } from "react-native";
+import { FlatList, ListRenderItem, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import AdvisoryComponent from "../components/AdvisoryComponent";
+import ClassComponent from "../components/ClassComponent";
 import { MultilineHeader } from "../components/header/Header";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import TodayEvent from "../components/TodayEvent";
-import { AdvisoryContext, CalendarContext } from "../contexts";
+import { CalendarContext, ClassesContext } from "../contexts";
 import { Block } from "../util/blocks/block";
 import { BlockColor } from "../util/blocks/blockColor";
 import { ICalendarEvent, SchoolDay } from "../util/calendarUtil";
@@ -57,7 +58,7 @@ export default function TodayView() {
 
     const schoolDay = calendar.schoolDay(date).get();
 
-    const [advisory] = useContext(AdvisoryContext);
+    const classes = useContext(ClassesContext);
 
     return (
         <View style={styles.todayView}>
@@ -68,12 +69,13 @@ export default function TodayView() {
                 rightButton={<HeaderRightArrow onPress={incrementDate}/>}
                 onClick={setToToday}
             />
-            <View style={styles.classesView}>
-                <AdvisoryComponent {...advisory} />
+            <ScrollView style={styles.classesView}>
+                <ClassComponent block={BlockColor.Green} end={moment("8:34 AM")} name="this is green class" room={420} start={moment("9:33 AM")} teacher="one"/>
+                <AdvisoryComponent {...classes.advisory} />
                 <Text>
                     {schoolDay === undefined ? "No School" : JSON.stringify(Object.keys(Block).filter(x => isNaN(parseInt(x, 10))).map((x) => MapOfBlocksToColor[x as keyof typeof Block][SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]).map(x => BlockColor[x]), undefined, 4)}
                 </Text>
-            </View>
+            </ScrollView>
             {/* TODO: */}
             <Modal visible={false}>
                 <FlatList
