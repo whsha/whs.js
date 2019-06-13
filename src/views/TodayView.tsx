@@ -70,7 +70,22 @@ export default function TodayView() {
                 onClick={setToToday}
             />
             <ScrollView style={styles.classesView}>
-                <ClassComponent block={BlockColor.Green} end={moment("8:34 AM")} name="this is green class" room={420} start={moment("9:33 AM")} teacher="one"/>
+                <ClassComponent
+                    block={BlockColor.None}
+                    start={moment("7:30 AM", "H:mm A")}
+                    end={moment("8:29 AM", "H:mm A")}
+                    name="this is green class"
+                    room={420}
+                    teacher="one"
+                />
+                <ClassComponent
+                    block={BlockColor.Green}
+                    start={moment("8:34 AM", "H:mm A")}
+                    end={moment("9:33 AM", "H:mm A")}
+                    name="this is green class"
+                    room={420}
+                    teacher="one"
+                />
                 <AdvisoryComponent {...classes.advisory} />
                 <Text>
                     {schoolDay === undefined ? "No School" : JSON.stringify(Object.keys(Block).filter(x => isNaN(parseInt(x, 10))).map((x) => MapOfBlocksToColor[x as keyof typeof Block][SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]).map(x => BlockColor[x]), undefined, 4)}

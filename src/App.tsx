@@ -64,6 +64,8 @@ export default function App() {
 
         setCurrentTask(ApplicationState.Opening);
 
+        throw new Error("intentional error");
+
         setCurrentTask(ApplicationState.Loaded);
     }
 

@@ -53,8 +53,8 @@ export default function ClassComponent({teacher, room, name, start, end, block}:
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>
-                <Text style={[styles.title, {color: BlockColorDisplayColors[BlockColor[block]]}]}>{name}</Text>
-                <Text style={styles.dim}>{start.format("hh:mm")} - {end.format("hh:mm")}</Text>
+                <Text style={[styles.title, {color: BlockColorDisplayColors[block]}]}>{name}</Text>
+                <Text style={styles.dim}>{start.format("HH:mm")} - {end.format("HH:mm A")}</Text>
             </View>
             <View style={[styles.dualView, styles.info]}>
                 <Text style={[styles.dim, styles.teacher]} numberOfLines={1}>{teacher}</Text>

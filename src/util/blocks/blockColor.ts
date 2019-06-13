@@ -9,16 +9,17 @@ export enum BlockColor {
 }
 
 type BlockColorColorMap = {
-    readonly [B in keyof typeof BlockColor]: string;
+    readonly [B in BlockColor]: string;
 };
 
+// TODO: Custom hex
 export const BlockColorDisplayColors: BlockColorColorMap = {
-    Blue: "blue",
-    Green: "green",
-    None: "none",
-    Orange: "orange",
-    Purple: "purple",
-    Red: "#FF8080",
-    Tan: "tan",
-    Yellow: "gold"
+    [BlockColor.Blue]: "blue",
+    [BlockColor.Green]: "green",
+    [BlockColor.None]: "#C0C0C0",
+    [BlockColor.Orange]: "orange",
+    [BlockColor.Purple]: "purple",
+    [BlockColor.Red]: "#FF8080",
+    [BlockColor.Tan]: "tan",
+    [BlockColor.Yellow]: "gold"
 };
