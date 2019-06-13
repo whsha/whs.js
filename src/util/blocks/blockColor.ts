@@ -19,7 +19,7 @@ export const BlockColorDisplayColors: BlockColorColorMap = {
     [BlockColor.None]: "#C0C0C0",
     [BlockColor.Orange]: "orange",
     [BlockColor.Purple]: "purple",
-    [BlockColor.Red]: "#FF8080",
+    [BlockColor.Red]: "red",
     [BlockColor.Tan]: "tan",
     [BlockColor.Yellow]: "gold"
 };

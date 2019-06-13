@@ -18,9 +18,7 @@ import { MapOfBlocksToColor } from "../util/schoolDays";
 
 const styles = StyleSheet.create({
     classesView: {
-        backgroundColor: "red",
-        borderBottomWidth: 2,
-        borderColor: "#EFEFF4",
+        backgroundColor: "#EFEFF4",
         flex: 1
     },
     eventsList: {
@@ -28,8 +26,7 @@ const styles = StyleSheet.create({
         height: 100
     },
     todayView: {
-        backgroundColor: "purple",
-        flex: 1,
+        flex: 1
     }
 });
 
@@ -60,6 +57,14 @@ export default function TodayView() {
 
     const classes = useContext(ClassesContext);
 
+    const colors = schoolDay === undefined ? [BlockColor.None].fill(BlockColor.None, 0, 7) : Object.keys(Block)
+        .filter(x =>
+            isNaN(parseInt(x, 10))
+        ).map((x) =>
+            MapOfBlocksToColor[x as keyof typeof Block]
+                [SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]
+        );
+
     return (
         <View style={styles.todayView}>
             <MultilineHeader
@@ -71,24 +76,60 @@ export default function TodayView() {
             />
             <ScrollView style={styles.classesView}>
                 <ClassComponent
-                    block={BlockColor.None}
+                    block={colors[0]}
                     start={moment("7:30 AM", "H:mm A")}
                     end={moment("8:29 AM", "H:mm A")}
-                    name="this is green class"
-                    room={420}
-                    teacher="one"
+                    name="Example"
+                    room={0}
+                    teacher="Mr. Example"
                 />
                 <ClassComponent
-                    block={BlockColor.Green}
+                    block={colors[1]}
                     start={moment("8:34 AM", "H:mm A")}
                     end={moment("9:33 AM", "H:mm A")}
-                    name="this is green class"
-                    room={420}
-                    teacher="one"
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
                 />
                 <AdvisoryComponent {...classes.advisory} />
+                <ClassComponent
+                    block={colors[2]}
+                    start={moment("9:51 AM", "H:mm A")}
+                    end={moment("10:50 AM", "H:mm A")}
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
+                />
+                {/* FIXME: LUNCH BLOCK */}
+                <ClassComponent
+                    block={colors[3]}
+                    // FIXME: LUNCH
+                    start={moment("10:55 AM", "H:mm A")}
+                    // FIXME: LUNCH
+                    end={moment("12:22 AM", "H:mm A")}
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
+                />
+                {/* END FIXME: */}
+                <ClassComponent
+                    block={colors[4]}
+                    start={moment("12:27 AM", "H:mm A")}
+                    end={moment("1:26 AM", "H:mm A")}
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
+                />
+                <ClassComponent
+                    block={colors[5]}
+                    start={moment("1:31 AM", "H:mm A")}
+                    end={moment("2:30 AM", "H:mm A")}
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
+                />
                 <Text>
-                    {schoolDay === undefined ? "No School" : JSON.stringify(Object.keys(Block).filter(x => isNaN(parseInt(x, 10))).map((x) => MapOfBlocksToColor[x as keyof typeof Block][SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]).map(x => BlockColor[x]), undefined, 4)}
+                    {schoolDay === undefined ? "No School" : JSON.stringify(colors, undefined, 4)}
                 </Text>
             </ScrollView>
             {/* TODO: */}

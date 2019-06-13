@@ -2,7 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { observer } from "mobx-react-lite";
 import React, { } from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import { Redirect, Route, Switch } from "react-router-native";
@@ -15,12 +14,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     screen: {
-        backgroundColor: "green",
         flex: 1
     }
 });
 
-const MainView = observer(() => {
+export default function MainView() {
     return (
         <SafeAreaView style={styles.body}>
             <View style={styles.screen}>
@@ -33,6 +31,4 @@ const MainView = observer(() => {
             <TabBar />
         </SafeAreaView>
     );
-});
-
-export default MainView;
+}
