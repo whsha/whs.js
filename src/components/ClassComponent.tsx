@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Moment } from "moment";
+import {Dayjs} from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BlockColor, BlockColorDisplayColors } from "../util/blocks/blockColor";
@@ -46,8 +46,8 @@ export interface IClass {
     room: number;
     name: string;
     block: BlockColor;
-    start: Moment;
-    end: Moment;
+    start: Dayjs;
+    end: Dayjs;
 }
 export default function ClassComponent({teacher, room, name, start, end, block}: IClass) {
     return (

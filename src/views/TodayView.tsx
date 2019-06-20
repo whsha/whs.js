@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import moment, { Moment } from "moment";
+import dayjs, { Dayjs } from "dayjs";
 import React, { useContext, useState } from "react";
 import { FlatList, ListRenderItem, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import AdvisoryComponent from "../components/AdvisoryComponent";
@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
     }
 });
 
-function useDate(start: Moment) {
+function useDate(start: Dayjs) {
     let [date, setDate] = useState(start.unix());
 
     return {
-        date: moment.unix(date),
-        decrementDate: () => setDate(predate => moment.unix(predate).subtract(1, "day").unix()),
-        incrementDate: () => setDate(predate => moment.unix(predate).add(1, "day").unix()),
-        setToToday: () => setDate(moment().unix())
+        date: dayjs.unix(date),
+        decrementDate: () => setDate(predate => dayjs.unix(predate).subtract(1, "day").unix()),
+        incrementDate: () => setDate(predate => dayjs.unix(predate).add(1, "day").unix()),
+        setToToday: () => setDate(dayjs().unix())
     };
 }
 
@@ -51,7 +51,7 @@ export default function TodayView() {
         decrementDate,
         incrementDate,
         setToToday
-    } = useDate(moment(Date.now()));
+    } = useDate(dayjs(Date.now()));
 
     const schoolDay = calendar.schoolDay(date).get();
 
@@ -77,16 +77,16 @@ export default function TodayView() {
             <ScrollView style={styles.classesView}>
                 <ClassComponent
                     block={colors[0]}
-                    start={moment("7:30 AM", "H:mm A")}
-                    end={moment("8:29 AM", "H:mm A")}
+                    start={dayjs("7:30 AM", "H:mm A")}
+                    end={dayjs("8:29 AM", "H:mm A")}
                     name="Example"
                     room={0}
                     teacher="Mr. Example"
                 />
                 <ClassComponent
                     block={colors[1]}
-                    start={moment("8:34 AM", "H:mm A")}
-                    end={moment("9:33 AM", "H:mm A")}
+                    start={dayjs("8:34 AM", "H:mm A")}
+                    end={dayjs("9:33 AM", "H:mm A")}
                     name="Example"
                     room={100}
                     teacher="Mr. Example"
@@ -94,8 +94,8 @@ export default function TodayView() {
                 <AdvisoryComponent {...classes.advisory} />
                 <ClassComponent
                     block={colors[2]}
-                    start={moment("9:51 AM", "H:mm A")}
-                    end={moment("10:50 AM", "H:mm A")}
+                    start={dayjs("9:51 AM", "H:mm A")}
+                    end={dayjs("10:50 AM", "H:mm A")}
                     name="Example"
                     room={100}
                     teacher="Mr. Example"
@@ -104,9 +104,9 @@ export default function TodayView() {
                 <ClassComponent
                     block={colors[3]}
                     // FIXME: LUNCH
-                    start={moment("10:55 AM", "H:mm A")}
+                    start={dayjs("10:55 AM", "H:mm A")}
                     // FIXME: LUNCH
-                    end={moment("12:22 AM", "H:mm A")}
+                    end={dayjs("12:22 AM", "H:mm A")}
                     name="Example"
                     room={100}
                     teacher="Mr. Example"
@@ -114,16 +114,16 @@ export default function TodayView() {
                 {/* END FIXME: */}
                 <ClassComponent
                     block={colors[4]}
-                    start={moment("12:27 AM", "H:mm A")}
-                    end={moment("1:26 AM", "H:mm A")}
+                    start={dayjs("12:27 AM", "H:mm A")}
+                    end={dayjs("1:26 AM", "H:mm A")}
                     name="Example"
                     room={100}
                     teacher="Mr. Example"
                 />
                 <ClassComponent
                     block={colors[5]}
-                    start={moment("1:31 AM", "H:mm A")}
-                    end={moment("2:30 AM", "H:mm A")}
+                    start={dayjs("1:31 AM", "H:mm A")}
+                    end={dayjs("2:30 AM", "H:mm A")}
                     name="Example"
                     room={100}
                     teacher="Mr. Example"

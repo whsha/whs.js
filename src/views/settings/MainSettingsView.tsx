@@ -2,13 +2,16 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import moment from "moment";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
+
+dayjs.extend(relativeTime);
 
 const styles = StyleSheet.create({
     container: {
@@ -21,11 +24,11 @@ const styles = StyleSheet.create({
 
 function ClearCalCacheCell() {
     const calendar = useContext(CalendarContext);
-    let [fromNow, setFromNow] = useState(moment(calendar.updated).fromNow());
+    let [fromNow, setFromNow] = useState(dayjs(calendar.updated).fromNow());
     const load = useContext(ReloadFunctionContext);
 
     useEffect(() => {
-        let interval = setInterval(() => setFromNow(moment(calendar.updated).fromNow()), 1000);
+        let interval = setInterval(() => setFromNow(dayjs(calendar.updated).fromNow()), 1000);
 
         return () => clearInterval(interval);
     }, []);

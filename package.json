@@ -16,12 +16,12 @@
     },
     "dependencies": {
         "babel-preset-expo": "^5.1.1",
+        "dayjs": "^1.8.14",
         "expo": "^33.0.0",
         "ical.js": "^1.3.0",
         "mobx": "^5.9.4",
         "mobx-persist": "^0.4.1",
         "mobx-react-lite": "^1.3.2",
-        "moment": "^2.24.0",
         "react": "16.8.3",
         "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
         "react-native-picker-select": "^6.1.0",

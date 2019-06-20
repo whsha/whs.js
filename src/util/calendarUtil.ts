@@ -2,8 +2,8 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import dayjs from "dayjs";
 import ICal from "ical.js";
-import moment from "moment";
 
 /** The information about a calendar */
 export interface ICalendarInformation {
@@ -105,7 +105,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
             // If the summary matched, Add the school day to the array of school days
             schoolDays.push({
                 // The date that the school day is on, parsed from the event date
-                date: moment(date.toJSDate()).format("YYYY-MM-DD"),
+                date: dayjs(date.toJSDate()).format("YYYY-MM-DD"),
                 // The day number from the regex match, parsed as an intager
                 dayNumber: parseInt(match[SchoolDayRegexMatch.SchoolDay], 10) as SchoolDay,
                 // If the day is a half day
@@ -130,7 +130,7 @@ export function parseCalendar(rawical: string): ICalendarInformation {
                 // The end date of the event, if any
                 end: end === null ? undefined : end.toJSDate(),
                 // If there is no end date or the event lasts 24 hours, that makes the event all day
-                isAllDay: end === null || moment(end.toJSDate()).diff(date.toJSDate(), "days") === 1,
+                isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
                 // The location of the event
                 location: location === null ? undefined : location,
                 // The summary (title) of the event

@@ -2,32 +2,32 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import dayjs, { Dayjs } from "dayjs";
 import { action, computed, IComputedValue, observable } from "mobx";
 import { persist } from "mobx-persist";
-import moment, { Moment } from "moment";
 import { ICalendarEvent, ICalendarSchoolDay, parseCalendar } from "../util/calendarUtil";
 
 export default class CalendarStore {
     /** Get the current school day */
-    public schoolDay(date: Moment): IComputedValue<ICalendarSchoolDay | undefined> {
+    public schoolDay(date: Dayjs): IComputedValue<ICalendarSchoolDay | undefined> {
         return computed(() => this.schoolDays.get(date.format("YYYY-MM-DD")));
     }
 
-    /** Get the next day which has a school day after the given date */
-    public nextSchoolDayAfter(date: string): IComputedValue<string | undefined> {
-        return computed(() => {
-            let currentDate = moment(date).format("YYYY-MM-DD");
+    // /** Get the next day which has a school day after the given date */
+    // public nextSchoolDayAfter(date: string): IComputedValue<string | undefined> {
+    //     return computed(() => {
+    //         let currentDate = dayjs(date).format("YYYY-MM-DD");
 
-            let nextschoolday = Array.from(this.schoolDays.keys()).sort(
-                (a, b) => moment(a).diff(moment(b))
-            ).find(x => moment(x).isAfter(currentDate));
+    //         let nextschoolday = Array.from(this.schoolDays.keys()).sort(
+    //             (a, b) => dayjs(a).diff(dayjs(b), "millisecond")
+    //         ).find(x => dayjs(x).isAfter(currentDate));
 
-            return nextschoolday;
-        });
-    }
+    //         return nextschoolday;
+    //     });
+    // }
 
     /** Get the events for a day */
-    public eventsOn(date: Moment): IComputedValue<ICalendarEvent[]> {
+    public eventsOn(date: Dayjs): IComputedValue<ICalendarEvent[]> {
         return computed(() => {
             let events = this.events.get(date.format("YYYY-MM-DD"));
 
@@ -62,7 +62,7 @@ export default class CalendarStore {
         this.events.clear();
         for (let event of parsed.events) {
             // Get day of the event
-            let day = moment(event.start).format("YYYY-MM-DD");
+            let day = dayjs(event.start).format("YYYY-MM-DD");
 
             let currentEvents = this.events.get(day);
 

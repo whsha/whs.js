@@ -1,13 +1,18 @@
 # Jest
-#
 .jest/
 
+# Node
 node_modules/**/*
-.expo
-npm-debug.*
 
+# Expo
+.expo
 *.jks
 *.p12
 *.key
 *.mobileprovision
+
+# Yarn
+*.log
+
+# Mac
 .DS_Store
