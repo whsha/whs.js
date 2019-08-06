@@ -13,18 +13,14 @@ export default class CalendarStore {
         return computed(() => this.schoolDays.get(date.format("YYYY-MM-DD")));
     }
 
-    // /** Get the next day which has a school day after the given date */
-    // public nextSchoolDayAfter(date: string): IComputedValue<string | undefined> {
-    //     return computed(() => {
-    //         let currentDate = dayjs(date).format("YYYY-MM-DD");
+    /** Get the next day which has a school day after the given date */
+    public nextSchoolDayAfter(date: Dayjs): IComputedValue<Dayjs> {
+        return computed(() => {
+            let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
 
-    //         let nextschoolday = Array.from(this.schoolDays.keys()).sort(
-    //             (a, b) => dayjs(a).diff(dayjs(b), "millisecond")
-    //         ).find(x => dayjs(x).isAfter(currentDate));
-
-    //         return nextschoolday;
-    //     });
-    // }
+            return dayjs(nextschoolday);
+        });
+    }
 
     /** Get the events for a day */
     public eventsOn(date: Dayjs): IComputedValue<ICalendarEvent[]> {
@@ -75,7 +71,9 @@ export default class CalendarStore {
             this.events.set(day, currentEvents);
         }
         this.schoolDays.clear();
-        this.schoolDays = observable.map(parsed.schoolDays.map(x => [x.date, x]));
+        this.schoolDays = observable.map(parsed.schoolDays.sort(
+            (a, b) => dayjs(a.date).diff(dayjs(b.date), "hour")
+        ).map(x => [x.date, x]));
         this._updated = parsed.updated.getTime();
     }
 }
