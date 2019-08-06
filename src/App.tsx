@@ -12,7 +12,6 @@ import StorageKey from "./storageKey";
 import { fetchCalendar } from "./util/calendarUtil";
 import LoadingView from "./views/LoadingView";
 import MainView from "./views/MainView";
-import ClassesStore from "./stores/classesStore";
 
 export enum ApplicationState {
     Setup = "Setting Up",
@@ -67,7 +66,10 @@ export default function App() {
     }
 
     useEffect(() => {
-        Load().catch(() => setCurrentTask(ApplicationState.Errored));
+        Load().catch((reason) => {
+            setCurrentTask(ApplicationState.Errored);
+            console.error(reason);
+        });
     }, []);
 
     if (currentTask === ApplicationState.Loaded) {

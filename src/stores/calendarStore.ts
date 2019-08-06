@@ -5,6 +5,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { action, computed, IComputedValue, observable } from "mobx";
 import { persist } from "mobx-persist";
+import * as TimSort from "timsort";
 import { ICalendarEvent, ICalendarSchoolDay, parseCalendar } from "../util/calendarUtil";
 
 export default class CalendarStore {
@@ -13,12 +14,24 @@ export default class CalendarStore {
         return computed(() => this.schoolDays.get(date.format("YYYY-MM-DD")));
     }
 
+    @persist("map")
+    public nextSchoolDayMap = new Map<string, string | undefined>();
+
     /** Get the next day which has a school day after the given date */
     public nextSchoolDayAfter(date: Dayjs): IComputedValue<Dayjs> {
         return computed(() => {
-            let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
+            let datestring = date.format("YYYY-MM-DD");
 
-            return dayjs(nextschoolday);
+            // Load from cache if possible
+            if (this.nextSchoolDayMap.has(datestring)) {
+                return dayjs(this.nextSchoolDayMap.get(datestring));
+            } else {
+                let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
+
+                this.nextSchoolDayMap.set(datestring, nextschoolday);
+
+                return dayjs(nextschoolday);
+            }
         });
     }
 
@@ -71,9 +84,12 @@ export default class CalendarStore {
             this.events.set(day, currentEvents);
         }
         this.schoolDays.clear();
-        this.schoolDays = observable.map(parsed.schoolDays.sort(
-            (a, b) => dayjs(a.date).diff(dayjs(b.date), "hour")
-        ).map(x => [x.date, x]));
+        TimSort.sort(parsed.schoolDays, (a, b) => dayjs(a.date).diff(dayjs(b.date), "hour"));
+        this.schoolDays = observable.map(
+            parsed.schoolDays.map(x =>
+                [x.date, x]
+            )
+        );
         this._updated = parsed.updated.getTime();
     }
 }

@@ -4,10 +4,11 @@
 
 import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList, ListRenderItem, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AdvisoryComponent from "../components/AdvisoryComponent";
 import ClassComponent from "../components/ClassComponent";
+import FreeComponent from "../components/FreeComponent";
 import { MultilineHeader } from "../components/header/Header";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import TodayEvent from "../components/TodayEvent";
@@ -27,6 +28,29 @@ const styles = StyleSheet.create({
     eventsList: {
         backgroundColor: "blue",
         height: 100
+    },
+    goToNextSchoolDay: {
+        alignItems: "flex-end",
+        backgroundColor: "white",
+        borderColor: "#A0A0A0",
+        borderRadius: 10,
+        borderWidth: 1,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+    },
+    goToNextSchoolDayDiffText: {
+        color: "#808080",
+    },
+    goToNextSchoolDayText : {
+        color: "#1f85cc",
+    },
+    noSchoolView: {
+        alignItems: "center",
+        backgroundColor: "#EFEFF4",
+        flex: 1,
+        height: "100%",
+        justifyContent: "center",
+        width: "100%"
     },
     todayView: {
         flex: 1
@@ -69,10 +93,8 @@ export default function TodayView() {
                 rightButton={<HeaderRightArrow onPress={incrementDate} />}
                 onClick={setToToday}
             />
-            <ScrollView style={styles.classesView}>
-                {/* FIXME: */}
-                {schoolDay === undefined ? <NoSchoolView selectedDate={date} setDate={setDate}/> : <ClassesView schoolDay={schoolDay} />}
-            </ScrollView>
+            {/* FIXME: */}
+            {schoolDay === undefined ? <NoSchoolView selectedDate={date} setDate={setDate} /> : <ClassesView schoolDay={schoolDay} />}
             {/* TODO: */}
             <Modal visible={false}>
                 <FlatList
@@ -99,14 +121,11 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
         );
 
     return (
-        <>
-            <ClassComponent
+        <ScrollView style={styles.classesView}>
+            <FreeComponent
                 block={colors[0]}
                 start={dayjs("7:30 AM", "h:mm A")}
                 end={dayjs("8:29 AM", "h:mm A")}
-                name="Example"
-                room={0}
-                teacher="Mr. Example"
             />
             <ClassComponent
                 block={colors[1]}
@@ -153,21 +172,25 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
                 room={100}
                 teacher="Mr. Example"
             />
-        </>
+        </ScrollView>
     );
 }
 
-function NoSchoolView({selectedDate, setDate}: { selectedDate: dayjs.Dayjs; setDate(date: dayjs.Dayjs): void }) {
+function NoSchoolView({ selectedDate, setDate }: { selectedDate: dayjs.Dayjs; setDate(date: dayjs.Dayjs): void }) {
     const calendar = useContext(CalendarContext);
-    const nextSchoolDay = calendar.nextSchoolDayAfter(selectedDate).get();
+    const [nextSchoolDay, setNextSchoolDay] = useState<Dayjs | undefined>(undefined);
 
-    const goToNextSchoolDay = () => setDate(nextSchoolDay);
+    useEffect(() => {
+        setNextSchoolDay(calendar.nextSchoolDayAfter(selectedDate).get());
+    }, [selectedDate, calendar]);
+
+    const goToNextSchoolDay = () => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay);
 
     return (
-        <View style={{flex: 1}}>
-            <Text>No School</Text>
-            <TouchableOpacity onPress={goToNextSchoolDay}>
-                <Text style={{color: "blue"}}>Go to next school day ({nextSchoolDay.from(selectedDate)})</Text>
+        <View style={styles.noSchoolView}>
+            <TouchableOpacity onPress={goToNextSchoolDay} style={styles.goToNextSchoolDay}>
+                <Text style={styles.goToNextSchoolDayText}>Go to next school day</Text>
+                <Text style={styles.goToNextSchoolDayDiffText}>{nextSchoolDay === undefined ? "Calculating ..." : nextSchoolDay.from(selectedDate)}</Text>
             </TouchableOpacity>
         </View>
     );
