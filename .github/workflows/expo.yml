@@ -33,7 +33,7 @@ jobs:
     needs: [test, lint, typecheck]
     steps:
       - uses: actions/setup-node@v1
-      - run: npm install -g yarn
+      - run: npm install -g yarn expo-cli
       - uses: actions/checkout@v1
       - run: yarn
       - name: Deploy to staging
