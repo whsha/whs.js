@@ -1,0 +1,50 @@
+name: Expo
+on: [push, pull_request]
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+      - run: npm install -g yarn
+      - uses: actions/checkout@v1
+      - run: yarn run check
+  test:
+    runs-on: ubuntu-latest
+    needs: typecheck
+    steps:
+      - uses: actions/setup-node@v1
+      - run: npm install -g yarn
+      - uses: actions/checkout@v1
+      - run: yarn run test
+  lint:
+    runs-on: ubuntu-latest
+    needs: typecheck
+    steps:
+      - uses: actions/setup-node@v1
+      - run: npm install -g yarn
+      - uses: actions/checkout@v1
+      - run: yarn run lint
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test, lint, typecheck]
+    steps:
+      - uses: actions/setup-node@v1
+      - run: npm install -g yarn
+      - uses: actions/checkout@v1
+      - name: Deploy to staging
+        if: github.event_name == 'push' && github.ref = refs/heads/master
+        run: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
+        env:
+          EXPO_USERNAME: ${{ secrets.expo_username }}
+          EXPO_PASSWORD: ${{ secrets.expo_password }}
+      - name: Deploy to stable
+        if: github.event_name == 'push' && github.ref = refs/heads/stable
+        run: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
+        env:
+          EXPO_USERNAME: ${{ secrets.expo_username }}
+          EXPO_PASSWORD: ${{ secrets.expo_password }}
+  # collect_metadata:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
