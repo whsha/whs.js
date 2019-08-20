@@ -38,13 +38,13 @@ jobs:
       - run: yarn
       - name: Deploy to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
+        run: sh scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
         env:
           EXPO_USERNAME: ${{ secrets.expo_username }}
           EXPO_PASSWORD: ${{ secrets.expo_password }}
       - name: Deploy to stable
         if: github.event_name == 'push' && github.ref == 'refs/heads/stable'
-        run: scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
+        run: sh scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
         env:
           EXPO_USERNAME: ${{ secrets.expo_username }}
           EXPO_PASSWORD: ${{ secrets.expo_password }}
