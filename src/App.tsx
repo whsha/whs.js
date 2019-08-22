@@ -2,6 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
@@ -25,6 +26,9 @@ export enum ApplicationState {
     Loaded = "LOADED"
 }
 
+if (Constants.manifest.releaseChannel !== undefined) {
+    Sentry.setRelease((Constants.manifest.releaseChannel as string).replace(/(staging|stable)-|/, ""));
+}
 Sentry.config("https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747").install();
 
 export default function App() {
