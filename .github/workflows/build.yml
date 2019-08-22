@@ -1,14 +1,14 @@
 name: Build App
-on: [push, pull_request]
-
-push:
-  paths:
-    - '*.ts'
-    - '*.tsx'
-    - '*.json'
-    - 'src/*'
-    - 'assets/*'
-    - 'typings/*'
+on:
+  push:
+    paths:
+      - '*.ts'
+      - '*.tsx'
+      - '*.json'
+      - 'src/*'
+      - 'assets/*'
+      - 'typings/*'
+  pull_request:
 
 jobs:
   typecheck:
