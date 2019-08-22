@@ -1,6 +1,15 @@
 name: Build App
 on: [push, pull_request]
 
+push:
+  paths:
+    - '*.ts'
+    - '*.tsx'
+    - '*.json'
+    - 'src/*'
+    - 'assets/*'
+    - 'typings/*'
+
 jobs:
   typecheck:
     runs-on: ubuntu-latest

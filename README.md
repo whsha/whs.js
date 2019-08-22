@@ -10,7 +10,7 @@
 ## Builds
 | Branch | Status | Latest Stable Build |
 |:------:|:------:|:--------------------|
-| staging| [![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>iOS Download<br>Android Download<br>[All Builds](https://expo.io/@dusterthefirst/WHS/builds) |
+| staging| [![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>iOS Download<br>Android Download<br>[All Builds](https://expo.io/@dusterthefirst/WHS/builds) |
 | stable | [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=stable)](https://travis-ci.org/DusterTheFirst/whs.js)   | [Expo Link](https://exp.host/@dusterthefirst/WHS)<br>iOS Download<br>Android Download |
 
 # Roadmap
