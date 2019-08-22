@@ -32,15 +32,17 @@ jobs:
       - run: yarn
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - name: Deploy to staging
+      - name: Log into Expo
+        run: expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
+      - name: Publish to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: sh scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD staging
+        run: expo publish --non-interactive --release-channel staging
         env:
           EXPO_USERNAME: ${{ secrets.expo_username }}
           EXPO_PASSWORD: ${{ secrets.expo_password }}
-      - name: Deploy to stable
+      - name: Publish to stable
         if: github.event_name == 'push' && github.ref == 'refs/heads/stable'
-        run: sh scripts/deploy.sh $EXPO_USERNAME $EXPO_PASSWORD default
+        run: expo publish --non-interactive --release-channel default
         env:
           EXPO_USERNAME: ${{ secrets.expo_username }}
           EXPO_PASSWORD: ${{ secrets.expo_password }}
