@@ -1,4 +1,4 @@
-name: Expo
+name: Build App
 on: [push, pull_request]
 
 jobs:
@@ -27,25 +27,22 @@ jobs:
     needs: [test, lint, typecheck]
     steps:
       - run: yarn global add expo-cli
-      - run: export PATH="$(yarn global bin):$PATH"
+      - run: yarn global bin
       - uses: actions/checkout@v1
       - run: yarn
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: Log into Expo
         run: expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
+        env:
+          EXPO_USERNAME: ${{ secrets.expo_username }}
+          EXPO_PASSWORD: ${{ secrets.expo_password }}
       - name: Publish to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: expo publish --non-interactive --release-channel staging
-        env:
-          EXPO_USERNAME: ${{ secrets.expo_username }}
-          EXPO_PASSWORD: ${{ secrets.expo_password }}
       - name: Publish to stable
         if: github.event_name == 'push' && github.ref == 'refs/heads/stable'
         run: expo publish --non-interactive --release-channel default
-        env:
-          EXPO_USERNAME: ${{ secrets.expo_username }}
-          EXPO_PASSWORD: ${{ secrets.expo_password }}
   # collect_metadata:
   #   runs-on: ubuntu-latest
   #   steps:
