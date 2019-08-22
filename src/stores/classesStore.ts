@@ -12,6 +12,5 @@ export default class ClassesStore {
 
     public updateAdvisory(part: Partial<IAdvisory>) {
         this.advisory = {...this.advisory, ... part};
-        console.log(`Updated advisory`, this.advisory);
     }
 }

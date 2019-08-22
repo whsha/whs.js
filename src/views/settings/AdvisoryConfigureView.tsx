@@ -31,7 +31,6 @@ function useAdvisory() {
         tempAdvisory,
         save() {
             classes.updateAdvisory(tempAdvisory);
-            console.log(tempAdvisory);
         },
         setTeacher(teacher: string) {
             setTempAdvisory(pre => ({room: pre.room, teacher}));
