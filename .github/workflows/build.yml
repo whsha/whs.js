@@ -27,22 +27,21 @@ jobs:
     needs: [test, lint, typecheck]
     steps:
       - run: yarn global add expo-cli
-      - run: alias expo=$(yarn global bin)/expo
       - uses: actions/checkout@v1
       - run: yarn
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: Log into Expo
-        run: expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
+        run: $(yarn global bin)/expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
         env:
           EXPO_USERNAME: ${{ secrets.expo_username }}
           EXPO_PASSWORD: ${{ secrets.expo_password }}
       - name: Publish to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: expo publish --non-interactive --release-channel staging
+        run: $(yarn global bin)/expo publish --non-interactive --release-channel staging
       - name: Publish to stable
         if: github.event_name == 'push' && github.ref == 'refs/heads/stable'
-        run: expo publish --non-interactive --release-channel default
+        run: $(yarn global bin)/expo publish --non-interactive --release-channel default
   # collect_metadata:
   #   runs-on: ubuntu-latest
   #   steps:
