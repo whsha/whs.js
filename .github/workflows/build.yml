@@ -48,7 +48,7 @@ jobs:
           export IS_PUSH=${{github.event_name == 'push'}} &&
           export IS_MASTER=${{github.ref == 'refs/heads/master'}} &&
           export IS_STABLE=${{github.ref == 'refs/heads/stable'}} &&
-          export IS_RELEASE=${{${IS_MASTER} || ${IS_STAGING}}} &&
+          export IS_RELEASE=${{IS_MASTER || IS_STAGING}} &&
           export SENTRY_ORG=dusterthefirst &&
           export SENTRY_AUTH_TOKEN=${{secrets.sentry_auth_token}} &&
           export VERSION=$(sentry-cli releases propose-version)
