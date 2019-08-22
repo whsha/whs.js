@@ -30,6 +30,7 @@ if (Constants.manifest.releaseChannel !== undefined) {
     Sentry.setRelease((Constants.manifest.releaseChannel as string).replace(/(staging|stable)-|/, ""));
 }
 Sentry.config("https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747").install();
+// TODO: Sentry.setUserContext({})
 
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);

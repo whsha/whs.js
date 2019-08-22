@@ -43,8 +43,7 @@
                     "file": "sentry-expo/upload-sourcemaps",
                     "config": {
                         "organization": "dusterthefirst",
-                        "project": "whs",
-                        "authToken": "de41fbdfc7834e0282fee7e916df31728ddb2dcdfa414eff90400a72b44203eb"
+                        "project": "whs"
                     }
                 }
             ]
