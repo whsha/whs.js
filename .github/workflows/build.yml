@@ -8,6 +8,7 @@ on:
       - 'src/*'
       - 'assets/*'
       - 'typings/*'
+      - '.github/workflows/*'
   pull_request:
 
 jobs:
