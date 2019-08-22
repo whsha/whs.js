@@ -27,7 +27,7 @@ jobs:
     needs: [test, lint, typecheck]
     steps:
       - run: yarn global add expo-cli
-      - run: ls $(yarn global bin)
+      - run: alias expo=$(yarn global bin)
       - uses: actions/checkout@v1
       - run: yarn
       - name: Fix inotify max_user_watches
