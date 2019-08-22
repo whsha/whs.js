@@ -3,9 +3,11 @@ $(yarn global bin)/expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSW
 
 CHANNEL=$([ $IS_STABLE ] && echo "stable" || echo "staging")
 
+echo $CHANNEL $VERSION
+
 echo Publishing to $CHANNEL
-$(yarn global bin)/expo publish --non-interactive --release-channel $(echo $CHANNEL-$VERSION)
+echo $(yarn global bin)/expo publish --non-interactive --release-channel $(echo $CHANNEL-$VERSION)
 
 echo Creating a new sentry release
-sentry-cli releases new -p whs.js $VERSION
-sentry-cli releases set-commits --auto $VERSION
+echo sentry-cli releases new -p whs.js $VERSION
+echo sentry-cli releases set-commits --auto $VERSION
