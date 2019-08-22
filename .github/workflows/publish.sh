@@ -10,5 +10,5 @@ echo Publishing to $CHANNEL
 $(yarn global bin)/expo publish --non-interactive --release-channel $(echo $CHANNEL-$VERSION)
 
 echo Creating a new sentry release
-sentry-cli releases new -p whs.js $VERSION
+sentry-cli releases new -p whs $VERSION
 sentry-cli releases set-commits --auto $VERSION
