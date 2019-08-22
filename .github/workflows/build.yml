@@ -53,7 +53,6 @@ jobs:
           IS_STABLE:          ${{github.ref == 'refs/heads/stable'}}
           SENTRY_ORG:         dusterthefirst
           SENTRY_AUTH_TOKEN:  ${{secrets.sentry_auth_token}}
-          VERSION:            $(sentry-cli releases propose-version)
   # collect_metadata:
   #   runs-on: ubuntu-latest
   #   steps:
