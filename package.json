@@ -19,7 +19,7 @@
         "babel-preset-expo": "^5.1.1",
         "dayjs": "^1.8.14",
         "expo": "^33.0.0",
-        "expo-constants": "^6.0.0",
+        "expo-constants": "~5.0.1",
         "ical.js": "^1.3.0",
         "mobx": "^5.9.4",
         "mobx-persist": "^0.4.1",

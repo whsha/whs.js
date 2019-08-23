@@ -14,11 +14,7 @@ echo Creating a new sentry release
 sentry-cli releases new -p whs $VERSION
 sentry-cli releases set-commits --auto $VERSION
 
-printenv
-
-curl -sS --header "Content-Type: application/json" \
-  --request POST \
-  --data '{
+WEBHOOK_DATA='{
    "embeds": [{
        "title": "New $CHANNEL version published",
        "description": "$COMMIT_MESSAGE",
@@ -36,5 +32,12 @@ curl -sS --header "Content-Type: application/json" \
             "url": "$SENDER_URL",
             "icon_url": "$SENDER_AVATAR"
         }
-    }]}' \
+    }]
+}'
+
+echo $WEBHOOK_DATA
+
+curl -sS --header "Content-Type: application/json" \
+  --request POST \
+  --data $WEBHOOK_DATA \
   $WEBHOOK_URL
