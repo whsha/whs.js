@@ -14,26 +14,26 @@ echo Creating a new sentry release
 sentry-cli releases new -p whs $VERSION
 sentry-cli releases set-commits --auto $VERSION
 
-WEBHOOK_DATA='{
-   "embeds": [{
-       "title": "New $CHANNEL version published",
-       "description": "$COMMIT_MESSAGE",
-       "url": "https://exp.host/@dusterthefirst/WHS?release-channel=$RELEASE_CHANNEL",
-       "color": 32768,
-       "timestamp": "$(date -Iseconds -u)",
-       "footer": {
-           "text": "WHS Helper App"
+WEBHOOK_DATA="{
+   \"embeds\": [{
+       \"title\": \"New $CHANNEL version published\",
+       \"description\": \"$COMMIT_MESSAGE\",
+       \"url\": \"https://exp.host/@dusterthefirst/WHS?release-channel=$RELEASE_CHANNEL\",
+       \"color\": 32768,
+       \"timestamp\": \"$(date -Iseconds -u)\",
+       \"footer\": {
+           \"text\": \"WHS Helper App\"
         },
-       "thumbnail": {
-           "url": "https://raw.githubusercontent.com/DusterTheFirst/whs.js/master/assets/icon.png"
+       \"thumbnail\": {
+            \"url\": \"https://raw.githubusercontent.com/DusterTheFirst/whs.js/master/assets/icon.png\"
         },
-        "author": {
-            "name": "$SENDER_USERNAME",
-            "url": "$SENDER_URL",
-            "icon_url": "$SENDER_AVATAR"
+        \"author\": {
+            \"name\": \"$SENDER_USERNAME\",
+            \"url\": \"$SENDER_URL\",
+            \"icon_url\": \"$SENDER_AVATAR\"
         }
     }]
-}'
+}"
 
 echo $WEBHOOK_DATA
 
