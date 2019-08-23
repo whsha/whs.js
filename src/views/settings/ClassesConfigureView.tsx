@@ -61,7 +61,7 @@ export default function ClassesConfigureView() {
 
     const addClass = () => {
         console.log("e");
-        setTempClasses((p) => [{
+        setTempClasses([{
             block: BlockColor.None,
             name: "",
             room: 0,
