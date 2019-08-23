@@ -39,5 +39,5 @@ echo $WEBHOOK_DATA
 
 curl -sS --header "Content-Type: application/json" \
   --request POST \
-  --data $WEBHOOK_DATA \
+  --data "$WEBHOOK_DATA" \
   $WEBHOOK_URL
