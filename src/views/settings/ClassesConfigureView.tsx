@@ -9,7 +9,7 @@ import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 import IconComponent from "../../components/IconComponent";
-import { BlockColor } from "../../util/blocks/blockColor";
+import { BlockColor, BlockColorDisplayColors } from "../../util/blocks/blockColor";
 import IClass from "../../util/class";
 
 const styles = StyleSheet.create({
@@ -32,12 +32,10 @@ export default function ClassesConfigureView() {
         history.push("/settings");
     };
 
-    const classRenderItem: ListRenderItem<IClass> = ({ item, separators }) => {
-        separators.highlight();
-
+    const classRenderItem: ListRenderItem<IClass> = ({ item }) => {
         return (
             <TouchableOpacity>
-                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator"/>
+                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={BlockColorDisplayColors[item.block]}/>
             </TouchableOpacity>
         );
     };
@@ -47,25 +45,29 @@ export default function ClassesConfigureView() {
     const [tempClasses, setTempClasses] = useState<IClass[]>([
         {
             block: BlockColor.Green,
+            meets: 0b11111,
             name: "gween",
             room: 1,
-            teacher: "string"
+            teacher: "string",
         },
         {
             block: BlockColor.Yellow,
+            /// TODO:
+            meets: 0b10101,
             name: "|Yelo",
             room: 32,
-            teacher: "ee"
+            teacher: "ee",
         }
     ]);
 
     const addClass = () => {
         console.log("e");
-        setTempClasses([{
+        setTempClasses((p) => [...p, {
             block: BlockColor.None,
-            name: "",
+            meets: 0b11111,
+            name: "New Class",
             room: 0,
-            teacher: ""
+            teacher: "",
         }]);
     };
 

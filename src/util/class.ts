@@ -10,6 +10,7 @@ export default interface IClass {
     room: number;
     name: string;
     block: BlockColor;
+    meets: number;
 }
 
 export interface ITimes {
