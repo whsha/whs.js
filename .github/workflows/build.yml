@@ -2,13 +2,13 @@ name: Build App
 on:
   push:
     paths:
-      - '*.ts'
-      - '*.tsx'
-      - '*.json'
-      - 'src/*'
-      - 'assets/*'
-      - 'typings/*'
-      - '.github/workflows/*'
+      - "*.ts"
+      - "*.tsx"
+      - "*.json"
+      - "src/*"
+      - "assets/*"
+      - "typings/*"
+      - ".github/workflows/*"
   pull_request:
 
 jobs:
@@ -47,13 +47,18 @@ jobs:
         if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
         run: sh .github/workflows/publish.sh
         env:
-          EXPO_USERNAME:      ${{ secrets.expo_username }}
-          EXPO_PASSWORD:      ${{ secrets.expo_password }}
-          IS_MASTER:          ${{github.ref == 'refs/heads/master'}}
-          IS_STABLE:          ${{github.ref == 'refs/heads/stable'}}
-          SENTRY_ORG:         dusterthefirst
-          SENTRY_AUTH_TOKEN:  ${{secrets.sentry_auth_token}}
-  # collect_metadata:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
+          # Expo data
+          EXPO_USERNAME: dusterthefirst
+          EXPO_PASSWORD: ${{ secrets.expo_password }}
+          # Branch info
+          IS_MASTER: ${{github.ref == 'refs/heads/master'}}
+          IS_STABLE: ${{github.ref == 'refs/heads/stable'}}
+          # Sentry data
+          SENTRY_ORG: dusterthefirst
+          SENTRY_AUTH_TOKEN: ${{secrets.sentry_auth_token}}
+          # Webhook data
+          COMMIT_MESSAGE: ${{github.event.commits[0].message}}
+          SENDER_USERNAME: ${{github.events.sender.login}}
+          SENDER_URL: ${{github.events.sender.url}}
+          SENDER_AVATAR: ${{github.events.sender.avatar_url}}
+          WEBHOOK_URL: ${{secrets.release_webhook}}
