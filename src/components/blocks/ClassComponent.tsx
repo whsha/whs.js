@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import {Dayjs} from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { BlockColor, BlockColorDisplayColors } from "../util/blocks/blockColor";
+import { BlockColorDisplayColors } from "../../util/blocks/blockColor";
+import IClass, { ITimes } from "../../util/class";
 
 const styles = StyleSheet.create({
     container: {
@@ -41,20 +41,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export interface IClass {
-    teacher: string;
-    room: number;
-    name: string;
-    block: BlockColor;
-    start: Dayjs;
-    end: Dayjs;
-}
-export default function ClassComponent({teacher, room, name, start, end, block}: IClass) {
+export default function ClassComponent({teacher, room, name, block, start, end}: IClass & ITimes) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>
                 <Text style={[styles.title, {color: BlockColorDisplayColors[block]}]}>{name}</Text>
-                <Text style={styles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
+                <Text style={styles.dim}>{start} - {end}</Text>
             </View>
             <View style={[styles.dualView, styles.info]}>
                 <Text style={[styles.dim, styles.teacher]} numberOfLines={1}>{teacher}</Text>

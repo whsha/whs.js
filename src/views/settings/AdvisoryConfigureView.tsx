@@ -2,14 +2,14 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { useContext, useState } from "react";
+import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
-import AdvisoryComponent from "../../components/AdvisoryComponent";
+import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
-import { ClassesContext } from "../../contexts";
+import useAdvisory from "../../util/hooks/useAdvisory";
 
 const styles = StyleSheet.create({
     container: {
@@ -21,25 +21,6 @@ const styles = StyleSheet.create({
         height: 40,
     }
 });
-
-function useAdvisory() {
-    let classes = useContext(ClassesContext);
-    let [tempAdvisory, setTempAdvisory] = useState(classes.advisory);
-
-    return {
-        savedAdvisory: classes.advisory,
-        tempAdvisory,
-        save() {
-            classes.updateAdvisory(tempAdvisory);
-        },
-        setTeacher(teacher: string) {
-            setTempAdvisory(pre => ({room: pre.room, teacher}));
-        },
-        setRoom(room: number) {
-            setTempAdvisory(pre => ({room, teacher: pre.teacher}));
-        }
-    };
-}
 
 export default function AdvisoryConfigureView() {
     const { history } = useRouter();

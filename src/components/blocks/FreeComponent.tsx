@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import {Dayjs} from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { BlockColor, BlockColorDisplayColors } from "../util/blocks/blockColor";
+import { BlockColor, BlockColorDisplayColors } from "../../util/blocks/blockColor";
+import { ITimes } from "../../util/class";
 
 const styles = StyleSheet.create({
     container: {
@@ -38,15 +38,13 @@ const styles = StyleSheet.create({
 
 export interface IFree {
     block: BlockColor;
-    start: Dayjs;
-    end: Dayjs;
 }
-export default function FreeComponent({start, end, block}: IFree) {
+export default function FreeComponent({start, end, block}: IFree & ITimes) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>
                 <Text style={[styles.title, {color: BlockColorDisplayColors[block]}]}>Free</Text>
-                <Text style={styles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
+                <Text style={styles.dim}>{start} - {end}</Text>
             </View>
         </View>
     );
