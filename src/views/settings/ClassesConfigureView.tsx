@@ -70,7 +70,7 @@ export default function ClassesConfigureView() {
             <ScrollView>
                 <TableView>
                     <Section header="Classes">
-    <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator}/>
+                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator}/>
                         <TouchableOpacity>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>

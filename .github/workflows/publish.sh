@@ -14,7 +14,9 @@ echo Creating a new sentry release
 sentry-cli releases new -p whs $VERSION
 sentry-cli releases set-commits --auto $VERSION
 
-curl --header "Content-Type: application/json" \
+printenv
+
+curl -sS --header "Content-Type: application/json" \
   --request POST \
   --data '{
    "embeds": [{
