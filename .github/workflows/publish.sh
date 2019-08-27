@@ -27,9 +27,9 @@ WEBHOOK_DATA="{
     }]
 }"
 
-echo $WEBHOOK_DATA
+echo $WEBHOOK_DATA > data.json
 
-echo curl -sS --header "Content-Type: application/json" \
+curl -sS --header "Content-Type: application/json" \
   --request POST \
-  --data "$WEBHOOK_DATA" \
+  --data @data.json \
   $WEBHOOK_URL
