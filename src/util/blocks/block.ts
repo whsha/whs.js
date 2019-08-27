@@ -3,10 +3,10 @@
  */
 
 export enum Block {
-    First,
-    Second,
-    Third,
-    Fourth,
-    Fifth,
-    Sixth
+    A = "a",
+    B = "b",
+    C = "c",
+    D = "d",
+    E = "e",
+    F = "f"
 }

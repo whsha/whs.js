@@ -57,7 +57,7 @@ export enum SchoolDay {
 }
 
 /** The regex used to match school days */
-export const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
+const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
 
 /** The values in the array of the school day match */
 enum SchoolDayRegexMatch {

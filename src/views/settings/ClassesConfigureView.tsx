@@ -3,14 +3,15 @@
  */
 
 import React, { useState } from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
+import { Route, Switch } from "react-router";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 import IconComponent from "../../components/IconComponent";
-import { BlockColor, BlockColorDisplayColors } from "../../util/blocks/blockColor";
-import IClass from "../../util/class";
+import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
+import { SorageClass } from "../../util/class";
 
 const styles = StyleSheet.create({
     container: {
@@ -24,6 +25,25 @@ const styles = StyleSheet.create({
 });
 
 export default function ClassesConfigureView() {
+    return (
+        <Switch>
+            <Route path="/settings/classes" exact={true} component={ClassesList} />
+            <Route path="/settings/classes/:id" exact={true} component={ConfigureClass} />
+        </Switch>
+    );
+}
+
+function ConfigureClass() {
+    const { match } = useRouter<{ id: string }>();
+
+    return (
+        <Text>
+            {JSON.stringify(match.params.id, undefined, 4)}
+        </Text>
+    );
+}
+
+function ClassesList() {
     const { history } = useRouter();
 
     const goBack = () => history.goBack();
@@ -32,17 +52,17 @@ export default function ClassesConfigureView() {
         history.push("/settings");
     };
 
-    const classRenderItem: ListRenderItem<IClass> = ({ item }) => {
+    const classRenderItem: ListRenderItem<SorageClass> = ({ item }) => {
         return (
             <TouchableOpacity>
-                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={BlockColorDisplayColors[item.block]}/>
+                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={getDisplayColorForBlock(item.block)} />
             </TouchableOpacity>
         );
     };
 
     const keyExtractor = (_: unknown, i: number) => i.toString();
 
-    const [tempClasses, setTempClasses] = useState<IClass[]>([
+    const [tempClasses, setTempClasses] = useState<SorageClass[]>([
         {
             block: BlockColor.Green,
             meets: 0b11111,
@@ -77,7 +97,7 @@ export default function ClassesConfigureView() {
             <ScrollView>
                 <TableView>
                     <Section header="Classes">
-                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator}/>
+                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
                         <TouchableOpacity onPress={addClass}>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>

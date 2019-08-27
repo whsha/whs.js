@@ -29,6 +29,7 @@
         "react-native-picker-select": "^6.1.0",
         "react-native-tableview-simple": "^2.0.1",
         "react-native-vector-icons": "^6.4.2",
+        "react-router": "^5.0.1",
         "react-router-native": "^5.0.0",
         "sentry-expo": "^1.13.0",
         "timsort": "^0.3.0",
@@ -41,7 +42,6 @@
         "@types/react-native": "^0.57.1",
         "@types/react-native-vector-icons": "^6.4.0",
         "@types/react-router-native": "^4.2.4",
-        "expo-cli": "^2.19.3",
         "tslint": "^5.16.0",
         "tslint-react": "^4.0.0",
         "typescript": "^3.5.0-rc"

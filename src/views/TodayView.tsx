@@ -6,6 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext, useEffect, useState } from "react";
 import { FlatList, ListRenderItem, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import useRouter from "use-react-router";
 import AdvisoryComponent from "../components/blocks/AdvisoryComponent";
 import ClassComponent from "../components/blocks/ClassComponent";
 import FreeComponent from "../components/blocks/FreeComponent";
@@ -16,7 +17,8 @@ import { CalendarContext, ClassesContext } from "../contexts";
 import { Block } from "../util/blocks/block";
 import { BlockColor } from "../util/blocks/blockColor";
 import { ICalendarEvent, ICalendarSchoolDay, SchoolDay } from "../util/calendarUtil";
-import { MapOfBlocksToColor } from "../util/schoolDays";
+import useDate from "../util/hooks/useRoutedDate";
+import { getBlockColorsForDay } from "../util/schoolDays";
 
 dayjs.extend(customParseFormat);
 
@@ -57,18 +59,6 @@ const styles = StyleSheet.create({
     }
 });
 
-function useDate(start: Dayjs) {
-    let [date, setDate] = useState(start.unix());
-
-    return {
-        date: dayjs.unix(date),
-        decrementDate: () => setDate(predate => dayjs.unix(predate).subtract(1, "day").unix()),
-        incrementDate: () => setDate(predate => dayjs.unix(predate).add(1, "day").unix()),
-        setDate: (dayjsdate: dayjs.Dayjs) => setDate(dayjsdate.unix()),
-        setToToday: () => setDate(dayjs().unix())
-    };
-}
-
 export default function TodayView() {
     const calendar = useContext(CalendarContext);
     const eventKeyExtractor = (x: ICalendarEvent, i: number) => `${x.name}-${i}`;
@@ -80,7 +70,7 @@ export default function TodayView() {
         incrementDate,
         setDate,
         setToToday
-    } = useDate(dayjs(Date.now()));
+    } = useDate();
 
     const schoolDay = calendar.schoolDay(date).get();
 
@@ -115,9 +105,15 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
         .filter(x =>
             isNaN(parseInt(x, 10))
         ).map((x) =>
-            MapOfBlocksToColor[x as keyof typeof Block]
-            [SchoolDay[schoolDay.dayNumber as unknown as keyof typeof SchoolDay]]
+            getBlockColorsForDay(SchoolDay[schoolDay.dayNumber] as keyof typeof SchoolDay)[x as keyof typeof Block]
         );
+
+    const { history } = useRouter();
+    function navigateTo(to: string) {
+        return () => {
+            history.push(to);
+        };
+    }
 
     return (
         <ScrollView style={styles.classesView}>
@@ -127,14 +123,17 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
                 start={dayjs("7:30 AM", "h:mm A")}
                 end={dayjs("8:29 AM", "h:mm A")}
             />
-            <ClassComponent
-                block={colors[1]}
-                start={dayjs("8:34 AM", "h:mm A")}
-                end={dayjs("9:33 AM", "h:mm A")}
-                name="Example"
-                room={100}
-                teacher="Mr. Example"
-            />
+            {/* TODO: */}
+            <TouchableOpacity onPress={navigateTo("/settings/classes/0")}>
+                <ClassComponent
+                    block={colors[1]}
+                    start={dayjs("8:34 AM", "h:mm A")}
+                    end={dayjs("9:33 AM", "h:mm A")}
+                    name="Example"
+                    room={100}
+                    teacher="Mr. Example"
+                />
+            </TouchableOpacity>
             <AdvisoryComponent {...classes.advisory} />
             <ClassComponent
                 block={colors[2]}
@@ -150,7 +149,7 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
                 // FIXME: LUNCH
                 start={dayjs("10:55 AM", "h:mm A")}
                 // FIXME: LUNCH
-                end={dayjs("12:22 AM", "h:mm A")}
+                end={dayjs("12:22 PM", "h:mm A")}
                 name="Example"
                 room={100}
                 teacher="Mr. Example"
@@ -158,16 +157,16 @@ function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
             {/* END FIXME: */}
             <ClassComponent
                 block={colors[4]}
-                start={dayjs("12:27 AM", "h:mm A")}
-                end={dayjs("1:26 AM", "h:mm A")}
+                start={dayjs("12:27 PM", "h:mm A")}
+                end={dayjs("1:26 PM", "h:mm A")}
                 name="Example"
                 room={100}
                 teacher="Mr. Example"
             />
             <ClassComponent
                 block={colors[5]}
-                start={dayjs("1:31 AM", "h:mm A")}
-                end={dayjs("2:30 AM", "h:mm A")}
+                start={dayjs("1:31 PM", "h:mm A")}
+                end={dayjs("2:30 PM", "h:mm A")}
                 name="Example"
                 room={100}
                 teacher="Mr. Example"
