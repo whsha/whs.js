@@ -2,7 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
