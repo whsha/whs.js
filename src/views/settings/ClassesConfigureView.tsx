@@ -2,16 +2,16 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import dayjs from "dayjs";
-import React from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
+import { Route, Switch } from "react-router";
 import useRouter from "use-react-router";
-import { IClass } from "../../components/ClassComponent";
 import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 import IconComponent from "../../components/IconComponent";
-import { BlockColor } from "../../util/blocks/blockColor";
+import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
+import { SorageClass } from "../../util/class";
 
 const styles = StyleSheet.create({
     container: {
@@ -25,6 +25,25 @@ const styles = StyleSheet.create({
 });
 
 export default function ClassesConfigureView() {
+    return (
+        <Switch>
+            <Route path="/settings/classes" exact={true} component={ClassesList} />
+            <Route path="/settings/classes/:id" exact={true} component={ConfigureClass} />
+        </Switch>
+    );
+}
+
+function ConfigureClass() {
+    const { match } = useRouter<{ id: string }>();
+
+    return (
+        <Text>
+            {JSON.stringify(match.params.id, undefined, 4)}
+        </Text>
+    );
+}
+
+function ClassesList() {
     const { history } = useRouter();
 
     const goBack = () => history.goBack();
@@ -33,36 +52,44 @@ export default function ClassesConfigureView() {
         history.push("/settings");
     };
 
-    const classRenderItem: ListRenderItem<IClass> = ({ item, separators }) => {
-        separators.highlight();
-
+    const classRenderItem: ListRenderItem<SorageClass> = ({ item }) => {
         return (
             <TouchableOpacity>
-                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator"/>
+                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={getDisplayColorForBlock(item.block)} />
             </TouchableOpacity>
         );
     };
 
     const keyExtractor = (_: unknown, i: number) => i.toString();
 
-    const tempClasses = [
+    const [tempClasses, setTempClasses] = useState<SorageClass[]>([
         {
             block: BlockColor.Green,
-            end: dayjs(),
+            meets: 0b11111,
             name: "gween",
             room: 1,
-            start: dayjs(),
-            teacher: "string"
+            teacher: "string",
         },
         {
             block: BlockColor.Yellow,
-            end: dayjs(),
+            /// TODO:
+            meets: 0b10101,
             name: "|Yelo",
             room: 32,
-            start: dayjs(),
-            teacher: "ee"
+            teacher: "ee",
         }
-    ];
+    ]);
+
+    const addClass = () => {
+        console.log("e");
+        setTempClasses((p) => [...p, {
+            block: BlockColor.None,
+            meets: 0b11111,
+            name: "New Class",
+            room: 0,
+            teacher: "",
+        }]);
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -70,8 +97,8 @@ export default function ClassesConfigureView() {
             <ScrollView>
                 <TableView>
                     <Section header="Classes">
-    <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator}/>
-                        <TouchableOpacity>
+                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
+                        <TouchableOpacity onPress={addClass}>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>
                     </Section>

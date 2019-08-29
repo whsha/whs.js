@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 });
 
 export default function TabBarLink({ name, icon, link }: { name: string; icon: string; link: string }) {
-    const ICON = ({ match }: { match: {} | null }) => (
+    const IconComponent = ({ match }: { match: {} | null }) => (
         <View>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${icon}`}
@@ -35,7 +35,7 @@ export default function TabBarLink({ name, icon, link }: { name: string; icon: s
 
     return (
         <Link to={link} style={styles.link} component={TouchableOpacity}>
-            <Route path={link} children={ICON} />
+            <Route path={link} children={IconComponent} />
         </Link>
     );
 }

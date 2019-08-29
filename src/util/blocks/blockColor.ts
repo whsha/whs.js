@@ -4,16 +4,25 @@
 
 /** Colors of the blocks */
 export enum BlockColor {
-    Red,  Orange, Yellow, Green,
-    Blue, Purple, Tan,    None
+    Red = "red",
+    Orange = "orange",
+    Yellow = "yellow",
+    Green = "green",
+    Blue = "blue",
+    Purple = "purple",
+    Tan = "tan",
+    None = "none"
 }
 
 type BlockColorColorMap = {
     readonly [B in BlockColor]: string;
 };
 
-// TODO: Custom hex
-export const BlockColorDisplayColors: BlockColorColorMap = {
+/**
+ * The display colors that corispond to each of the block colors
+ */
+const BlockColorDisplayColors: BlockColorColorMap = {
+    // TODO: Custom hex
     [BlockColor.Blue]: "blue",
     [BlockColor.Green]: "green",
     [BlockColor.None]: "#C0C0C0",
@@ -23,3 +32,7 @@ export const BlockColorDisplayColors: BlockColorColorMap = {
     [BlockColor.Tan]: "tan",
     [BlockColor.Yellow]: "gold"
 };
+
+export function getDisplayColorForBlock(block: BlockColor) {
+    return BlockColorDisplayColors[block];
+}

@@ -23,7 +23,7 @@ export default function MainView() {
         <SafeAreaView style={styles.body}>
             <View style={styles.screen}>
                 <Switch>
-                    <Route path="/today" component={TodayView} />
+                    <Route path="/today/:date?" component={TodayView} />
                     <Route path="/settings" component={SettingsView} />
                     <Redirect to="/today" />
                 </Switch>

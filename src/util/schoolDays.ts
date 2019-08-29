@@ -6,9 +6,15 @@ import { Block } from "./blocks/block";
 import { BlockColor } from "./blocks/blockColor";
 import { SchoolDay } from "./calendarUtil";
 
+type SchoolDaysBlockColorsMap = {
+    readonly [D in keyof typeof Block]: {
+        [B in keyof typeof SchoolDay]: BlockColor;
+    }
+};
+
 // tslint:disable: object-literal-sort-keys
-export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
-    First: {
+const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
+    A: {
         // TODO: LAB BLOCKS
         One: BlockColor.None,
         Two: BlockColor.None,
@@ -18,7 +24,7 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
         Six: BlockColor.None,
         Seven: BlockColor.None
     },
-    Second: {
+    B: {
         One: BlockColor.Orange,
         Two: BlockColor.Yellow,
         Three: BlockColor.Green,
@@ -27,7 +33,7 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
         Six: BlockColor.Purple,
         Seven: BlockColor.Blue
     },
-    Third: {
+    C: {
         One: BlockColor.Yellow,
         Two: BlockColor.Orange,
         Three: BlockColor.Orange,
@@ -36,7 +42,7 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
         Six: BlockColor.Orange,
         Seven: BlockColor.Yellow
     },
-    Fourth: {
+    D: {
         One: BlockColor.Green,
         Two: BlockColor.Tan,
         Three: BlockColor.Tan,
@@ -45,7 +51,7 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
         Six: BlockColor.Green,
         Seven: BlockColor.Green
     },
-    Fifth: {
+    E: {
         One: BlockColor.Red,
         Two: BlockColor.Red,
         Three: BlockColor.Purple,
@@ -54,7 +60,7 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
         Six: BlockColor.Tan,
         Seven: BlockColor.Tan
     },
-    Sixth: {
+    F: {
         One: BlockColor.Blue,
         Two: BlockColor.Purple,
         Three: BlockColor.Blue,
@@ -66,8 +72,15 @@ export const MapOfBlocksToColor: SchoolDaysBlockColorsMap = {
 };
 // tslint:enable: object-literal-sort-keys
 
-type SchoolDaysBlockColorsMap = {
-    readonly [D in keyof typeof Block]: {
-        [B in keyof typeof SchoolDay]: BlockColor;
-    }
-};
+export function getBlockColorsForDay(day: keyof typeof SchoolDay): {
+    [B in keyof typeof Block]: BlockColor
+} {
+    return {
+        A: MapOfBlocksToColor.A[day],
+        B: MapOfBlocksToColor.B[day],
+        C: MapOfBlocksToColor.C[day],
+        D: MapOfBlocksToColor.D[day],
+        E: MapOfBlocksToColor.E[day],
+        F: MapOfBlocksToColor.F[day]
+    };
+}

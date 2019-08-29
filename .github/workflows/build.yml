@@ -2,12 +2,13 @@ name: Build App
 on:
   push:
     paths:
-      - '*.ts'
-      - '*.tsx'
-      - '*.json'
-      - 'src/*'
-      - 'assets/*'
-      - 'typings/*'
+      - "*.ts"
+      - "*.tsx"
+      - "*.json"
+      - "src/*"
+      - "assets/*"
+      - "typings/*"
+      - ".github/workflows/*"
   pull_request:
 
 jobs:
@@ -40,18 +41,24 @@ jobs:
       - run: yarn
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - name: Log into Expo
-        run: $(yarn global bin)/expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
+      - name: Install Sentry CLI
+        run: curl -sL https://sentry.io/get-cli/ | bash
+      - name: Publish
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
+        run: sh .github/workflows/publish.sh
         env:
-          EXPO_USERNAME: ${{ secrets.expo_username }}
+          # Expo data
+          EXPO_USERNAME: dusterthefirst
           EXPO_PASSWORD: ${{ secrets.expo_password }}
-      - name: Publish to staging
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: $(yarn global bin)/expo publish --non-interactive --release-channel staging
-      - name: Publish to stable
-        if: github.event_name == 'push' && github.ref == 'refs/heads/stable'
-        run: $(yarn global bin)/expo publish --non-interactive --release-channel default
-  # collect_metadata:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
+          # Branch info
+          IS_MASTER: ${{github.ref == 'refs/heads/master'}}
+          IS_STABLE: ${{github.ref == 'refs/heads/stable'}}
+          # Sentry data
+          SENTRY_ORG: dusterthefirst
+          SENTRY_AUTH_TOKEN: ${{secrets.sentry_auth_token}}
+          # Webhook data
+          COMMIT_MESSAGE: ${{github.event.commits[0].message}}
+          SENDER_USERNAME: ${{github.events.sender.login}}
+          SENDER_URL: ${{github.events.sender.url}}
+          SENDER_AVATAR: ${{github.events.sender.avatar_url}}
+          WEBHOOK_URL: ${{secrets.release_webhook}}

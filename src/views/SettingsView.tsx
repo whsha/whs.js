@@ -21,7 +21,7 @@ const SettingsView = () => {
         <SafeAreaView style={styles.container}>
             <Switch>
                 <Route path="/settings/advisory" exact={true} component={AdvisoryConfigureView}/>
-                <Route path="/settings/classes" exact={true} component={ClassesConfigureView}/>
+                <Route path="/settings/classes" component={ClassesConfigureView}/>
                 <Route path="/settings" component={MainView}/>
             </Switch>
         </SafeAreaView>
