@@ -37,5 +37,5 @@ export interface ITimes {
 }
 
 /** A class with all of the information needed to process it */
-export type SorageClass = IClass & IClassMeta;
+export type StorageClass = IClass & IClassMeta;
 export type DisplayClass = IClass & ITimes;
