@@ -8,8 +8,8 @@
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
 
 ## Builds
-| Branch | Status | Latest Stable Build |
-|:------:|:------:|:--------------------|
+| Branch | Status | Latest Build |
+|:------:|:------:|:-------------|
 | staging| [![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>iOS Download<br>Android Download<br>[All Builds](https://expo.io/@dusterthefirst/WHS/builds) |
 | stable | [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=stable)](https://travis-ci.org/DusterTheFirst/whs.js)   | [Expo Link](https://exp.host/@dusterthefirst/WHS)<br>iOS Download<br>Android Download |
 
