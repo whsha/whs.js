@@ -25,7 +25,7 @@ export interface IClassMeta {
     /** The bitmap of when the class meets */
     meets: number;
     // /** The class UUID for identifying it */
-    // TODO: uuid: string;
+    uuid: string;
 }
 
 /** Information that is displayed to the user but never stored locally */
