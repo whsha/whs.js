@@ -1,10 +1,10 @@
 # Wellesley High School Helper App
 
 [![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/network/dependencies)
-[![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
+[![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
 
