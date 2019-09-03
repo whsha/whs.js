@@ -12,15 +12,15 @@ on:
   pull_request:
 
 jobs:
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - run: yarn
-      - run: yarn run typecheck
+  # typecheck:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - run: yarn
+  #     - run: yarn run typecheck
   test:
     runs-on: ubuntu-latest
-    needs: typecheck
+    # needs: typecheck
     steps:
       - uses: actions/checkout@v1
       - run: yarn
@@ -28,40 +28,40 @@ jobs:
       - uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.codecov_token}}
-  lint:
-    runs-on: ubuntu-latest
-    needs: typecheck
-    steps:
-      - uses: actions/checkout@v1
-      - run: yarn
-      - run: yarn run lint
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [test, lint, typecheck]
-    steps:
-      - run: yarn global add expo-cli
-      - uses: actions/checkout@v1
-      - run: yarn
-      - name: Fix inotify max_user_watches
-        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - name: Install Sentry CLI
-        run: curl -sL https://sentry.io/get-cli/ | bash
-      - name: Publish
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
-        run: sh .github/workflows/publish.sh
-        env:
-          # Expo data
-          EXPO_USERNAME: dusterthefirst
-          EXPO_PASSWORD: ${{ secrets.expo_password }}
-          # Branch info
-          IS_MASTER: ${{github.ref == 'refs/heads/master'}}
-          IS_STABLE: ${{github.ref == 'refs/heads/stable'}}
-          # Sentry data
-          SENTRY_ORG: dusterthefirst
-          SENTRY_AUTH_TOKEN: ${{secrets.sentry_auth_token}}
-          # Webhook data
-          COMMIT_MESSAGE: ${{github.event.commits[0].message}}
-          SENDER_USERNAME: ${{github.events.sender.login}}
-          SENDER_URL: ${{github.events.sender.url}}
-          SENDER_AVATAR: ${{github.events.sender.avatar_url}}
-          WEBHOOK_URL: ${{secrets.release_webhook}}
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   needs: typecheck
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - run: yarn
+  #     - run: yarn run lint
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [test, lint, typecheck]
+  #   steps:
+  #     - run: yarn global add expo-cli
+  #     - uses: actions/checkout@v1
+  #     - run: yarn
+  #     - name: Fix inotify max_user_watches
+  #       run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+  #     - name: Install Sentry CLI
+  #       run: curl -sL https://sentry.io/get-cli/ | bash
+  #     - name: Publish
+  #       if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
+  #       run: sh .github/workflows/publish.sh
+  #       env:
+  #         # Expo data
+  #         EXPO_USERNAME: dusterthefirst
+  #         EXPO_PASSWORD: ${{ secrets.expo_password }}
+  #         # Branch info
+  #         IS_MASTER: ${{github.ref == 'refs/heads/master'}}
+  #         IS_STABLE: ${{github.ref == 'refs/heads/stable'}}
+  #         # Sentry data
+  #         SENTRY_ORG: dusterthefirst
+  #         SENTRY_AUTH_TOKEN: ${{secrets.sentry_auth_token}}
+  #         # Webhook data
+  #         COMMIT_MESSAGE: ${{github.event.commits[0].message}}
+  #         SENDER_USERNAME: ${{github.events.sender.login}}
+  #         SENDER_URL: ${{github.events.sender.url}}
+  #         SENDER_AVATAR: ${{github.events.sender.avatar_url}}
+  #         WEBHOOK_URL: ${{secrets.release_webhook}}
