@@ -1,5 +1,6 @@
 # Jest
 .jest/
+coverage/
 
 # Node
 node_modules/**/*
