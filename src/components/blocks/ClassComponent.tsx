@@ -5,7 +5,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { DisplayClass } from "../../util/class";
+import { DisplayClass } from "../../util/class/abstracts";
 
 const styles = StyleSheet.create({
     container: {

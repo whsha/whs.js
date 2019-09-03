@@ -5,7 +5,7 @@
 import { observable } from "mobx";
 import { persist } from "mobx-persist";
 import { IAdvisory } from "../components/blocks/AdvisoryComponent";
-import { StorageClass } from "../util/class";
+import { StorageClass } from "../util/class/abstracts";
 
 export default class ClassesStore {
     @persist("object") @observable

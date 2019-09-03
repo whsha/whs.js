@@ -11,7 +11,7 @@ import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 import IconComponent from "../../components/IconComponent";
 import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { SorageClass } from "../../util/class";
+import { SorageClass } from "../../util/class/abstracts";
 
 const styles = StyleSheet.create({
     container: {

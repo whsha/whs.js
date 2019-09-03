@@ -39,10 +39,6 @@ const styles = StyleSheet.create({
     }
 });
 
-export interface IAdvisory {
-    teacher: string;
-    room: number;
-}
 export default function AdvisoryComponent({teacher, room}: IAdvisory) {
     return (
         <View style={styles.container}>
