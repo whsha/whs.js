@@ -9,7 +9,6 @@ on:
       - "assets/*"
       - "typings/*"
       - ".github/workflows/*"
-  pull_request:
 
 jobs:
   typecheck:
