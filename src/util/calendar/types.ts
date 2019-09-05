@@ -15,11 +15,11 @@ export interface ICalendarInformation {
 /** An event */
 export interface ICalendarEvent {
     /** The start time of the event */
-    start: number;
+    start: string;
     /** The end time of the event */
-    end?: number;
+    end?: string;
     /** The timestamp of the event */
-    stamp?: number;
+    stamp?: string;
     /** The name of the event */
     name: string;
     /** The description of the event */
