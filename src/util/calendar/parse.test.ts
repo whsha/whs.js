@@ -9,8 +9,6 @@ import parseCalendar from "./parse";
 let calendarData = readFileSync(resolve(__dirname, "../../../__mocks__/calendar.ics")).toString();
 
 describe("Tests parser with mock data", () => {
-    // FIXME:
-    Date.prototype.getTimezoneOffset = () => 4;
     let calendar = parseCalendar(calendarData);
 
     it("Parses schooldays and matches the snapshot", () => {

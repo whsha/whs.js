@@ -73,7 +73,7 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The description of the event
                 description: description === null ? undefined : description,
                 // The end date of the event, if any
-                end: end === null ? undefined : end.toJSDate(),
+                end: end === null ? undefined : end,
                 // If there is no end date or the event lasts 24 hours, that makes the event all day
                 isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
                 // The location of the event
@@ -81,9 +81,9 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The summary (title) of the event
                 name: summary,
                 // The timestamp of the events
-                stamp: stamp === null ? undefined : stamp.toJSDate(),
+                stamp: stamp === null ? undefined : stamp,
                 // The start date of the event
-                start: date.toJSDate()
+                start: date
             });
         }
     }
