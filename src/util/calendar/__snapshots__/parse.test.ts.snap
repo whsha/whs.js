@@ -4,12 +4,12 @@ exports[`Tests parser with mock data Parses events and matches the snapshot 1`] 
 Array [
   Object {
     "description": "",
-    "end": "2019-12-23T01:00:00.000Z",
+    "end": "2019-12-23T00:00:00.000Z",
     "isAllDay": true,
     "location": "",
     "name": "First Day of Hanukkah",
-    "stamp": "2019-09-04T19:59:09.000Z",
-    "start": "2019-12-22T01:00:00.000Z",
+    "stamp": "2019-09-04T18:59:09.000Z",
+    "start": "2019-12-22T00:00:00.000Z",
   },
 ]
 `;

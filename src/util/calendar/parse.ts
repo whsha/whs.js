@@ -21,7 +21,7 @@ enum SchoolDayRegexMatch {
     Meta
 }
 
-const TZOFF = new Date().getTimezoneOffset() === 4 ? 5 : new Date().getTimezoneOffset();
+const TZOFF = new Date().getTimezoneOffset() === 4*60 ? 5*60 : new Date().getTimezoneOffset();
 
 /** Parse an ICal */
 export default function parseCalendar(rawical: string): ICalendarInformation {
