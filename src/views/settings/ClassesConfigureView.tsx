@@ -11,7 +11,8 @@ import { SinglelineHeader } from "../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
 import IconComponent from "../../components/IconComponent";
 import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { SorageClass } from "../../util/class/abstracts";
+import { IMajor } from "../../util/class/storage";
+import { ClassType } from "../../util/class/type";
 
 const styles = StyleSheet.create({
     container: {
@@ -52,9 +53,11 @@ function ClassesList() {
         history.push("/settings");
     };
 
-    const classRenderItem: ListRenderItem<SorageClass> = ({ item }) => {
+    const goTo = (path: string) => () => history.push(path);
+
+    const classRenderItem: ListRenderItem<IMajor> = ({ item }) => {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goTo(`/settings/classes/${item.uuid}`)}>
                 <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={getDisplayColorForBlock(item.block)} />
             </TouchableOpacity>
         );
@@ -62,21 +65,24 @@ function ClassesList() {
 
     const keyExtractor = (_: unknown, i: number) => i.toString();
 
-    const [tempClasses, setTempClasses] = useState<SorageClass[]>([
+    const [tempClasses, setTempClasses] = useState<IMajor[]>([
         {
             block: BlockColor.Green,
-            meets: 0b11111,
+            lab: true,
             name: "gween",
             room: 1,
             teacher: "string",
+            type: ClassType.Major,
+            uuid: "uuid1"
         },
         {
             block: BlockColor.Yellow,
-            /// TODO:
-            meets: 0b10101,
+            lab: false,
             name: "|Yelo",
             room: 32,
             teacher: "ee",
+            type: ClassType.Major,
+            uuid: "uuid2"
         }
     ]);
 
@@ -84,10 +90,12 @@ function ClassesList() {
         console.log("e");
         setTempClasses((p) => [...p, {
             block: BlockColor.None,
-            meets: 0b11111,
+            lab: false,
             name: "New Class",
             room: 0,
             teacher: "",
+            type: ClassType.Major,
+            uuid: "uuidnew" // FIXME: TODO:
         }]);
     };
 
@@ -97,7 +105,17 @@ function ClassesList() {
             <ScrollView>
                 <TableView>
                     <Section header="Classes">
-                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
+                        <TouchableOpacity>
+                            <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
+                                <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
+                            </Section>
+                            <Section header="Electives" footer="Electives are any class that meets less than 5 times a cycle">
+                                <Cell title="TODO"/>
+                            </Section>
+                            <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
+                                <Cell title="TODO"/>
+                            </Section>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={addClass}>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>

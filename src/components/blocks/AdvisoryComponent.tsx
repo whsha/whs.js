@@ -4,6 +4,7 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { IAdvisory } from "../../util/advisory";
 
 const styles = StyleSheet.create({
     container: {
@@ -39,11 +40,13 @@ const styles = StyleSheet.create({
     }
 });
 
+/** A component to display the advisory */
 export default function AdvisoryComponent({teacher, room}: IAdvisory) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>
                 <Text style={styles.title}>Advisory</Text>
+                {/* TODO: NOT FIXED */}
                 <Text style={styles.dim}>9:38 - 9:46 AM</Text>
             </View>
             <View style={[styles.dualView, styles.info]}>

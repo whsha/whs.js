@@ -16,6 +16,7 @@
         "testwithcov": "jest --coverage"
     },
     "dependencies": {
+        "@badrap/result": "^0.2.5",
         "@types/timsort": "^0.3.0",
         "babel-preset-expo": "^5.1.1",
         "dayjs": "^1.8.14",
@@ -44,10 +45,23 @@
         "@types/react-native-vector-icons": "^6.4.0",
         "@types/react-router-native": "^4.2.4",
         "jest": "^24.9.0",
+        "jest-fetch-mock": "^2.1.2",
         "ts-jest": "^24.0.2",
         "tslint": "^5.16.0",
         "tslint-react": "^4.0.0",
         "typescript": "^3.6.2"
     },
-    "license": "GPL-3.0"
+    "license": "GPL-3.0",
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "collectCoverageFrom": [
+            "**/*.{ts,tsx}",
+            "!**/node_modules/**",
+            "!**/vendor/**"
+        ],
+        "setupFiles": [
+            "./setupJest.ts"
+        ]
+    }
 }

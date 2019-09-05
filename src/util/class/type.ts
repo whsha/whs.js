@@ -12,8 +12,7 @@ export interface IClassType<T extends ClassType> {
 export enum ClassType {
     Major,
     Elective,
-    DR,
-    Free
+    DR
 }
 
 export function hasClassType<T extends ClassType>(clazz: unknown): clazz is IClassType<T> {
@@ -38,8 +37,4 @@ export function isElective(clazz: IClassType<ClassType>): clazz is IClassType<Cl
 /** Check if the class is a DR */
 export function isDR(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.DR> {
     return getClassType(clazz) === ClassType.DR;
-}
-/** Check if the class is a free */
-export function isFree(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.Free> {
-    return getClassType(clazz) === ClassType.Free;
 }

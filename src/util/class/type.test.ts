@@ -3,8 +3,8 @@
  */
 
 import { BlockColor } from "../blocks/blockColor";
-import { IDR, IElective, IFree, IMajor } from "./blocks";
 import { IAdvisedClass } from "./primitives";
+import { IDR, IElective, IMajor } from "./storage";
 import { ClassType, getClassType, hasClassType } from "./type";
 
 let major: IMajor = {
@@ -13,7 +13,8 @@ let major: IMajor = {
     name: "Test Major",
     room: "Fitness center",
     teacher: "Mr. Test",
-    type: ClassType.Major
+    type: ClassType.Major,
+    uuid: ""
 };
 
 let elective: IElective = {
@@ -22,7 +23,8 @@ let elective: IElective = {
     name: "Test elective",
     room: 334,
     teacher: "Mrs. Test",
-    type: ClassType.Elective
+    type: ClassType.Elective,
+    uuid: ""
 };
 
 let dr: IDR = {
@@ -30,13 +32,8 @@ let dr: IDR = {
     meets: 0b11111,
     room: 102,
     teacher: "Dr. Test",
-    type: ClassType.DR
-};
-
-let free: IFree = {
-    block: BlockColor.Blue,
-    meets: 0b11111,
-    type: ClassType.Free
+    type: ClassType.DR,
+    uuid: ""
 };
 
 let notclass: IAdvisedClass = {
@@ -49,7 +46,6 @@ describe("Get classtype from ClassType<T>", () => {
         expect(hasClassType(major)).toBeTruthy();
         expect(hasClassType(elective)).toBeTruthy();
         expect(hasClassType(dr)).toBeTruthy();
-        expect(hasClassType(free)).toBeTruthy();
         expect(hasClassType(notclass)).toBeFalsy();
     });
     it("Gets the classtype from a Major", () => {
@@ -60,8 +56,5 @@ describe("Get classtype from ClassType<T>", () => {
     });
     it("Gets the classtype from a DR", () => {
         expect(getClassType(dr)).toBe(ClassType.DR);
-    });
-    it("Gets the classtype from a Free", () => {
-        expect(getClassType(free)).toBe(ClassType.Free);
     });
 });
