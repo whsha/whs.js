@@ -88,6 +88,8 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 start: dayjs(date.toJSDate()).subtract(TZOFF, "minute").unix()
             });
         }
+
+        console.log(TZOFF);
     }
 
     // Return the information about the calendar
