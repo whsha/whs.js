@@ -83,7 +83,7 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The summary (title) of the event
                 name: summary,
                 // The timestamp of the events
-                stamp: stamp === null ? undefined : dayjs(stamp.toJSDate()).subtract(TZOFF, "minute").toISOString(),
+                stamp: stamp === null ? undefined : dayjs(stamp.toJSDate()).toISOString(),
                 // The start date of the event
                 start: dayjs(date.toJSDate()).subtract(TZOFF, "minute").toISOString()
             });
