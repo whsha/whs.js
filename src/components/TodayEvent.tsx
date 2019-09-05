@@ -2,6 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import dayjs from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { ICalendarEvent } from "../util/calendar/types";
@@ -38,7 +39,7 @@ export default function TodayEvent({event}: ITodayEventProps) {
         <View style={styles.container}>
             <View style={styles.titleView}>
                 <Text style={styles.title}>{event.name}</Text>
-                <Text style={styles.times}>{event.isAllDay ? "All Day" : `${icalDateToDayjs(event.start).format("hh:mm A")} - ${event.end !== undefined ? icalDateToDayjs(event.end).format("hh:mm A") : ""}`}</Text>
+                <Text style={styles.times}>{event.isAllDay ? "All Day" : `${dayjs(event.start).format("hh:mm A")} - ${dayjs(event.end).format("hh:mm A")}`}</Text>
             </View>
             <Text>{event.description}</Text>
             <Text>{event.location}</Text>

@@ -20,6 +20,7 @@
         "@types/timsort": "^0.3.0",
         "babel-preset-expo": "^5.1.1",
         "dayjs": "^1.8.14",
+        "dayjs-plugin-utc": "^0.1.2",
         "expo": "^33.0.0",
         "ical.js": "^1.3.0",
         "mobx": "^5.9.4",
@@ -65,10 +66,10 @@
         ],
         "globals": {
             "ts-jest": {
-              "tsConfig": {
-                "jsx": "react"
-              }
+                "tsConfig": {
+                    "jsx": "react"
+                }
             }
-          }
+        }
     }
 }

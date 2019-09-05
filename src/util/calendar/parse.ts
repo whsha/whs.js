@@ -3,7 +3,9 @@
  */
 
 import dayjs from "dayjs";
+import dayjsPluginUTC from "dayjs-plugin-utc";
 import ICal from "ical.js";
+import { icalDateToDayjs } from "./dateutils";
 import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay, SchoolDay } from "./types";
 
 /** The regex used to match school days */
@@ -20,6 +22,8 @@ enum SchoolDayRegexMatch {
     /** Any metadata about the school day */
     Meta
 }
+
+dayjs.extend(dayjsPluginUTC);
 
 /** Parse an ICal */
 export default function parseCalendar(rawical: string): ICalendarInformation {
@@ -73,7 +77,7 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The description of the event
                 description: description === null ? undefined : description,
                 // The end date of the event, if any
-                end: end === null ? undefined : end,
+                end: end === null ? undefined : icalDateToDayjs(end).format(),
                 // If there is no end date or the event lasts 24 hours, that makes the event all day
                 isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
                 // The location of the event
@@ -81,9 +85,9 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The summary (title) of the event
                 name: summary,
                 // The timestamp of the events
-                stamp: stamp === null ? undefined : stamp,
+                stamp: stamp === null ? undefined : icalDateToDayjs(stamp).format(),
                 // The start date of the event
-                start: date
+                start: icalDateToDayjs(date).format()
             });
         }
     }

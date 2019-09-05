@@ -2,8 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import ICal from "ical.js";
-
 /** The information about a calendar */
 export interface ICalendarInformation {
     /** The school days */
@@ -17,11 +15,11 @@ export interface ICalendarInformation {
 /** An event */
 export interface ICalendarEvent {
     /** The start time of the event */
-    start: ICal.Time;
+    start: string;
     /** The end time of the event */
-    end?: ICal.Time;
+    end?: string;
     /** The timestamp of the event */
-    stamp?: ICal.Time;
+    stamp?: string;
     /** The name of the event */
     name: string;
     /** The description of the event */

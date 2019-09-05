@@ -8,7 +8,6 @@ import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
 import parseCalendar from "../util/calendar/parse";
 import { ICalendarEvent, ICalendarSchoolDay } from "../util/calendar/types";
-import { icalDateToDayjs } from "../util/calendar/dateutils";
 
 export default class CalendarStore {
     /** Get the current school day */
@@ -73,7 +72,7 @@ export default class CalendarStore {
         this.events.clear();
         for (let event of parsed.events) {
             // Get day of the event
-            let day = icalDateToDayjs(event.start).format("YYYY-MM-DD");
+            let day = dayjs(event.start).format("YYYY-MM-DD");
 
             let currentEvents = this.events.get(day);
 
