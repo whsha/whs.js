@@ -4,8 +4,8 @@
 
 import { observable } from "mobx";
 import { persist } from "mobx-persist";
-import { IAdvisory } from "../components/blocks/AdvisoryComponent";
-import { StorageClass } from "../util/class/abstracts";
+import { IAdvisory } from "../util/advisory";
+import { IDR, IElective, IMajor } from "../util/class/storage";
 
 export default class ClassesStore {
     @persist("object") @observable
@@ -16,11 +16,15 @@ export default class ClassesStore {
     }
 
     @persist("object") @observable
-    public classes: StorageClass[] = [];
+    public majors: IMajor[] = [];
+    @persist("object") @observable
+    public electives: IElective[] = [];
+    @persist("object") @observable
+    public DRs: IDR[] = [];
 
-    public updateClasses(classes: StorageClass[]) {
-        this.classes = classes;
-    }
+    // TODO: public updateClasses(classes: StorageClass[]) {
+    //     this.classes = classes;
+    // }
 
 // TODO: Make this after classes get configured and stored
 //     @computed

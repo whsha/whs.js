@@ -5,7 +5,7 @@
 import dayjs from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { ICalendarEvent } from "../util/calendarUtil";
+import { ICalendarEvent } from "../util/calendar/types";
 
 const styles = StyleSheet.create({
     container: {

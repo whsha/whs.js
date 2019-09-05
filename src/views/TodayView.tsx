@@ -16,7 +16,7 @@ import TodayEvent from "../components/TodayEvent";
 import { CalendarContext, ClassesContext } from "../contexts";
 import { Block } from "../util/blocks/block";
 import { BlockColor } from "../util/blocks/blockColor";
-import { ICalendarEvent, ICalendarSchoolDay, SchoolDay } from "../util/calendarUtil";
+import { ICalendarEvent, ICalendarSchoolDay, SchoolDay } from "../util/calendar/types";
 import useDate from "../util/hooks/useRoutedDate";
 import { getBlockColorsForDay } from "../util/schoolDays";
 

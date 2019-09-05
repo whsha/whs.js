@@ -4,8 +4,8 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { ITimes } from "../../util/class/abstracts";
+import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
+import { IFreeBlock } from "../../util/class/display";
 
 const styles = StyleSheet.create({
     container: {
@@ -36,10 +36,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export interface IFree {
-    block: BlockColor;
-}
-export default function FreeComponent({start, end, block}: IFree & ITimes) {
+/** A component to display a free block */
+export default function FreeComponent({start, end, block}: IFreeBlock) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>

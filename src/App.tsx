@@ -9,7 +9,7 @@ import { BackButton, NativeRouter } from "react-router-native";
 import Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext } from "./contexts";
 import StorageKey from "./storageKey";
-import { fetchCalendar } from "./util/calendarUtil";
+import fetchCalendar from "./util/calendar/fetch";
 import LoadingView from "./views/LoadingView";
 import MainView from "./views/MainView";
 
@@ -54,8 +54,15 @@ export default function App() {
             // Fetch the calendar off of the interweb
             let rawcal = await fetchCalendar();
 
+            if (rawcal.isErr) {
+                setCurrentTask(ApplicationState.Errored);
+                console.error(rawcal.error);
+
+                return;
+            }
+
             setCurrentTask(ApplicationState.ParsingCal);
-            await calendar.updateCalendar(rawcal);
+            await calendar.updateCalendar(rawcal.unwrap());
         }
 
         setCurrentTask(ApplicationState.LoadingClasses);

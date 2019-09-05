@@ -6,7 +6,8 @@ import dayjs, { Dayjs } from "dayjs";
 import { action, computed, IComputedValue, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
-import { ICalendarEvent, ICalendarSchoolDay, parseCalendar } from "../util/calendarUtil";
+import parseCalendar from "../util/calendar/parse";
+import { ICalendarEvent, ICalendarSchoolDay } from "../util/calendar/types";
 
 export default class CalendarStore {
     /** Get the current school day */
@@ -90,6 +91,6 @@ export default class CalendarStore {
                 [x.date, x]
             )
         );
-        this._updated = parsed.updated.getTime();
+        this._updated = parsed.updated;
     }
 }

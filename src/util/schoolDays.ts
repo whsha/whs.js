@@ -4,7 +4,7 @@
 
 import { Block } from "./blocks/block";
 import { BlockColor } from "./blocks/blockColor";
-import { SchoolDay } from "./calendarUtil";
+import { SchoolDay } from "./calendar/types";
 
 type SchoolDaysBlockColorsMap = {
     readonly [D in keyof typeof Block]: {

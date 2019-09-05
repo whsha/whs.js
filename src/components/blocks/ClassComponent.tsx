@@ -5,7 +5,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { DisplayClass } from "../../util/class/abstracts";
+import { IClassBlock } from "../../util/class/display";
 
 const styles = StyleSheet.create({
     container: {
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default function ClassComponent({teacher, room, name, block, start, end}: DisplayClass) {
+/** A component that will display a class */
+export default function ClassComponent({block, end, name, room, start, teacher}: IClassBlock) {
     return (
         <View style={styles.container}>
             <View style={styles.dualView}>
