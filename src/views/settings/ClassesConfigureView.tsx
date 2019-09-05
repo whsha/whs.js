@@ -104,21 +104,17 @@ function ClassesList() {
             <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={true/* TODO: */} />} />
             <ScrollView>
                 <TableView>
-                    <Section header="Classes">
-                        <TouchableOpacity>
-                            <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
-                                <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
-                            </Section>
-                            <Section header="Electives" footer="Electives are any class that meets less than 5 times a cycle">
-                                <Cell title="TODO"/>
-                            </Section>
-                            <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
-                                <Cell title="TODO"/>
-                            </Section>
-                        </TouchableOpacity>
+                    <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
+                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
                         <TouchableOpacity onPress={addClass}>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>
+                    </Section>
+                    <Section header="Electives" footer="Electives are any class that meets less than 5 times a cycle">
+                        <Cell title="TODO"/>
+                    </Section>
+                    <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
+                        <Cell title="TODO"/>
                     </Section>
                 </TableView>
             </ScrollView>
