@@ -4,34 +4,27 @@
 [![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
+[![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js/master.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
 
-## Builds
-| Branch | Status | Latest Build |
-|:------:|:------:|:-------------|
-| staging| [![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions) | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)<br>iOS Download<br>Android Download<br>[All Builds](https://expo.io/@dusterthefirst/WHS/builds) |
-| stable | [![Build Status](https://travis-ci.org/DusterTheFirst/whs.js.svg?branch=stable)](https://travis-ci.org/DusterTheFirst/whs.js)   | [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)<br>iOS Download<br>Android Download |
+[See **Rewrite** project for roadmap](https://github.com/DusterTheFirst/whs.js/projects/1)
 
-# Roadmap
-> [See **Rewrite** project for more info](https://github.com/DusterTheFirst/whs.js/projects/1)
-### June 1st
-- Closed Alpha
-    - Team of people to test a buggy version of the app with their schedules
-    - Lots of feedback and UX improvments
-    - Debug info still in build
+# Downloads
+[Builds](https://expo.io/@dusterthefirst/WHS/builds?release-channel=staging)
+## Stable
+- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)
+- iOS Download
+- Android Download
+## Staging
+- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
+- iOS Download
+- Android Download
 
-### August 1st
-- Open Beta
-    - Anyone can use the app
-    - Not gaurenteed to be stable
-    - LOTS of feedback
-
-### December
-- Full Release
-    - Published IPA and APKs
-    - Advertisment on school announements
+# Code Coverage
+![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)
+![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)
 
 # License
     whs.js - Wellesley High School helper application
