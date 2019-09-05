@@ -21,8 +21,6 @@ enum SchoolDayRegexMatch {
     Meta
 }
 
-const TZOFF = new Date().getTimezoneOffset() === 4*60 ? 5*60 : new Date().getTimezoneOffset();
-
 /** Parse an ICal */
 export default function parseCalendar(rawical: string): ICalendarInformation {
     // Parse the ICal into a JCal
@@ -70,13 +68,12 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
             let end = event.getFirstPropertyValue<ICal.Time>("dtend");
             /** The timestamp of the event */
             let stamp = event.getFirstPropertyValue<ICal.Time>("dtstamp");
-
             // Add the event to the list of events
             events.push({
                 // The description of the event
                 description: description === null ? undefined : description,
                 // The end date of the event, if any
-                end: end === null ? undefined : dayjs(end.toJSDate()).subtract(date.isDate ? 5*60: TZOFF, "minute").toISOString(),
+                end: end === null ? undefined : end.toJSDate(),
                 // If there is no end date or the event lasts 24 hours, that makes the event all day
                 isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
                 // The location of the event
@@ -84,9 +81,9 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The summary (title) of the event
                 name: summary,
                 // The timestamp of the events
-                stamp: stamp === null ? undefined : dayjs(stamp.toJSDate()).toISOString(),
+                stamp: stamp === null ? undefined : stamp.toJSDate(),
                 // The start date of the event
-                start: dayjs(date.toJSDate()).subtract(date.isDate ? 5*60 : TZOFF, "minute").toISOString()
+                start: date.toJSDate()
             });
         }
     }
