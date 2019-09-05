@@ -13,10 +13,12 @@
 
 # Downloads
 [Builds](https://expo.io/@dusterthefirst/WHS/builds?release-channel=staging)
+
 ## Stable
 - [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)
 - iOS Download
 - Android Download
+
 ## Staging
 - [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
 - iOS Download
