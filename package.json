@@ -62,6 +62,13 @@
         ],
         "setupFiles": [
             "./setupJest.ts"
-        ]
+        ],
+        "globals": {
+            "ts-jest": {
+              "tsConfig": {
+                "jsx": "react"
+              }
+            }
+          }
     }
 }
