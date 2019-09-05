@@ -91,6 +91,6 @@ export default class CalendarStore {
                 [x.date, x]
             )
         );
-        this._updated = parsed.updated.getTime();
+        this._updated = parsed.updated;
     }
 }

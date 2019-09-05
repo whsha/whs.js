@@ -9,17 +9,17 @@ export interface ICalendarInformation {
     /** Events that take place */
     events: ICalendarEvent[];
     /** When the calendar was updated */
-    updated: Date;
+    updated: number;
 }
 
 /** An event */
 export interface ICalendarEvent {
     /** The start time of the event */
-    start: Date;
+    start: number;
     /** The end time of the event */
-    end?: Date;
+    end?: number;
     /** The timestamp of the event */
-    stamp?: Date;
+    stamp?: number;
     /** The name of the event */
     name: string;
     /** The description of the event */
