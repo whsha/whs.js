@@ -87,9 +87,6 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The start date of the event
                 start: dayjs(date.toJSDate()).subtract(TZOFF, "minute").toISOString()
             });
-
-            // FIXME:
-            break;
         }
     }
 
