@@ -2,13 +2,15 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-export function stdTimezoneOffset(date: Date) {
-    const jan = new Date(date.getFullYear(), 0, 1);
-    const jul = new Date(date.getFullYear(), 6, 1);
+import dayjs, { Dayjs } from "dayjs";
+import { Time } from "ical.js";
 
-    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-}
-
-export function isDstObserved(date: Date) {
-    return date.getTimezoneOffset() < stdTimezoneOffset(date);
+export function icalDateToDayjs(date: Time): Dayjs {
+    return dayjs()
+        .set("year", date.year)
+        .set("month", date.month)
+        .set("day", date.day)
+        .set("hour", date.hour)
+        .set("minute", date.minute)
+        .set("second", date.second);
 }

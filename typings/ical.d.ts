@@ -700,6 +700,12 @@ declare module "ical.js" {
         constructor(data: Object, zone: Timezone);
 
         public isDate: boolean;
+        public day: number;
+        public hour: number;
+        public minute: number;
+        public month: number;
+        public second: number;
+        public year: number;
 
         /**
          * Converts the current instance to a Javascript date
