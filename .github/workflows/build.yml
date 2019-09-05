@@ -9,9 +9,6 @@ on:
       - "assets/*"
       - "typings/*"
       - ".github/workflows/*"
-    branches:
-      - master
-      - stable
 
 jobs:
   typecheck:
