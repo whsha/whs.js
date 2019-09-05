@@ -70,12 +70,13 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
             let end = event.getFirstPropertyValue<ICal.Time>("dtend");
             /** The timestamp of the event */
             let stamp = event.getFirstPropertyValue<ICal.Time>("dtstamp");
+
             // Add the event to the list of events
             events.push({
                 // The description of the event
                 description: description === null ? undefined : description,
                 // The end date of the event, if any
-                end: end === null ? undefined : dayjs(end.toJSDate()).subtract(TZOFF, "minute").toISOString(),
+                end: end === null ? undefined : dayjs(end.toJSDate()).subtract(date.isDate ? TZOFF : 5*60, "minute").toISOString(),
                 // If there is no end date or the event lasts 24 hours, that makes the event all day
                 isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
                 // The location of the event
@@ -85,7 +86,7 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 // The timestamp of the events
                 stamp: stamp === null ? undefined : dayjs(stamp.toJSDate()).toISOString(),
                 // The start date of the event
-                start: dayjs(date.toJSDate()).subtract(TZOFF, "minute").toISOString()
+                start: dayjs(date.toJSDate()).subtract(date.isDate ? TZOFF : 5*60, "minute").toISOString()
             });
         }
     }
