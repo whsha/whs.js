@@ -8,7 +8,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "Professional Day",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200107000100",
   },
   Object {
@@ -17,7 +17,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200129000100",
   },
   Object {
@@ -26,7 +26,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200523000500",
   },
   Object {
@@ -35,7 +35,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200321000300",
   },
   Object {
@@ -44,7 +44,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200318000300",
   },
   Object {
@@ -53,7 +53,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200131000100",
   },
   Object {
@@ -62,7 +62,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200527000500",
   },
   Object {
@@ -71,7 +71,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200204000200",
   },
   Object {
@@ -80,7 +80,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200203000200",
   },
   Object {
@@ -89,7 +89,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200128000100",
   },
   Object {
@@ -98,7 +98,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200526000500",
   },
   Object {
@@ -107,7 +107,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200524000500",
   },
   Object {
@@ -116,7 +116,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200320000300",
   },
   Object {
@@ -125,7 +125,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200201000200",
   },
   Object {
@@ -134,7 +134,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200525000500",
   },
   Object {
@@ -143,7 +143,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200205000200",
   },
   Object {
@@ -152,7 +152,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200130000100",
   },
   Object {
@@ -161,7 +161,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200322000300",
   },
   Object {
@@ -170,17 +170,17 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School - School Vacation",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200319000300",
   },
   Object {
     "description": "",
-    "end": "20191002001000",
+    "end": "20191009001000",
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
-    "start": "20191001001000",
+    "stamp": "20191011201051",
+    "start": "20191008001000",
   },
   Object {
     "description": "",
@@ -188,7 +188,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20191229001200",
   },
   Object {
@@ -197,8 +197,8 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
-    "start": "20191029001000",
+    "stamp": "20191011201051",
+    "start": "20191105001100",
   },
   Object {
     "description": "",
@@ -206,7 +206,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20191112001100",
   },
   Object {
@@ -215,7 +215,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20191117001100",
   },
   Object {
@@ -224,7 +224,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20191212001200",
   },
   Object {
@@ -233,7 +233,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200625000600",
   },
   Object {
@@ -242,7 +242,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20191230001200",
   },
   Object {
@@ -251,7 +251,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200513000500",
   },
   Object {
@@ -260,7 +260,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "No School",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200222000200",
   },
   Object {
@@ -269,7 +269,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 6",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200430000400",
   },
   Object {
@@ -278,7 +278,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 5",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200429000400",
   },
   Object {
@@ -287,7 +287,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 4",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200708000700",
   },
   Object {
@@ -296,7 +296,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 3",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200707000700",
   },
   Object {
@@ -305,7 +305,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 2",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200620000600",
   },
   Object {
@@ -314,7 +314,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "MCAS Day 1",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200619000600",
   },
   Object {
@@ -323,7 +323,7 @@ Array [
     "isAllDay": true,
     "location": "",
     "name": "Makeup Day",
-    "stamp": "20191004201051",
+    "stamp": "20191011201051",
     "start": "20200226000200",
   },
 ]
