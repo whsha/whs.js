@@ -5,6 +5,7 @@ on:
       - "*.ts"
       - "*.tsx"
       - "*.json"
+      - "*.snap"
       - "src/*"
       - "assets/*"
       - "typings/*"
