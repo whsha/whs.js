@@ -10,6 +10,7 @@ import Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext } from "./contexts";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
+import parseCalendar from "./util/calendar/parse";
 import LoadingView from "./views/LoadingView";
 import MainView from "./views/MainView";
 
@@ -19,6 +20,7 @@ export enum ApplicationState {
     LoadingCal = "Loading Calendar",
     DownloadingCal = "Downloading Calendar",
     ParsingCal = "Parsing Calendar",
+    SavingCal = "Saving Calendar",
     LoadingClasses = "Loading Classes",
     Opening = "Opening App",
     Errored = "ERRORED",
@@ -62,7 +64,11 @@ export default function App() {
             }
 
             setCurrentTask(ApplicationState.ParsingCal);
-            await calendar.updateCalendar(rawcal.unwrap());
+            // Parse the calendar
+            let parsed = parseCalendar(rawcal.unwrap());
+
+            setCurrentTask(ApplicationState.SavingCal);
+            await calendar.updateCalendar(parsed);
         }
 
         setCurrentTask(ApplicationState.LoadingClasses);

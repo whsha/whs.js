@@ -6,8 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { action, computed, IComputedValue, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
-import parseCalendar from "../util/calendar/parse";
-import { ICalendarEvent, ICalendarSchoolDay } from "../util/calendar/types";
+import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types";
 
 export default class CalendarStore {
     /** Get the current school day */
@@ -64,33 +63,40 @@ export default class CalendarStore {
     /** Update the stored calendar to match the live version */
     // tslint:disable-next-line: no-unbound-method
     @action.bound
-    public async updateCalendar(rawcalendar: string) {
-        // Parse the calendar
-        let parsed = parseCalendar(rawcalendar);
-
+    public async updateCalendar(parsed: ICalendarInformation) {
         // Update the cal
         this.events.clear();
         for (let event of parsed.events) {
             // Get day of the event
             let day = dayjs(event.start).format("YYYY-MM-DD");
 
+            // Get the current events for that day
             let currentEvents = this.events.get(day);
 
+            // If none yet, create a new empty lisy
             if (currentEvents === undefined) {
                 currentEvents = [];
             }
 
+            // Add the new event
             currentEvents.push(event);
 
+            // Put the new event list back
             this.events.set(day, currentEvents);
         }
+
+        // Clear the current stored school days
         this.schoolDays.clear();
+        // Sort the parsed school days for ease of searching
         TimSort.sort(parsed.schoolDays, (a, b) => dayjs(a.date).diff(dayjs(b.date), "hour"));
+        // Map them by date and store them in the school days
         this.schoolDays = observable.map(
             parsed.schoolDays.map(x =>
                 [x.date, x]
             )
         );
+
+        // Update the time of update
         this._updated = parsed.updated;
     }
 }
