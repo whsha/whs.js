@@ -11,7 +11,7 @@ import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay } from "../uti
 export default class CalendarStore {
     /** Get the current school day */
     public schoolDay(date: Dayjs): ICalendarSchoolDay | undefined {
-        return this.schoolDays.get(date.format("YYYY-MM-DD"));
+        return this.schoolDays.get(date.utc().format("YYYY-MM-DD"));
     }
 
     @persist("map")
@@ -19,7 +19,7 @@ export default class CalendarStore {
 
     /** Get the next day which has a school day after the given date */
     public nextSchoolDayAfter(date: Dayjs): Dayjs {
-        let datestring = date.format("YYYY-MM-DD");
+        let datestring = date.utc().format("YYYY-MM-DD");
 
         // Load from cache if possible
         if (this.nextSchoolDayMap.has(datestring)) {
@@ -35,7 +35,7 @@ export default class CalendarStore {
 
     /** Get the events for a day */
     public eventsOn(date: Dayjs): ICalendarEvent[] {
-        let events = this.events.get(date.format("YYYY-MM-DD"));
+        let events = this.events.get(date.utc().format("YYYY-MM-DD"));
 
         return events === undefined ? [] : events;
     }

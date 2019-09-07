@@ -4,9 +4,9 @@ exports[`Test the functionality of a normal CalendarStore Gets the events on 201
 
 exports[`Test the functionality of a normal CalendarStore Gets the events on 2019-09-16T00:00:00Z 1`] = `Array []`;
 
-exports[`Test the functionality of a normal CalendarStore Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second 1`] = `"20190909"`;
+exports[`Test the functionality of a normal CalendarStore Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second 1`] = `"2019-09-09T04:00:00.000Z"`;
 
-exports[`Test the functionality of a normal CalendarStore Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second 2`] = `"20190909"`;
+exports[`Test the functionality of a normal CalendarStore Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second 2`] = `"2019-09-09T04:00:00.000Z"`;
 
 exports[`Test the functionality of a normal CalendarStore Gets the school day on 2019-09-06T00:00:00Z 1`] = `
 Object {
