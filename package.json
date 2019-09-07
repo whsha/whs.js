@@ -10,7 +10,8 @@
         "lint": "tslint --project ./tsconfig.json",
         "typecheck": "tsc --noEmit",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :*.tsx?",
-        "test": "jest"
+        "test": "jest",
+        "testcov": "jest --coverage"
     },
     "dependencies": {
         "@badrap/result": "^0.2.5",
