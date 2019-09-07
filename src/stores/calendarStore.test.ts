@@ -3,11 +3,8 @@
  */
 
 import dayjs from "dayjs";
-import dayjsPluginUTC from "dayjs/plugin/utc";
 import mockCalendar from "../../__mocks__/calendar.json";
 import CalendarStore from "./calendarStore";
-
-dayjs.extend(dayjsPluginUTC);
 
 describe("Test the functionality of a normal CalendarStore", () => {
     let store = new CalendarStore();
