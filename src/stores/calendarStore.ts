@@ -3,45 +3,41 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
-import { action, computed, IComputedValue, observable } from "mobx";
+import { action, computed, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
 import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types";
 
 export default class CalendarStore {
     /** Get the current school day */
-    public schoolDay(date: Dayjs): IComputedValue<ICalendarSchoolDay | undefined> {
-        return computed(() => this.schoolDays.get(date.format("YYYY-MM-DD")));
+    public schoolDay(date: Dayjs): ICalendarSchoolDay | undefined {
+        return this.schoolDays.get(date.format("YYYY-MM-DD"));
     }
 
     @persist("map")
-    public nextSchoolDayMap = new Map<string, string | undefined>();
+    private readonly nextSchoolDayMap = new Map<string, string | undefined>();
 
     /** Get the next day which has a school day after the given date */
-    public nextSchoolDayAfter(date: Dayjs): IComputedValue<Dayjs> {
-        return computed(() => {
-            let datestring = date.format("YYYY-MM-DD");
+    public nextSchoolDayAfter(date: Dayjs): Dayjs {
+        let datestring = date.format("YYYY-MM-DD");
 
-            // Load from cache if possible
-            if (this.nextSchoolDayMap.has(datestring)) {
-                return dayjs(this.nextSchoolDayMap.get(datestring));
-            } else {
-                let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
+        // Load from cache if possible
+        if (this.nextSchoolDayMap.has(datestring)) {
+            return dayjs(this.nextSchoolDayMap.get(datestring));
+        } else {
+            let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
 
-                this.nextSchoolDayMap.set(datestring, nextschoolday);
+            this.nextSchoolDayMap.set(datestring, nextschoolday);
 
-                return dayjs(nextschoolday);
-            }
-        });
+            return dayjs(nextschoolday);
+        }
     }
 
     /** Get the events for a day */
-    public eventsOn(date: Dayjs): IComputedValue<ICalendarEvent[]> {
-        return computed(() => {
-            let events = this.events.get(date.format("YYYY-MM-DD"));
+    public eventsOn(date: Dayjs): ICalendarEvent[] {
+        let events = this.events.get(date.format("YYYY-MM-DD"));
 
-            return events === undefined ? [] : events;
-        });
+        return events === undefined ? [] : events;
     }
 
     /** The date this store was last updated */

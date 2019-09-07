@@ -72,7 +72,7 @@ export default function TodayView() {
         setToToday
     } = useDate();
 
-    const schoolDay = calendar.schoolDay(date).get();
+    const schoolDay = calendar.schoolDay(date);
 
     return (
         <View style={styles.todayView}>
@@ -87,7 +87,7 @@ export default function TodayView() {
             {/* TODO: */}
             <Modal visible={false}>
                 <FlatList
-                    data={calendar.eventsOn(date).get()}
+                    data={calendar.eventsOn(date)}
                     keyExtractor={eventKeyExtractor}
                     renderItem={todayEventRenderItem}
                     scrollEnabled={true}
@@ -181,7 +181,7 @@ function NoSchoolView({ selectedDate, setDate }: { selectedDate: dayjs.Dayjs; se
 
     useEffect(() => {
         (async ()=>{
-            let newNextSchoolDay = calendar.nextSchoolDayAfter(selectedDate).get();
+            let newNextSchoolDay = calendar.nextSchoolDayAfter(selectedDate);
             setNextSchoolDay(newNextSchoolDay);
         })();
     }, [selectedDate, calendar]);
