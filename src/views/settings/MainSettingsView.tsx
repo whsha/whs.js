@@ -4,52 +4,27 @@
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Alert, Linking, ScrollView, StyleSheet, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import IconComponent from "../../components/IconComponent";
-import { CalendarContext, ReloadFunctionContext } from "../../contexts";
+import ClearCalCacheCell from "../../components/settings/ClearCalendarCacheCell";
 
 dayjs.extend(relativeTime);
 
 const styles = StyleSheet.create({
     container: {
         flex: 1
-    },
-    redbutton: {
-        color: "#FF5050"
     }
 });
 
-function ClearCalCacheCell() {
-    const calendar = useContext(CalendarContext);
-    let [fromNow, setFromNow] = useState(dayjs(calendar.updated).fromNow());
-    const load = useContext(ReloadFunctionContext);
-
-    useEffect(() => {
-        let interval = setInterval(() => setFromNow(dayjs(calendar.updated).fromNow()), 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const clearCalendarCache = () => {
-        load(true);
-    };
-
-    return (
-        <Cell title="Clear Calendar Cache" detail={`Last update: ${fromNow}`} cellStyle="Subtitle" titleTextStyle={styles.redbutton} onPress={clearCalendarCache} />
-    );
-}
-
-export default function MainView() {
+export default function MainSettingsView() {
     const { history, match, location } = useRouter();
 
     function navigateTo(to: string) {
-        return () => {
-            history.push(to);
-        };
+        return () => history.push(to);
     }
 
     function openLink(link: string) {

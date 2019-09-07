@@ -3,48 +3,18 @@
  */
 
 import React, { useState } from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
-import { Route, Switch } from "react-router";
 import useRouter from "use-react-router";
-import { SinglelineHeader } from "../../components/header/Header";
-import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
-import IconComponent from "../../components/IconComponent";
-import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { IMajor } from "../../util/class/storage";
-import { ClassType } from "../../util/class/type";
+import { SinglelineHeader } from "../../../components/header/Header";
+import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import IconComponent from "../../../components/IconComponent";
+import { BlockColor, getDisplayColorForBlock } from "../../../util/blocks/blockColor";
+import { IMajor } from "../../../util/class/storage";
+import { ClassType } from "../../../util/class/type";
+import { styles } from "./ClassesConfigureView";
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#EFEFF4",
-        flex: 1
-    },
-    text: {
-        flex: 1,
-        height: 40,
-    }
-});
-
-export default function ClassesConfigureView() {
-    return (
-        <Switch>
-            <Route path="/settings/classes" exact={true} component={ClassesList} />
-            <Route path="/settings/classes/:id" exact={true} component={ConfigureClass} />
-        </Switch>
-    );
-}
-
-function ConfigureClass() {
-    const { match } = useRouter<{ id: string }>();
-
-    return (
-        <Text>
-            {JSON.stringify(match.params.id, undefined, 4)}
-        </Text>
-    );
-}
-
-function ClassesList() {
+export default function ClassesListView() {
     const { history } = useRouter();
 
     const goBack = () => history.goBack();
@@ -111,10 +81,10 @@ function ClassesList() {
                         </TouchableOpacity>
                     </Section>
                     <Section header="Electives" footer="Electives are any class that meets less than 5 times a cycle">
-                        <Cell title="TODO"/>
+                        <Cell title="TODO" />
                     </Section>
                     <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
-                        <Cell title="TODO"/>
+                        <Cell title="TODO" />
                     </Section>
                 </TableView>
             </ScrollView>

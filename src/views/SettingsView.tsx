@@ -6,7 +6,7 @@ import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Route, Switch } from "react-router-native";
 import AdvisoryConfigureView from "./settings/AdvisoryConfigureView";
-import ClassesConfigureView from "./settings/ClassesConfigureView";
+import ClassesConfigureView from "./settings/class/ClassesConfigureView";
 import MainView from "./settings/MainSettingsView";
 
 const styles = StyleSheet.create({
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const SettingsView = () => {
+export default function SettingsView() {
     return (
         <SafeAreaView style={styles.container}>
             <Switch>
@@ -26,6 +26,4 @@ const SettingsView = () => {
             </Switch>
         </SafeAreaView>
     );
-};
-
-export default SettingsView;
+}
