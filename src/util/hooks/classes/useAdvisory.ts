@@ -2,16 +2,19 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { useContext, useState } from "react";
-import { ClassesContext } from "../../contexts";
+import deepEqual from "deep-equal";
+import { toJS } from "mobx";
+import { useState } from "react";
+import { useClasses } from "./useClasses";
 
 export default function useAdvisory() {
-    let classes = useContext(ClassesContext);
-    let [tempAdvisory, setTempAdvisory] = useState(classes.advisory);
+    let classes = useClasses();
+    let [tempAdvisory, setTempAdvisory] = useState(classes.temp.advisory);
 
     return {
-        savedAdvisory: classes.advisory,
+        savedAdvisory: classes.temp.advisory,
         tempAdvisory,
+        updated: !deepEqual(toJS(tempAdvisory), toJS(classes.temp.advisory)),
         save() {
             classes.updateAdvisory(tempAdvisory);
         },

@@ -11,20 +11,26 @@ export default class ClassesStore {
     @persist("object") @observable
     public advisory: IAdvisory = { room: 0, teacher: "" };
 
-    public updateAdvisory(part: Partial<IAdvisory>) {
-        this.advisory = {... this.advisory, ... part};
+    @persist("map") @observable
+    public majors: Map<string, IMajor> = observable.map();
+    @persist("map") @observable
+    public electives: Map<string, IElective> = observable.map();
+    @persist("map") @observable
+    public DRs: Map<string, IDR> = observable.map();
+
+    public hydrateFrom(store: ClassesStore) {
+        this.majors = store.majors;
+        this.electives = store.electives;
+        this.DRs = store.DRs;
+        this.advisory = store.advisory;
     }
 
-    @persist("object") @observable
-    public majors: IMajor[] = [];
-    @persist("object") @observable
-    public electives: IElective[] = [];
-    @persist("object") @observable
-    public DRs: IDR[] = [];
-
-    // TODO: public updateClasses(classes: StorageClass[]) {
-    //     this.classes = classes;
-    // }
+    public clear() {
+        this.advisory = { room: 0, teacher: "" };
+        this.majors = observable.map();
+        this.electives = observable.map();
+        this.DRs = observable.map();
+    }
 
 // TODO: Make this after classes get configured and stored
 //     @computed

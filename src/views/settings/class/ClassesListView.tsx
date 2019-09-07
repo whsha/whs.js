@@ -2,25 +2,42 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { useState } from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { toJS } from "mobx";
+import React from "react";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
-import { BlockColor, getDisplayColorForBlock } from "../../../util/blocks/blockColor";
+import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
+import { IClassMeta } from "../../../util/class/extentions";
 import { IMajor } from "../../../util/class/storage";
-import { ClassType } from "../../../util/class/type";
-import { styles } from "./ClassesConfigureView";
+import { useClasses } from "../../../util/hooks/classes/useClasses";
+
+export const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#EFEFF4",
+        flex: 1
+    },
+    text: {
+        flex: 1,
+        height: 40,
+    }
+});
 
 export default function ClassesListView() {
     const { history } = useRouter();
+    const classes = useClasses();
+    console.log(toJS(classes, {recurseEverything: true, exportMapsAsObjects: true}));
 
-    const goBack = () => history.goBack();
-    const done = () => {
-        // TODO: Save
+    const goBack = () => {
         history.push("/settings");
+        classes.reset();
+    };
+    const done = () => {
+        history.push("/settings");
+        classes.save();
     };
 
     const goTo = (path: string) => () => history.push(path);
@@ -33,50 +50,16 @@ export default function ClassesListView() {
         );
     };
 
-    const keyExtractor = (_: unknown, i: number) => i.toString();
-
-    const [tempClasses, setTempClasses] = useState<IMajor[]>([
-        {
-            block: BlockColor.Green,
-            lab: true,
-            name: "gween",
-            room: 1,
-            teacher: "string",
-            type: ClassType.Major,
-            uuid: "uuid1"
-        },
-        {
-            block: BlockColor.Yellow,
-            lab: false,
-            name: "|Yelo",
-            room: 32,
-            teacher: "ee",
-            type: ClassType.Major,
-            uuid: "uuid2"
-        }
-    ]);
-
-    const addClass = () => {
-        console.log("e");
-        setTempClasses((p) => [...p, {
-            block: BlockColor.None,
-            lab: false,
-            name: "New Class",
-            room: 0,
-            teacher: "",
-            type: ClassType.Major,
-            uuid: "uuidnew" // FIXME: TODO:
-        }]);
-    };
+    const keyExtractor = (x: IClassMeta) => x.uuid;
 
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={true/* TODO: */} />} />
+            <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!classes.updated} />} />
             <ScrollView>
                 <TableView>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
-                        <FlatList keyExtractor={keyExtractor} data={tempClasses} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
-                        <TouchableOpacity onPress={addClass}>
+                        <FlatList keyExtractor={keyExtractor} data={Array.from(classes.temp.majors.values())} renderItem={classRenderItem} ItemSeparatorComponent={Separator} />
+                        <TouchableOpacity /* onPress={classes.addMajor} */>
                             <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
                         </TouchableOpacity>
                     </Section>
@@ -85,6 +68,9 @@ export default function ClassesListView() {
                     </Section>
                     <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
                         <Cell title="TODO" />
+                    </Section>
+                    <Section header="Advisory" footer="Basically your homeroom">
+                        <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={goTo("/settings/classes/advisory")} />
                     </Section>
                 </TableView>
             </ScrollView>

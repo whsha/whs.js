@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
 import { BackButton, NativeRouter } from "react-router-native";
 import Sentry from "sentry-expo";
-import { CalendarContext, ClassesContext, ReloadFunctionContext } from "./contexts";
+import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
@@ -34,6 +34,7 @@ export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
     let calendar = useContext(CalendarContext);
     let classes = useContext(ClassesContext);
+    let tempClasses = useContext(TempClassesContext);
 
     async function Load(reset = false) {
         setCurrentTask(ApplicationState.PreparingMP);
@@ -73,6 +74,7 @@ export default function App() {
 
         setCurrentTask(ApplicationState.LoadingClasses);
         await hydrate(StorageKey.Classes, classes);
+        tempClasses.hydrateFrom(classes);
 
         setCurrentTask(ApplicationState.Opening);
 

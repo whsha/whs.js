@@ -11,6 +11,7 @@ import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalendarCacheCell";
+import ResetClassesCell from "../../components/settings/ClearClassesCell";
 
 dayjs.extend(relativeTime);
 
@@ -56,7 +57,6 @@ export default function MainSettingsView() {
                     <Section header="Class Settings">
                         <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("/settings/classes")} />
                         <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={navigateTo("/settings/lunches")} isDisabled={true} />
-                        <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={navigateTo("/settings/advisory")} />
                     </Section>
                     <Section header="Legal">
                         <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
@@ -67,8 +67,9 @@ export default function MainSettingsView() {
                         <Cell title="Help" accessory="Detail" onPress={navigateTo("/settings/help")} isDisabled={true} />
                         <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
                     </Section>
-                    <Section header="Cache" footer="If your schedule shows up incorrectly, clearing the caches may help.">
+                    <Section header="Clear" footer="If your schedule shows up incorrectly, clearing the caches may help.">
                         <ClearCalCacheCell />
+                        <ResetClassesCell />
                     </Section>
                 </TableView>
             </ScrollView>

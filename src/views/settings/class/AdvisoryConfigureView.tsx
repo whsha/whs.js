@@ -6,10 +6,10 @@ import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
-import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
-import { SinglelineHeader } from "../../components/header/Header";
-import { HeaderCancelButton, HeaderSaveButton } from "../../components/header/HeaderButtons";
-import useAdvisory from "../../util/hooks/useAdvisory";
+import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
+import { SinglelineHeader } from "../../../components/header/Header";
+import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 
 const styles = StyleSheet.create({
     container: {
@@ -29,19 +29,19 @@ export default function AdvisoryConfigureView() {
         setRoom,
         setTeacher,
         tempAdvisory,
-        savedAdvisory
+        updated
     } = useAdvisory();
 
-    const goBack = () => history.goBack();
+    const goBack = () => history.push("/settings/classes");
     const done = () => {
         save();
-        history.push("/settings");
+        history.push("/settings/classes");
     };
     const roomNumberChange = (x: string) => setRoom(x.length > 0 ? parseInt(x, 10) : 0);
 
     return (
         <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={tempAdvisory === savedAdvisory}/>} />
+            <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={!updated}/>} />
             <ScrollView>
                 <TableView>
                     <Section header="Advisory Teacher">
