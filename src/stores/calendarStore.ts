@@ -3,13 +3,10 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
-import dayjsutc from "dayjs/plugin/utc";
 import { action, computed, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
 import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types";
-
-dayjs.extend(dayjsutc);
 
 export default class CalendarStore {
     /** Get the current school day */

@@ -35,8 +35,8 @@ describe("Test the functionality of a normal CalendarStore", () => {
     });
 
     it("Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second", () => {
-        expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).utc().toISOString()).toMatchSnapshot();
-        expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).utc().toISOString()).toMatchSnapshot();
+        expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
+        expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
     });
 
     it("Gets the events on 2019-09-07T00:00:00Z", () => {
