@@ -7,6 +7,7 @@ on:
       - "*.json"
       - "*.snap"
       - "src/*"
+      - "src/**/*"
       - "assets/*"
       - "typings/*"
       - ".github/workflows/*"
