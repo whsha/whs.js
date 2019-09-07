@@ -3,7 +3,10 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
+import dayjsutc from "dayjs/plugin/utc";
 import { Time } from "ical.js";
+
+dayjs.extend(dayjsutc);
 
 export function icalDateToDayjs(date: Time): Dayjs {
     return dayjs().utc()
