@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <IconComponent/> Renders <IconComponent name="cog" size={20}/> 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -4,
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "#2f95dc",
+          "fontSize": 20,
+        },
+        undefined,
+        Object {
+          "fontFamily": "Ionicons",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`Tests different variations of <IconComponent/> Renders <IconComponent name="list"/> 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -4,
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "#2f95dc",
+          "fontSize": 22,
+        },
+        undefined,
+        Object {
+          "fontFamily": "Ionicons",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;

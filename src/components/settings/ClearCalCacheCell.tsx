@@ -3,6 +3,7 @@
  */
 
 import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Cell } from "react-native-tableview-simple";
@@ -13,6 +14,8 @@ const styles = StyleSheet.create({
         color: "#FF5050"
     }
 });
+
+dayjs.extend(relativeTime);
 
 export default function ClearCalCacheCell() {
     const calendar = useContext(CalendarContext);

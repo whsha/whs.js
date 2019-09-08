@@ -90,7 +90,7 @@
         "no-eval": true,
         "no-floating-promises": false,
         "no-for-in-array": true,
-        "no-implicit-dependencies": true,
+        "no-implicit-dependencies": [true, "dev"],
         "no-import-side-effect": true,
         "no-inferrable-types": true,
         "no-inferred-empty-object-type": true,

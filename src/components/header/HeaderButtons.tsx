@@ -59,6 +59,7 @@ export function HeaderLeftArrow({ onPress }: IHeaderBackButtonProps) {
                 // tslint:disable-next-line:no-magic-numbers
                 size={22}
                 color={"#2f95dc"}
+                accessibilityLabel="LeftArrow"
             />
         </TouchableOpacity>
     );
@@ -72,6 +73,7 @@ export function HeaderRightArrow({ onPress }: IHeaderBackButtonProps) {
                 // tslint:disable-next-line:no-magic-numbers
                 size={22}
                 color={"#2f95dc"}
+                accessibilityLabel="RightArrow"
             />
         </TouchableOpacity>
     );

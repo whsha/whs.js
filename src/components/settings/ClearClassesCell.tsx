@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default function ResetClassesCell() {
+export default function ClearClassesCell() {
     const classes = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);
 

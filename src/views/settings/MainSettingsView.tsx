@@ -2,18 +2,14 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import React from "react";
 import { Alert, Linking, ScrollView, StyleSheet, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/Header";
 import IconComponent from "../../components/IconComponent";
-import ClearCalCacheCell from "../../components/settings/ClearCalendarCacheCell";
+import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
-
-dayjs.extend(relativeTime);
 
 const styles = StyleSheet.create({
     container: {

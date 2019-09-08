@@ -3,7 +3,6 @@
  */
 
 import dayjs from "dayjs";
-import dayjsPluginUTC from "dayjs/plugin/utc";
 import ICal from "ical.js";
 import { ICalendarInformation, ICalendarSchoolDay, SchoolDay } from "./types";
 
@@ -21,8 +20,6 @@ enum SchoolDayRegexMatch {
     /** Any metadata about the school day */
     Meta
 }
-
-dayjs.extend(dayjsPluginUTC);
 
 /** Parse an ICal */
 export default function parseCalendar(rawical: string): ICalendarInformation {

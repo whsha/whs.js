@@ -1,0 +1,658 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <MultilineHeader> Renders <MultilineHeader title="test title" subtitle="e"/> 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  />
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      test title
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    >
+      e
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Tests different variations of <MultilineHeader> Renders <MultilineHeader title="test title" subtitle="e"/> with left and right arrows 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": 30,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 30,
+        }
+      }
+    >
+      <Text
+        accessibilityLabel="LeftArrow"
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 22,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      test title
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    >
+      e
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": 30,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 30,
+        }
+      }
+    >
+      <Text
+        accessibilityLabel="RightArrow"
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 22,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <MultilineHeader> Renders <MultilineHeader title="test title" subtitle="e"/> with save and cancel buttons 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#2f95dc",
+            "fontSize": 17,
+          }
+        }
+      >
+        Cancel
+      </Text>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      test title
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    >
+      e
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 17,
+            },
+            Object {
+              "fontWeight": "bold",
+            },
+            undefined,
+          ]
+        }
+      >
+        Save
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <SinglelineHeader> Renders <SinglelineHeader title="test title"/> 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textAlign": "center",
+      }
+    }
+  >
+    test title
+  </Text>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Tests different variations of <SinglelineHeader> Renders <SinglelineHeader title="test title"/> with left and right arrows 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": 30,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 30,
+        }
+      }
+    >
+      <Text
+        accessibilityLabel="LeftArrow"
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 22,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textAlign": "center",
+      }
+    }
+  >
+    test title
+  </Text>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": 30,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 30,
+        }
+      }
+    >
+      <Text
+        accessibilityLabel="RightArrow"
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 22,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <SinglelineHeader> Renders <SinglelineHeader title="test title"/> with save and cancel buttons 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderBottomColor": "#eee",
+      "borderBottomWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": 0,
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#2f95dc",
+            "fontSize": 17,
+          }
+        }
+      >
+        Cancel
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textAlign": "center",
+      }
+    }
+  >
+    test title
+  </Text>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#2f95dc",
+              "fontSize": 17,
+            },
+            Object {
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "#dadada",
+            },
+          ]
+        }
+      >
+        Save
+      </Text>
+    </View>
+  </View>
+</View>
+`;

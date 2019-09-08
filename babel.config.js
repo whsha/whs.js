@@ -1,6 +1,7 @@
 module.exports = {
     presets: [
-        "babel-preset-expo"
+        "expo",
+        "@babel/env"
     ],
     plugins: [
         "@babel/plugin-proposal-class-properties"

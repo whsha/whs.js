@@ -11,7 +11,6 @@ export default function IconComponent({ name, size = 22 }: { name: string; size?
         <View style={{marginBottom: -4}}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${name}`}
-                // tslint:disable-next-line:no-magic-numbers
                 size={size}
                 color={"#2f95dc"}
             />

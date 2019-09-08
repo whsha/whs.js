@@ -2,8 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { MultilineHeader } from "../components/header/Header";
@@ -12,8 +10,6 @@ import { CalendarContext } from "../contexts";
 import useDate from "../util/hooks/useRoutedDate";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";
-
-dayjs.extend(customParseFormat);
 
 const styles = StyleSheet.create({
     eventsList: {
