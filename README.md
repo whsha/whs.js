@@ -25,8 +25,8 @@
 - Android Download
 
 # Code Coverage
-![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)
-![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)
+[![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+[![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 
 # License
     whs.js - Wellesley High School helper application
