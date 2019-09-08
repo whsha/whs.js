@@ -1,16 +1,5 @@
 name: Build App
-on:
-  push:
-    paths:
-      - "*.ts"
-      - "*.tsx"
-      - "*.json"
-      - "*.snap"
-      - "src/*"
-      - "src/**/*"
-      - "assets/*"
-      - "typings/*"
-      - ".github/workflows/*"
+on: [push]
 
 jobs:
   typecheck:
