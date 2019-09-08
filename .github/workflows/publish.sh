@@ -1,3 +1,5 @@
+set -e
+
 echo Logging into Expo
 $(yarn global bin)/expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
 

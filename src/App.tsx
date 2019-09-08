@@ -2,11 +2,12 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
 import { BackButton, NativeRouter } from "react-router-native";
-import Sentry from "sentry-expo";
+import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
@@ -27,7 +28,10 @@ export enum ApplicationState {
     Loaded = "LOADED"
 }
 
-Sentry.config("https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747").install();
+Sentry.init({
+    dsn: "https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747",
+    environment: Constants.manifest.releaseChannel as string
+});
 // TODO: Sentry.setUserContext({})
 
 export default function App() {

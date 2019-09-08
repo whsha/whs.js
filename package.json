@@ -21,6 +21,7 @@
         "dayjs": "^1.8.14",
         "deep-equal": "^1.1.0",
         "expo": "^34.0.1",
+        "expo-constants": "^6.0.0",
         "ical.js": "^1.3.0",
         "jest-expo": "^34.0.1",
         "mobx": "^5.9.4",
@@ -33,7 +34,7 @@
         "react-native-vector-icons": "^6.4.2",
         "react-router": "^5.0.1",
         "react-router-native": "^5.0.0",
-        "sentry-expo": "^1.13.0",
+        "sentry-expo": "^2.0.0",
         "timsort": "^0.3.0",
         "use-react-router": "^1.0.6",
         "uuid": "^3.3.3"
