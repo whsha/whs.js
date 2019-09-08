@@ -7,7 +7,7 @@ import dayjsPluginUTC from "dayjs/plugin/utc";
 import { action, computed, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";
-import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types";
+import { ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types";
 
 dayjs.extend(dayjsPluginUTC);
 
@@ -36,22 +36,12 @@ export default class CalendarStore {
         }
     }
 
-    /** Get the events for a day */
-    public eventsOn(date: Dayjs): ICalendarEvent[] {
-        let events = this.events.get(date.utc().format("YYYY-MM-DD"));
-
-        return events === undefined ? [] : events;
-    }
-
     /** The date this store was last updated */
     @computed
     public get updated() {
         return new Date(this._updated);
     }
 
-    /** School calendar events mapped by the day */
-    @persist("map") @observable
-    private readonly events = observable.map<string, ICalendarEvent[]>();
     /** School calendar days mapped by the day */
     @persist("map") @observable
     private schoolDays = observable.map<string, ICalendarSchoolDay>();
@@ -63,27 +53,6 @@ export default class CalendarStore {
     // tslint:disable-next-line: no-unbound-method
     @action.bound
     public async updateCalendar(parsed: ICalendarInformation) {
-        // Update the cal
-        this.events.clear();
-        for (let event of parsed.events) {
-            // Get day of the event
-            let day = dayjs(event.start).format("YYYY-MM-DD");
-
-            // Get the current events for that day
-            let currentEvents = this.events.get(day);
-
-            // If none yet, create a new empty lisy
-            if (currentEvents === undefined) {
-                currentEvents = [];
-            }
-
-            // Add the new event
-            currentEvents.push(event);
-
-            // Put the new event list back
-            this.events.set(day, currentEvents);
-        }
-
         // Clear the current stored school days
         this.schoolDays.clear();
         // Sort the parsed school days for ease of searching

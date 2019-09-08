@@ -6,28 +6,8 @@
 export interface ICalendarInformation {
     /** The school days */
     schoolDays: ICalendarSchoolDay[];
-    /** Events that take place */
-    events: ICalendarEvent[];
     /** When the calendar was updated */
     updated: number;
-}
-
-/** An event */
-export interface ICalendarEvent {
-    /** The start time of the event */
-    start: string;
-    /** The end time of the event */
-    end?: string;
-    /** The timestamp of the event */
-    stamp?: string;
-    /** The name of the event */
-    name: string;
-    /** The description of the event */
-    description?: string;
-    /** The location of the event */
-    location?: string;
-    /** If the event is all day */
-    isAllDay: boolean;
 }
 
 /** A School Day */

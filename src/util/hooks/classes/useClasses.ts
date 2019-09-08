@@ -7,8 +7,8 @@ import { toJS } from "mobx";
 import { useContext } from "react";
 import uuid from "uuid";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
-import { IAdvisory } from "../../advisory";
 import { BlockColor } from "../../blocks/blockColor";
+import { IAdvisory } from "../../class/advisory";
 import { IMajor } from "../../class/storage";
 import { ClassType } from "../../class/type";
 

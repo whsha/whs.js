@@ -5,8 +5,7 @@
 import dayjs from "dayjs";
 import dayjsPluginUTC from "dayjs/plugin/utc";
 import ICal from "ical.js";
-import { icalDateToDayjs } from "./dateutils";
-import { ICalendarEvent, ICalendarInformation, ICalendarSchoolDay, SchoolDay } from "./types";
+import { ICalendarInformation, ICalendarSchoolDay, SchoolDay } from "./types";
 
 /** The regex used to match school days */
 const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
@@ -33,7 +32,6 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
     let calendarComponent = new ICal.Component(cal);
     // The array of school days
     let schoolDays: ICalendarSchoolDay[] = [];
-    let events: ICalendarEvent[] = [];
     // Loop through all events in a given calendar
     for (let event of calendarComponent.getAllSubcomponents("vevent")) {
         /** The start date of the event */
@@ -63,38 +61,10 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 meta: match[SchoolDayRegexMatch.Meta]
             });
         }
-        else {
-            /** The description of the event */
-            let description = event.getFirstPropertyValue("description");
-            /** The location of the event */
-            let location = event.getFirstPropertyValue("location");
-            /** The end date of the event */
-            let end = event.getFirstPropertyValue<ICal.Time>("dtend");
-            /** The timestamp of the event */
-            let stamp = event.getFirstPropertyValue<ICal.Time>("dtstamp");
-            // Add the event to the list of events
-            events.push({
-                // The description of the event
-                description: description === null ? undefined : description,
-                // The end date of the event, if any
-                end: end === null ? undefined : icalDateToDayjs(end).utc().toISOString(),
-                // If there is no end date or the event lasts 24 hours, that makes the event all day
-                isAllDay: end === null || dayjs(end.toJSDate()).diff(date.toJSDate(), "day") === 1,
-                // The location of the event
-                location: location === null ? undefined : location,
-                // The summary (title) of the event
-                name: summary,
-                // The timestamp of the events
-                stamp: stamp === null ? undefined : icalDateToDayjs(stamp).utc().toISOString(),
-                // The start date of the event
-                start: icalDateToDayjs(date).utc().toISOString()
-            });
-        }
     }
 
     // Return the information about the calendar
     return {
-        events,
         schoolDays,
         updated: Date.now()
     };

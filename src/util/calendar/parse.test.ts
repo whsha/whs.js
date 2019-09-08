@@ -21,10 +21,6 @@ describe("Tests parser with mock data", () => {
         expect(calendar.schoolDays.every(x => SchoolDay[x.dayNumber] !== undefined)).toBeTruthy();
     });
 
-    it("Parses events and matches the snapshot", () => {
-        expect(calendar.events).toMatchSnapshot();
-    });
-
     it("Sets updated to a date", () => {
         expect(calendar.updated).toBeTruthy();
     });

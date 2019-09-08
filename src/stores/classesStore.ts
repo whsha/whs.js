@@ -4,7 +4,7 @@
 
 import { observable } from "mobx";
 import { persist } from "mobx-persist";
-import { IAdvisory } from "../util/advisory";
+import { IAdvisory } from "../util/class/advisory";
 import { IDR, IElective, IMajor } from "../util/class/storage";
 
 export default class ClassesStore {

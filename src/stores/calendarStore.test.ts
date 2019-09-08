@@ -35,12 +35,4 @@ describe("Test the functionality of a normal CalendarStore", () => {
         expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
         expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
     });
-
-    it("Gets the events on 2019-09-07T00:00:00Z", () => {
-        expect(store.eventsOn(dayjs("2019-09-07T00:00:00Z"))).toMatchSnapshot();
-    });
-
-    it("Gets the events on 2019-09-16T00:00:00Z", () => {
-        expect(store.eventsOn(dayjs("2019-09-16T00:00:00Z"))).toMatchSnapshot();
-    });
 });

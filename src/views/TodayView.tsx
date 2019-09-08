@@ -5,12 +5,10 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext } from "react";
-import { FlatList, ListRenderItem, Modal, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { MultilineHeader } from "../components/header/Header";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
-import TodayEvent from "../components/TodayEvent";
 import { CalendarContext } from "../contexts";
-import { ICalendarEvent } from "../util/calendar/types";
 import useDate from "../util/hooks/useRoutedDate";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";
@@ -29,8 +27,6 @@ const styles = StyleSheet.create({
 
 export default function TodayView() {
     const calendar = useContext(CalendarContext);
-    const eventKeyExtractor = (x: ICalendarEvent, i: number) => `${x.name}-${i}`;
-    const todayEventRenderItem: ListRenderItem<ICalendarEvent> = ({ item }) => <TodayEvent event={item} />;
 
     let {
         date,
@@ -52,16 +48,6 @@ export default function TodayView() {
                 onClick={setToToday}
             />
             {schoolDay === undefined ? <NoSchoolView selectedDate={date} setDate={setDate} /> : <ClassesView schoolDay={schoolDay} />}
-            {/* TODO: */}
-            <Modal visible={false}>
-                <FlatList
-                    data={calendar.eventsOn(date)}
-                    keyExtractor={eventKeyExtractor}
-                    renderItem={todayEventRenderItem}
-                    scrollEnabled={true}
-                    style={styles.eventsList}
-                />
-            </Modal>
         </View>
     );
 }

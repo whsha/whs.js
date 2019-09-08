@@ -4,7 +4,7 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { IAdvisory } from "../../util/advisory";
+import { IAdvisory } from "../../util/class/advisory";
 
 const styles = StyleSheet.create({
     container: {
