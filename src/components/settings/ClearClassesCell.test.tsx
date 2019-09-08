@@ -4,12 +4,12 @@
 
 import React from "react";
 import { render } from "react-native-testing-library";
-import ClearCalCacheCell from "./ClearCalCacheCell";
+import ClearClassesCell from "./ClearClassesCell";
 
 // TODO: Test press
 
-it("Renders <ClearCalCacheCell/>", () => {
-    let comp = render(<ClearCalCacheCell/>);
+it("Renders <ClearClassesCell/>", () => {
+    let comp = render(<ClearClassesCell/>);
 
     expect(comp.toJSON()).toMatchSnapshot();
 });
