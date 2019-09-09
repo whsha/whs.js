@@ -3,8 +3,11 @@
  */
 
 import dayjs from "dayjs";
+import useCustomFormat from "dayjs/plugin/customParseFormat";
 import mockCalendar from "../../__mocks__/calendar.json";
 import CalendarStore from "./calendarStore";
+
+dayjs.extend(useCustomFormat);
 
 describe("Test the functionality of a normal CalendarStore", () => {
     let store = new CalendarStore();
@@ -23,15 +26,15 @@ describe("Test the functionality of a normal CalendarStore", () => {
         expect(store.updated).toBeInstanceOf(Date);
     });
 
-    it("Gets the school day on 2019-09-06T00:00:00Z", () => {
-        expect(store.schoolDay(dayjs("2019-09-06T00:00:00Z"))).toMatchSnapshot();
+    it("Gets the school day on 2019-09-06", () => {
+        expect(store.schoolDay(dayjs("2019-09-06", "YYYY-MM-DD"))).toMatchSnapshot();
     });
 
-    it("Gets the school day on 2019-09-07T00:00:00Z (should be undefined)", () => {
-        expect(store.schoolDay(dayjs("2019-09-07T00:00:00Z"))).toBeUndefined();
+    it("Gets the school day on 2019-09-07 (should be undefined)", () => {
+        expect(store.schoolDay(dayjs("2019-09-07", "YYYY-MM-DD"))).toBeUndefined();
     });
 
-    it("Gets the next school day after on 2019-09-07T00:00:00Z and uses cache for second", () => {
+    it("Gets the next school day after on 2019-09-07 and uses cache for second", () => {
         expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
         expect(store.nextSchoolDayAfter(dayjs("2019-09-07 00:00:00")).format("YYYYMMDD")).toMatchSnapshot();
     });

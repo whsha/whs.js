@@ -14,7 +14,7 @@ dayjs.extend(dayjsPluginUTC);
 export default class CalendarStore {
     /** Get the current school day */
     public schoolDay(date: Dayjs): ICalendarSchoolDay | undefined {
-        return this.schoolDays.get(date.utc().format("YYYY-MM-DD"));
+        return this.schoolDays.get(date.format("YYYY-MM-DD"));
     }
 
     @persist("map")
