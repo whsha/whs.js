@@ -16,6 +16,6 @@ export interface IClassBlock extends IAdvisedClass, ITimes {
 
 /** The most basic information needed to identify a Free block */
 export interface IFreeBlock extends ITimes {
-    /** The block color which the elective meets */
+    /** The block color which the class meets */
     block: BlockColor;
 }

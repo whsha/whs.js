@@ -4,8 +4,8 @@
 
 import { BlockColor } from "../blocks/blockColor";
 import { IAdvisedClass } from "./primitives";
-import { IDR, IElective, IMajor } from "./storage";
-import { ClassType, getClassType, hasClassType, isDR, isElective, isMajor } from "./type";
+import { IDR, IMinor, IMajor } from "./storage";
+import { ClassType, getClassType, hasClassType, isDR, isMinor, isMajor } from "./type";
 
 let major: IMajor = {
     block: BlockColor.Red,
@@ -17,13 +17,13 @@ let major: IMajor = {
     uuid: ""
 };
 
-let elective: IElective = {
+let minor: IMinor = {
     block: BlockColor.Yellow,
     meets: 0b01101,
-    name: "Test elective",
+    name: "Test minor",
     room: 334,
     teacher: "Mrs. Test",
-    type: ClassType.Elective,
+    type: ClassType.Minor,
     uuid: ""
 };
 
@@ -44,15 +44,15 @@ let notclass: IAdvisedClass = {
 describe("Get classtype from ClassType<T>", () => {
     it("hasClassType", () => {
         expect(hasClassType(major)).toBeTruthy();
-        expect(hasClassType(elective)).toBeTruthy();
+        expect(hasClassType(minor)).toBeTruthy();
         expect(hasClassType(dr)).toBeTruthy();
         expect(hasClassType(notclass)).toBeFalsy();
     });
     it("Gets the classtype from a Major", () => {
         expect(getClassType(major)).toBe(ClassType.Major);
     });
-    it("Gets the classtype from an Elective", () => {
-        expect(getClassType(elective)).toBe(ClassType.Elective);
+    it("Gets the classtype from a Minor", () => {
+        expect(getClassType(minor)).toBe(ClassType.Minor);
     });
     it("Gets the classtype from a DR", () => {
         expect(getClassType(dr)).toBe(ClassType.DR);
@@ -60,17 +60,17 @@ describe("Get classtype from ClassType<T>", () => {
 
     it("Correctly identifies a Major", () => {
         expect(isMajor(major)).toBeTruthy();
-        expect(isMajor(elective)).toBeFalsy();
+        expect(isMajor(minor)).toBeFalsy();
         expect(isMajor(dr)).toBeFalsy();
     });
-    it("Correctly identifies an Elective", () => {
-        expect(isElective(elective)).toBeTruthy();
-        expect(isElective(major)).toBeFalsy();
-        expect(isElective(dr)).toBeFalsy();
+    it("Correctly identifies a Minor", () => {
+        expect(isMinor(minor)).toBeTruthy();
+        expect(isMinor(major)).toBeFalsy();
+        expect(isMinor(dr)).toBeFalsy();
     });
     it("Correctly identifies a DR", () => {
         expect(isDR(dr)).toBeTruthy();
         expect(isDR(major)).toBeFalsy();
-        expect(isDR(elective)).toBeFalsy();
+        expect(isDR(minor)).toBeFalsy();
     });
 });

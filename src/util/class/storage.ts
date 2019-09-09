@@ -17,16 +17,16 @@ export interface IMajor extends IAdvisedClass, IClassType<ClassType.Major>, ICla
     lab: boolean;
 }
 
-/** The most basic information needed to identify an elective */
-export interface IElective extends IAdvisedClass, IIrregular, IClassType<ClassType.Elective>, IClassMeta {
-    /** The name of the elective */
+/** The most basic information needed to identify a minor */
+export interface IMinor extends IAdvisedClass, IIrregular, IClassType<ClassType.Minor>, IClassMeta {
+    /** The name of the minor */
     name: string;
-    /** The block color which the elective meets (None = 730) */
+    /** The block color which the minor meets (None = 730) */
     block: BlockColor;
 }
 
 /** The most basic information needed to identify a DR */
 export interface IDR extends IAdvisedClass, IIrregular, IClassType<ClassType.DR>, IClassMeta {
-    /** The block color which the elective meets */
+    /** The block color which the DR meets */
     block: BlockColor;
 }

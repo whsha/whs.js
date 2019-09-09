@@ -11,7 +11,7 @@ export interface IClassType<T extends ClassType> {
 /** The types of classes */
 export enum ClassType {
     Major,
-    Elective,
+    Minor,
     DR
 }
 
@@ -30,9 +30,9 @@ export function getClassType<C extends IClassType<T>, T extends ClassType>(clazz
 export function isMajor(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.Major> {
     return getClassType(clazz) === ClassType.Major;
 }
-/** Check if the class is an elective */
-export function isElective(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.Elective> {
-    return getClassType(clazz) === ClassType.Elective;
+/** Check if the class is a minor */
+export function isMinor(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.Minor> {
+    return getClassType(clazz) === ClassType.Minor;
 }
 /** Check if the class is a DR */
 export function isDR(clazz: IClassType<ClassType>): clazz is IClassType<ClassType.DR> {

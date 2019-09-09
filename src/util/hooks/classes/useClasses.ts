@@ -4,6 +4,7 @@
 
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
+import { useObserver} from "mobx-react-lite";
 import { useContext } from "react";
 import uuid from "uuid";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
@@ -16,17 +17,17 @@ export function useClasses() {
     let savedClasses = useContext(ClassesContext);
     let tempClasses = useContext(TempClassesContext);
 
-    return {
+    return useObserver(() => ({
         saved: {
             advisory: savedClasses.advisory,
             // drs: classes.DRs,
-            // electives: classes.electives,
+            // minors: classes.minors,
             majors: savedClasses.majors
         },
         temp: {
             advisory: tempClasses.advisory,
-            // drs: tempDrs,
-            // electives: tempElectives,
+            // drs: tempClasses.DRs,
+            // minors: tempClasses.minors,
             majors: tempClasses.majors
         },
         updated: !deepEqual(toJS(savedClasses), toJS(tempClasses)),
@@ -38,16 +39,8 @@ export function useClasses() {
         reset() {
             tempClasses.hydrateFrom(savedClasses);
         },
-        // updateDr(id: string, data: IDR) {
-        //     setTempDrs(pre => pre.set(id, data));
-        // },
-        // updateElective(id: string, data: IElective) {
-        //     setTempElectives(pre => pre.set(id, data));
-        // },
         updateMajor(id: string, data: IMajor) {
             tempClasses.majors.set(id, data);
-
-            console.error("UPDATEMAJOR", new Error().stack);
         },
         updateAdvisory(data: IAdvisory) {
             tempClasses.advisory = data;
@@ -68,10 +61,10 @@ export function useClasses() {
         // }
         addMajor() {
             let newmajor: IMajor = {
-                block: BlockColor.None,
+                block: BlockColor.Blue,
                 lab: false,
-                name: "",
-                room: 0,
+                name: "New Major",
+                room: 101,
                 teacher: "",
                 type: ClassType.Major,
                 uuid: uuid(),
@@ -79,9 +72,7 @@ export function useClasses() {
 
             tempClasses.majors.set(newmajor.uuid, newmajor);
 
-            console.error("ADDMAJOR", new Error().stack);
-
             return newmajor.uuid;
         }
-    };
+    }));
 }

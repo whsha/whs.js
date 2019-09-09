@@ -5,7 +5,7 @@
 import { observable } from "mobx";
 import { persist } from "mobx-persist";
 import { IAdvisory } from "../util/class/advisory";
-import { IDR, IElective, IMajor } from "../util/class/storage";
+import { IDR, IMajor, IMinor } from "../util/class/storage";
 
 export default class ClassesStore {
     @persist("object") @observable
@@ -14,13 +14,13 @@ export default class ClassesStore {
     @persist("map") @observable
     public majors: Map<string, IMajor> = observable.map();
     @persist("map") @observable
-    public electives: Map<string, IElective> = observable.map();
+    public minors: Map<string, IMinor> = observable.map();
     @persist("map") @observable
     public DRs: Map<string, IDR> = observable.map();
 
     public hydrateFrom(store: ClassesStore) {
         this.majors = store.majors;
-        this.electives = store.electives;
+        this.minors = store.minors;
         this.DRs = store.DRs;
         this.advisory = store.advisory;
     }
@@ -28,7 +28,7 @@ export default class ClassesStore {
     public clear() {
         this.advisory = { room: 0, teacher: "" };
         this.majors = observable.map();
-        this.electives = observable.map();
+        this.minors = observable.map();
         this.DRs = observable.map();
     }
 
