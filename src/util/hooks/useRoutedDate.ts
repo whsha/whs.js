@@ -3,8 +3,11 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
+import useCustomFormat from "dayjs/plugin/customParseFormat";
 import { StaticContext } from "react-router";
 import useRouter from "use-react-router";
+
+dayjs.extend(useCustomFormat);
 
 export default function useRoutedDate() {
     let {history, match} = useRouter<{ date?: string }, StaticContext, string | undefined>();

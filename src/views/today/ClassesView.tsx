@@ -3,6 +3,7 @@
  */
 
 import dayjs from "dayjs";
+import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import useRouter from "use-react-router";
@@ -21,6 +22,8 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
+
+dayjs.extend(useCustomFormat);
 
 export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchoolDay }) {
     const classes = useContext(ClassesContext);
