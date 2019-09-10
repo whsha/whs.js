@@ -4,8 +4,8 @@
 
 import { BlockColor } from "../blocks/blockColor";
 import { IAdvisedClass } from "./primitives";
-import { IDR, IMinor, IMajor } from "./storage";
-import { ClassType, getClassType, hasClassType, isDR, isMinor, isMajor } from "./type";
+import { IDR, IMajor, IMinor } from "./storage";
+import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
 
 let major: IMajor = {
     block: BlockColor.Red,

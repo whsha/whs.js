@@ -3,30 +3,9 @@
  */
 
 import React from "react";
-import { GestureResponderEvent, Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { GestureResponderEvent, Platform, Text, TouchableOpacity } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
-
-const styles = StyleSheet.create({
-    arrowButton: {
-        alignItems: "center",
-        flex: 1,
-        height: 30,
-        justifyContent: "center",
-        width: 30,
-    },
-    button: {
-        color: "#2f95dc",
-        fontSize: 17
-    },
-    buttonContainer: {
-    },
-    disabled: {
-        color: "#dadada"
-    },
-    doneButton: {
-        fontWeight: "bold"
-    }
-});
+import { headerButtonStyles } from "../../themes/light";
 
 interface IHeaderDoneButtonProps {
     disabled?: boolean;
@@ -34,8 +13,8 @@ interface IHeaderDoneButtonProps {
 }
 export function HeaderSaveButton({ onPress, disabled }: IHeaderDoneButtonProps) {
     return (
-        <TouchableOpacity style={styles.buttonContainer} onPress={onPress} disabled={disabled}>
-            <Text style={[styles.button, styles.doneButton, disabled === true ? styles.disabled : undefined]}>Save</Text>
+        <TouchableOpacity style={headerButtonStyles.buttonContainer} onPress={onPress} disabled={disabled}>
+            <Text style={[headerButtonStyles.button, headerButtonStyles.doneButton, disabled === true ? headerButtonStyles.disabled : undefined]}>Save</Text>
         </TouchableOpacity>
     );
 }
@@ -45,15 +24,15 @@ interface IHeaderBackButtonProps {
 }
 export function HeaderCancelButton({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
-            <Text style={styles.button}>Cancel</Text>
+        <TouchableOpacity style={headerButtonStyles.buttonContainer} onPress={onPress}>
+            <Text style={headerButtonStyles.button}>Cancel</Text>
         </TouchableOpacity>
     );
 }
 
 export function HeaderLeftArrow({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.arrowButton}>
+        <TouchableOpacity onPress={onPress} style={headerButtonStyles.arrowButton}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-back`}
                 // tslint:disable-next-line:no-magic-numbers
@@ -67,7 +46,7 @@ export function HeaderLeftArrow({ onPress }: IHeaderBackButtonProps) {
 
 export function HeaderRightArrow({ onPress }: IHeaderBackButtonProps) {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.arrowButton}>
+        <TouchableOpacity onPress={onPress} style={headerButtonStyles.arrowButton}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-forward`}
                 // tslint:disable-next-line:no-magic-numbers

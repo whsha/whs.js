@@ -3,18 +3,12 @@
  */
 
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
+import { Cell, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
-import { SinglelineHeader } from "../../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { TableView, Cell } from "react-native-tableview-simple";
-
-export const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#EFEFF4",
-        flex: 1
-    }
-});
+import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
+import { settingsViewStyles } from "../../../themes/light";
 
 export default function ClassEditView() {
     const { match } = useRouter<{ id: string }>();
@@ -25,8 +19,8 @@ export default function ClassEditView() {
     const done = () => history.push("/settings/classes");
 
     return (
-        <SafeAreaView style={styles.container}>
-            <SinglelineHeader title="Edit Major" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={true /* TODO */} />} />
+        <SafeAreaView style={settingsViewStyles.container}>
+            <SinglelineHeader title="Edit Major" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={true/* TODO */} />} />
             <ScrollView>
                 <TableView>
                     <Text>{JSON.stringify(match.params.id, undefined, 4)}</Text>

@@ -4,8 +4,9 @@
 
 import React from "react";
 import { fireEvent, render } from "react-native-testing-library";
-import { MultilineHeader, SinglelineHeader } from "./Header";
 import { HeaderCancelButton, HeaderLeftArrow, HeaderRightArrow, HeaderSaveButton } from "./HeaderButtons";
+import { MultilineHeader } from "./MultilineHeader";
+import { SinglelineHeader } from "./SinglelineHeader";
 
 // TODO: Test touches and fn calls
 

@@ -4,34 +4,9 @@
 
 import dayjs, { Dayjs } from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { CalendarContext } from "../../contexts";
-
-const styles = StyleSheet.create({
-    goToNextSchoolDay: {
-        alignItems: "flex-end",
-        backgroundColor: "white",
-        borderColor: "#A0A0A0",
-        borderRadius: 10,
-        borderWidth: 1,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-    },
-    goToNextSchoolDayDiffText: {
-        color: "#808080",
-    },
-    goToNextSchoolDayText: {
-        color: "#1f85cc",
-    },
-    noSchoolView: {
-        alignItems: "center",
-        backgroundColor: "#EFEFF4",
-        flex: 1,
-        height: "100%",
-        justifyContent: "center",
-        width: "100%"
-    }
-});
+import { noSchoolViewStyles } from "../../themes/light";
 
 export default function NoSchoolView({ selectedDate, setDate }: { selectedDate: dayjs.Dayjs; setDate(date: dayjs.Dayjs): void }) {
     const calendar = useContext(CalendarContext);
@@ -44,10 +19,10 @@ export default function NoSchoolView({ selectedDate, setDate }: { selectedDate: 
     const goToNextSchoolDay = () => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay);
 
     return (
-        <View style={styles.noSchoolView}>
-            <TouchableOpacity onPress={goToNextSchoolDay} style={styles.goToNextSchoolDay}>
-                <Text style={styles.goToNextSchoolDayText}>Go to next school day</Text>
-                <Text style={styles.goToNextSchoolDayDiffText}>{nextSchoolDay === undefined ? "Calculating ..." : nextSchoolDay.startOf("day").from(selectedDate.startOf("day"))}</Text>
+        <View style={noSchoolViewStyles.noSchoolView}>
+            <TouchableOpacity onPress={goToNextSchoolDay} style={noSchoolViewStyles.goToNextSchoolDay}>
+                <Text style={noSchoolViewStyles.goToNextSchoolDayText}>Go to next school day</Text>
+                <Text style={noSchoolViewStyles.goToNextSchoolDayDiffText}>{nextSchoolDay === undefined ? "Calculating ..." : nextSchoolDay.startOf("day").from(selectedDate.startOf("day"))}</Text>
             </TouchableOpacity>
         </View>
     );

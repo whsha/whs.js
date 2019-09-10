@@ -3,28 +3,20 @@
  */
 
 import React, { } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import { Redirect, Route, Switch } from "react-router-native";
 import useRouter from "use-react-router";
 import TabBar from "../components/tabBar/TabBar";
+import { mainViewStyles } from "../themes/light";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
-
-const styles = StyleSheet.create({
-    body: {
-        flex: 1
-    },
-    screen: {
-        flex: 1
-    }
-});
 
 export default function MainView() {
     let { location, match } = useRouter();
 
     return (
-        <SafeAreaView style={styles.body}>
-            <View style={styles.screen}>
+        <SafeAreaView style={mainViewStyles.body}>
+            <View style={mainViewStyles.screen}>
                 <Switch>
                     <Route path="/today/:date?" component={TodayView} />
                     <Route path="/settings" component={SettingsView} />

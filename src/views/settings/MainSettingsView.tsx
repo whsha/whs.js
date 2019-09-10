@@ -3,19 +3,14 @@
  */
 
 import React from "react";
-import { Alert, Linking, ScrollView, StyleSheet, View } from "react-native";
+import { Alert, Linking, ScrollView, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
-import { SinglelineHeader } from "../../components/header/Header";
+import { SinglelineHeader } from "../../components/header/SinglelineHeader";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
+import { settingsViewStyles } from "../../themes/light";
 
 export default function MainSettingsView() {
     const { history, match, location } = useRouter();
@@ -41,7 +36,7 @@ export default function MainSettingsView() {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={settingsViewStyles.container}>
             <SinglelineHeader title="Settings" />
             <ScrollView>
                 <TableView>

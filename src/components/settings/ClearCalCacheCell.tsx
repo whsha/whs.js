@@ -5,15 +5,9 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
 import { Cell } from "react-native-tableview-simple";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
-
-const styles = StyleSheet.create({
-    redbutton: {
-        color: "#FF5050"
-    }
-});
+import { tableViewStyle } from "../../themes/light";
 
 dayjs.extend(relativeTime);
 
@@ -33,6 +27,6 @@ export default function ClearCalCacheCell() {
     };
 
     return (
-        <Cell title="Clear Calendar Cache" detail={`Last update: ${fromNow}`} cellStyle="Subtitle" titleTextStyle={styles.redbutton} onPress={clearCalendarCache} />
+        <Cell title="Clear Calendar Cache" detail={`Last update: ${fromNow}`} cellStyle="Subtitle" titleTextStyle={tableViewStyle.redbutton} onPress={clearCalendarCache} />
     );
 }

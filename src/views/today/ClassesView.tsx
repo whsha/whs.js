@@ -5,23 +5,17 @@
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 import useRouter from "use-react-router";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import ClassComponent from "../../components/blocks/ClassComponent";
 import FreeComponent from "../../components/blocks/FreeComponent";
 import { ClassesContext } from "../../contexts";
+import { settingsViewStyles } from "../../themes/light";
 import { Block } from "../../util/blocks/block";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
 import { getBlockColorsForDay } from "../../util/schoolDays";
-
-const styles = StyleSheet.create({
-    classesView: {
-        backgroundColor: "#EFEFF4",
-        flex: 1
-    }
-});
 
 dayjs.extend(useCustomFormat);
 
@@ -43,7 +37,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
     }
 
     return (
-        <ScrollView style={styles.classesView}>
+        <ScrollView style={settingsViewStyles.container}>
             {/* FIXME: */}
             <FreeComponent
                 block={colors[0]}

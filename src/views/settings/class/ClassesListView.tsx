@@ -3,27 +3,17 @@
  */
 
 import React from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
-import { SinglelineHeader } from "../../../components/header/Header";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import IconComponent from "../../../components/IconComponent";
+import { settingsViewStyles } from "../../../themes/light";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
 import { IMajor } from "../../../util/class/storage";
 import { useClasses } from "../../../util/hooks/classes/useClasses";
-
-export const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#EFEFF4",
-        flex: 1
-    },
-    text: {
-        flex: 1,
-        height: 40,
-    }
-});
 
 export default function ClassesListView() {
     const { history } = useRouter();
@@ -55,7 +45,7 @@ export default function ClassesListView() {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={settingsViewStyles.container}>
             <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!classes.updated} />} />
             <ScrollView>
                 <TableView>

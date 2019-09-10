@@ -3,23 +3,14 @@
  */
 
 import React, { useContext } from "react";
-import { StyleSheet, View } from "react-native";
-import { MultilineHeader } from "../components/header/Header";
+import { View } from "react-native";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
+import { MultilineHeader } from "../components/header/MultilineHeader";
 import { CalendarContext } from "../contexts";
+import { todayViewStyles } from "../themes/light";
 import useDate from "../util/hooks/useRoutedDate";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";
-
-const styles = StyleSheet.create({
-    eventsList: {
-        backgroundColor: "blue",
-        height: 100
-    },
-    todayView: {
-        flex: 1
-    }
-});
 
 export default function TodayView() {
     const calendar = useContext(CalendarContext);
@@ -35,7 +26,7 @@ export default function TodayView() {
     const schoolDay = calendar.schoolDay(date);
 
     return (
-        <View style={styles.todayView}>
+        <View style={todayViewStyles.todayView}>
             <MultilineHeader
                 title={schoolDay === undefined ? "No School" : `${schoolDay.isHalf ? "Half " : ""}Day ${schoolDay.dayNumber}`}
                 subtitle={date.format("dddd, MMMM D")}
