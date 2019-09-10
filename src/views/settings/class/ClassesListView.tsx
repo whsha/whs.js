@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -31,9 +31,7 @@ export default function ClassesListView() {
 
     const majorRenderItem: ListRenderItem<IMajor> = ({ item }) => {
         return (
-            <TouchableOpacity onPress={goTo(`/settings/classes/major/${item.uuid}`)}>
-                <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={getDisplayColorForBlock(item.block)} />
-            </TouchableOpacity>
+            <Cell title={item.name} detail={`Room: ${item.room} Teacher: ${item.teacher}`} cellStyle="Subtitle" accessory="DisclosureIndicator" titleTextColor={getDisplayColorForBlock(item.block)} onPress={goTo(`/settings/classes/major/${item.uuid}`)} />
         );
     };
 
@@ -54,9 +52,7 @@ export default function ClassesListView() {
                     </Section>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
                         <FlatList keyExtractor={keyExtractor} data={Array.from(classes.temp.majors.values())} renderItem={majorRenderItem} ItemSeparatorComponent={Separator} />
-                        <TouchableOpacity onPress={addMajor}>
-                            <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} />
-                        </TouchableOpacity>
+                        <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMajor} />
                     </Section>
                     <Section header="Minors" footer="Minors are any class that meets less than 5 times a cycle">
                         <Cell title="TODO" />

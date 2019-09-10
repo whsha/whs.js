@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a numerical room 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "baseline",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#A0A0A0",
+          "fontSize": 25,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Advisory
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      9:38 - 9:46 AM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "maxWidth": "50%",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "overflow": "visible",
+          },
+        ]
+      }
+    >
+      Room 
+      132
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a string room 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "baseline",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#A0A0A0",
+          "fontSize": 25,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Advisory
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      9:38 - 9:46 AM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "maxWidth": "50%",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "overflow": "visible",
+          },
+        ]
+      }
+    >
+      Room 
+      Office
+    </Text>
+  </View>
+</View>
+`;

@@ -2,18 +2,21 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React from "react";
-import { Alert, Linking, ScrollView, View } from "react-native";
+import { toJS } from "mobx";
+import React, { useContext } from "react";
+import { Alert, Clipboard, Linking, ScrollView, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/SinglelineHeader";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
+import { ClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../themes/light";
 
 export default function MainSettingsView() {
     const { history, match, location } = useRouter();
+    const classes = useContext(ClassesContext);
 
     function navigateTo(to: string) {
         return () => history.push(to);
@@ -35,6 +38,30 @@ export default function MainSettingsView() {
         };
     }
 
+    const backupConfig = () => {
+        Alert.alert("Load or Save?", undefined, [
+            {
+                style: "default",
+                text: "Save",
+                onPress() {
+                    Clipboard.setString(JSON.stringify(toJS(classes, { recurseEverything: true })));
+                    Alert.alert("Copied to clipboard!", "Save this somewhere safe incase you need to reuse it");
+                }
+            },
+            {
+                style: "destructive",
+                text: "Load",
+                onPress() {
+                    Alert.alert("TODO"); // TODO:
+                }
+            },
+            {
+                style: "cancel",
+                text: "Cancel"
+            }
+        ]);
+    };
+
     return (
         <View style={settingsViewStyles.container}>
             <SinglelineHeader title="Settings" />
@@ -47,6 +74,7 @@ export default function MainSettingsView() {
                     </Section>
                     <Section header="Class Settings">
                         <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("/settings/classes")} />
+                        <Cell title="Backup Classes" accessory="DetailDisclosure" onPress={backupConfig} />
                         <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={navigateTo("/settings/lunches")} isDisabled={true} />
                     </Section>
                     <Section header="Legal">

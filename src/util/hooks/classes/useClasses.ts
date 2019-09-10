@@ -4,14 +4,12 @@
 
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
-import { useObserver} from "mobx-react-lite";
+import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
-import uuid from "uuid";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
-import { BlockColor } from "../../blocks/blockColor";
 import { IAdvisory } from "../../class/advisory";
 import { IMajor } from "../../class/storage";
-import { ClassType } from "../../class/type";
+import { newMajor } from "./useMajor";
 
 export function useClasses() {
     let savedClasses = useContext(ClassesContext);
@@ -60,19 +58,14 @@ export function useClasses() {
         //     return newdr.uuid;
         // }
         addMajor() {
-            let newmajor: IMajor = {
-                block: BlockColor.Blue,
-                lab: false,
-                name: "New Major",
-                room: 101,
-                teacher: "",
-                type: ClassType.Major,
-                uuid: uuid(),
-            };
+            let newmajor = newMajor();
 
             tempClasses.majors.set(newmajor.uuid, newmajor);
 
             return newmajor.uuid;
+        },
+        deleteMajor(id: string) {
+            tempClasses.majors.delete(id);
         }
     }));
 }

@@ -55,11 +55,10 @@ exports[`Renders <TabBar/> 1`] = `
         style={
           Array [
             Object {
+              "color": "#aaa",
               "fontSize": 13,
             },
-            Object {
-              "color": "#aaa",
-            },
+            undefined,
           ]
         }
       >
@@ -110,11 +109,10 @@ exports[`Renders <TabBar/> 1`] = `
         style={
           Array [
             Object {
+              "color": "#aaa",
               "fontSize": 13,
             },
-            Object {
-              "color": "#aaa",
-            },
+            undefined,
           ]
         }
       >
@@ -165,11 +163,10 @@ exports[`Renders <TabBar/> 1`] = `
         style={
           Array [
             Object {
+              "color": "#aaa",
               "fontSize": 13,
             },
-            Object {
-              "color": "#aaa",
-            },
+            undefined,
           ]
         }
       >

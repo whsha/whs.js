@@ -205,3 +205,40 @@ export const todayViewStyles = StyleSheet.create({
         flex: 1
     }
 });
+
+export const blockColorPickerStyles = StyleSheet.create({
+    color: {
+        borderRadius: 5,
+        height: 20,
+        width: 20,
+    },
+    container: {
+        alignContent: "center",
+        backgroundColor: "white",
+        borderColor: "#CECECE",
+        borderRadius: 10,
+        borderWidth: 1,
+        padding: 10
+    },
+    containerSelected: {
+        backgroundColor: "black"
+    },
+    scrollView: {
+        alignItems: "center",
+        flex: 1,
+        flexDirection: "row",
+        height: 60,
+        justifyContent: "space-evenly",
+        minWidth: 500,
+    },
+    slash: {
+        borderBottomColor: "black",
+        borderBottomWidth: 1,
+        height: 1,
+        left: 8,
+        position: "absolute",
+        top: 20,
+        transform: [{ rotate: "45deg" }],
+        width: 24,
+    }
+});

@@ -8,16 +8,16 @@ import uuid from "uuid";
 import { BlockColor } from "../../blocks/blockColor";
 import { IMajor } from "../../class/storage";
 import { ClassType } from "../../class/type";
-import { IUseClass } from "./types";
+import IUseClass from "./classHookType";
 import { useClasses } from "./useClasses";
 
 export function newMajor(): IMajor {
     return {
         block: BlockColor.None,
         lab: false,
-        name: "",
+        name: "New Major",
         room: 0,
-        teacher: "",
+        teacher: "Major Teacher",
         type: ClassType.Major,
         uuid: uuid(),
     };
@@ -37,6 +37,9 @@ export function useMajor(id: string): IUseClass<IMajor> {
         },
         update(data: Partial<IMajor>) {
             setTempValue(pre => ({ ...pre, ...data }));
+        },
+        delete() {
+            classes.deleteMajor(id);
         }
     };
 }

@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <ClassComponent> Renders ClassComponent with a numerical room 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "baseline",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#A0A0A0",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "red",
+          },
+        ]
+      }
+    >
+      Class
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      12:14
+       - 
+      1:24 PM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "maxWidth": "50%",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "overflow": "visible",
+          },
+        ]
+      }
+    >
+      Room 
+      Office
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <ClassComponent> Renders ClassComponent with a string room 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "baseline",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#A0A0A0",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "red",
+          },
+        ]
+      }
+    >
+      Class
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      7:30
+       - 
+      8:30 AM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "maxWidth": "50%",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "overflow": "visible",
+          },
+        ]
+      }
+    >
+      Room 
+      Office
+    </Text>
+  </View>
+</View>
+`;
