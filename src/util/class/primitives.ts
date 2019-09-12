@@ -6,8 +6,8 @@
 export interface IAdvisedClass {
     /** The teacher for the class */
     teacher: string;
-    /** The room number the class takes place in */
-    room: number | string;
+    /** The room number or name the class takes place in */
+    room: string;
 }
 /** Check if the class is advised */
 export function isAdvisedClass(clazz: unknown): clazz is IAdvisedClass {

@@ -21,7 +21,7 @@ export default function useAdvisory() {
         setTeacher(teacher: string) {
             setTempAdvisory(pre => ({room: pre.room, teacher}));
         },
-        setRoom(room: number) {
+        setRoom(room: string) {
             setTempAdvisory(pre => ({room, teacher: pre.teacher}));
         }
     };

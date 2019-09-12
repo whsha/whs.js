@@ -13,7 +13,7 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
         expect(comp.toJSON()).toMatchSnapshot();
     });
     it("Renders AdvisoryComponent with a numerical room", () => {
-        let comp = render(<AdvisoryComponent room={132} teacher="Mr. Teacher Man"/>);
+        let comp = render(<AdvisoryComponent room="132" teacher="Mr. Teacher Man"/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
     });

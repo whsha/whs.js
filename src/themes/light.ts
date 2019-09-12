@@ -171,6 +171,7 @@ export const settingsViewStyles = StyleSheet.create({
     textInput: {
         flex: 1,
         height: 40,
+        textAlign: "right"
     }
 });
 

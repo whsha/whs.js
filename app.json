@@ -34,7 +34,8 @@
             "resizeMode": "contain"
         },
         "updates": {
-            "fallbackToCacheTimeout": 0
+            "enabled": true,
+            "checkAutomatically": "ON_LOAD"
         },
         "version": "0.0.1",
         "hooks": {
@@ -47,6 +48,6 @@
                     }
                 }
             ]
-        }      
+        }
     }
 }

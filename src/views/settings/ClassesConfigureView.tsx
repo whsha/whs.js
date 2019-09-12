@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Route, Switch } from "react-router";
-import AdvisoryConfigureView from "./class/AdvisoryConfigureView";
+import AdvisoryConfigureView from "./class/AdvisoryEditView";
 import ClassesListView from "./class/ClassesListView";
 import MajorEditView from "./class/MajorEditView";
 

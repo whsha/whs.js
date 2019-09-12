@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { Alert, SafeAreaView, ScrollView } from "react-native";
+import { Alert, SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import useRouter from "use-react-router";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -51,6 +51,7 @@ export default function ClassEditView() {
                         <Cell cellContentView={<BlockColorPicker value={major.tempValue.block} onPick={pick}/>}/>
                     </Section>
                     <Section header="Basic Info">
+                        <Cell title="Teacher" cellAccessoryView={<TextInput/>}/>
                         <Cell title={JSON.stringify(major)}/>
                     </Section>
                     <Section>

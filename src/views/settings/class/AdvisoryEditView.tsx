@@ -27,18 +27,15 @@ export default function AdvisoryConfigureView() {
         save();
         history.push("/settings/classes");
     };
-    const roomNumberChange = (x: string) => setRoom(x.length > 0 ? parseInt(x, 10) : 0);
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
             <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={!updated}/>} />
             <ScrollView>
                 <TableView>
-                    <Section header="Advisory Teacher">
-                        <Cell cellContentView={<TextInput value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} />
-                    </Section>
-                    <Section header="Room Number">
-                        <Cell cellContentView={<TextInput value={tempAdvisory.room.toString()} maxLength={3} onChangeText={roomNumberChange} keyboardType="numeric" style={settingsViewStyles.textInput} />} />
+                    <Section header="Options">
+                        <Cell title="Teacher" cellAccessoryView={<TextInput value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} />
+                        <Cell title="Room" cellAccessoryView={<TextInput value={tempAdvisory.room} onChangeText={setRoom} style={settingsViewStyles.textInput} />} />
                     </Section>
                     <Section header="Example">
                         <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} />} />

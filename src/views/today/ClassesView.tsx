@@ -51,7 +51,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
                     start={dayjs("8:34 AM", "h:mm A")}
                     end={dayjs("9:33 AM", "h:mm A")}
                     name="Example"
-                    room={100}
+                    room="100"
                     teacher="Mr. Example"
                 />
             </TouchableOpacity>
@@ -61,7 +61,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
                 start={dayjs("9:51 AM", "h:mm A")}
                 end={dayjs("10:50 AM", "h:mm A")}
                 name="Example"
-                room={100}
+                room="100"
                 teacher="Mr. Example"
             />
             {/* FIXME: LUNCH BLOCK */}
@@ -72,7 +72,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
                 // FIXME: LUNCH
                 end={dayjs("12:22 PM", "h:mm A")}
                 name="Example"
-                room={100}
+                room="100"
                 teacher="Mr. Example"
             />
             {/* END FIXME: */}
@@ -81,7 +81,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
                 start={dayjs("12:27 PM", "h:mm A")}
                 end={dayjs("1:26 PM", "h:mm A")}
                 name="Example"
-                room={100}
+                room="100"
                 teacher="Mr. Example"
             />
             <ClassComponent
@@ -89,7 +89,7 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
                 start={dayjs("1:31 PM", "h:mm A")}
                 end={dayjs("2:30 PM", "h:mm A")}
                 name="Example"
-                room={100}
+                room="100"
                 teacher="Mr. Example"
             />
         </ScrollView>

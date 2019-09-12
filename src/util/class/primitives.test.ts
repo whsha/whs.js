@@ -5,7 +5,7 @@
 import { IAdvisedClass, IIrregular, isAdvisedClass, isIrregular } from "./primitives";
 
 let advisedClass: IAdvisedClass = {
-    room: 100,
+    room: "100",
     teacher: "Mr. Teach",
 };
 

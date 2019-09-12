@@ -21,7 +21,7 @@ let minor: IMinor = {
     block: BlockColor.Yellow,
     meets: 0b01101,
     name: "Test minor",
-    room: 334,
+    room: "334",
     teacher: "Mrs. Test",
     type: ClassType.Minor,
     uuid: ""
@@ -30,7 +30,7 @@ let minor: IMinor = {
 let dr: IDR = {
     block: BlockColor.Green,
     meets: 0b11111,
-    room: 102,
+    room: "102",
     teacher: "Dr. Test",
     type: ClassType.DR,
     uuid: ""
