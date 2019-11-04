@@ -4,8 +4,6 @@
 
 import React, { } from "react";
 import { SafeAreaView, Text, View } from "react-native";
-import { Redirect, Route, Switch } from "react-router-native";
-import useRouter from "use-react-router";
 import TabBar from "../components/tabBar/TabBar";
 import { mainViewStyles } from "../themes/light";
 import SettingsView from "./SettingsView";

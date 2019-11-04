@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
-import { BackButton, NativeRouter } from "react-router-native";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
@@ -94,13 +94,11 @@ export default function App() {
 
     if (currentTask === ApplicationState.Loaded) {
         return (
-            <NativeRouter>
-                <BackButton>
-                    <ReloadFunctionContext.Provider value={Load}>
-                        <MainView />
-                    </ReloadFunctionContext.Provider>
-                </BackButton>
-            </NativeRouter>
+            <NavigationNativeContainer>
+                <ReloadFunctionContext.Provider value={Load}>
+                    <MainView />
+                </ReloadFunctionContext.Provider>
+            </NavigationNativeContainer>
         );
     } else {
         return <LoadingView task={currentTask} />;
