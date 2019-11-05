@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 
 export const classComponentStyles = StyleSheet.create({
     container: {
@@ -108,30 +108,6 @@ export const tableViewStyle = StyleSheet.create({
 export const tabBarIconNotSelectedColor = "#ccc";
 export const tabBarIconSelectedColor = "#2f95dc";
 
-export const tabBarStyle = StyleSheet.create({
-    bottomTabNav: {
-        // backgroundColor: "#fff",
-        borderTopColor: "#eee",
-        borderTopWidth: 1,
-        flexDirection: "row",
-        height: 50,
-        justifyContent: "space-around",
-    },
-    icon: {
-        textAlign: "center"
-    },
-    link: {
-        margin: 5
-    },
-    text: {
-        color: "#aaa",
-        fontSize: 13
-    },
-    textMatch: {
-        color: "#2f95dc"
-    }
-});
-
 export const loadingViewStyle = StyleSheet.create({
     image: {
         backgroundColor: "#FFFFFF",
@@ -151,15 +127,6 @@ export const loadingViewStyle = StyleSheet.create({
     taskText: {
         color: "#A0A0A0",
         fontSize: 20
-    }
-});
-
-export const mainViewStyles = StyleSheet.create({
-    body: {
-        flex: 1
-    },
-    screen: {
-        flex: 1
     }
 });
 
@@ -203,7 +170,8 @@ export const noSchoolViewStyles = StyleSheet.create({
 
 export const todayViewStyles = StyleSheet.create({
     todayView: {
-        flex: 1
+        flex: 1,
+        paddingTop: StatusBar.currentHeight
     }
 });
 

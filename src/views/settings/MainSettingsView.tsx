@@ -6,7 +6,6 @@ import { toJS } from "mobx";
 import React, { useContext } from "react";
 import { Alert, Clipboard, Linking, ScrollView, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import useRouter from "use-react-router";
 import { SinglelineHeader } from "../../components/header/SinglelineHeader";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
@@ -15,12 +14,10 @@ import { ClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../themes/light";
 
 export default function MainSettingsView() {
-    const { history, match, location } = useRouter();
+    // const { history, match, location } = useRouter();
     const classes = useContext(ClassesContext);
 
-    function navigateTo(to: string) {
-        return () => history.push(to);
-    }
+    const navigateTo = (_to: string) => () => void 0;// history.push(to);
 
     function openLink(link: string) {
         return () => {
@@ -67,11 +64,11 @@ export default function MainSettingsView() {
             <SinglelineHeader title="Settings" />
             <ScrollView>
                 <TableView>
-                    <Section header="Debugging Tools">
+                    {/* <Section header="Debugging Tools">
                         <Cell title="Current Match" cellStyle="RightDetail" detail={match.path} />
                         <Cell title="Current Match Exact" cellStyle="RightDetail" detail={match.isExact.toString()} />
                         <Cell title="Current Path" cellStyle="RightDetail" detail={location.pathname} />
-                    </Section>
+                    </Section> */}
                     <Section header="Class Settings">
                         <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("/settings/classes")} />
                         <Cell title="Backup Classes" accessory="DetailDisclosure" onPress={backupConfig} />

@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React, { useContext } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
-import useRouter from "use-react-router";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import ClassComponent from "../../components/blocks/ClassComponent";
 import FreeComponent from "../../components/blocks/FreeComponent";
@@ -29,12 +28,8 @@ export default function ClassesView({ schoolDay }: { schoolDay?: ICalendarSchool
             getBlockColorsForDay(SchoolDay[schoolDay.dayNumber] as keyof typeof SchoolDay)[x as keyof typeof Block]
         );
 
-    const { history } = useRouter();
-    function navigateTo(to: string) {
-        return () => {
-            history.push(to);
-        };
-    }
+    // const { history } = useRouter();
+    const navigateTo = (_to: string) => () => void 0; // history.push(to);
 
     return (
         <ScrollView style={settingsViewStyles.container}>

@@ -5,7 +5,6 @@
 import React from "react";
 import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import useRouter from "use-react-router";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
@@ -13,7 +12,7 @@ import { settingsViewStyles } from "../../../themes/light";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 
 export default function AdvisoryConfigureView() {
-    const { history } = useRouter();
+    // const { history } = useRouter();
     let {
         save,
         setRoom,
@@ -22,10 +21,10 @@ export default function AdvisoryConfigureView() {
         updated
     } = useAdvisory();
 
-    const goBack = () => history.push("/settings/classes");
+    const goBack = () => void 0;// history.push("/settings/classes");
     const done = () => {
         save();
-        history.push("/settings/classes");
+        // history.push("/settings/classes");
     };
 
     return (

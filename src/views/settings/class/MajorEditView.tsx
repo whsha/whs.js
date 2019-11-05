@@ -5,22 +5,21 @@
 import React from "react";
 import { Alert, SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import useRouter from "use-react-router";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { MultilineHeader } from "../../../components/header/MultilineHeader";
+import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../themes/light";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { useMajor } from "../../../util/hooks/classes/useMajor";
 
 export default function ClassEditView() {
-    const { match, history } = useRouter<{ id: string }>();
-    const major = useMajor(match.params.id);
+    // const { match, history } = useRouter<{ id: string }>();
+    const major = useMajor(""/* match.params.id */);
 
-    const goBack = () => history.goBack();
+    const goBack = () => void 0;// history.goBack();
     const done = () => {
-        history.push("/settings/classes");
         major.save();
+        // history.push("/settings/classes");
     };
 
     const pomptDelete = () => {
@@ -30,7 +29,7 @@ export default function ClassEditView() {
                 text: "Delete",
                 onPress() {
                     major.delete();
-                    history.goBack();
+                    // history.goBack();
                 }
             },
             {
@@ -44,7 +43,7 @@ export default function ClassEditView() {
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
-            <MultilineHeader title="Edit Major" subtitle={match.params.id.substr(0, 8)} leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!major.updated} />} />
+            <SinglelineHeader title="Edit Major" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!major.updated} />} />
             <ScrollView>
                 <TableView>
                     <Section header="Color Block">

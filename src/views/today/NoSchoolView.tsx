@@ -3,10 +3,13 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { CalendarContext } from "../../contexts";
 import { noSchoolViewStyles } from "../../themes/light";
+
+dayjs.extend(relativeTime);
 
 export default function NoSchoolView({ selectedDate, setDate }: { selectedDate: dayjs.Dayjs; setDate(date: dayjs.Dayjs): void }) {
     const calendar = useContext(CalendarContext);

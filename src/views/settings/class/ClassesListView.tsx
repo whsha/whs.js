@@ -5,7 +5,6 @@
 import React from "react";
 import { FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
-import useRouter from "use-react-router";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import IconComponent from "../../../components/IconComponent";
@@ -16,18 +15,18 @@ import { IMajor } from "../../../util/class/storage";
 import { useClasses } from "../../../util/hooks/classes/useClasses";
 
 export default function ClassesListView() {
-    const { history } = useRouter();
+    // const { history } = useRouter();
     const classes = useClasses();
     const goBack = () => {
-        history.push("/settings");
+        // history.push("/settings");
         classes.reset();
     };
     const done = () => {
-        history.push("/settings");
+        // history.push("/settings");
         classes.save();
     };
 
-    const goTo = (path: string) => () => history.push(path);
+    const goTo = (_path: string) => () => void 0;// history.push(path);
 
     const majorRenderItem: ListRenderItem<IMajor> = ({ item }) => {
         return (
@@ -38,8 +37,8 @@ export default function ClassesListView() {
     const keyExtractor = (x: IClassMeta) => x.uuid;
 
     const addMajor = () => {
-        let uuid = classes.addMajor();
-        history.push(`/settings/classes/major/${uuid}`);
+        // let uuid = classes.addMajor();
+        // history.push(`/settings/classes/major/${uuid}`);
     };
 
     return (

@@ -6,7 +6,7 @@ import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, StatusBar, StatusBarIOS } from "react-native";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
@@ -94,11 +94,9 @@ export default function App() {
 
     if (currentTask === ApplicationState.Loaded) {
         return (
-            <NavigationNativeContainer>
-                <ReloadFunctionContext.Provider value={Load}>
-                    <MainView />
-                </ReloadFunctionContext.Provider>
-            </NavigationNativeContainer>
+            <ReloadFunctionContext.Provider value={Load}>
+                <MainView />
+            </ReloadFunctionContext.Provider>
         );
     } else {
         return <LoadingView task={currentTask} />;
