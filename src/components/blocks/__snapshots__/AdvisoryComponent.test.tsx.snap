@@ -40,7 +40,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         }
       }
     >
-      9:38 - 9:46 AM
+      11:00
+       - 
+      11:30 PM
     </Text>
   </View>
   <View
@@ -133,7 +135,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         }
       }
     >
-      9:38 - 9:46 AM
+      9:38
+       - 
+      9:46 AM
     </Text>
   </View>
   <View

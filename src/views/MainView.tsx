@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BottomTabBarOptions, BottomTabNavigationOptions, BottomTabNavigationProp, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationProp, RouteProp } from "@react-navigation/core";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import dayjs, { Dayjs } from "dayjs";

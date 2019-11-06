@@ -2,6 +2,8 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import dayjs from "dayjs";
+import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
@@ -10,6 +12,8 @@ import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header
 import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import { settingsViewStyles } from "../../../themes/light";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
+
+dayjs.extend(useCustomFormat);
 
 export default function AdvisoryConfigureView() {
     // const { history } = useRouter();
@@ -37,7 +41,7 @@ export default function AdvisoryConfigureView() {
                         <Cell title="Room" cellAccessoryView={<TextInput value={tempAdvisory.room} onChangeText={setRoom} style={settingsViewStyles.textInput} />} />
                     </Section>
                     <Section header="Example">
-                        <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} />} />
+                        <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")}/>} />
                     </Section>
                 </TableView>
             </ScrollView>

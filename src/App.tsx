@@ -2,11 +2,10 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
-import { AsyncStorage, StatusBar, StatusBarIOS } from "react-native";
+import { AsyncStorage } from "react-native";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";

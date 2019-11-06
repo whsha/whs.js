@@ -2,21 +2,22 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Text } from "react-native";
-// import AdvisoryConfigureView from "./class/AdvisoryEditView";
-// import ClassesListView from "./class/ClassesListView";
-// import MajorEditView from "./class/MajorEditView";
+import AdvisoryConfigureView from "./class/AdvisoryEditView";
+import ClassesListView from "./class/ClassesListView";
+import MajorEditView from "./class/MajorEditView";
+
+const Stack = createStackNavigator();
 
 export default function ClassesConfigureView() {
     return (
-        <Text>//FIXME:</Text>
-        // <Switch>
-        //     <Route path="/settings/classes" exact={true} component={ClassesListView} />
-        //     <Route path="/settings/classes/advisory" exact={true} component={AdvisoryConfigureView}/>
-        //     <Route path="/settings/classes/major/:id" exact={true} component={MajorEditView} />
-        //    {/* <Route path="/settings/classes/minor/:id" exact={true} component={MinorEditView} /> */}
-        //    {/* <Route path="/settings/classes/dr/:id" exact={true} component={MinorEditView} /> */}
-        // </Switch>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="ListView" component={ClassesListView} />
+            <Stack.Screen name="Advisory" component={AdvisoryConfigureView} />
+            <Stack.Screen name="Major" component={MajorEditView} />
+            {/* <Stack.Screen name="Minor" component={MinorEditView}/> */}
+            {/* <Stack.Screen name="DR" component={DREditView}/> */}
+        </Stack.Navigator>
     );
 }

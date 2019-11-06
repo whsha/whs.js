@@ -6,15 +6,15 @@ import React from "react";
 import { Text, View } from "react-native";
 import { classComponentStyles } from "../../themes/light";
 import { IAdvisory } from "../../util/class/advisory";
+import { ITimes } from "../../util/class/extentions";
 
 /** A component to display the advisory */
-export default function AdvisoryComponent({teacher, room}: IAdvisory) {
+export default function AdvisoryComponent({teacher, room, end, start}: IAdvisory & ITimes) {
     return (
         <View style={classComponentStyles.container}>
             <View style={classComponentStyles.dualView}>
                 <Text style={classComponentStyles.title}>Advisory</Text>
-                {/* TODO: NOT FIXED */}
-                <Text style={classComponentStyles.dim}>9:38 - 9:46 AM</Text>
+                <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
             </View>
             <View style={[classComponentStyles.dualView, classComponentStyles.info]}>
                 <Text style={[classComponentStyles.dim, classComponentStyles.teacher]} numberOfLines={1}>{teacher}</Text>

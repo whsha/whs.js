@@ -16,7 +16,7 @@
     "dependencies": {
         "@babel/preset-env": "^7.6.0",
         "@badrap/result": "^0.2.5",
-        "@react-native-community/masked-view": "^0.1.1",
+        "@react-native-community/masked-view": "^0.1.5",
         "@react-navigation/bottom-tabs": "^5.0.0-alpha.19",
         "@react-navigation/core": "^5.0.0-alpha.20",
         "@react-navigation/native": "^5.0.0-alpha.14",
