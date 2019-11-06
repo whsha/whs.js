@@ -7,7 +7,6 @@ import { toJS } from "mobx";
 import React, { useContext } from "react";
 import { Alert, Clipboard, Linking, ScrollView, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { SinglelineHeader } from "../../components/header/SinglelineHeader";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
