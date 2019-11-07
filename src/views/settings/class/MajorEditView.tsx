@@ -6,7 +6,6 @@ import React from "react";
 import { Alert, SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../themes/light";
 import { BlockColor } from "../../../util/blocks/blockColor";
@@ -43,7 +42,7 @@ export default function ClassEditView() {
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
-            <SinglelineHeader title="Edit Major" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!major.updated} />} />
+            {/* <SinglelineHeader title="Edit Major" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!major.updated} />} /> */}
             <ScrollView>
                 <TableView>
                     <Section header="Color Block">

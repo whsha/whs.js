@@ -9,7 +9,7 @@ import { headerButtonStyles } from "../../themes/light";
 
 interface IHeaderDoneButtonProps {
     disabled?: boolean;
-    onPress(event: GestureResponderEvent): void;
+    onPress(): void;
 }
 export function HeaderSaveButton({ onPress, disabled }: IHeaderDoneButtonProps) {
     return (
@@ -20,7 +20,7 @@ export function HeaderSaveButton({ onPress, disabled }: IHeaderDoneButtonProps) 
 }
 
 interface IHeaderBackButtonProps {
-    onPress(event: GestureResponderEvent): void;
+    onPress(): void;
 }
 export function HeaderCancelButton({ onPress }: IHeaderBackButtonProps) {
     return (

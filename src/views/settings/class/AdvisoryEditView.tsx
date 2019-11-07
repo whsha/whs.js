@@ -9,7 +9,7 @@ import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
+// import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import { settingsViewStyles } from "../../../themes/light";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 
@@ -33,7 +33,7 @@ export default function AdvisoryConfigureView() {
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
-            <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={!updated}/>} />
+            {/* <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={!updated}/>} /> */}
             <ScrollView>
                 <TableView>
                     <Section header="Options">

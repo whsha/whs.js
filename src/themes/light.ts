@@ -83,7 +83,7 @@ export const headerButtonStyles = StyleSheet.create({
         flex: 1,
         height: 30,
         justifyContent: "center",
-        width: 30,
+        width: 30
     },
     button: {
         color: "#2f95dc",

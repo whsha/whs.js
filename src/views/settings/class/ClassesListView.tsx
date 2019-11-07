@@ -6,7 +6,6 @@ import React from "react";
 import { FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import IconComponent from "../../../components/IconComponent";
 import { settingsViewStyles } from "../../../themes/light";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
@@ -43,7 +42,7 @@ export default function ClassesListView() {
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
-            <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!classes.updated} />} />
+            {/* <SinglelineHeader title="Class Settings" leftButton={<HeaderCancelButton onPress={goBack} />} rightButton={<HeaderSaveButton onPress={done} disabled={!classes.updated} />} /> */}
             <ScrollView>
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">

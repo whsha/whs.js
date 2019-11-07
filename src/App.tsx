@@ -2,7 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { InitialState, NavigationState } from "@react-navigation/core";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
@@ -38,7 +37,6 @@ Sentry.init({
 
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
-    let [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     let calendar = useContext(CalendarContext);
     let classes = useContext(ClassesContext);
     let tempClasses = useContext(TempClassesContext);
@@ -84,19 +82,8 @@ export default function App() {
         tempClasses.hydrateFrom(classes);
 
         setCurrentTask(ApplicationState.Opening);
-        let navstate = await AsyncStorage.getItem(StorageKey.Navigation);
-        if (navstate !== null) {
-            setInitialNavState(JSON.parse(navstate) as InitialState);
-        }
 
         setCurrentTask(ApplicationState.Loaded);
-    };
-
-    let changeNavState = (state?: Partial<NavigationState>) => {
-        console.log("new state is", state);
-        if (state !== undefined) {
-            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
-        }
     };
 
     useEffect(() => {
@@ -108,7 +95,7 @@ export default function App() {
 
     return (
         <SafeAreaProvider>
-            <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+            <NavigationNativeContainer>
                 <ReloadFunctionContext.Provider value={Load}>
                     {currentTask === ApplicationState.Loaded ? <MainView /> : <LoadingView task={currentTask} />}
                 </ReloadFunctionContext.Provider>
