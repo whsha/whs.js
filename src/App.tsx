@@ -2,10 +2,13 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { InitialState, NavigationState } from "@react-navigation/core";
+import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-view";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
@@ -23,8 +26,8 @@ export enum ApplicationState {
     SavingCal = "Saving Calendar",
     LoadingClasses = "Loading Classes",
     Opening = "Opening App",
+    Loaded = "Loaded",
     Errored = "ERRORED",
-    Loaded = "LOADED"
 }
 
 Sentry.init({
@@ -35,11 +38,12 @@ Sentry.init({
 
 export default function App() {
     let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
+    let [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     let calendar = useContext(CalendarContext);
     let classes = useContext(ClassesContext);
     let tempClasses = useContext(TempClassesContext);
 
-    async function Load(reset = false) {
+    let Load = async (reset = false) => {
         setCurrentTask(ApplicationState.PreparingMP);
 
         // Setup Mobx-Persist
@@ -80,9 +84,20 @@ export default function App() {
         tempClasses.hydrateFrom(classes);
 
         setCurrentTask(ApplicationState.Opening);
+        let navstate = await AsyncStorage.getItem(StorageKey.Navigation);
+        if (navstate !== null) {
+            setInitialNavState(JSON.parse(navstate) as InitialState);
+        }
 
         setCurrentTask(ApplicationState.Loaded);
-    }
+    };
+
+    let changeNavState = (state?: Partial<NavigationState>) => {
+        console.log("new state is", state);
+        if (state !== undefined) {
+            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
+        }
+    };
 
     useEffect(() => {
         Load().catch((reason) => {
@@ -91,13 +106,13 @@ export default function App() {
         });
     }, []);
 
-    if (currentTask === ApplicationState.Loaded) {
-        return (
-            <ReloadFunctionContext.Provider value={Load}>
-                <MainView />
-            </ReloadFunctionContext.Provider>
-        );
-    } else {
-        return <LoadingView task={currentTask} />;
-    }
+    return (
+        <SafeAreaProvider>
+            <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+                <ReloadFunctionContext.Provider value={Load}>
+                    {currentTask === ApplicationState.Loaded ? <MainView /> : <LoadingView task={currentTask} />}
+                </ReloadFunctionContext.Provider>
+            </NavigationNativeContainer>
+        </SafeAreaProvider>
+    );
 }
