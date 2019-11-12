@@ -10,7 +10,7 @@ import React from "react";
 import { Platform, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import IonIcons from "react-native-vector-icons/Ionicons";
-import { navigationHeaderPaddingStyle, tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
+import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
 
