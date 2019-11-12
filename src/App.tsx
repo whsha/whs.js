@@ -36,12 +36,12 @@ Sentry.init({
 // TODO: Sentry.setUserContext({})
 
 export default function App() {
-    let [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
-    let calendar = useContext(CalendarContext);
-    let classes = useContext(ClassesContext);
-    let tempClasses = useContext(TempClassesContext);
+    const [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
+    const calendar = useContext(CalendarContext);
+    const classes = useContext(ClassesContext);
+    const tempClasses = useContext(TempClassesContext);
 
-    let Load = async (reset = false) => {
+    const Load = async (reset = false) => {
         setCurrentTask(ApplicationState.PreparingMP);
 
         // Setup Mobx-Persist
@@ -60,7 +60,7 @@ export default function App() {
             setCurrentTask(ApplicationState.DownloadingCal);
 
             // Fetch the calendar off of the interweb
-            let rawcal = await fetchCalendar();
+            const rawcal = await fetchCalendar();
 
             if (rawcal.isErr) {
                 setCurrentTask(ApplicationState.Errored);
@@ -71,7 +71,7 @@ export default function App() {
 
             setCurrentTask(ApplicationState.ParsingCal);
             // Parse the calendar
-            let parsed = parseCalendar(rawcal.unwrap());
+            const parsed = parseCalendar(rawcal.unwrap());
 
             setCurrentTask(ApplicationState.SavingCal);
             await calendar.updateCalendar(parsed);

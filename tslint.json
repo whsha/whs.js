@@ -144,7 +144,7 @@
         "only-arrow-functions": false,
         "ordered-imports": true,
         "prefer-conditional-expression": true,
-        "prefer-const": false,
+        "prefer-const": true,
         "prefer-for-of": true,
         "prefer-function-over-method": false,
         "prefer-method-signature": true,

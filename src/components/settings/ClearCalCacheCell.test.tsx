@@ -9,7 +9,7 @@ import ClearCalCacheCell from "./ClearCalCacheCell";
 // TODO: Test press
 
 it("Renders <ClearCalCacheCell/>", () => {
-    let comp = render(<ClearCalCacheCell/>);
+    const comp = render(<ClearCalCacheCell/>);
 
     expect(comp.toJSON()).toMatchSnapshot();
 });

@@ -12,8 +12,8 @@ import { IMajor } from "../../class/storage";
 import { newMajor } from "./useMajor";
 
 export function useClasses() {
-    let savedClasses = useContext(ClassesContext);
-    let tempClasses = useContext(TempClassesContext);
+    const savedClasses = useContext(ClassesContext);
+    const tempClasses = useContext(TempClassesContext);
 
     return useObserver(() => ({
         saved: {
@@ -58,7 +58,7 @@ export function useClasses() {
         //     return newdr.uuid;
         // }
         addMajor() {
-            let newmajor = newMajor();
+            const newmajor = newMajor();
 
             tempClasses.majors.set(newmajor.uuid, newmajor);
 

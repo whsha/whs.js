@@ -11,14 +11,13 @@ import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
 import { ClassesContext } from "../../contexts";
-import { settingsViewStyles } from "../../themes/light";
+import { settingsViewStyles } from "../../layout/default";
 
 export default function MainSettingsView() {
-    // const { history, match, location } = useRouter();
     const navigation = useNavigation();
     const classes = useContext(ClassesContext);
 
-    const navigateTo = (to: string) => () => navigation.navigate(to);// history.push(to);
+    const navigateTo = (to: string) => () => navigation.navigate(to);
 
     function openLink(link: string) {
         return () => {
@@ -65,7 +64,7 @@ export default function MainSettingsView() {
             <ScrollView>
                 <TableView>
                     <Section header="Class Settings">
-                        <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesSettings")} />
+                        <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
                         <Cell title="Backup Classes" accessory="DetailDisclosure" onPress={backupConfig} />
                         <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={navigateTo("LunchesSettings")} isDisabled={true} />
                     </Section>

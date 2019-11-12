@@ -11,7 +11,7 @@ export interface IAdvisedClass {
 }
 /** Check if the class is advised */
 export function isAdvisedClass(clazz: unknown): clazz is IAdvisedClass {
-    let possibleClass = clazz as Partial<IAdvisedClass>;
+    const possibleClass = clazz as Partial<IAdvisedClass>;
 
     // Make sure fields exist
     return possibleClass.teacher !== undefined && possibleClass.room !== undefined;
@@ -24,7 +24,7 @@ export interface IIrregular {
 }
 /** Check if the class is irregular */
 export function isIrregular(clazz: unknown): clazz is IIrregular {
-    let possibleClass = clazz as Partial<IIrregular>;
+    const possibleClass = clazz as Partial<IIrregular>;
 
     // Make sure field exists and it does not meet every day
     return possibleClass.meets !== undefined && possibleClass.meets !== 0b11111;

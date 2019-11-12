@@ -9,7 +9,7 @@ import ClearClassesCell from "./ClearClassesCell";
 // TODO: Test press
 
 it("Renders <ClearClassesCell/>", () => {
-    let comp = render(<ClearClassesCell/>);
+    const comp = render(<ClearClassesCell/>);
 
     expect(comp.toJSON()).toMatchSnapshot();
 });

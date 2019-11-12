@@ -22,13 +22,13 @@ export default class CalendarStore {
 
     /** Get the next day which has a school day after the given date */
     public nextSchoolDayAfter(date: Dayjs): Dayjs {
-        let datestring = date.utc().format("YYYY-MM-DD");
+        const datestring = date.utc().format("YYYY-MM-DD");
 
         // Load from cache if possible
         if (this.nextSchoolDayMap.has(datestring)) {
             return dayjs(this.nextSchoolDayMap.get(datestring));
         } else {
-            let nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
+            const nextschoolday = Array.from(this.schoolDays.keys()).find(x => dayjs(x).isAfter(date));
 
             this.nextSchoolDayMap.set(datestring, nextschoolday);
 

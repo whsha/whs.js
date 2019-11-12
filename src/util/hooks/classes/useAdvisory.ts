@@ -8,8 +8,8 @@ import { useState } from "react";
 import { useClasses } from "./useClasses";
 
 export default function useAdvisory() {
-    let classes = useClasses();
-    let [tempAdvisory, setTempAdvisory] = useState(classes.temp.advisory);
+    const classes = useClasses();
+    const [tempAdvisory, setTempAdvisory] = useState(classes.temp.advisory);
 
     return {
         savedAdvisory: classes.temp.advisory,

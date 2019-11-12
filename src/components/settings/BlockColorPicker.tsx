@@ -4,7 +4,7 @@
 
 import React, { createRef, useEffect } from "react";
 import { GestureResponderEvent, ScrollView, TouchableOpacity, View } from "react-native";
-import { blockColorPickerStyles } from "../../themes/light";
+import { blockColorPickerStyles } from "../../layout/default";
 import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
 
 const BlockColorOffset: BlockColor[] = [
@@ -24,7 +24,7 @@ export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(va
     const scrollRef = createRef<ScrollView>();
 
     useEffect(() => {
-        let current = scrollRef.current;
+        const current = scrollRef.current;
         if (current !== null) {
             current.scrollTo({ x: BlockColorOffset.indexOf(value) * 30, animated: true });
         }

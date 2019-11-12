@@ -24,17 +24,17 @@ enum SchoolDayRegexMatch {
 /** Parse an ICal */
 export default function parseCalendar(rawical: string): ICalendarInformation {
     // Parse the ICal into a JCal
-    let cal = ICal.parse(rawical);
+    const cal = ICal.parse(rawical);
     // Get the top level component
-    let calendarComponent = new ICal.Component(cal);
+    const calendarComponent = new ICal.Component(cal);
     // The array of school days
-    let schoolDays: ICalendarSchoolDay[] = [];
+    const schoolDays: ICalendarSchoolDay[] = [];
     // Loop through all events in a given calendar
-    for (let event of calendarComponent.getAllSubcomponents("vevent")) {
+    for (const event of calendarComponent.getAllSubcomponents("vevent")) {
         /** The start date of the event */
-        let date = event.getFirstPropertyValue<ICal.Time>("dtstart");
+        const date = event.getFirstPropertyValue<ICal.Time>("dtstart");
         /** The summary of the event (title) */
-        let summary = event.getFirstPropertyValue("summary");
+        const summary = event.getFirstPropertyValue("summary");
         // The event needs a summary and start date in order to be processed
         if (date === null || summary === null) {
             // Skip the event if it cannot be processed
@@ -43,7 +43,7 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
         }
         // Check the summary against the school day regex
         /** The match of the events summary */
-        let match = schoolDayRegex.exec(summary);
+        const match = schoolDayRegex.exec(summary);
         // Check if the sumamry was a match
         if (match !== null) {
             // If the summary matched, Add the school day to the array of school days

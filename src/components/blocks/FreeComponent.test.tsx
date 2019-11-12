@@ -13,7 +13,7 @@ dayjs.extend(useCustomFormat);
 
 describe("Tests different variations of <FreeComponent>", () => {
     it("Renders FreeComponent", () => {
-        let comp = render(<FreeComponent block={BlockColor.Red} start={dayjs("7:30 AM", "h:mm A")} end={dayjs("8:30 AM", "h:mm A")}/>);
+        const comp = render(<FreeComponent block={BlockColor.Red} start={dayjs("7:30 AM", "h:mm A")} end={dayjs("8:30 AM", "h:mm A")}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
     });

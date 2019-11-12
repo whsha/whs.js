@@ -9,19 +9,20 @@ import React, { useContext } from "react";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
+import { navigationHeaderPaddingStyle } from "../layout/default";
 import { TodayViewNavProp, TodayViewRouteProp } from "./MainView";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";
 
-let TodayStack = createStackNavigator();
+const TodayStack = createStackNavigator();
 
 export default function TodayView() {
     const calendar = useContext(CalendarContext);
 
-    let { params } = useRoute<TodayViewRouteProp>();
-    let navigation = useNavigation<TodayViewNavProp>();
+    const { params } = useRoute<TodayViewRouteProp>();
+    const navigation = useNavigation<TodayViewNavProp>();
 
-    let { day } = params;
+    const { day } = params;
 
     const schoolDay = calendar.schoolDay(day);
 
@@ -33,20 +34,21 @@ export default function TodayView() {
     };
     const right = () => navigation.navigate("Today", { day: day.add(1, "day") });
 
-    let screenOptions: StackNavigationOptions = {
-        headerLeft: _ => <HeaderLeftArrow onPress={left} />,
-        headerRight: _ => <HeaderRightArrow onPress={right} />,
-        headerTitle: _ => (
+    const screenOptions: StackNavigationOptions = {
+        headerLeft: () => <HeaderLeftArrow onPress={left} />,
+        headerRight: () => <HeaderRightArrow onPress={right} />,
+        headerTitle: () => (
             <MultilineHeaderTitle
                 title={schoolDay === undefined ? "No School" : `${schoolDay.isHalf ? "Half " : ""}Day ${schoolDay.dayNumber}`}
                 subtitle={day.format("dddd, MMMM D")}
                 onClick={goToToday}
             />
-        )
+        ),
+        ...navigationHeaderPaddingStyle
     };
 
     const ClassesViewInternal = () => {
-        return schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />
+        return schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />;
     };
 
     return (

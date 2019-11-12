@@ -2,38 +2,44 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { useNavigation } from "@react-navigation/core";
+import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
-// import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-// import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
-import { settingsViewStyles } from "../../../themes/light";
+import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import { settingsViewStyles } from "../../../layout/default";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
+import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
 export default function AdvisoryConfigureView() {
-    // const { history } = useRouter();
-    let {
-        // save,
+    const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
+    const {
+        save,
         setRoom,
         setTeacher,
         tempAdvisory,
-        // updated
+        updated
     } = useAdvisory();
 
-    // const goBack = () => void 0;// history.push("/settings/classes");
-    // const done = () => {
-        // save();
-        // history.push("/settings/classes");
-    // };
+    const goBack = () => navigation.goBack();
+    const done = () => {
+        save();
+        navigation.navigate("ClassesList");
+    };
+
+    navigation.setOptions({
+        headerLeft: () => <HeaderCancelButton onPress={goBack}/>,
+        headerRight: () => <HeaderSaveButton onPress={done} disabled={!updated}/>
+    });
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
-            {/* <SinglelineHeader title="Advisory Settings" leftButton={<HeaderCancelButton onPress={goBack}/>} rightButton={<HeaderSaveButton onPress={done} disabled={!updated}/>} /> */}
             <ScrollView>
                 <TableView>
                     <Section header="Options">

@@ -20,7 +20,7 @@ export default class ClassesStore {
 
     public hydrateFrom(linkedstore: ClassesStore) {
         // Clone store as to not link to it
-        let store = toJS(linkedstore, { exportMapsAsObjects: false, recurseEverything: true });
+        const store = toJS(linkedstore, { exportMapsAsObjects: false, recurseEverything: true });
 
         this.majors = store.majors;
         this.minors = store.minors;

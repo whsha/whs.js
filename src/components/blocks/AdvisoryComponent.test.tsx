@@ -12,7 +12,7 @@ dayjs.extend(useCustomFormat);
 
 describe("Tests different variations of <AdvisoryComponent>", () => {
     it("Renders AdvisoryComponent with a string room", () => {
-        let comp = render(
+        const comp = render(
             <AdvisoryComponent
                 room="Office"
                 teacher="Mr. Teacher Man"
@@ -24,7 +24,7 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
         expect(comp.toJSON()).toMatchSnapshot();
     });
     it("Renders AdvisoryComponent with a numerical room", () => {
-        let comp = render(
+        const comp = render(
             <AdvisoryComponent
                 room="132"
                 teacher="Mr. Teacher Man"

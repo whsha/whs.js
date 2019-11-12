@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 import { Alert } from "react-native";
 import { Cell } from "react-native-tableview-simple";
 import { ClassesContext, TempClassesContext } from "../../contexts";
-import { tableViewStyle } from "../../themes/light";
+import { tableViewStyle } from "../../layout/default";
 
 export default function ClearClassesCell() {
     const classes = useContext(ClassesContext);

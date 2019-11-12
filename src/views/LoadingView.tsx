@@ -6,7 +6,7 @@ import React from "react";
 import { Image, Text, View } from "react-native";
 import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";
-import { loadingViewStyle } from "../themes/light";
+import { loadingViewStyle } from "../layout/default";
 
 export default function LoadingView({ task }: { task: ApplicationState }) {
     return (

@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Text, View } from "react-native";
-import { classComponentStyles } from "../../themes/light";
+import { classComponentStyles } from "../../layout/default";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
 import { IFreeBlock } from "../../util/class/display";
 

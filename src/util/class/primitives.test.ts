@@ -4,12 +4,12 @@
 
 import { IAdvisedClass, IIrregular, isAdvisedClass, isIrregular } from "./primitives";
 
-let advisedClass: IAdvisedClass = {
+const advisedClass: IAdvisedClass = {
     room: "100",
     teacher: "Mr. Teach",
 };
 
-let irregular: IIrregular = {
+const irregular: IIrregular = {
     meets: 0b010101
 };
 

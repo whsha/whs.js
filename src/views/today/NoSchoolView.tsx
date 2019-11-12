@@ -7,7 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { CalendarContext } from "../../contexts";
-import { noSchoolViewStyles } from "../../themes/light";
+import { noSchoolViewStyles } from "../../layout/default";
 
 dayjs.extend(relativeTime);
 

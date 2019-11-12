@@ -9,9 +9,9 @@ import MultilineHeaderTitle from "./MultilineHeaderTitle";
 
 describe("Tests different header buttons", () => {
     it("Renders <HeaderLeftArrow/>", () => {
-        let mock = jest.fn();
+        const mock = jest.fn();
 
-        let comp = render(<HeaderLeftArrow onPress={mock}/>);
+        const comp = render(<HeaderLeftArrow onPress={mock}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
 
@@ -20,9 +20,9 @@ describe("Tests different header buttons", () => {
     });
 
     it("Renders <HeaderRightArrow/>", () => {
-        let mock = jest.fn();
+        const mock = jest.fn();
 
-        let comp = render(<HeaderRightArrow onPress={mock}/>);
+        const comp = render(<HeaderRightArrow onPress={mock}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
 
@@ -31,9 +31,9 @@ describe("Tests different header buttons", () => {
     });
 
     it("Renders <HeaderCancelButton/>", () => {
-        let mock = jest.fn();
+        const mock = jest.fn();
 
-        let comp = render(<HeaderCancelButton onPress={mock}/>);
+        const comp = render(<HeaderCancelButton onPress={mock}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
 
@@ -42,9 +42,9 @@ describe("Tests different header buttons", () => {
     });
 
     it("Renders <HeaderSaveButton/>", () => {
-        let mock = jest.fn();
+        const mock = jest.fn();
 
-        let comp = render(<HeaderSaveButton onPress={mock}/>);
+        const comp = render(<HeaderSaveButton onPress={mock}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
 
@@ -55,7 +55,7 @@ describe("Tests different header buttons", () => {
 
 describe("Tests different variations of <MultilineHeader>", () => {
     it("Renders <MultilineHeaderTitle title=\"test title\" subtitle=\"e\"/>", () => {
-        let comp = render(<MultilineHeaderTitle title="test title" subtitle="e"/>);
+        const comp = render(<MultilineHeaderTitle title="test title" subtitle="e"/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
     });

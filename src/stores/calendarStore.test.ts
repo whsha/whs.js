@@ -10,7 +10,7 @@ import CalendarStore from "./calendarStore";
 dayjs.extend(useCustomFormat);
 
 describe("Test the functionality of a normal CalendarStore", () => {
-    let store = new CalendarStore();
+    const store = new CalendarStore();
 
     it("Instanciates correctly", () => {
         expect(store).toBeInstanceOf(CalendarStore);

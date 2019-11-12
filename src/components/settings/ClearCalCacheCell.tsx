@@ -7,17 +7,17 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { Cell } from "react-native-tableview-simple";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
-import { tableViewStyle } from "../../themes/light";
+import { tableViewStyle } from "../../layout/default";
 
 dayjs.extend(relativeTime);
 
 export default function ClearCalCacheCell() {
     const calendar = useContext(CalendarContext);
-    let [fromNow, setFromNow] = useState(dayjs(calendar.updated).fromNow());
+    const [fromNow, setFromNow] = useState(dayjs(calendar.updated).fromNow());
     const load = useContext(ReloadFunctionContext);
 
     useEffect(() => {
-        let interval = setInterval(() => setFromNow(dayjs(calendar.updated).fromNow()), 1000);
+        const interval = setInterval(() => setFromNow(dayjs(calendar.updated).fromNow()), 1000);
 
         return () => clearInterval(interval);
     }, []);

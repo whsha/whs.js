@@ -10,7 +10,7 @@ import React from "react";
 import { Platform, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import IonIcons from "react-native-vector-icons/Ionicons";
-import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../themes/light";
+import { navigationHeaderPaddingStyle, tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
 
@@ -24,7 +24,7 @@ export type TodayViewNavProp = NavigationProp<ITabParamList, "Today">;
 export type SettingsViewRouteProp = RouteProp<ITabParamList, "Settings">;
 export type SettingsViewNavProp = NavigationProp<ITabParamList, "Settings">;
 
-let Tab = createBottomTabNavigator<ITabParamList>();
+const Tab = createBottomTabNavigator<ITabParamList>();
 
 export default function MainView() {
     const screenOptions: ((props: {
@@ -32,7 +32,7 @@ export default function MainView() {
         navigation: {};
     }) => BottomTabNavigationOptions) = ({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-            let IconComponent = IonIcons;
+            const IconComponent = IonIcons;
             let iconName = `${Platform.OS === "ios" ? "ios" : "md"}-`;
 
             if (route.name === "Today") {
@@ -45,7 +45,7 @@ export default function MainView() {
             // }
 
             return <IconComponent name={iconName} size={size} color={color} />;
-        },
+        }
     });
 
     const tabBarOptions: BottomTabBarOptions = {

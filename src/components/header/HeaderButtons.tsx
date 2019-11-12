@@ -5,7 +5,7 @@
 import React from "react";
 import { Platform, Text, TouchableOpacity } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
-import { headerButtonStyles } from "../../themes/light";
+import { headerButtonStyles } from "../../layout/default";
 
 interface IHeaderDoneButtonProps {
     disabled?: boolean;

@@ -13,12 +13,12 @@ dayjs.extend(useCustomFormat);
 
 describe("Tests different variations of <ClassComponent>", () => {
     it("Renders ClassComponent with a string room", () => {
-        let comp = render(<ClassComponent name="Class" room="Office" teacher="Mr. Teacher Man" block={BlockColor.Red} start={dayjs("7:30 AM", "h:mm A")} end={dayjs("8:30 AM", "h:mm A")}/>);
+        const comp = render(<ClassComponent name="Class" room="Office" teacher="Mr. Teacher Man" block={BlockColor.Red} start={dayjs("7:30 AM", "h:mm A")} end={dayjs("8:30 AM", "h:mm A")}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
     });
     it("Renders ClassComponent with a numerical room", () => {
-        let comp = render(<ClassComponent name="Class" room="Office" teacher="Mr. Teacher Man" block={BlockColor.Red} start={dayjs("12:14 PM", "h:mm A")} end={dayjs("1:24 PM", "h:mm A")}/>);
+        const comp = render(<ClassComponent name="Class" room="Office" teacher="Mr. Teacher Man" block={BlockColor.Red} start={dayjs("12:14 PM", "h:mm A")} end={dayjs("1:24 PM", "h:mm A")}/>);
 
         expect(comp.toJSON()).toMatchSnapshot();
     });

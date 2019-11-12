@@ -7,7 +7,7 @@ import { IAdvisedClass } from "./primitives";
 import { IDR, IMajor, IMinor } from "./storage";
 import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
 
-let major: IMajor = {
+const major: IMajor = {
     block: BlockColor.Red,
     lab: false,
     name: "Test Major",
@@ -17,7 +17,7 @@ let major: IMajor = {
     uuid: ""
 };
 
-let minor: IMinor = {
+const minor: IMinor = {
     block: BlockColor.Yellow,
     meets: 0b01101,
     name: "Test minor",
@@ -27,7 +27,7 @@ let minor: IMinor = {
     uuid: ""
 };
 
-let dr: IDR = {
+const dr: IDR = {
     block: BlockColor.Green,
     meets: 0b11111,
     room: "102",
@@ -36,7 +36,7 @@ let dr: IDR = {
     uuid: ""
 };
 
-let notclass: IAdvisedClass = {
+const notclass: IAdvisedClass = {
     room: "Fitness center",
     teacher: "Mr. Test",
 };

@@ -10,7 +10,7 @@ import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import ClassComponent from "../../components/blocks/ClassComponent";
 import FreeComponent from "../../components/blocks/FreeComponent";
 import { ClassesContext } from "../../contexts";
-import { settingsViewStyles } from "../../themes/light";
+import { settingsViewStyles } from "../../layout/default";
 import { Block } from "../../util/blocks/block";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";

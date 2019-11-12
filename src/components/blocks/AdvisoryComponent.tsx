@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Text, View } from "react-native";
-import { classComponentStyles } from "../../themes/light";
+import { classComponentStyles } from "../../layout/default";
 import { IAdvisory } from "../../util/class/advisory";
 import { ITimes } from "../../util/class/extentions";
 

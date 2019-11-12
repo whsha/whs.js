@@ -16,7 +16,7 @@ export enum ClassType {
 }
 
 export function hasClassType<T extends ClassType>(clazz: unknown): clazz is IClassType<T> {
-    let possibleClass = clazz as IClassType<T>;
+    const possibleClass = clazz as IClassType<T>;
 
     return possibleClass.type !== undefined;
 }

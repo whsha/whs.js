@@ -7,7 +7,7 @@ import fetchCalendar from "./fetch";
 it("Fetches data and returns it untampered", async (done) => {
     fetchMock.mockResponseOnce("testtext");
 
-    let calendar = await fetchCalendar();
+    const calendar = await fetchCalendar();
 
     expect(calendar.isOk).toBe(true);
     expect(calendar.unwrap()).toBe("testtext");
@@ -22,7 +22,7 @@ it("Detects failure and reports it", async (done) => {
             statusText: "Endpoint discontinued"
         });
 
-    let calendar = await fetchCalendar();
+    const calendar = await fetchCalendar();
 
     expect(calendar.isErr).toBe(true);
     expect(calendar.unwrap.bind(null)).toThrow();

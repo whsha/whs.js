@@ -10,7 +10,7 @@ const DAYONLYCALENDAR = "https://calendar.google.com/calendar/ical/wellesleyps.o
 /** Simply fetch the calendar from the url */
 export default async function fetchCalendar(): Promise<Result<string>> {
     // Get the calendar
-    let response = await fetch(DAYONLYCALENDAR);
+    const response = await fetch(DAYONLYCALENDAR);
 
     if (!response.ok) {
         return Result.err(new Error(`${response.status}: ${response.statusText}`));

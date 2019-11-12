@@ -4,7 +4,7 @@
 
 import React from "react";
 import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
-import { headerStyles } from "../../themes/light";
+import { headerStyles } from "../../layout/default";
 
 interface IMultilineHeaderProps {
     title: string;
