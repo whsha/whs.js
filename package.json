@@ -105,8 +105,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn typecheck",
-            "pre-push": "yarn test && yarn typecheck",
+            "pre-commit": "yarn typecheck && yarn lint",
+            "pre-push": "yarn test && yarn typecheck && yarn lint",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },

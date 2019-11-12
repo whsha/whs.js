@@ -69,7 +69,7 @@ export default function MajorEditView() {
 
     const pick = (block: BlockColor) => major.update({ block });
 
-    const updateTeacher = (teacher: string) => major.update({teacher})
+    const updateTeacher = (teacher: string) => major.update({teacher});
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
