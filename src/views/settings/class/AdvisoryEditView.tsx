@@ -8,7 +8,7 @@ import React from "react";
 import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
-import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+// import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 // import { SinglelineHeader } from "../../../components/header/SinglelineHeader";
 import { settingsViewStyles } from "../../../themes/light";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
@@ -18,18 +18,18 @@ dayjs.extend(useCustomFormat);
 export default function AdvisoryConfigureView() {
     // const { history } = useRouter();
     let {
-        save,
+        // save,
         setRoom,
         setTeacher,
         tempAdvisory,
-        updated
+        // updated
     } = useAdvisory();
 
-    const goBack = () => void 0;// history.push("/settings/classes");
-    const done = () => {
-        save();
+    // const goBack = () => void 0;// history.push("/settings/classes");
+    // const done = () => {
+        // save();
         // history.push("/settings/classes");
-    };
+    // };
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>

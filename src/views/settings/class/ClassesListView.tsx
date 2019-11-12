@@ -5,7 +5,7 @@
 import React from "react";
 import { FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
-import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+// import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import { settingsViewStyles } from "../../../themes/light";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
@@ -16,14 +16,14 @@ import { useClasses } from "../../../util/hooks/classes/useClasses";
 export default function ClassesListView() {
     // const { history } = useRouter();
     const classes = useClasses();
-    const goBack = () => {
-        // history.push("/settings");
-        classes.reset();
-    };
-    const done = () => {
-        // history.push("/settings");
-        classes.save();
-    };
+    // const goBack = () => {
+    //     // history.push("/settings");
+    //     classes.reset();
+    // };
+    // const done = () => {
+    //     // history.push("/settings");
+    //     classes.save();
+    // };
 
     const goTo = (_path: string) => () => void 0;// history.push(path);
 

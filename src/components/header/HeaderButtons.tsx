@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { GestureResponderEvent, Platform, Text, TouchableOpacity } from "react-native";
+import { Platform, Text, TouchableOpacity } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import { headerButtonStyles } from "../../themes/light";
 

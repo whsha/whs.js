@@ -5,7 +5,7 @@
 import React from "react";
 import { Alert, SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+// import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../themes/light";
 import { BlockColor } from "../../../util/blocks/blockColor";
@@ -15,11 +15,11 @@ export default function ClassEditView() {
     // const { match, history } = useRouter<{ id: string }>();
     const major = useMajor(""/* match.params.id */);
 
-    const goBack = () => void 0;// history.goBack();
-    const done = () => {
-        major.save();
-        // history.push("/settings/classes");
-    };
+    // const goBack = () => void 0;// history.goBack();
+    // const done = () => {
+    //     major.save();
+    //     // history.push("/settings/classes");
+    // };
 
     const pomptDelete = () => {
         Alert.alert("Are you sure you want to delete this class?", "This action is irreverable", [

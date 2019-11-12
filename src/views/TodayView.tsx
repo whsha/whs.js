@@ -2,15 +2,13 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
+import { useNavigation, useRoute } from "@react-navigation/core";
 import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useContext } from "react";
-import SafeAreaView from "react-native-safe-area-view";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
-import { todayViewStyles } from "../themes/light";
 import { TodayViewNavProp, TodayViewRouteProp } from "./MainView";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";

@@ -17,8 +17,6 @@ describe("Tests different header buttons", () => {
 
         fireEvent.press(comp.getByA11yLabel("LeftArrow"));
         expect(mock).toHaveBeenCalledTimes(1);
-
-
     });
 
     it("Renders <HeaderRightArrow/>", () => {
@@ -30,8 +28,28 @@ describe("Tests different header buttons", () => {
 
         fireEvent.press(comp.getByA11yLabel("RightArrow"));
         expect(mock).toHaveBeenCalledTimes(1);
+    });
 
+    it("Renders <HeaderCancelButton/>", () => {
+        let mock = jest.fn();
 
+        let comp = render(<HeaderCancelButton onPress={mock}/>);
+
+        expect(comp.toJSON()).toMatchSnapshot();
+
+        fireEvent.press(comp.getByText("Cancel"));
+        expect(mock).toHaveBeenCalledTimes(1);
+    });
+
+    it("Renders <HeaderSaveButton/>", () => {
+        let mock = jest.fn();
+
+        let comp = render(<HeaderSaveButton onPress={mock}/>);
+
+        expect(comp.toJSON()).toMatchSnapshot();
+
+        fireEvent.press(comp.getByText("Save"));
+        expect(mock).toHaveBeenCalledTimes(1);
     });
 });
 
