@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView, Text, Alert } from "react-native";
+import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView, Text } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";

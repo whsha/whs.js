@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React from "react";
+import React, { memo } from "react";
 import { Platform, View } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 

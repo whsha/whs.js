@@ -2,8 +2,8 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { createRef, useEffect, useLayoutEffect, memo } from "react";
-import { GestureResponderEvent, ScrollView, TouchableOpacity, View, FlatList, InteractionManager } from "react-native";
+import React, { createRef, memo, useEffect } from "react";
+import { FlatList, GestureResponderEvent, TouchableOpacity, View } from "react-native";
 import { blockColorPickerStyles } from "../../layout/default";
 import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
 

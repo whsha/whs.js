@@ -4,8 +4,8 @@
 
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
-import React, { useContext, memo } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import React, { memo, useContext } from "react";
+import { ScrollView } from "react-native";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import ClassComponent from "../../components/blocks/ClassComponent";
 import FreeComponent from "../../components/blocks/FreeComponent";

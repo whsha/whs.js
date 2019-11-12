@@ -69,6 +69,8 @@ export default function MajorEditView() {
 
     const pick = (block: BlockColor) => major.update({ block });
 
+    const updateTeacher = (teacher: string) => major.update({teacher})
+
     return (
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
@@ -77,8 +79,7 @@ export default function MajorEditView() {
                         <Cell cellContentView={<BlockColorPicker value={major.tempValue.block} onPick={pick} />} />
                     </Section>
                     <Section header="Basic Info">
-                        {/* <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mr. Teach" value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} /> */}
-                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={major.tempValue.teacher} onChangeText={(teacher) => major.update({teacher})} style={settingsViewStyles.textInput}/>} />
+                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={major.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput}/>} />
                         <Cell cellContentView={<Text>{JSON.stringify(major, undefined, 4)}</Text>} />
                     </Section>
                     <Section>
