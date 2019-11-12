@@ -143,9 +143,11 @@ export const settingsViewStyles = StyleSheet.create({
         flex: 1
     },
     textInput: {
+        color: "#555555",
         flex: 1,
+        fontSize: 15,
         height: 40,
-        textAlign: "right"
+        textAlign: "right",
     }
 });
 
@@ -186,7 +188,7 @@ export const blockColorPickerStyles = StyleSheet.create({
     color: {
         borderRadius: 5,
         height: 20,
-        width: 20,
+        width: 20
     },
     container: {
         alignContent: "center",
@@ -194,18 +196,11 @@ export const blockColorPickerStyles = StyleSheet.create({
         borderColor: "#CECECE",
         borderRadius: 10,
         borderWidth: 1,
+        marginHorizontal: 10,
         padding: 10
     },
     containerSelected: {
         backgroundColor: "black"
-    },
-    scrollView: {
-        alignItems: "center",
-        flex: 1,
-        flexDirection: "row",
-        height: 60,
-        justifyContent: "space-evenly",
-        minWidth: 500,
     },
     slash: {
         borderBottomColor: "black",

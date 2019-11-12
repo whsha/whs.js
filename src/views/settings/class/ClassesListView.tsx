@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, Text, Alert } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
@@ -21,8 +21,25 @@ export default function ClassesListView() {
     const classes = useClasses();
 
     const goBack = () => {
-        navigation.goBack();
-        classes.reset();
+        if (classes.updated) {
+            Alert.alert("Discard Changes?", "If you continue without saving your changes, they will all be lost", [
+                {
+                    style: "default",
+                    text: "Cancel"
+                },
+                {
+                    style: "destructive",
+                    text: "Discard Changes",
+                    onPress() {
+                        navigation.goBack();
+                        classes.reset();
+                    }
+                }
+            ]);
+        } else {
+            navigation.goBack();
+            classes.reset();
+        }
     };
     const done = () => {
         navigation.goBack();
@@ -39,7 +56,7 @@ export default function ClassesListView() {
     const majorRenderItem: ListRenderItem<IMajor> = ({ item }) => (
         <Cell
             title={item.name}
-            detail={`Room: ${item.room} Teacher: ${item.teacher}`}
+            detail={`Room: ${item.room} Teacher: ${item.teacher} Id: ${item.uuid.substring(0, 5)}`}
             cellStyle="Subtitle"
             accessory="DisclosureIndicator"
             titleTextColor={getDisplayColorForBlock(item.block)}
@@ -70,6 +87,9 @@ export default function ClassesListView() {
                     </Section>
                     <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
                         <Cell title="TODO" />
+                    </Section>
+                    <Section header="Debug">
+                        <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>}/>
                     </Section>
                 </TableView>
             </ScrollView>

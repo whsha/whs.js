@@ -25,7 +25,7 @@ export function newMajor(): IMajor {
 
 export function useMajor(id: string): IUseClass<IMajor> {
     const classes = useClasses();
-    const savedValue = classes.saved.majors.get(id);
+    const savedValue = classes.temp.majors.get(id);
     const [tempValue, setTempValue] = useState<IMajor>(savedValue !== undefined ? savedValue : newMajor());
 
     return {

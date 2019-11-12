@@ -6,7 +6,7 @@ import React from "react";
 import { Platform, View } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
-export default function IconComponent({ name, size = 22 }: { name: string; size?: number }) {
+function IconComponent({ name, size = 22 }: { name: string; size?: number }) {
     return (
         <View style={{marginBottom: -4}}>
             <IonIcon
@@ -17,3 +17,5 @@ export default function IconComponent({ name, size = 22 }: { name: string; size?
         </View>
     );
 }
+
+export default memo(IconComponent);

@@ -5,7 +5,7 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Alert, SafeAreaView, ScrollView, TextInput } from "react-native";
+import { Alert, SafeAreaView, ScrollView, Text, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
@@ -20,7 +20,25 @@ export default function MajorEditView() {
 
     const major = useMajor(route.params.majorId);
 
-    const goBack = () => navigation.goBack();
+    const goBack = () => {
+        if (major.updated) {
+            Alert.alert("Discard Changes?", "If you continue without saving your changes, they will all be lost", [
+                {
+                    style: "default",
+                    text: "Cancel"
+                },
+                {
+                    style: "destructive",
+                    text: "Discard Changes",
+                    onPress() {
+                        navigation.goBack();
+                    }
+                }
+            ]);
+        } else {
+            navigation.goBack();
+        }
+    };
     const done = () => {
         major.save();
         navigation.navigate("ClassesList");
@@ -29,10 +47,11 @@ export default function MajorEditView() {
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,
         headerRight: () => <HeaderSaveButton onPress={done} disabled={!major.updated} />,
+        headerTitle: route.params.majorId.substring(0, 5)
     });
 
     const pomptDelete = () => {
-        Alert.alert("Are you sure you want to delete this class?", "This action is irreverable", [
+        Alert.alert("Are you sure you want to delete this class?", "This action is irreversable", [
             {
                 style: "destructive",
                 text: "Delete",
@@ -58,8 +77,9 @@ export default function MajorEditView() {
                         <Cell cellContentView={<BlockColorPicker value={major.tempValue.block} onPick={pick} />} />
                     </Section>
                     <Section header="Basic Info">
-                        <Cell title="Teacher" cellAccessoryView={<TextInput />} />
-                        <Cell title={JSON.stringify(major)} />
+                        {/* <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mr. Teach" value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} /> */}
+                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={major.tempValue.teacher} onChangeText={(teacher) => major.update({teacher})} style={settingsViewStyles.textInput}/>} />
+                        <Cell cellContentView={<Text>{JSON.stringify(major, undefined, 4)}</Text>} />
                     </Section>
                     <Section>
                         <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />

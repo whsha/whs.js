@@ -55,15 +55,5 @@ export default function TodayView() {
         <TodayStack.Navigator screenOptions={screenOptions} initialRouteName="Classes">
             <TodayStack.Screen name="Classes" component={ClassesViewInternal} />
         </TodayStack.Navigator>
-        // <SafeAreaView style={todayViewStyles.todayView}>
-        //     <HeaderLeftArrow onPress={left} />
-        //     <HeaderRightArrow onPress={right} />
-        //     <MultilineHeaderTitle
-        //         title={schoolDay === undefined ? "No School" : `${schoolDay.isHalf ? "Half " : ""}Day ${schoolDay.dayNumber}`}
-        //         subtitle={day.format("dddd, MMMM D")}
-        //         onClick={goToToday}
-        //     />
-        //     {schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />}
-        // </SafeAreaView>
     );
 }

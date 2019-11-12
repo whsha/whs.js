@@ -2,14 +2,14 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React from "react";
+import React, { memo } from "react";
 import { Text, View } from "react-native";
 import { classComponentStyles } from "../../layout/default";
 import { IAdvisory } from "../../util/class/advisory";
 import { ITimes } from "../../util/class/extentions";
 
 /** A component to display the advisory */
-export default function AdvisoryComponent({teacher, room, end, start}: IAdvisory & ITimes) {
+function AdvisoryComponent({teacher, room, end, start}: IAdvisory & ITimes) {
     return (
         <View style={classComponentStyles.container}>
             <View style={classComponentStyles.dualView}>
@@ -23,3 +23,5 @@ export default function AdvisoryComponent({teacher, room, end, start}: IAdvisory
         </View>
     );
 }
+
+export default memo(AdvisoryComponent);
