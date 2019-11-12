@@ -26,7 +26,6 @@ export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(va
     useEffect(() => {
         const current = scrollRef.current;
         if (current !== null) {
-            console.warn("hub");
             // FIXME: Workaround for not being run
             setTimeout(() => {
                 current.scrollToIndex({ animated: true, index: BlockColors.indexOf(value), viewOffset: 0, viewPosition: 0.5 });
