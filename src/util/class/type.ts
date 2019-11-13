@@ -5,7 +5,7 @@
 /** A class which has a specific type to diferentiate it from others */
 export interface IClassType<T extends ClassType> {
     /** A fixed value to differentiate this class from others */
-    type: T;
+    type: Readonly<T>;
 }
 
 /** The types of classes */
@@ -16,7 +16,7 @@ export enum ClassType {
 }
 
 export function hasClassType<T extends ClassType>(clazz: unknown): clazz is IClassType<T> {
-    const possibleClass = clazz as IClassType<T>;
+    const possibleClass = clazz as Partial<IClassType<T>>;
 
     return possibleClass.type !== undefined;
 }

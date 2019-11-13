@@ -2,7 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
@@ -95,11 +94,9 @@ export default function App() {
 
     return (
         <SafeAreaProvider>
-            <NavigationNativeContainer>
-                <ReloadFunctionContext.Provider value={Load}>
-                    {currentTask === ApplicationState.Loaded ? <MainView /> : <LoadingView task={currentTask} />}
-                </ReloadFunctionContext.Provider>
-            </NavigationNativeContainer>
+            <ReloadFunctionContext.Provider value={Load}>
+                {currentTask === ApplicationState.Loaded ? <MainView /> : <LoadingView task={currentTask} />}
+            </ReloadFunctionContext.Provider>
         </SafeAreaProvider>
     );
 }

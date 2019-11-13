@@ -19,7 +19,7 @@ export default function MainSettingsView() {
 
     const navigateTo = (to: string) => () => navigation.navigate(to);
 
-    function openLink(link: string) {
+    const openLink = (link: string) => {
         return () => {
             Alert.alert("Open link in browser?", undefined, [{
                 onPress: () => {
@@ -33,7 +33,7 @@ export default function MainSettingsView() {
                 text: "Cancel"
             }]);
         };
-    }
+    };
 
     const backupConfig = () => {
         Alert.alert("Load or Save?", undefined, [

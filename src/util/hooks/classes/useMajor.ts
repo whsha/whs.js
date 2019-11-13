@@ -15,9 +15,9 @@ export function newMajor(): IMajor {
     return {
         block: BlockColor.None,
         lab: false,
-        name: "New Major",
-        room: "0",
-        teacher: "Major Teacher",
+        name: "",
+        room: "",
+        teacher: "",
         type: ClassType.Major,
         uuid: uuid(),
     };
