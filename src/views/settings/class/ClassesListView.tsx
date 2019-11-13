@@ -5,11 +5,12 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView, Text } from "react-native";
+import { FlatList, ListRenderItem, SafeAreaView, ScrollView, Text } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import { settingsViewStyles } from "../../../layout/default";
+import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
 import { IMajor } from "../../../util/class/storage";
@@ -22,20 +23,10 @@ export default function ClassesListView() {
 
     const goBack = () => {
         if (classes.updated) {
-            Alert.alert("Discard Changes?", "If you continue without saving your changes, they will all be lost", [
-                {
-                    style: "default",
-                    text: "Cancel"
-                },
-                {
-                    style: "destructive",
-                    text: "Discard Changes",
-                    onPress() {
-                        navigation.goBack();
-                        classes.reset();
-                    }
-                }
-            ]);
+            discardChangesAlert(() => {
+                navigation.goBack();
+                classes.reset();
+            });
         } else {
             navigation.goBack();
             classes.reset();
@@ -55,9 +46,9 @@ export default function ClassesListView() {
 
     const majorRenderItem: ListRenderItem<IMajor> = ({ item }) => (
         <Cell
-            title={item.name}
-            detail={`Room: ${item.room} Teacher: ${item.teacher} Id: ${item.uuid.substring(0, 5)}`}
-            cellStyle="Subtitle"
+            title={item.name.length === 0 ? "No Name" : item.name}
+            // detail={`Room: ${item.room} Teacher: ${item.teacher} Id: ${item.uuid.substring(0, 5)}`}
+            // cellStyle="Subtitle"
             accessory="DisclosureIndicator"
             titleTextColor={getDisplayColorForBlock(item.block)}
             onPress={goTo("ConfigureMajor", { majorId: item.uuid })}
@@ -79,7 +70,12 @@ export default function ClassesListView() {
                         <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
                     </Section>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle">
-                        <FlatList keyExtractor={keyExtractor} data={Array.from(classes.temp.majors.values())} renderItem={majorRenderItem} ItemSeparatorComponent={Separator} />
+                        <FlatList
+                            keyExtractor={keyExtractor}
+                            data={Array.from(classes.temp.majors.values())}
+                            renderItem={majorRenderItem}
+                            ItemSeparatorComponent={Separator}
+                        />
                         <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMajor} />
                     </Section>
                     <Section header="Minors" footer="Minors are any class that meets less than 5 times a cycle">
@@ -89,7 +85,7 @@ export default function ClassesListView() {
                         <Cell title="TODO" />
                     </Section>
                     <Section header="Debug">
-                        <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>}/>
+                        <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>} />
                     </Section>
                 </TableView>
             </ScrollView>

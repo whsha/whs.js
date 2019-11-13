@@ -2,10 +2,12 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { InitialState, NavigationState } from "@react-navigation/core";
+import { NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
@@ -35,11 +37,16 @@ Sentry.init({
 // TODO: Sentry.setUserContext({})
 
 export default function App() {
+    // The state storing the current task of the app (Only changed by load fn)
     const [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
+    // The state storing the loaded initial navigation state (Only changed by load fn)
+    const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
+    // The hydrated stores
     const calendar = useContext(CalendarContext);
     const classes = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);
 
+    /** Async function to initialize the app and all needed stores */
     const Load = async (reset = false) => {
         setCurrentTask(ApplicationState.PreparingMP);
 
@@ -73,16 +80,32 @@ export default function App() {
             const parsed = parseCalendar(rawcal.unwrap());
 
             setCurrentTask(ApplicationState.SavingCal);
+            // Update the calendar with the given parsed info
             await calendar.updateCalendar(parsed);
         }
 
         setCurrentTask(ApplicationState.LoadingClasses);
+        // Hydrate the classes store
         await hydrate(StorageKey.Classes, classes);
+        // Hydrate the temp classes to = the saved classes
         tempClasses.hydrateFrom(classes);
 
         setCurrentTask(ApplicationState.Opening);
+        // Restore current navigation state in development only
+        if (__DEV__) {
+            const navstate = await AsyncStorage.getItem(StorageKey.Navigation);
+            if (navstate !== null) {
+                setInitialNavState(JSON.parse(navstate) as InitialState);
+            }
+        }
 
         setCurrentTask(ApplicationState.Loaded);
+    };
+
+    const changeNavState = (state?: Partial<NavigationState>) => {
+        if (state !== undefined) {
+            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
+        }
     };
 
     useEffect(() => {
@@ -92,11 +115,18 @@ export default function App() {
         });
     }, []);
 
+    const MainViewContents = () => (
+        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+            <ReloadFunctionContext.Provider value={Load}>
+                <MainView />
+            </ReloadFunctionContext.Provider>
+        </NavigationNativeContainer>
+    );
+
     return (
         <SafeAreaProvider>
-            <ReloadFunctionContext.Provider value={Load}>
-                {currentTask === ApplicationState.Loaded ? <MainView /> : <LoadingView task={currentTask} />}
-            </ReloadFunctionContext.Provider>
+            <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
+            {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
         </SafeAreaProvider>
     );
 }

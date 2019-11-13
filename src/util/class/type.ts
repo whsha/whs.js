@@ -5,7 +5,7 @@
 /** A class which has a specific type to diferentiate it from others */
 export interface IClassType<T extends ClassType> {
     /** A fixed value to differentiate this class from others */
-    type: Readonly<T>;
+    readonly type: T;
 }
 
 /** The types of classes */

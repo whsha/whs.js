@@ -3,60 +3,49 @@
  */
 
 import { useNavigation } from "@react-navigation/core";
-import { toJS } from "mobx";
-import React, { useContext } from "react";
-import { Alert, Clipboard, Linking, ScrollView, View } from "react-native";
+import React from "react";
+import { Alert, Linking, ScrollView, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
-import { ClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../layout/default";
+import { openLinkInBrowserAlert } from "../../util/alerts";
 
 export default function MainSettingsView() {
     const navigation = useNavigation();
-    const classes = useContext(ClassesContext);
+    // const classes = useContext(ClassesContext);
 
-    const navigateTo = (to: string) => () => navigation.navigate(to);
+    const navigateTo = (to: string) =>
+        () => navigation.navigate(to);
 
-    const openLink = (link: string) => {
-        return () => {
-            Alert.alert("Open link in browser?", undefined, [{
-                onPress: () => {
-                    Linking.openURL(link);
-                },
-                style: "default",
-                text: "Open"
-            },
-            {
-                style: "cancel",
-                text: "Cancel"
-            }]);
-        };
-    };
+    const openLink = (link: string) =>
+        () => openLinkInBrowserAlert(() => Linking.openURL(link));
 
     const backupConfig = () => {
-        Alert.alert("Load or Save?", undefined, [
-            {
-                style: "default",
-                text: "Save",
-                onPress() {
-                    Clipboard.setString(JSON.stringify(toJS(classes, { recurseEverything: true })));
-                    Alert.alert("Copied to clipboard!", "Save this somewhere safe incase you need to reuse it");
-                }
-            },
-            {
-                style: "destructive",
-                text: "Load",
-                onPress() {
-                    Alert.alert("TODO"); // TODO:
-                }
-            },
-            {
-                style: "cancel",
-                text: "Cancel"
-            }
-        ]);
+        // Make seperate window for
+        Alert.alert("TODO:");
+        // Alert.alert("Load or Save?", undefined, [
+        //     {
+        //         style: "default",
+        //         text: "Save",
+        //         onPress() {
+        //             Clipboard.setString(JSON.stringify(toJS(classes, { recurseEverything: true })));
+        //             Alert.alert("Copied to clipboard!", "Save this somewhere safe incase you need to reuse it");
+        //         }
+        //     },
+        //     {
+        //         style: "destructive",
+        //         text: "Load",
+        //         onPress() {
+        //             Alert.alert("TODO"); // TODO:
+        //         }
+        //     },
+        //     {
+        //         style: "cancel",
+        //         text: "Cancel"
+        //     }
+        // ]);
     };
 
     return (

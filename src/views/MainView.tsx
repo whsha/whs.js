@@ -4,18 +4,18 @@
 
 import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationProp, RouteProp } from "@react-navigation/core";
-import { NavigationNativeContainer } from "@react-navigation/native";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import React from "react";
-import { Platform, StatusBar } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-view";
+import { Platform } from "react-native";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
 
 export interface ITabParamList extends Record<string, object | undefined> {
-    Today: { day: Dayjs };
+    Today: {
+        day: number;
+    };
     Settings: undefined;
 }
 export type TodayViewRouteProp = RouteProp<ITabParamList, "Today">;
@@ -54,18 +54,13 @@ export default function MainView() {
     };
 
     return (
-        <SafeAreaProvider>
-            <NavigationNativeContainer>
-                <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
-                <Tab.Navigator
-                    initialRouteName="Today"
-                    screenOptions={screenOptions}
-                    tabBarOptions={tabBarOptions}
-                >
-                    <Tab.Screen name="Today" component={TodayView} initialParams={{ day: dayjs().startOf("day") }} />
-                    <Tab.Screen name="Settings" component={SettingsView} />
-                </Tab.Navigator>
-            </NavigationNativeContainer>
-        </SafeAreaProvider>
+        <Tab.Navigator
+            initialRouteName="Today"
+            screenOptions={screenOptions}
+            tabBarOptions={tabBarOptions}
+        >
+            <Tab.Screen name="Today" component={TodayView} initialParams={{ day: dayjs().startOf("day").unix() }} />
+            <Tab.Screen name="Settings" component={SettingsView} />
+        </Tab.Navigator>
     );
 }

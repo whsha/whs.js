@@ -12,7 +12,7 @@ import { Dayjs } from "dayjs";
  */
 export interface IClassMeta {
     /** The class UUID for identifying the class */
-    uuid: Readonly<string>;
+    readonly uuid: string;
 }
 
 /** Information that is displayed to the user but never stored locally */

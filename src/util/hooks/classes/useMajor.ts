@@ -35,8 +35,12 @@ export function useMajor(id: string): IUseClass<IMajor> {
         save() {
             classes.updateMajor(id, tempValue);
         },
-        update(data: Partial<IMajor>) {
-            setTempValue(pre => ({ ...pre, ...data }));
+        update(data) {
+            if (typeof data === "function") {
+                setTempValue(pre => ({ ...pre, ...data(pre) }));
+            } else {
+                setTempValue(pre => ({ ...pre, ...data }));
+            }
         },
         delete() {
             classes.deleteMajor(id);

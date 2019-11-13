@@ -22,17 +22,14 @@ export default function TodayView() {
     const { params } = useRoute<TodayViewRouteProp>();
     const navigation = useNavigation<TodayViewNavProp>();
 
-    const { day } = params;
+    const day = dayjs(params.day);
 
     const schoolDay = calendar.schoolDay(day);
 
-    const goToToday = () => navigation.navigate("Today", { day: dayjs().startOf("day") });
-    const goTo = (date: Dayjs) => navigation.navigate("Today", { day: date });
-    const left = () => {
-        console.log("left");
-        navigation.navigate("Today", { day: day.subtract(1, "day") });
-    };
-    const right = () => navigation.navigate("Today", { day: day.add(1, "day") });
+    const goToToday = () => navigation.navigate("Today", { day: dayjs().startOf("day").unix() });
+    const goTo = (date: Dayjs) => navigation.navigate("Today", { day: date.unix() });
+    const left = () => navigation.navigate("Today", { day: day.subtract(1, "day").unix() });
+    const right = () => navigation.navigate("Today", { day: day.add(1, "day").unix() });
 
     const screenOptions: StackNavigationOptions = {
         headerLeft: () => <HeaderLeftArrow onPress={left} />,
