@@ -10,11 +10,11 @@ import { Cell, Section, Separator, TableView } from "react-native-tableview-simp
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import { settingsViewStyles } from "../../../layout/default";
-import { discardChangesAlert } from "../../../util/alerts";
+import { discardChangesAlert, ValidationErrorAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
 import { IMajor } from "../../../util/class/storage";
-import { useClasses } from "../../../util/hooks/classes/useClasses";
+import { useClasses, ValidationResult } from "../../../util/hooks/classes/useClasses";
 import { SettingsParams } from "../../SettingsView";
 
 export default function ClassesListView() {
@@ -33,8 +33,15 @@ export default function ClassesListView() {
         }
     };
     const done = () => {
-        navigation.goBack();
-        classes.save();
+        // Validation
+        const validationResult = classes.validate();
+
+        if (validationResult === ValidationResult.Valid) {
+            classes.save();
+            navigation.goBack();
+        } else {
+            ValidationErrorAlert(validationResult);
+        }
     };
 
     navigation.setOptions({
@@ -47,8 +54,8 @@ export default function ClassesListView() {
     const majorRenderItem: ListRenderItem<IMajor> = ({ item }) => (
         <Cell
             title={item.name.length === 0 ? "No Name" : item.name}
-            // detail={`Room: ${item.room} Teacher: ${item.teacher} Id: ${item.uuid.substring(0, 5)}`}
-            // cellStyle="Subtitle"
+            detail={"Has Lab Block"}
+            cellStyle={item.lab ? "Subtitle" : undefined}
             accessory="DisclosureIndicator"
             titleTextColor={getDisplayColorForBlock(item.block)}
             onPress={goTo("ConfigureMajor", { majorId: item.uuid })}

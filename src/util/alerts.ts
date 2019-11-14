@@ -3,6 +3,7 @@
  */
 
 import { Alert } from "react-native";
+import { ValidationError, ValidationResult } from "./hooks/classes/useClasses";
 
 export function clearClassesAlert(successCallback: () => void) {
     Alert.alert("Are you sure you want to clear your classes", "This action is irriverable", [
@@ -56,4 +57,20 @@ export function openLinkInBrowserAlert(openCallback: () => void) {
         style: "cancel",
         text: "Cancel"
     }], { cancelable: true });
+}
+
+const ValidationResultMessages: Record<ValidationError[keyof ValidationError], { title: string; description: string }> = {
+    [ValidationResult.MajorHasDuplicateBlockColor]: {
+        description: "There exist two major classes that share the same color",
+        title: "Duplicate major colors"
+    },
+    [ValidationResult.MajorIsMissingBlockColor]: {
+        description: "There exists one or more majors with no block color specified",
+        title: "Major missing block color"
+    }
+};
+
+export function ValidationErrorAlert(error: ValidationError[keyof ValidationError]) {
+    const message = ValidationResultMessages[error];
+    Alert.alert(message.title, message.description, [{ style: "default", text: "Ok" }], { cancelable: true });
 }

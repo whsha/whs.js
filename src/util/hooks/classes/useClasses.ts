@@ -7,6 +7,7 @@ import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
+import { BlockColor } from "../../blocks/blockColor";
 import { IAdvisory } from "../../class/advisory";
 import { IMajor } from "../../class/storage";
 import { newMajor } from "./useMajor";
@@ -29,7 +30,7 @@ export function useClasses() {
             majors: tempClasses.majors
         },
         updated: !deepEqual(toJS(savedClasses), toJS(tempClasses)),
-        /** Save the temp values into the permanant values */
+        /** Save the temp values into the permanant values (**VALIDATE THEM FIRST**) */
         save() {
             savedClasses.hydrateFrom(tempClasses);
         },
@@ -66,6 +67,45 @@ export function useClasses() {
         },
         deleteMajor(id: string) {
             tempClasses.majors.delete(id);
+        },
+        /**
+         * Validate the temporary classes, before saving them
+         *
+         * - Check for overlap
+         * - Check for missing fields
+         * - etc
+         */
+        validate(): ValidationResult {
+            // Check for majors with overlapping color blocks
+            {
+                // Store existing color blocks
+                const existingColors = new Set<BlockColor>();
+
+                // Loop through all majors
+                for (const major of tempClasses.majors.values()) {
+                    // Check if one with the same major already exists.
+                    if (existingColors.has(major.block)) {
+                        // If it does, return an error
+                        return ValidationResult.MajorHasDuplicateBlockColor;
+                    } else if (major.block === BlockColor.None) {
+                        // If the color is none, return an error
+                        return ValidationResult.MajorIsMissingBlockColor;
+                    } else {
+                        // If not, add it to the list and keep on going
+                        existingColors.add(major.block);
+                    }
+                }
+            }
+
+            return ValidationResult.Valid;
         }
     }));
 }
+
+export enum ValidationResult {
+    Valid,
+    MajorHasDuplicateBlockColor,
+    MajorIsMissingBlockColor
+}
+
+export type ValidationError = Omit<typeof ValidationResult, "Valid">;
