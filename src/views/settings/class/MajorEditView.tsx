@@ -62,7 +62,7 @@ export default function MajorEditView() {
                         <Cell title="Name" cellAccessoryView={<TextInput placeholder="ACP US History" value={replaceSpaceWithNBSP(major.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
                         <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(major.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
                         <Cell title="Room" cellAccessoryView={<TextInput placeholder="107" value={replaceSpaceWithNBSP(major.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Lab" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
+                        <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
                         {/* <Cell cellContentView={<Text>{JSON.stringify(major, undefined, 4)}</Text>} /> */}
                     </Section>
                     <Section>

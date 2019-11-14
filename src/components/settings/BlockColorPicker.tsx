@@ -25,7 +25,7 @@ export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(va
 
     useEffect(() => {
         const current = scrollRef.current;
-        if (current !== null) {
+        if (current !== null && !(hasNone !== true && value === BlockColor.None)) {
             // FIXME: Workaround for not being run
             setTimeout(() => {
                 current.scrollToIndex({ animated: true, index: BlockColors.indexOf(value), viewOffset: 0, viewPosition: 0.5 });
@@ -59,18 +59,6 @@ export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(va
             ref={scrollRef}
             getItemLayout={itemLayout}
         />
-        // <ScrollView horizontal={true} ref={scrollRef}>
-        //     <View style={blockColorPickerStyles.scrollView}>
-        //         <ColorPicker color={BlockColor.Orange} selected={value === BlockColor.Orange} onPress={pick(BlockColor.Orange)} />
-        //         <ColorPicker color={BlockColor.Yellow} selected={value === BlockColor.Yellow} onPress={pick(BlockColor.Yellow)} />
-        //         <ColorPicker color={BlockColor.Green} selected={value === BlockColor.Green} onPress={pick(BlockColor.Green)} />
-        //         <ColorPicker color={BlockColor.Tan} selected={value === BlockColor.Tan} onPress={pick(BlockColor.Tan)} />
-        //         <ColorPicker color={BlockColor.Red} selected={value === BlockColor.Red} onPress={pick(BlockColor.Red)} />
-        //         <ColorPicker color={BlockColor.Purple} selected={value === BlockColor.Purple} onPress={pick(BlockColor.Purple)} />
-        //         <ColorPicker color={BlockColor.Blue} selected={value === BlockColor.Blue} onPress={pick(BlockColor.Blue)} />
-        //         {hasNone === true ? <ColorPicker color={BlockColor.None} selected={value === BlockColor.None} onPress={pick(BlockColor.None)} /> : undefined}
-        //     </View>
-        // </ScrollView>
     );
 }
 
