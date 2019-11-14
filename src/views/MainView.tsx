@@ -14,7 +14,7 @@ import TodayView from "./TodayView";
 
 export interface ITabParamList extends Record<string, object | undefined> {
     Today: {
-        day: number;
+        day: Date;
     };
     Settings: undefined;
 }
@@ -59,7 +59,7 @@ export default function MainView() {
             screenOptions={screenOptions}
             tabBarOptions={tabBarOptions}
         >
-            <Tab.Screen name="Today" component={TodayView} initialParams={{ day: dayjs().startOf("day").unix() }} />
+            <Tab.Screen name="Today" component={TodayView} initialParams={{ day: dayjs().startOf("day").toDate() }} />
             <Tab.Screen name="Settings" component={SettingsView} />
         </Tab.Navigator>
     );

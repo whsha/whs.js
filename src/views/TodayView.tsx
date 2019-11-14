@@ -26,10 +26,10 @@ export default function TodayView() {
 
     const schoolDay = calendar.schoolDay(day);
 
-    const goToToday = () => navigation.navigate("Today", { day: dayjs().startOf("day").unix() });
-    const goTo = (date: Dayjs) => navigation.navigate("Today", { day: date.unix() });
-    const left = () => navigation.navigate("Today", { day: day.subtract(1, "day").unix() });
-    const right = () => navigation.navigate("Today", { day: day.add(1, "day").unix() });
+    const goToToday = () => navigation.navigate("Today", { day: dayjs().startOf("day").toDate() });
+    const goTo = (date: Dayjs) => navigation.navigate("Today", { day: date.toDate() });
+    const left = () => navigation.navigate("Today", { day: day.subtract(1, "day").toDate() });
+    const right = () => navigation.navigate("Today", { day: day.add(1, "day").toDate() });
 
     const screenOptions: StackNavigationOptions = {
         headerLeft: () => <HeaderLeftArrow onPress={left} />,
