@@ -4,12 +4,13 @@
 
 import { ClassType, IClassType } from "../../class/type";
 
-export default interface IUseClass<C extends IClassType<ClassType>> {
+export default interface IUseClass<C extends IClassType<ClassType>, VR> {
     savedValue?: C;
     tempValue: C;
     updated: boolean;
     save(): void;
     update(data: Partial<Mutables<C>> | ((predata: C) => Partial<Mutables<C>>)): void;
+    validate(): VR;
     delete(): void;
 }
 

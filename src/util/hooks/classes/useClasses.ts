@@ -10,7 +10,6 @@ import { ClassesContext, TempClassesContext } from "../../../contexts";
 import { BlockColor } from "../../blocks/blockColor";
 import { IAdvisory } from "../../class/advisory";
 import { IMajor } from "../../class/storage";
-import { newMajor } from "./useMajor";
 
 export function useClasses() {
     const savedClasses = useContext(ClassesContext);
@@ -58,13 +57,6 @@ export function useClasses() {
 
         //     return newdr.uuid;
         // }
-        addMajor() {
-            const newmajor = newMajor();
-
-            tempClasses.majors.set(newmajor.uuid, newmajor);
-
-            return newmajor.uuid;
-        },
         deleteMajor(id: string) {
             tempClasses.majors.delete(id);
         },
@@ -75,7 +67,7 @@ export function useClasses() {
          * - Check for missing fields
          * - etc
          */
-        validate(): ValidationResult {
+        validate(): ClassesValidationResult {
             // Check for majors with overlapping color blocks
             {
                 // Store existing color blocks
@@ -86,10 +78,7 @@ export function useClasses() {
                     // Check if one with the same major already exists.
                     if (existingColors.has(major.block)) {
                         // If it does, return an error
-                        return ValidationResult.MajorHasDuplicateBlockColor;
-                    } else if (major.block === BlockColor.None) {
-                        // If the color is none, return an error
-                        return ValidationResult.MajorIsMissingBlockColor;
+                        return ClassesValidationResult.MajorHasDuplicateBlockColor;
                     } else {
                         // If not, add it to the list and keep on going
                         existingColors.add(major.block);
@@ -97,15 +86,14 @@ export function useClasses() {
                 }
             }
 
-            return ValidationResult.Valid;
+            return ClassesValidationResult.Valid;
         }
     }));
 }
 
-export enum ValidationResult {
+export enum ClassesValidationResult {
     Valid,
-    MajorHasDuplicateBlockColor,
-    MajorIsMissingBlockColor
+    MajorHasDuplicateBlockColor
 }
 
-export type ValidationError = Omit<typeof ValidationResult, "Valid">;
+export type ClassesValidationError = Omit<typeof ClassesValidationResult, "Valid">;

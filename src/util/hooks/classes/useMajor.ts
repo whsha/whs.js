@@ -4,14 +4,13 @@
 
 import deepEqual from "deep-equal";
 import { useState } from "react";
-import uuid from "uuid";
 import { BlockColor } from "../../blocks/blockColor";
 import { IMajor } from "../../class/storage";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
 import { useClasses } from "./useClasses";
 
-export function newMajor(): IMajor {
+export function newMajor(uuid: string): IMajor {
     return {
         block: BlockColor.None,
         lab: false,
@@ -19,14 +18,14 @@ export function newMajor(): IMajor {
         room: "",
         teacher: "",
         type: ClassType.Major,
-        uuid: uuid(),
+        uuid,
     };
 }
 
-export function useMajor(id: string): IUseClass<IMajor> {
+export function useMajor(id: string): IUseClass<IMajor, MajorValidationResult> {
     const classes = useClasses();
     const savedValue = classes.temp.majors.get(id);
-    const [tempValue, setTempValue] = useState<IMajor>(savedValue !== undefined ? savedValue : newMajor());
+    const [tempValue, setTempValue] = useState<IMajor>(savedValue !== undefined ? savedValue : newMajor(id));
 
     return {
         savedValue,
@@ -44,6 +43,21 @@ export function useMajor(id: string): IUseClass<IMajor> {
         },
         delete() {
             classes.deleteMajor(id);
+        },
+        validate() {
+            // Check that the color is not none
+            if (tempValue.block === BlockColor.None) {
+                return MajorValidationResult.MissingBlockColor;
+            }
+
+            return MajorValidationResult.Valid;
         }
     };
 }
+
+export enum MajorValidationResult {
+    Valid,
+    MissingBlockColor
+}
+
+export type MajorValidationError = Omit<typeof MajorValidationResult, "Valid">;

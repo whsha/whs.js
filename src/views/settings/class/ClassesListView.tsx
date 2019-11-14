@@ -7,6 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { FlatList, ListRenderItem, SafeAreaView, ScrollView, Text } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
+import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import { settingsViewStyles } from "../../../layout/default";
@@ -14,7 +15,7 @@ import { discardChangesAlert, ValidationErrorAlert } from "../../../util/alerts"
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
 import { IMajor } from "../../../util/class/storage";
-import { useClasses, ValidationResult } from "../../../util/hooks/classes/useClasses";
+import { ClassesValidationResult, useClasses } from "../../../util/hooks/classes/useClasses";
 import { SettingsParams } from "../../SettingsView";
 
 export default function ClassesListView() {
@@ -36,7 +37,7 @@ export default function ClassesListView() {
         // Validation
         const validationResult = classes.validate();
 
-        if (validationResult === ValidationResult.Valid) {
+        if (validationResult === ClassesValidationResult.Valid) {
             classes.save();
             navigation.goBack();
         } else {
@@ -64,10 +65,8 @@ export default function ClassesListView() {
 
     const keyExtractor = (x: IClassMeta) => x.uuid;
 
-    const addMajor = () => {
-        const uuid = classes.addMajor();
-        navigation.navigate({ name: "ConfigureMajor", params: { majorId: uuid } });
-    };
+    const addMajor = () =>
+        navigation.navigate({ name: "ConfigureMajor", params: { majorId: uuid() } });
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>

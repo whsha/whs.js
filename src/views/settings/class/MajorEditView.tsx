@@ -10,9 +10,9 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../layout/default";
-import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
+import { deleteClassAlert, discardChangesAlert, ValidationErrorAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
-import { useMajor } from "../../../util/hooks/classes/useMajor";
+import { MajorValidationResult, useMajor } from "../../../util/hooks/classes/useMajor";
 import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 import { SettingsParams } from "../../SettingsView";
 
@@ -30,8 +30,14 @@ export default function MajorEditView() {
         }
     };
     const done = () => {
-        major.save();
-        navigation.navigate("ClassesList");
+        const validationResult = major.validate();
+
+        if (validationResult === MajorValidationResult.Valid) {
+            major.save();
+            navigation.goBack();
+        } else {
+            ValidationErrorAlert(validationResult);
+        }
     };
 
     navigation.setOptions({
