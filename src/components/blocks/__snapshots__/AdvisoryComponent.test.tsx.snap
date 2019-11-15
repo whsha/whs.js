@@ -88,8 +88,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         ]
       }
     >
-      Room 
-      132
+      Room 132
     </Text>
   </View>
 </View>
@@ -183,8 +182,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         ]
       }
     >
-      Room 
-      Office
+      Room Office
     </Text>
   </View>
 </View>

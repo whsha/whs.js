@@ -15,64 +15,63 @@ import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
-import { useMajor } from "../../../util/hooks/classes/useMajor";
+import { useMinor } from "../../../util/hooks/classes/useMinor";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
-export default function MajorEditView() {
+export default function MinorEditView() {
     useNoHardwareBack();
-    const route = useRoute<RouteProp<SettingsParams, "ConfigureMajor">>();
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
+    const route = useRoute<RouteProp<SettingsParams, "ConfigureMinor">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMinor">>();
 
-    const major = useMajor(route.params.majorId);
+    const minor = useMinor(route.params.minorId);
 
     const goBack = () => {
-        if (major.updated) {
+        if (minor.updated) {
             discardChangesAlert(() => navigation.goBack());
         } else {
             navigation.goBack();
         }
     };
     const done = () => {
-        major.save();
+        minor.save();
         navigation.goBack();
     };
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,
-        headerRight: () => <HeaderSaveButton onPress={done} disabled={!major.updated} />,
+        headerRight: () => <HeaderSaveButton onPress={done} disabled={!minor.updated} />,
     });
 
     const pomptDelete = () =>
         deleteClassAlert(() => {
-            major.delete();
+            minor.delete();
             navigation.goBack();
         });
 
-    const updateBlock = (block: BlockColor) => major.update({ block });
-    const toggleLab = () => major.update(pre => ({ lab: !pre.lab }));
-    const updateName = (name: string) => major.update({ name });
-    const updateRoom = (room: string) => major.update({ room });
-    const updateTeacher = (teacher: string) => major.update({ teacher });
+    const updateBlock = (block: BlockColor) => minor.update({ block });
+    const updateName = (name: string) => minor.update({ name });
+    const updateRoom = (room: string) => minor.update({ room });
+    const updateTeacher = (teacher: string) => minor.update({ teacher });
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
                     <Section header="Color Block">
-                        <Cell cellContentView={<BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />} />
+                        <Cell cellContentView={<BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />} />
+                        <Cell title="Meets" />
                     </Section>
                     <Section header="Basic Info">
-                        <Cell title="Name" cellAccessoryView={<TextInput placeholder="ACP US History" value={replaceSpaceWithNBSP(major.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(major.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Room" cellAccessoryView={<TextInput placeholder="107" value={replaceSpaceWithNBSP(major.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
+                        <Cell title="Name" cellAccessoryView={<TextInput placeholder="You and the Law" value={replaceSpaceWithNBSP(minor.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
+                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(minor.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
+                        <Cell title="Room" cellAccessoryView={<TextInput placeholder="437" value={replaceSpaceWithNBSP(minor.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
                     </Section>
                     <Section header="Example">
-                        <Cell cellAccessoryView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
+                        <Cell cellAccessoryView={<ClassComponent block={minor.tempValue.block} name={minor.tempValue.name} room={minor.tempValue.room} teacher={minor.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
                     </Section>
                     <Section>
                         <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />

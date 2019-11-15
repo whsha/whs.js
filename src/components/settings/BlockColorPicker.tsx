@@ -18,14 +18,14 @@ const BlockColors: BlockColor[] = [
     BlockColor.None
 ];
 
-export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(value: BlockColor): void; value: BlockColor; hasNone?: boolean }) {
+export default function BlockColorPicker({ onPick, value, hasNone = false }: { onPick(value: BlockColor): void; value: BlockColor; hasNone?: boolean }) {
     const pick = (color: BlockColor) => () => onPick(color);
 
     const scrollRef = createRef<FlatList<BlockColor>>();
 
     useEffect(() => {
         const current = scrollRef.current;
-        if (current !== null && !(hasNone !== true && value === BlockColor.None)) {
+        if (current !== null && !(!hasNone && value === BlockColor.None)) {
             // FIXME: Workaround for not being run
             setTimeout(() => {
                 current.scrollToIndex({ animated: true, index: BlockColors.indexOf(value), viewOffset: 0, viewPosition: 0.5 });
@@ -51,7 +51,7 @@ export default function BlockColorPicker({ onPick, value, hasNone }: { onPick(va
 
     return (
         <FlatList
-            data={hasNone === true ? BlockColors : BlockColors.slice(0, 7)}
+            data={hasNone ? BlockColors : BlockColors.slice(0, 7)}
             extraData={value}
             renderItem={renderItem}
             keyExtractor={keyExtractor}

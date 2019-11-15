@@ -14,12 +14,15 @@ import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header
 import { settingsViewStyles } from "../../../layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
+import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
 export default function AdvisoryConfigureView() {
+    useNoHardwareBack();
+
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
     const {
         save,

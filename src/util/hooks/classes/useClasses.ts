@@ -9,7 +9,8 @@ import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
 import { BlockColor } from "../../blocks/blockColor";
 import { IAdvisory } from "../../class/advisory";
-import { IMajor } from "../../class/storage";
+import { IMajor, IMinor } from "../../class/storage";
+import ProblemMap from "../../problemMap";
 
 export function useClasses() {
     const savedClasses = useContext(ClassesContext);
@@ -19,14 +20,14 @@ export function useClasses() {
         saved: {
             advisory: savedClasses.advisory,
             // drs: classes.DRs,
-            // minors: classes.minors,
-            majors: savedClasses.majors
+            majors: savedClasses.majors,
+            minors: savedClasses.minors
         },
         temp: {
             advisory: tempClasses.advisory,
             // drs: tempClasses.DRs,
-            // minors: tempClasses.minors,
-            majors: tempClasses.majors
+            majors: tempClasses.majors,
+            minors: tempClasses.minors
         },
         updated: !deepEqual(toJS(savedClasses), toJS(tempClasses)),
         /** Save the temp values into the permanant values (**VALIDATE THEM FIRST**) */
@@ -39,6 +40,9 @@ export function useClasses() {
         },
         updateMajor(id: string, data: IMajor) {
             tempClasses.majors.set(id, data);
+        },
+        updateMinor(id: string, data: IMinor) {
+            tempClasses.minors.set(id, data);
         },
         updateAdvisory(data: IAdvisory) {
             tempClasses.advisory = data;
@@ -60,40 +64,79 @@ export function useClasses() {
         deleteMajor(id: string) {
             tempClasses.majors.delete(id);
         },
+        deleteMinor(id: string) {
+            tempClasses.minors.delete(id);
+        },
         /**
          * Validate the temporary classes, before saving them
          *
          * - Check for overlap
          * - Check for missing fields
          * - etc
+         *
+         * @returns Map of UUID to error
          */
-        validate(): ClassesValidationResult {
-            // Check for majors with overlapping color blocks
-            {
-                // Store existing color blocks
-                const existingColors = new Set<BlockColor>();
+        validate(): ProblemMap<string, ValidationError, ValidationWarning> {
+            const map = new ProblemMap<string, ValidationError, ValidationWarning>();
 
-                // Loop through all majors
-                for (const major of tempClasses.majors.values()) {
-                    // Check if one with the same major already exists.
-                    if (existingColors.has(major.block)) {
-                        // If it does, return an error
-                        return ClassesValidationResult.MajorHasDuplicateBlockColor;
-                    } else {
-                        // If not, add it to the list and keep on going
-                        existingColors.add(major.block);
-                    }
+            // Store existing color blocks
+            const existingColors = new Set<BlockColor>();
+
+            // Loop through all majors
+            for (const major of tempClasses.majors.values()) {
+                // Check if one with the same major already exists.
+                if (existingColors.has(major.block)) {
+                    // If it does, return an error
+                    map.addError(major.uuid, ValidationError.MajorHasDuplicateBlockColor);
+                } else {
+                    // If not, add it to the list and keep on going
+                    existingColors.add(major.block);
+                }
+
+                if (major.block === BlockColor.None) {
+                    map.addError(major.uuid, ValidationError.MajorMissingBlockColor);
+                }
+                if (major.name.length === 0) {
+                    map.addWarn(major.uuid, ValidationWarning.MissingName);
+                }
+                if (major.room.length === 0) {
+                    map.addWarn(major.uuid, ValidationWarning.MissingRoom);
+                }
+                if (major.teacher.length === 0) {
+                    map.addWarn(major.uuid, ValidationWarning.MissingTeacher);
                 }
             }
 
-            return ClassesValidationResult.Valid;
+            // Loop through all majors
+            for (const minor of tempClasses.minors.values()) {
+                if (minor.meets === 0) {
+                    map.addError(minor.uuid, ValidationError.MinorMissingMeetDay);
+                }
+
+                if (minor.name.length === 0) {
+                    map.addWarn(minor.uuid, ValidationWarning.MissingName);
+                }
+                if (minor.room.length === 0) {
+                    map.addWarn(minor.uuid, ValidationWarning.MissingRoom);
+                }
+                if (minor.teacher.length === 0) {
+                    map.addWarn(minor.uuid, ValidationWarning.MissingTeacher);
+                }
+            }
+
+            return map;
         }
     }));
 }
 
-export enum ClassesValidationResult {
-    Valid,
-    MajorHasDuplicateBlockColor
+export enum ValidationError {
+    MajorHasDuplicateBlockColor = "There exist two major classes that shares this block color",
+    MajorMissingBlockColor = "You must specify a block color for this major",
+    MinorMissingMeetDay = "You must choose one or more day that this minor meets"
 }
 
-export type ClassesValidationError = Omit<typeof ClassesValidationResult, "Valid">;
+export enum ValidationWarning {
+    MissingName = "You should specify a name for this class",
+    MissingRoom = "You should specify a room for this class",
+    MissingTeacher = "You should specify a teacher for this class"
+}

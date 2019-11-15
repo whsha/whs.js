@@ -17,8 +17,8 @@ function AdvisoryComponent({teacher, room, end, start}: IAdvisory & ITimes) {
                 <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
             </View>
             <View style={[classComponentStyles.dualView, classComponentStyles.info]}>
-                <Text style={[classComponentStyles.dim, classComponentStyles.teacher]} numberOfLines={1}>{teacher}</Text>
-                <Text style={[classComponentStyles.dim, classComponentStyles.room]} numberOfLines={1}>Room {room}</Text>
+                <Text style={[classComponentStyles.dim, classComponentStyles.teacher]} numberOfLines={1}>{teacher.length === 0 ? "No Advisor" : teacher}</Text>
+                <Text style={[classComponentStyles.dim, classComponentStyles.room]} numberOfLines={1}>{room.length === 0 ? "No Room" : `Room ${room}`}</Text>
             </View>
         </View>
     );

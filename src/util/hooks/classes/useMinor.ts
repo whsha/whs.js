@@ -5,34 +5,34 @@
 import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
-import { IMajor } from "../../class/storage";
+import { IMinor } from "../../class/storage";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
 import { useClasses } from "./useClasses";
 
-function newMajor(uuid: string): IMajor {
+function newMinor(uuid: string): IMinor {
     return {
         block: BlockColor.None,
-        lab: false,
+        meets: 0,
         name: "",
         room: "",
         teacher: "",
-        type: ClassType.Major,
+        type: ClassType.Minor,
         uuid,
     };
 }
 
-export function useMajor(id: string): IUseClass<IMajor> {
+export function useMinor(id: string): IUseClass<IMinor> {
     const classes = useClasses();
-    const savedValue = classes.temp.majors.get(id);
-    const [tempValue, setTempValue] = useState<IMajor>(savedValue !== undefined ? savedValue : newMajor(id));
+    const savedValue = classes.temp.minors.get(id);
+    const [tempValue, setTempValue] = useState<IMinor>(savedValue !== undefined ? savedValue : newMinor(id));
 
     return {
         savedValue,
         tempValue,
         updated: !deepEqual(tempValue, savedValue),
         save() {
-            classes.updateMajor(id, tempValue);
+            classes.updateMinor(id, tempValue);
         },
         update(data) {
             if (typeof data === "function") {
@@ -42,7 +42,7 @@ export function useMajor(id: string): IUseClass<IMajor> {
             }
         },
         delete() {
-            classes.deleteMajor(id);
+            classes.deleteMinor(id);
         }
     };
 }

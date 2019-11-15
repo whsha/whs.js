@@ -93,8 +93,7 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Room 
-      Office
+      Room Office
     </Text>
   </View>
 </View>
@@ -193,8 +192,7 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Room 
-      Office
+      Room Office
     </Text>
   </View>
 </View>
