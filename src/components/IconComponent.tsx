@@ -8,7 +8,7 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 
 function IconComponent({ name, size = 22, color = "#2f95dc", style, onPress }: { name: string; size?: number; color?: string; style?: StyleProp<TextStyle>; onPress?(): void }) {
     return (
-        <View style={{marginBottom: -4}}>
+        <View style={{marginBottom: -2}}>
             <IonIcon
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${name}`}
                 size={size}

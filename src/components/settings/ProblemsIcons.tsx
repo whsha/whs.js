@@ -3,7 +3,7 @@
  */
 
 import React, { memo } from "react";
-import { Alert, View } from "react-native";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
 import { IProblems } from "../../util/problemMap";
 import IconComponent from "../IconComponent";
 
@@ -15,13 +15,19 @@ function ProblemsIcons<E, W>({ problems }: { problems?: IProblems<E, W> }) {
     const haswarns = problems.warns.length > 0;
     const haserrors = problems.errors.length > 0;
 
-    const showWarns = () => Alert.alert("Validation Warnings", problems.warns.map(x => `• ${x}`).join("\n"));
-    const showErrors = () => Alert.alert("Validation Errors", problems.errors.map(x => `• ${x}`).join("\n"));
+    const showWarns = () => Alert.alert(`${problems.warns.length} Validation Warning${problems.warns.length === 1 ? "" : "s"}`, problems.warns.map(x => `• ${x}`).join("\n"));
+    const showErrors = () => Alert.alert(`${problems.errors.length} Validation Error${problems.errors.length === 1 ? "" : "s"}`, problems.errors.map(x => `• ${x}`).join("\n"));
 
     return (
         <View style={{ flexDirection: "row", paddingRight: 10 }}>
-            {haswarns ? <IconComponent name="warning" size={24} style={{ paddingRight: 10, paddingLeft: 10 }} color={"gold"} onPress={showWarns} /> : null}
-            {haserrors ? <IconComponent name="alert" size={24} style={{ paddingRight: 10, paddingLeft: 10 }} color={"red"} onPress={showErrors} /> : null}
+            <TouchableOpacity onPress={showWarns} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10 }}>
+                {haswarns ? <Text style={{ color: "gold", alignSelf: "center", paddingRight: 5 }}>{problems.warns.length}</Text> : null}
+                {haswarns ? <IconComponent name="warning" color={"gold"} /> : null}
+            </TouchableOpacity>
+            <TouchableOpacity onPress={showErrors} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10}}>
+                {haserrors ? <Text style={{ color: "red", alignSelf: "center", paddingRight: 5 }}>{problems.errors.length}</Text> : null}
+                {haserrors ? <IconComponent name="alert" color={"red"} style={{ alignSelf: "center" }} /> : null}
+            </TouchableOpacity>
         </View>
     );
 }

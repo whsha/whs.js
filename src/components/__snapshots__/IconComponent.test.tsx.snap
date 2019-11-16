@@ -4,7 +4,7 @@ exports[`Tests different variations of <IconComponent/> Renders <IconComponent n
 <View
   style={
     Object {
-      "marginBottom": -4,
+      "marginBottom": -2,
     }
   }
 >
@@ -35,7 +35,7 @@ exports[`Tests different variations of <IconComponent/> Renders <IconComponent n
 <View
   style={
     Object {
-      "marginBottom": -4,
+      "marginBottom": -2,
     }
   }
 >
