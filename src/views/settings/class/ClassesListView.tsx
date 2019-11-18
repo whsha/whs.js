@@ -19,6 +19,7 @@ import { IMajor, IMinor } from "../../../util/class/storage";
 import { useClasses } from "../../../util/hooks/classes/useClasses";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { SettingsParams } from "../../SettingsView";
+import { IrregularMeetDays, irregularMeetDays } from "../../../util/class/primitives";
 
 export default function ClassesListView() {
     useNoHardwareBack();
@@ -69,17 +70,20 @@ export default function ClassesListView() {
         />
     );
 
-    const minorRenderItem: ListRenderItem<IMinor> = ({ item }) => (
-        <Cell
-            title={item.name.length === 0 ? "No Name" : item.name}
-            detail={"Meets days //TODO:"}
-            cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
-            cellStyle={"Subtitle"}
-            accessory="DisclosureIndicator"
-            titleTextColor={getDisplayColorForBlock(item.block)}
-            onPress={goTo("ConfigureMinor", { minorId: item.uuid })}
-        />
-    );
+    const minorRenderItem: ListRenderItem<IMinor> = ({ item }) => {
+        const meetDays = irregularMeetDays(item);
+        return (
+            <Cell
+                title={item.name.length === 0 ? "No Name" : item.name}
+                detail={`Meets day${meetDays.length === 1 ? "" : "s"}: ${meetDays.join(", ")}`}
+                cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
+                cellStyle={"Subtitle"}
+                accessory="DisclosureIndicator"
+                titleTextColor={getDisplayColorForBlock(item.block)}
+                onPress={goTo("ConfigureMinor", { minorId: item.uuid })}
+            />
+        )
+    };
 
     const keyExtractor = (x: IClassMeta) => x.uuid;
 

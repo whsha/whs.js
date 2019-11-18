@@ -13,6 +13,16 @@ export enum BlockColor {
     Tan = "tan",
     None = "none"
 }
+export const allBlockColors = [
+    BlockColor.Red,
+    BlockColor.Orange,
+    BlockColor.Yellow,
+    BlockColor.Green,
+    BlockColor.Blue,
+    BlockColor.Purple,
+    BlockColor.Tan,
+    BlockColor.None
+];
 
 type BlockColorColorMap = {
     readonly [B in BlockColor]: string;

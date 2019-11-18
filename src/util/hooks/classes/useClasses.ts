@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
 import { BlockColor } from "../../blocks/blockColor";
 import { IAdvisory } from "../../class/advisory";
+import { irregularMeetCount } from "../../class/primitives";
 import { IMajor, IMinor } from "../../class/storage";
 import ProblemMap from "../../problemMap";
 
@@ -109,7 +110,7 @@ export function useClasses() {
 
             // Loop through all majors
             for (const minor of tempClasses.minors.values()) {
-                if (minor.meets === 0) {
+                if (irregularMeetCount(minor) === 0) {
                     map.addError(minor.uuid, ValidationError.MinorMissingMeetDay);
                 }
 

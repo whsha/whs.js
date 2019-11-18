@@ -6,6 +6,7 @@ import { BlockColor } from "../blocks/blockColor";
 import { IAdvisedClass } from "./primitives";
 import { IDR, IMajor, IMinor } from "./storage";
 import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
+import { SchoolDay } from "../calendar/types";
 
 const major: IMajor = {
     block: BlockColor.Red,
@@ -19,7 +20,15 @@ const major: IMajor = {
 
 const minor: IMinor = {
     block: BlockColor.Yellow,
-    meets: 0b01101,
+    meets: {
+        [SchoolDay.One]: false,
+        [SchoolDay.Two]: true,
+        [SchoolDay.Three]: false,
+        [SchoolDay.Four]: true,
+        [SchoolDay.Five]: true,
+        [SchoolDay.Six]: true,
+        [SchoolDay.Seven]: true,
+    },
     name: "Test minor",
     room: "334",
     teacher: "Mrs. Test",
@@ -29,7 +38,15 @@ const minor: IMinor = {
 
 const dr: IDR = {
     block: BlockColor.Green,
-    meets: 0b11111,
+    meets: {
+        [SchoolDay.One]: true,
+        [SchoolDay.Two]: false,
+        [SchoolDay.Three]: false,
+        [SchoolDay.Four]: false,
+        [SchoolDay.Five]: true,
+        [SchoolDay.Six]: true,
+        [SchoolDay.Seven]: true,
+    },
     room: "102",
     teacher: "Dr. Test",
     type: ClassType.DR,

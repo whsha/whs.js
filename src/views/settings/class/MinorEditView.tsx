@@ -7,14 +7,16 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView, TextInput } from "react-native";
+import { SafeAreaView, ScrollView, Text, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
+import SchoolDayPicker from "../../../components/settings/SchoolDayPicker";
 import { settingsViewStyles, tableViewStyle } from "../../../layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
+import { SchoolDay } from "../../../util/calendar/types";
 import { useMinor } from "../../../util/hooks/classes/useMinor";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { replaceSpaceWithNBSP } from "../../../util/textUtils";
@@ -57,13 +59,18 @@ export default function MinorEditView() {
     const updateRoom = (room: string) => minor.update({ room });
     const updateTeacher = (teacher: string) => minor.update({ teacher });
 
+    const toggleMeet = (day: SchoolDay) => minor.update(pre => ({ meets: { ...pre.meets, [day]: !pre.meets[day] } }));
+
     return (
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
                     <Section header="Color Block">
                         <Cell cellContentView={<BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />} />
-                        <Cell title="Meets" />
+                    </Section>
+                    <Section header="School Days">
+                        <Cell cellContentView={<SchoolDayPicker value={minor.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={minor.tempValue.block} />} />
+                        <Cell cellContentView={<Text>{JSON.stringify(minor.tempValue.meets)}</Text>} />
                     </Section>
                     <Section header="Basic Info">
                         <Cell title="Name" cellAccessoryView={<TextInput placeholder="You and the Law" value={replaceSpaceWithNBSP(minor.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />

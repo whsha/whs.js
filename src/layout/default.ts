@@ -213,3 +213,30 @@ export const blockColorPickerStyles = StyleSheet.create({
         width: 24,
     }
 });
+
+export const schoolDayPickerStyles = StyleSheet.create({
+    container: {
+        alignContent: "center",
+        backgroundColor: "white",
+        borderColor: "#CECECE",
+        borderRadius: 10,
+        borderWidth: 1,
+        marginHorizontal: 10,
+        padding: 10,
+    },
+    containerDisabled: {
+        backgroundColor: "grey"
+    },
+    containerSelected: {
+        backgroundColor: "black"
+    },
+    number: {
+        fontSize: 18,
+        height: 20,
+        textAlign: "center",
+        width: 20
+    },
+    numberSelected: {
+        color: "white"
+    },
+});

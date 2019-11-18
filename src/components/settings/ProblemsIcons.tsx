@@ -20,13 +20,13 @@ function ProblemsIcons<E, W>({ problems }: { problems?: IProblems<E, W> }) {
 
     return (
         <View style={{ flexDirection: "row", paddingRight: 10 }}>
-            <TouchableOpacity onPress={showWarns} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10 }}>
-                {haswarns ? <Text style={{ color: "gold", alignSelf: "center", paddingRight: 5 }}>{problems.warns.length}</Text> : null}
-                {haswarns ? <IconComponent name="warning" color={"gold"} /> : null}
+            <TouchableOpacity onPress={showWarns} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10, display: haswarns ? "flex" : "none" }}>
+                <Text style={{ color: "gold", alignSelf: "center" }}>{problems.warns.length}</Text>
+                <IconComponent name="warning" color={"gold"} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={showErrors} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10}}>
-                {haserrors ? <Text style={{ color: "red", alignSelf: "center", paddingRight: 5 }}>{problems.errors.length}</Text> : null}
-                {haserrors ? <IconComponent name="alert" color={"red"} style={{ alignSelf: "center" }} /> : null}
+            <TouchableOpacity onPress={showErrors} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10, display: haserrors ? "flex" : "none" }}>
+                <Text style={{ color: "red", alignSelf: "center", paddingRight: 5 }}>{problems.errors.length}</Text>
+                <IconComponent name="alert" color={"red"} style={{ alignSelf: "center" }} />
             </TouchableOpacity>
         </View>
     );

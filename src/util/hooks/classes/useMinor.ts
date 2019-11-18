@@ -5,6 +5,7 @@
 import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
+import { SchoolDay } from "../../calendar/types";
 import { IMinor } from "../../class/storage";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
@@ -13,7 +14,15 @@ import { useClasses } from "./useClasses";
 function newMinor(uuid: string): IMinor {
     return {
         block: BlockColor.None,
-        meets: 0,
+        meets: {
+            [SchoolDay.One]: false,
+            [SchoolDay.Two]: false,
+            [SchoolDay.Three]: false,
+            [SchoolDay.Four]: false,
+            [SchoolDay.Five]: false,
+            [SchoolDay.Six]: false,
+            [SchoolDay.Seven]: false,
+        },
         name: "",
         room: "",
         teacher: "",

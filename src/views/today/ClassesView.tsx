@@ -11,9 +11,9 @@ import ClassComponent from "../../components/blocks/ClassComponent";
 import FreeComponent from "../../components/blocks/FreeComponent";
 import { ClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../layout/default";
-import { Block } from "../../util/blocks/block";
+import { allBlocks } from "../../util/blocks/block";
 import { BlockColor } from "../../util/blocks/blockColor";
-import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
+import { ICalendarSchoolDay } from "../../util/calendar/types";
 import { IAdvisory } from "../../util/class/advisory";
 import { getBlockColorsForDay } from "../../util/schoolDays";
 
@@ -22,12 +22,7 @@ dayjs.extend(useCustomFormat);
 function ClassesView({ schoolDay }: { schoolDay: ICalendarSchoolDay }) {
     const classes = useContext(ClassesContext);
 
-    const colors = Object.keys(Block)
-        .filter(x =>
-            isNaN(parseInt(x, 10))
-        ).map((x) =>
-            getBlockColorsForDay(SchoolDay[schoolDay.dayNumber] as keyof typeof SchoolDay)[x as keyof typeof Block]
-        );
+    const colors = allBlocks.map((x) => getBlockColorsForDay(schoolDay.dayNumber)[x]);
 
     return (
         <ScrollView style={settingsViewStyles.container}>

@@ -10,3 +10,12 @@ export enum Block {
     E = "e",
     F = "f"
 }
+
+export const allBlocks = [
+    Block.A,
+    Block.B,
+    Block.C,
+    Block.D,
+    Block.E,
+    Block.F
+];
