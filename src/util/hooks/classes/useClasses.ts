@@ -81,17 +81,17 @@ export function useClasses() {
             const map = new ProblemMap<string, ValidationError, ValidationWarning>();
 
             // Store existing color blocks
-            const existingColors = new Set<BlockColor>();
+            const majorColors = new Set<BlockColor>();
 
             // Loop through all majors
             for (const major of tempClasses.majors.values()) {
                 // Check if one with the same major already exists.
-                if (existingColors.has(major.block)) {
+                if (majorColors.has(major.block)) {
                     // If it does, return an error
                     map.addError(major.uuid, ValidationError.MajorHasDuplicateBlockColor);
                 } else {
                     // If not, add it to the list and keep on going
-                    existingColors.add(major.block);
+                    majorColors.add(major.block);
                 }
 
                 if (major.block === BlockColor.None) {
@@ -116,6 +116,10 @@ export function useClasses() {
                     map.addError(minor.uuid, ValidationError.MinorMeetsEveryDay);
                 }
 
+                if (majorColors.has(minor.block)) {
+                    map.addError(minor.uuid, ValidationError.MinorConflictWithMajor);
+                }
+
                 if (minor.name.length === 0) {
                     map.addWarn(minor.uuid, ValidationWarning.MissingName);
                 }
@@ -136,7 +140,8 @@ export enum ValidationError {
     MajorHasDuplicateBlockColor = "There exist two major classes that shares this block color",
     MajorMissingBlockColor = "You must specify a block color for this major",
     MinorMissingMeetDay = "You must choose one or more day that this minor meets",
-    MinorMeetsEveryDay = "A minor that meets every day that its color block meets should be replaced with a major"
+    MinorMeetsEveryDay = "A minor that meets every day that its color block meets should be replaced with a major",
+    MinorConflictWithMajor = "A minor and a major cannot occupy the same color block"
 }
 
 export enum ValidationWarning {
