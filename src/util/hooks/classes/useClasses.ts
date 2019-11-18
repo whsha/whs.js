@@ -171,7 +171,7 @@ export const ValidationErrorMessage: { [K in ValidationError]: string } = {
     [ValidationError.MajorHasDuplicateBlockColor]: "There exist two major classes that shares this block color",
     [ValidationError.MajorMissingBlockColor]: "You must specify a block color for this major",
     [ValidationError.MinorMissingMeetDay]: "You must choose one or more day that this minor meets",
-    [ValidationError.MinorMeetsEveryDay]: "A minor that meets every day that its color block meets should be replaced with a major",
+    [ValidationError.MinorMeetsEveryDay]: "A minor that meets every day in the cycle should be replaced with a major",
     [ValidationError.MinorConflictWithMajor]: "A minor and a major cannot occupy the same color block",
     [ValidationError.MinorConflictWithMinor]: "A minor and another minor both occupy the same color and day blocks"
 };
