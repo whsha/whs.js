@@ -3,10 +3,10 @@
  */
 
 import { BlockColor } from "../blocks/blockColor";
+import { SchoolDay } from "../calendar/types";
 import { IAdvisedClass } from "./primitives";
 import { IDR, IMajor, IMinor } from "./storage";
 import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
-import { SchoolDay } from "../calendar/types";
 
 const major: IMajor = {
     block: BlockColor.Red,

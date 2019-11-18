@@ -15,11 +15,11 @@ import { settingsViewStyles } from "../../../layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
+import { irregularMeetDays } from "../../../util/class/primitives";
 import { IMajor, IMinor } from "../../../util/class/storage";
 import { useClasses } from "../../../util/hooks/classes/useClasses";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { SettingsParams } from "../../SettingsView";
-import { IrregularMeetDays, irregularMeetDays } from "../../../util/class/primitives";
 
 export default function ClassesListView() {
     useNoHardwareBack();
@@ -72,6 +72,7 @@ export default function ClassesListView() {
 
     const minorRenderItem: ListRenderItem<IMinor> = ({ item }) => {
         const meetDays = irregularMeetDays(item);
+
         return (
             <Cell
                 title={item.name.length === 0 ? "No Name" : item.name}
@@ -82,7 +83,7 @@ export default function ClassesListView() {
                 titleTextColor={getDisplayColorForBlock(item.block)}
                 onPress={goTo("ConfigureMinor", { minorId: item.uuid })}
             />
-        )
+        );
     };
 
     const keyExtractor = (x: IClassMeta) => x.uuid;

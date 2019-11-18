@@ -112,6 +112,8 @@ export function useClasses() {
             for (const minor of tempClasses.minors.values()) {
                 if (irregularMeetCount(minor) === 0) {
                     map.addError(minor.uuid, ValidationError.MinorMissingMeetDay);
+                } else if (irregularMeetCount(minor) >= 5 && minor.block !== BlockColor.None) {
+                    map.addError(minor.uuid, ValidationError.MinorMeetsEveryDay);
                 }
 
                 if (minor.name.length === 0) {
@@ -133,7 +135,8 @@ export function useClasses() {
 export enum ValidationError {
     MajorHasDuplicateBlockColor = "There exist two major classes that shares this block color",
     MajorMissingBlockColor = "You must specify a block color for this major",
-    MinorMissingMeetDay = "You must choose one or more day that this minor meets"
+    MinorMissingMeetDay = "You must choose one or more day that this minor meets",
+    MinorMeetsEveryDay = "A minor that meets every day that its color block meets should be replaced with a major"
 }
 
 export enum ValidationWarning {
