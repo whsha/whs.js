@@ -51,3 +51,15 @@ export function irregularMeetDays({ meets }: IIrregular): SchoolDay[] {
     return Object.keys(meets)
         .filter(x => meets[(x as unknown) as keyof IrregularMeetDays]) as unknown[] as SchoolDay[];
 }
+
+export function irregularMeetJoin(left: IrregularMeetDays, right: IrregularMeetDays): IrregularMeetDays {
+    return {
+        [SchoolDay.One]: left[SchoolDay.One] || right[SchoolDay.One],
+        [SchoolDay.Two]: left[SchoolDay.Two] || right[SchoolDay.Two],
+        [SchoolDay.Three]: left[SchoolDay.Three] || right[SchoolDay.Three],
+        [SchoolDay.Four]: left[SchoolDay.Four] || right[SchoolDay.Four],
+        [SchoolDay.Five]: left[SchoolDay.Five] || right[SchoolDay.Five],
+        [SchoolDay.Six]: left[SchoolDay.Six] || right[SchoolDay.Six],
+        [SchoolDay.Seven]: left[SchoolDay.Seven] || right[SchoolDay.Seven],
+    };
+}

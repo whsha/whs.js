@@ -8,8 +8,9 @@ import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
 import { BlockColor } from "../../blocks/blockColor";
+import { SchoolDay } from "../../calendar/types";
 import { IAdvisory } from "../../class/advisory";
-import { irregularMeetCount } from "../../class/primitives";
+import { irregularMeetCount, IrregularMeetDays, irregularMeetDays, irregularMeetJoin } from "../../class/primitives";
 import { IMajor, IMinor } from "../../class/storage";
 import ProblemMap from "../../problemMap";
 
@@ -108,7 +109,9 @@ export function useClasses() {
                 }
             }
 
-            // Loop through all majors
+            const minorDays = new Map<BlockColor, IrregularMeetDays>();
+
+            // Loop through all minors
             for (const minor of tempClasses.minors.values()) {
                 if (irregularMeetCount(minor) === 0) {
                     map.addError(minor.uuid, ValidationError.MinorMissingMeetDay);
@@ -119,6 +122,25 @@ export function useClasses() {
                 if (majorColors.has(minor.block)) {
                     map.addError(minor.uuid, ValidationError.MinorConflictWithMajor);
                 }
+
+                let meetDays = minorDays.get(minor.block);
+                if (meetDays === undefined) {
+                    meetDays = {
+                        [SchoolDay.One]: false,
+                        [SchoolDay.Two]: false,
+                        [SchoolDay.Three]: false,
+                        [SchoolDay.Four]: false,
+                        [SchoolDay.Five]: false,
+                        [SchoolDay.Six]: false,
+                        [SchoolDay.Seven]: false,
+                    };
+                }
+
+                if (irregularMeetDays({ meets: meetDays }).some(x => irregularMeetDays(minor).includes(x))) {
+                    map.addError(minor.uuid, ValidationError.MinorConflictWithMinor);
+                }
+
+                minorDays.set(minor.block, irregularMeetJoin(meetDays, minor.meets));
 
                 if (minor.name.length === 0) {
                     map.addWarn(minor.uuid, ValidationWarning.MissingName);
@@ -137,15 +159,31 @@ export function useClasses() {
 }
 
 export enum ValidationError {
-    MajorHasDuplicateBlockColor = "There exist two major classes that shares this block color",
-    MajorMissingBlockColor = "You must specify a block color for this major",
-    MinorMissingMeetDay = "You must choose one or more day that this minor meets",
-    MinorMeetsEveryDay = "A minor that meets every day that its color block meets should be replaced with a major",
-    MinorConflictWithMajor = "A minor and a major cannot occupy the same color block"
+    MajorHasDuplicateBlockColor,
+    MajorMissingBlockColor,
+    MinorMissingMeetDay,
+    MinorMeetsEveryDay,
+    MinorConflictWithMajor,
+    MinorConflictWithMinor
 }
 
+export const ValidationErrorMessage: { [K in ValidationError]: string } = {
+    [ValidationError.MajorHasDuplicateBlockColor]: "There exist two major classes that shares this block color",
+    [ValidationError.MajorMissingBlockColor]: "You must specify a block color for this major",
+    [ValidationError.MinorMissingMeetDay]: "You must choose one or more day that this minor meets",
+    [ValidationError.MinorMeetsEveryDay]: "A minor that meets every day that its color block meets should be replaced with a major",
+    [ValidationError.MinorConflictWithMajor]: "A minor and a major cannot occupy the same color block",
+    [ValidationError.MinorConflictWithMinor]: "A minor and another minor both occupy the same color and day blocks"
+};
+
 export enum ValidationWarning {
-    MissingName = "You should specify a name for this class",
-    MissingRoom = "You should specify a room for this class",
-    MissingTeacher = "You should specify a teacher for this class"
+    MissingName,
+    MissingRoom,
+    MissingTeacher
 }
+
+export const ValidationWarningMessage: { [K in ValidationWarning]: string } = {
+    [ValidationWarning.MissingName]: "You should specify a name for this class",
+    [ValidationWarning.MissingRoom]: "You should specify a room for this class",
+    [ValidationWarning.MissingTeacher]: "You should specify a teacher for this class"
+};
