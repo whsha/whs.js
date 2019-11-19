@@ -7,11 +7,9 @@ import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
-import { BlockColor } from "../../blocks/blockColor";
-import { SchoolDay } from "../../calendar/types";
 import { IAdvisory } from "../../class/advisory";
-import { irregularMeetCount, IrregularMeetDays, irregularMeetDays, irregularMeetJoin } from "../../class/primitives";
-import { IMajor, IMinor } from "../../class/storage";
+import { IDR, IMajor, IMinor } from "../../class/full";
+import { validateDRs, validateMajors, validateMinors } from "../../class/validation";
 import ProblemMap from "../../problemMap";
 
 export function useClasses() {
@@ -21,13 +19,13 @@ export function useClasses() {
     return useObserver(() => ({
         saved: {
             advisory: savedClasses.advisory,
-            // drs: classes.DRs,
+            drs: savedClasses.DRs,
             majors: savedClasses.majors,
             minors: savedClasses.minors
         },
         temp: {
             advisory: tempClasses.advisory,
-            // drs: tempClasses.DRs,
+            drs: tempClasses.DRs,
             majors: tempClasses.majors,
             minors: tempClasses.minors
         },
@@ -49,25 +47,17 @@ export function useClasses() {
         updateAdvisory(data: IAdvisory) {
             tempClasses.advisory = data;
         },
-        // addDr(): string {
-        //     let newdr: IDR = {
-        //         block: BlockColor.None,
-        //         meets: 0b00000,
-        //         room: 0,
-        //         teacher: "",
-        //         type: ClassType.DR,
-        //         uuid: uuid()
-        //     };
-
-        //     setTempDrs(pre => pre.set(newdr.uuid, newdr));
-
-        //     return newdr.uuid;
-        // }
+        updateDR(id: string, data: IDR) {
+            tempClasses.DRs.set(id, data);
+        },
         deleteMajor(id: string) {
             tempClasses.majors.delete(id);
         },
         deleteMinor(id: string) {
             tempClasses.minors.delete(id);
+        },
+        deleteDR(id: string) {
+            tempClasses.DRs.delete(id);
         },
         /**
          * Validate the temporary classes, before saving them
@@ -79,104 +69,56 @@ export function useClasses() {
          * @returns Map of UUID to error
          */
         validate(): ProblemMap<string, ValidationError, ValidationWarning> {
-            const map = new ProblemMap<string, ValidationError, ValidationWarning>();
+            const problems = new ProblemMap<string, ValidationError, ValidationWarning>();
 
             // Store existing color blocks
-            const majorColors = new Set<BlockColor>();
+            const majorColors = validateMajors(problems, tempClasses.majors.values());
 
-            // Loop through all majors
-            for (const major of tempClasses.majors.values()) {
-                // Check if one with the same major already exists.
-                if (majorColors.has(major.block)) {
-                    // If it does, return an error
-                    map.addError(major.uuid, ValidationError.MajorHasDuplicateBlockColor);
-                } else {
-                    // If not, add it to the list and keep on going
-                    majorColors.add(major.block);
-                }
+            // Store existing minor blocks
+            const minorDays = validateMinors(problems, majorColors, tempClasses.minors.values());
 
-                if (major.block === BlockColor.None) {
-                    map.addError(major.uuid, ValidationError.MajorMissingBlockColor);
-                }
-                if (major.name.length === 0) {
-                    map.addWarn(major.uuid, ValidationWarning.MissingName);
-                }
-                if (major.room.length === 0) {
-                    map.addWarn(major.uuid, ValidationWarning.MissingRoom);
-                }
-                if (major.teacher.length === 0) {
-                    map.addWarn(major.uuid, ValidationWarning.MissingTeacher);
-                }
-            }
+            // Store existing DR blocks
+            /* const drDays =  */validateDRs(problems, majorColors, minorDays, tempClasses.DRs.values());
 
-            const minorDays = new Map<BlockColor, IrregularMeetDays>();
-
-            // Loop through all minors
-            for (const minor of tempClasses.minors.values()) {
-                if (irregularMeetCount(minor) === 0) {
-                    map.addError(minor.uuid, ValidationError.MinorMissingMeetDay);
-                } else if (irregularMeetCount(minor) >= 5 && minor.block !== BlockColor.None) {
-                    map.addError(minor.uuid, ValidationError.MinorMeetsEveryDay);
-                }
-
-                if (majorColors.has(minor.block)) {
-                    map.addError(minor.uuid, ValidationError.MinorConflictWithMajor);
-                }
-
-                let meetDays = minorDays.get(minor.block);
-                if (meetDays === undefined) {
-                    meetDays = {
-                        [SchoolDay.One]: false,
-                        [SchoolDay.Two]: false,
-                        [SchoolDay.Three]: false,
-                        [SchoolDay.Four]: false,
-                        [SchoolDay.Five]: false,
-                        [SchoolDay.Six]: false,
-                        [SchoolDay.Seven]: false,
-                    };
-                }
-
-                if (irregularMeetDays({ meets: meetDays }).some(x => irregularMeetDays(minor).includes(x))) {
-                    map.addError(minor.uuid, ValidationError.MinorConflictWithMinor);
-                }
-
-                minorDays.set(minor.block, irregularMeetJoin(meetDays, minor.meets));
-
-                if (minor.name.length === 0) {
-                    map.addWarn(minor.uuid, ValidationWarning.MissingName);
-                }
-                if (minor.room.length === 0) {
-                    map.addWarn(minor.uuid, ValidationWarning.MissingRoom);
-                }
-                if (minor.teacher.length === 0) {
-                    map.addWarn(minor.uuid, ValidationWarning.MissingTeacher);
-                }
-            }
-
-            return map;
+            return problems;
         }
     }));
 }
 
 export enum ValidationError {
+    // Major only errors
     MajorHasDuplicateBlockColor,
     MajorMissingBlockColor,
-    MinorMissingMeetDay,
-    MinorMeetsEveryDay,
+    // Minor only errors
     MinorConflictWithMajor,
-    MinorConflictWithMinor
+    MinorConflictWithMinor,
+    // DR only errors
+    DRConflictWithMajor,
+    DRConflictWithMinor,
+    DRConflictWithDR,
+    // General errors
+    MissingMeetDay,
+    MeetsEveryDay,
 }
 
 export const ValidationErrorMessage: { [K in ValidationError]: string } = {
+    // Major only errors
     [ValidationError.MajorHasDuplicateBlockColor]: "There exist two major classes that shares this block color",
     [ValidationError.MajorMissingBlockColor]: "You must specify a block color for this major",
-    [ValidationError.MinorMissingMeetDay]: "You must choose one or more day that this minor meets",
-    [ValidationError.MinorMeetsEveryDay]: "A minor that meets every day in the cycle should be replaced with a major",
+    // Minor only errors
     [ValidationError.MinorConflictWithMajor]: "A minor and a major cannot occupy the same color block",
-    [ValidationError.MinorConflictWithMinor]: "A minor and another minor both occupy the same color and day blocks"
+    [ValidationError.MinorConflictWithMinor]: "Two minors cannot occupy the same color and day blocks",
+    // DR only errors
+    [ValidationError.DRConflictWithMajor]: "A DR and a major cannot occupy the same color block",
+    [ValidationError.DRConflictWithMinor]: "A DR and a minor cannot occupy the same color and day blocks",
+    [ValidationError.DRConflictWithDR]: "Two DRs cannot occupy the same color and day blocks",
+    // General errors
+    [ValidationError.MissingMeetDay]: "You must choose one or more day that this class meets",
+    [ValidationError.MeetsEveryDay]: "A class that meets every day in the cycle should be replaced with a major",
 };
 
 export enum ValidationWarning {
+    // General warnings
     MissingName,
     MissingRoom,
     MissingTeacher

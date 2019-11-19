@@ -5,7 +5,7 @@
 import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
-import { IMajor } from "../../class/storage";
+import { IMajor } from "../../class/full";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
 import { useClasses } from "./useClasses";

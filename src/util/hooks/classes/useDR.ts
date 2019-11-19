@@ -6,12 +6,12 @@ import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
 import { SchoolDay } from "../../calendar/types";
-import { IMinor } from "../../class/full";
+import { IDR } from "../../class/full";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
 import { useClasses } from "./useClasses";
 
-function newMinor(uuid: string): IMinor {
+function newDR(uuid: string): IDR {
     return {
         block: BlockColor.None,
         meets: {
@@ -23,25 +23,24 @@ function newMinor(uuid: string): IMinor {
             [SchoolDay.Six]: false,
             [SchoolDay.Seven]: false,
         },
-        name: "",
         room: "",
         teacher: "",
-        type: ClassType.Minor,
+        type: ClassType.DR,
         uuid,
     };
 }
 
-export function useMinor(id: string): IUseClass<IMinor> {
+export function useDR(id: string): IUseClass<IDR> {
     const classes = useClasses();
-    const savedValue = classes.temp.minors.get(id);
-    const [tempValue, setTempValue] = useState<IMinor>(savedValue !== undefined ? savedValue : newMinor(id));
+    const savedValue = classes.temp.drs.get(id);
+    const [tempValue, setTempValue] = useState<IDR>(savedValue !== undefined ? savedValue : newDR(id));
 
     return {
         savedValue,
         tempValue,
         updated: !deepEqual(tempValue, savedValue),
         save() {
-            classes.updateMinor(id, tempValue);
+            classes.updateDR(id, tempValue);
         },
         update(data) {
             if (typeof data === "function") {
@@ -51,7 +50,7 @@ export function useMinor(id: string): IUseClass<IMinor> {
             }
         },
         delete() {
-            classes.deleteMinor(id);
+            classes.deleteDR(id);
         }
     };
 }

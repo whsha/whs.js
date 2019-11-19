@@ -15,8 +15,8 @@ import { settingsViewStyles } from "../../../layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IClassMeta } from "../../../util/class/extentions";
+import { IDR, IMajor, IMinor } from "../../../util/class/full";
 import { irregularMeetDays } from "../../../util/class/primitives";
-import { IMajor, IMinor } from "../../../util/class/storage";
 import { useClasses } from "../../../util/hooks/classes/useClasses";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { SettingsParams } from "../../SettingsView";
@@ -86,14 +86,30 @@ export default function ClassesListView() {
         );
     };
 
+    const drRenderItem: ListRenderItem<IDR> = ({ item }) => {
+        const meetDays = irregularMeetDays(item);
+
+        return (
+            <Cell
+                title={`DR with ${item.teacher.length === 0 ? "nobody" : item.teacher}`}
+                detail={`Meets day${meetDays.length === 1 ? "" : "s"}: ${meetDays.join(", ")}`}
+                cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
+                cellStyle={"Subtitle"}
+                accessory="DisclosureIndicator"
+                titleTextColor={getDisplayColorForBlock(item.block)}
+                onPress={goTo("ConfigureDR", { drId: item.uuid })}
+            />
+        );
+    };
+
     const keyExtractor = (x: IClassMeta) => x.uuid;
 
     const addMajor = () =>
         navigation.navigate({ name: "ConfigureMajor", params: { majorId: uuid() } });
     const addMinor = () =>
         navigation.navigate({ name: "ConfigureMinor", params: { minorId: uuid() } });
-
-    const addDr = () => void 0;
+    const addDr = () =>
+        navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
     const fillDrs = () => void 0;
 
     return (
@@ -122,7 +138,12 @@ export default function ClassesListView() {
                         <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMinor} />
                     </Section>
                     <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
-                        <Cell title="TODO" />
+                        <FlatList
+                            keyExtractor={keyExtractor}
+                            data={Array.from(classes.temp.drs.values())}
+                            renderItem={drRenderItem}
+                            ItemSeparatorComponent={Separator}
+                        />
                         <Cell title="Add a DR" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addDr} />
                         <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} />
                     </Section>

@@ -7,6 +7,7 @@ import React from "react";
 import { navigationHeaderPaddingStyle } from "../layout/default";
 import AdvisoryConfigureView from "./settings/class/AdvisoryEditView";
 import ClassesListView from "./settings/class/ClassesListView";
+import DREditView from "./settings/class/DREditView";
 import MajorEditView from "./settings/class/MajorEditView";
 import MinorEditView from "./settings/class/MinorEditView";
 import MainView from "./settings/MainSettingsView";
@@ -21,6 +22,7 @@ interface ISettingsParams {
     ConfigureAdvisory: undefined;
     ConfigureMajor: { majorId: string };
     ConfigureMinor: { minorId: string };
+    ConfigureDR: { drId: string };
 }
 
 export default function SettingsView() {
@@ -31,7 +33,7 @@ export default function SettingsView() {
             <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false }} />
             <Stack.Screen name="ConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false }} />
             <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false }} />
-            {/* <Stack.Screen name="ConfigureDR" component={DREditView}/> */}
+            <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false }} />
         </Stack.Navigator>
     );
 }

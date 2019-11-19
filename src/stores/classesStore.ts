@@ -5,7 +5,7 @@
 import { observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
 import { IAdvisory } from "../util/class/advisory";
-import { IDR, IMajor, IMinor } from "../util/class/storage";
+import { IDR, IMajor, IMinor } from "../util/class/full";
 
 export default class ClassesStore {
     @persist("object") @observable
@@ -34,30 +34,4 @@ export default class ClassesStore {
         this.minors = observable.map();
         this.DRs = observable.map();
     }
-
-    // TODO: Make this after classes get configured and stored
-    //     @computed
-    //     public displayClasses() {
-    //         // tslint:disable: object-literal-sort-keys
-    //         let output: {[K in keyof typeof SchoolDay]: DisplayClass[]} = {
-    //             One: [],
-    //             Two: [],
-    //             Three: [],
-    //             Four: [],
-    //             Five: [],
-    //             Six: [],
-    //             Seven: []
-    //         };
-    //         // tslint:enable: object-literal-sort-keys
-
-    //         for (let block of Object.keys(SchoolDay)) {
-    //             console.log(getBlockColorsForDay(block as keyof typeof SchoolDay));
-    //         }
-
-    //         for (let singleClass of this.classes) {
-    //             // singleClass.
-    //         }
-
-    //         return output;
-    //     }
 }
