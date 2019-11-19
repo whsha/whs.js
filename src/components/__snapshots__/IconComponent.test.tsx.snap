@@ -8,26 +8,7 @@ exports[`Tests different variations of <IconComponent/> Renders <IconComponent n
     }
   }
 >
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": "#2f95dc",
-          "fontSize": 20,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    
-  </Text>
+  <Text />
 </View>
 `;
 
@@ -39,25 +20,6 @@ exports[`Tests different variations of <IconComponent/> Renders <IconComponent n
     }
   }
 >
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": "#2f95dc",
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    
-  </Text>
+  <Text />
 </View>
 `;

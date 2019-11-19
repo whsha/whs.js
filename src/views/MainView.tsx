@@ -2,12 +2,12 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { Ionicons } from "@expo/vector-icons";
 import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationProp, RouteProp } from "@react-navigation/core";
 import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
-import IonIcons from "react-native-vector-icons/Ionicons";
 import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
@@ -32,7 +32,6 @@ export default function MainView() {
         navigation: {};
     }) => BottomTabNavigationOptions) = ({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-            const IconComponent = IonIcons;
             let iconName = `${Platform.OS === "ios" ? "ios" : "md"}-`;
 
             if (route.name === "Today") {
@@ -44,7 +43,7 @@ export default function MainView() {
             //     iconName += "calendar";
             // }
 
-            return <IconComponent name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={size} color={color} />;
         }
     });
 

@@ -16,6 +16,7 @@
     "dependencies": {
         "@babel/preset-env": "^7.6.0",
         "@badrap/result": "^0.2.5",
+        "@expo/vector-icons": "^10.0.6",
         "@react-native-community/masked-view": "^0.1.5",
         "@react-navigation/bottom-tabs": "^5.0.0-alpha.19",
         "@react-navigation/core": "^5.0.0-alpha.20",
@@ -40,7 +41,6 @@
         "react-native-safe-area-view": "^1.0.0",
         "react-native-screens": "~1.0.0-alpha.23",
         "react-native-tableview-simple": "^2.0.1",
-        "react-native-vector-icons": "^6.4.2",
         "sentry-expo": "~2.0.0",
         "timsort": "^0.3.0",
         "uuid": "^3.3.3"
@@ -54,7 +54,6 @@
         "@types/react": "^16.8.23",
         "@types/react-dom": "^16.8.4",
         "@types/react-native": "^0.57.65",
-        "@types/react-native-vector-icons": "^6.4.0",
         "@types/timsort": "^0.3.0",
         "@types/uuid": "^3.4.5",
         "commitlint": "^8.2.0",
@@ -75,7 +74,7 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "transformIgnorePatterns": [
-            "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|react-router-native))"
+            "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
         ],
         "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
         "moduleFileExtensions": [

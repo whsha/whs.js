@@ -31,6 +31,7 @@ exports[`Tests different header buttons Renders <HeaderCancelButton/> 1`] = `
 
 exports[`Tests different header buttons Renders <HeaderLeftArrow/> 1`] = `
 <View
+  accessibilityLabel="LeftArrow"
   accessible={true}
   isTVSelectable={true}
   onResponderGrant={[Function]}
@@ -50,32 +51,13 @@ exports[`Tests different header buttons Renders <HeaderLeftArrow/> 1`] = `
     }
   }
 >
-  <Text
-    accessibilityLabel="LeftArrow"
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": "#2f95dc",
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    
-  </Text>
+  <Text />
 </View>
 `;
 
 exports[`Tests different header buttons Renders <HeaderRightArrow/> 1`] = `
 <View
+  accessibilityLabel="RightArrow"
   accessible={true}
   isTVSelectable={true}
   onResponderGrant={[Function]}
@@ -95,27 +77,7 @@ exports[`Tests different header buttons Renders <HeaderRightArrow/> 1`] = `
     }
   }
 >
-  <Text
-    accessibilityLabel="RightArrow"
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": "#2f95dc",
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    
-  </Text>
+  <Text />
 </View>
 `;
 
