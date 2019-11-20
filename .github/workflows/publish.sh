@@ -34,4 +34,4 @@ echo $WEBHOOK_DATA > data.json
 curl -sS --header "Content-Type: application/json" \
   --request POST \
   --data @data.json \
-  $WEBHOOK_URL
+  $([ $IS_STABLE = "true" ] && echo $STABLE_WEBHOOK_URL || echo $WEBHOOK_URL)
