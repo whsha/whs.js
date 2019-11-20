@@ -49,7 +49,8 @@ export function irregularMeetCount({ meets }: IIrregular): number {
 
 export function irregularMeetDays({ meets }: IIrregular): SchoolDay[] {
     return Object.keys(meets)
-        .filter(x => meets[(x as unknown) as keyof IrregularMeetDays]) as unknown[] as SchoolDay[];
+        .filter(x => meets[(x as unknown) as keyof IrregularMeetDays])
+        .map(x => parseInt(x, 10)) as unknown[] as SchoolDay[];
 }
 
 export function irregularMeetJoin(left: IrregularMeetDays, right: IrregularMeetDays): IrregularMeetDays {
