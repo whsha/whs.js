@@ -2,92 +2,79 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-export interface IProblems<E, W> {
-    errors: E[];
-    warns: W[];
-}
-
 /** A Map to store multiple warnings and errors indexed by K */
 export default class ProblemMap<K, E, W> {
-    private readonly map: Map<K, IProblems<E, W>>;
+    private readonly errors: Map<K, E[]>;
+    private readonly warnings: Map<K, W[]>;
 
     constructor() {
-        this.map = new Map<K, IProblems<E, W>>();
+        this.errors = new Map<K, E[]>();
+        this.warnings = new Map<K, W[]>();
     }
 
     /** Check if there are errors for a specific key */
     public hasErrors(key: K) {
-        const value = this.map.get(key);
+        const value = this.errors.get(key);
 
-        return value !== undefined && value.errors.length > 0;
+        return value !== undefined && value.length > 0;
     }
 
     /** Get the errors for a specific key */
     public getErrors(key: K) {
-        const value = this.map.get(key);
-
-        return value === undefined ? undefined : value.errors;
+        return this.errors.get(key);
     }
 
     /** Add an error to the error array under key K */
     public addError(key: K, value: E) {
-        let prevalue = this.map.get(key);
+        let prevalue = this.errors.get(key);
         if (prevalue === undefined) {
-            prevalue = {
-                errors: [],
-                warns: []
-            };
+            prevalue = [];
         }
+        prevalue.push(value);
 
-        prevalue.errors.push(value);
-        this.map.set(key, prevalue);
+        this.errors.set(key, prevalue);
     }
 
     /** Check if there are warnings for a specific key */
     public hasWarns(key: K) {
-        const value = this.map.get(key);
+        const value = this.warnings.get(key);
 
-        return value !== undefined && value.warns.length > 0;
+        return value !== undefined && value.length > 0;
     }
 
     /** Get the warns for a specific key */
     public getWarns(key: K) {
-        const value = this.map.get(key);
-
-        return value === undefined ? undefined : value.warns;
+        return this.warnings.get(key);
     }
 
     /** Add an warning to the warn array under key K */
     public addWarn(key: K, value: W) {
-        let prevalue = this.map.get(key);
+        let prevalue = this.warnings.get(key);
         if (prevalue === undefined) {
-            prevalue = {
-                errors: [],
-                warns: []
-            };
+            prevalue = [];
         }
+        prevalue.push(value);
 
-        prevalue.warns.push(value);
-        this.map.set(key, prevalue);
-    }
-
-    /** Get the errors and warns for the key K */
-    public get(key: K) {
-        return this.map.get(key);
+        this.warnings.set(key, prevalue);
     }
 
     /** Delete the array for the key K */
     public delete(key: K) {
-        return this.map.delete(key);
+        return this.errors.delete(key) && this.warnings.delete(key);
     }
 
     /** Clear all keys and arrays */
     public clear() {
-        this.map.clear();
+        this.errors.clear();
+        this.warnings.clear();
     }
 
     /** The size of the map */
-    get size() {
-        return this.map.size;
+    get errorsSize() {
+        return this.errors.size;
+    }
+
+    get warningsSize() {
+        return this.warnings.size;
     }
 }

@@ -43,11 +43,11 @@ export default function ClassesListView() {
         // Validation
         const validationResults = classes.validate();
 
-        if (validationResults.size === 0) {
+        if (validationResults.errorsSize > 0) {
+            Alert.alert("You cannot save the classes in their current state", "There are errors with the classes that need to be resolved");
+        } else {
             classes.save();
             navigation.goBack();
-        } else {
-            Alert.alert("You cannot save the classes in their current state", "There are errors with the classes that need to be resolved");
         }
     };
 
@@ -62,7 +62,7 @@ export default function ClassesListView() {
         <Cell
             title={item.name.length === 0 ? "No Name" : item.name}
             detail={"Has Lab Block"}
-            cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
+            cellImageView={<ProblemsIcons errors={validation.getErrors(item.uuid)} warnings={validation.getWarns(item.uuid)} />}
             cellStyle={item.lab ? "Subtitle" : undefined}
             accessory="DisclosureIndicator"
             titleTextColor={getDisplayColorForBlock(item.block)}
@@ -77,7 +77,7 @@ export default function ClassesListView() {
             <Cell
                 title={item.name.length === 0 ? "No Name" : item.name}
                 detail={`Meets day${meetDays.length === 1 ? "" : "s"}: ${meetDays.join(", ")}`}
-                cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
+                cellImageView={<ProblemsIcons errors={validation.getErrors(item.uuid)} warnings={validation.getWarns(item.uuid)} />}
                 cellStyle={"Subtitle"}
                 accessory="DisclosureIndicator"
                 titleTextColor={getDisplayColorForBlock(item.block)}
@@ -93,7 +93,7 @@ export default function ClassesListView() {
             <Cell
                 title={`DR with ${item.teacher.length === 0 ? "nobody" : item.teacher}`}
                 detail={`Meets day${meetDays.length === 1 ? "" : "s"}: ${meetDays.join(", ")}`}
-                cellImageView={<ProblemsIcons problems={validation.get(item.uuid)} />}
+                cellImageView={<ProblemsIcons errors={validation.getErrors(item.uuid)} warnings={validation.getWarns(item.uuid)} />}
                 cellStyle={"Subtitle"}
                 accessory="DisclosureIndicator"
                 titleTextColor={getDisplayColorForBlock(item.block)}
@@ -145,7 +145,7 @@ export default function ClassesListView() {
                             ItemSeparatorComponent={Separator}
                         />
                         <Cell title="Add a DR" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addDr} />
-                        <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} />
+                        <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} isDisabled={true} />
                     </Section>
                     <Section header="Debug">
                         <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>} />
