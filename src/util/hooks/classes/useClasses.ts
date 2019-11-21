@@ -75,10 +75,10 @@ export function useClasses() {
             const majorColors = validateMajors(problems, tempClasses.majors.values());
 
             // Store existing minor blocks
-            const minorDays = validateMinors(problems, majorColors, tempClasses.minors.values());
+            const minorColors = validateMinors(problems, majorColors, tempClasses.minors.values());
 
             // Store existing DR blocks
-            /* const drDays =  */validateDRs(problems, majorColors, minorDays, tempClasses.DRs.values());
+            /* const drColors =  */validateDRs(problems, majorColors, minorColors, tempClasses.DRs.values());
 
             return problems;
         }

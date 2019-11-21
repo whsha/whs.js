@@ -9,7 +9,7 @@ import ProblemMap from "../problemMap";
 import { IDR, IMajor, IMinor } from "./full";
 import { irregularMeetCount, IrregularMeetDays, irregularMeetDays, irregularMeetJoin } from "./primitives";
 
-export function validateMajors(problems: ProblemMap<string, ValidationError, ValidationWarning>, majors: IterableIterator<IMajor>): Set<BlockColor> {
+export function validateMajors(problems: ProblemMap<string, ValidationError, ValidationWarning>, majors: Iterable<IMajor>): Set<BlockColor> {
     // Store existing color blocks
     const majorColors = new Set<BlockColor>();
 
@@ -48,9 +48,9 @@ export function validateMajors(problems: ProblemMap<string, ValidationError, Val
     return majorColors;
 }
 
-export function validateMinors(problems: ProblemMap<string, ValidationError, ValidationWarning>, majorColors: Set<BlockColor>, minors: IterableIterator<IMinor>): Map<BlockColor, IrregularMeetDays> {
+export function validateMinors(problems: ProblemMap<string, ValidationError, ValidationWarning>, majorColors: Set<BlockColor>, minors: Iterable<IMinor>): Map<BlockColor, IrregularMeetDays> {
     // Store existing minor blocks
-    const minorDays = new Map<BlockColor, IrregularMeetDays>();
+    const minorColors = new Map<BlockColor, IrregularMeetDays>();
 
     // Loop through all minors
     for (const minor of minors) {
@@ -69,7 +69,7 @@ export function validateMinors(problems: ProblemMap<string, ValidationError, Val
         }
 
         // Get the days that minors with the same color block meet
-        let meetDays = minorDays.get(minor.block);
+        let meetDays = minorColors.get(minor.block);
         // If no days exist, set it to a default
         if (meetDays === undefined) {
             meetDays = {
@@ -89,7 +89,7 @@ export function validateMinors(problems: ProblemMap<string, ValidationError, Val
         }
 
         // Save the meeting days by joining them with the others for the same color
-        minorDays.set(minor.block, irregularMeetJoin(meetDays, minor.meets));
+        minorColors.set(minor.block, irregularMeetJoin(meetDays, minor.meets));
 
         // Make sure a name has been specified
         if (minor.name.length === 0) {
@@ -107,10 +107,10 @@ export function validateMinors(problems: ProblemMap<string, ValidationError, Val
         }
     }
 
-    return minorDays;
+    return minorColors;
 }
 
-export function validateDRs(problems: ProblemMap<string, ValidationError, ValidationWarning>, majorColors: Set<BlockColor>, minorDays: Map<BlockColor, IrregularMeetDays>, drs: IterableIterator<IDR>): Map<BlockColor, IrregularMeetDays> {
+export function validateDRs(problems: ProblemMap<string, ValidationError, ValidationWarning>, majorColors: Set<BlockColor>, minorColors: Map<BlockColor, IrregularMeetDays>, drs: Iterable<IDR>): Map<BlockColor, IrregularMeetDays> {
     // Store existing DR blocks
     const drDays = new Map<BlockColor, IrregularMeetDays>();
 
@@ -131,7 +131,7 @@ export function validateDRs(problems: ProblemMap<string, ValidationError, Valida
         }
 
         // Get the days that the minors with the same color block meet
-        const minorMeetDays = minorDays.get(dr.block);
+        const minorMeetDays = minorColors.get(dr.block);
 
         // Make sure the dr does not overlap any existing minors for the color
         if (minorMeetDays !== undefined && irregularMeetDays({ meets: minorMeetDays }).some(x => irregularMeetDays(dr).includes(x))) {
