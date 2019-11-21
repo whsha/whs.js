@@ -4,6 +4,7 @@
 
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { useObserver } from "mobx-react-lite";
 import React, { memo, useContext } from "react";
 import { ScrollView } from "react-native";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
@@ -24,11 +25,11 @@ function ClassesView({ schoolDay }: { schoolDay: ICalendarSchoolDay }) {
 
     const colors = allBlocks.map((x) => getBlockColorsForDay(schoolDay.dayNumber)[x]);
 
-    return (
+    return useObserver(() => (
         <ScrollView style={settingsViewStyles.container}>
             {schoolDay.isHalf ? <HalfDayClasses advisory={classes.advisory} colors={colors} /> : <FullDayClasses advisory={classes.advisory} colors={colors} />}
         </ScrollView>
-    );
+    ));
 }
 
 export default memo(ClassesView);
