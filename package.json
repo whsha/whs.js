@@ -10,8 +10,8 @@
         "lint": "tslint --project ./tsconfig.json",
         "typecheck": "tsc --noEmit",
         "todo": "git grep --heading -EI \"TODO|FIXME\" -- :*.tsx?",
-        "test": "jest",
-        "testcov": "jest --coverage"
+        "test": "jest --verbose",
+        "testcov": "jest --coverage --verbose"
     },
     "dependencies": {
         "@babel/preset-env": "^7.6.0",
