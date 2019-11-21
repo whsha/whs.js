@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders different sets of problem icons Renders with both errors and warnings 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "paddingRight": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "gold",
+          "paddingRight": 5,
+        }
+      }
+    >
+      2
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "red",
+          "paddingRight": 5,
+        }
+      }
+    >
+      3
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders different sets of problem icons Renders with no problems 1`] = `null`;
+
+exports[`Renders different sets of problem icons Renders with only errors 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "paddingRight": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "none",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "gold",
+          "paddingRight": 5,
+        }
+      }
+    >
+      0
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "red",
+          "paddingRight": 5,
+        }
+      }
+    >
+      3
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders different sets of problem icons Renders with only warnings 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "paddingRight": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "gold",
+          "paddingRight": 5,
+        }
+      }
+    >
+      2
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "none",
+        "flexDirection": "row",
+        "opacity": 1,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "red",
+          "paddingRight": 5,
+        }
+      }
+    >
+      0
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": -3,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;

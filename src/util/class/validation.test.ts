@@ -102,7 +102,7 @@ describe("Detects errors and warnings in majors", () => {
                 uuid: "uuid2"
             },
             {
-                block: BlockColor.Yellow,
+                block: BlockColor.None,
                 lab: false,
                 name: "",
                 room: "",
@@ -113,13 +113,15 @@ describe("Detects errors and warnings in majors", () => {
         ]);
 
         expect(majorColors.size).toBe(2);
-        expect(problems.errorsSize).toBe(1);
+        expect(problems.errorsSize).toBe(2);
 
         expect(problems.getErrors("uuid1")).toBeUndefined();
         expect(problems.getErrors("uuid2")).toStrictEqual([
             ValidationError.MajorHasDuplicateBlockColor
         ]);
-        expect(problems.getErrors("uuid3")).toBeUndefined();
+        expect(problems.getErrors("uuid3")).toStrictEqual([
+            ValidationError.MajorMissingBlockColor
+        ]);
 
         expect(problems.warningsSize).toBe(3);
 
@@ -354,10 +356,19 @@ describe("Detects errors and warnings in drs", () => {
                 type: ClassType.DR,
                 uuid: "uuid4",
             }
+            ,
+            {
+                block: BlockColor.Purple,
+                meets: meets(false, true, false, false, false, false, false),
+                room: "2",
+                teacher: "1",
+                type: ClassType.DR,
+                uuid: "uuid5",
+            }
         ]);
 
         expect(drColors.size).toBe(3);
-        expect(problems.errorsSize).toBe(3);
+        expect(problems.errorsSize).toBe(4);
         expect(problems.getErrors("uuid1")).toStrictEqual([
             ValidationError.DRConflictWithMajor
         ]);
@@ -368,6 +379,9 @@ describe("Detects errors and warnings in drs", () => {
         ]);
         expect(problems.getErrors("uuid4")).toStrictEqual([
             ValidationError.MissingMeetDay
+        ]);
+        expect(problems.getErrors("uuid5")).toStrictEqual([
+            ValidationError.DRConflictWithDR
         ]);
 
         expect(problems.warningsSize).toBe(2);
@@ -380,5 +394,6 @@ describe("Detects errors and warnings in drs", () => {
         ]);
         expect(problems.getWarns("uuid3")).toBeUndefined();
         expect(problems.getWarns("uuid4")).toBeUndefined();
+        expect(problems.getWarns("uuid5")).toBeUndefined();
     });
 });
