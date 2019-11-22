@@ -16,10 +16,7 @@
     "ios": {
       "bundleIdentifier": "com.dusterthefirst.whs",
       "supportsTablet": true,
-      "buildNumber": "2",
-      "associatedDomains": [
-        "whs.dusterthefirst.com"
-      ]
+      "buildNumber": "2"
     },
     "name": "WHS",
     "orientation": "portrait",
