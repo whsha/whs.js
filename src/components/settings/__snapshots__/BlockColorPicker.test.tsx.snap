@@ -2,6 +2,7 @@
 
 exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPicker 1`] = `
 <RCTScrollView
+  centerContent={true}
   collapsable={false}
   horizontal={true}
   onGestureHandlerEvent={[Function]}
@@ -506,6 +507,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
 
 exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPicker with none 1`] = `
 <RCTScrollView
+  centerContent={true}
   collapsable={false}
   horizontal={true}
   onGestureHandlerEvent={[Function]}
@@ -1080,6 +1082,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
 
 exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPicker without none, but with none as a value 1`] = `
 <RCTScrollView
+  centerContent={true}
   collapsable={false}
   horizontal={true}
   onGestureHandlerEvent={[Function]}
