@@ -8,6 +8,7 @@ import { BlockColor } from "../../util/blocks/blockColor";
 import { SchoolDay } from "../../util/calendar/types";
 import SchoolDayPicker from "./SchoolDayPicker";
 
+/** A helper function to construct an irregular map */
 function meets(one: boolean, two: boolean, three: boolean, four: boolean, five: boolean, six: boolean, seven: boolean) {
     return {
         [SchoolDay.One]: one,

@@ -11,7 +11,18 @@ import { SchoolDay } from "../../util/calendar/types";
 import { IrregularMeetDays } from "../../util/class/primitives";
 import { getSchoolDaysThatHaveColor } from "../../util/schoolDays";
 
-export default function SchoolDayPicker({ onToggle, value, blockColorRestraint }: { onToggle(day: SchoolDay): void; value: IrregularMeetDays; blockColorRestraint: BlockColor }) {
+/** The props for a SchoolDayPicker */
+interface ISchoolDayPickerProps {
+    /** The callback for when a day is toggled */
+    onToggle(day: SchoolDay): void;
+    /** The value of the picker */
+    value: IrregularMeetDays;
+    /** The restraint to lock the block colors to */
+    blockColorRestraint: BlockColor;
+}
+
+/** A component for picking the school days that a class meets on */
+export default function SchoolDayPicker({ onToggle, value, blockColorRestraint }: ISchoolDayPickerProps) {
     const toggle = (day: SchoolDay) => () => onToggle(day);
 
     const schoolDays = getSchoolDaysThatHaveColor(blockColorRestraint);
@@ -29,7 +40,20 @@ export default function SchoolDayPicker({ onToggle, value, blockColorRestraint }
     );
 }
 
-const DayPicker = memo(<T extends SchoolDay>({ day, disabled = false, selected, onPress }: { day: T; disabled?: boolean; selected: boolean; onPress?(): void }) => {
+/** The props for a DayPicker */
+interface IDayPickerProps<T extends SchoolDay> {
+    /** The day to pick */
+    day: T;
+    /** If the day is disabled */
+    disabled?: boolean;
+    /** If the day is selected */
+    selected: boolean;
+    /** The callback for when the day is pressed */
+    onPress?(): void;
+}
+
+/** The individual days in the SchoolDayPicker component */
+const DayPicker = memo(<T extends SchoolDay>({ day, disabled = false, selected, onPress }: IDayPickerProps<T>) => {
     const containerStyles = [
         schoolDayPickerStyles.container,
         selected ? schoolDayPickerStyles.containerSelected : undefined,

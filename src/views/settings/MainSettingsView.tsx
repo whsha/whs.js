@@ -12,6 +12,7 @@ import ResetClassesCell from "../../components/settings/ClearClassesCell";
 import { settingsViewStyles } from "../../layout/default";
 import { openLinkInBrowserAlert } from "../../util/alerts";
 
+/** The main settings view */
 export default function MainSettingsView() {
     const navigation = useNavigation();
     // const classes = useContext(ClassesContext);

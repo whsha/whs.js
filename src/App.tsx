@@ -10,13 +10,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import * as Sentry from "sentry-expo";
-import { CalendarContext, ClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import { CalendarContext, ClassesContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
 import LoadingView from "./views/LoadingView";
 import MainView from "./views/MainView";
 
+/** The internal state of the application setup */
 export enum ApplicationState {
     Setup = "Setting Up",
     PreparingMP = "Preparing mobx-persist",
@@ -36,6 +37,7 @@ Sentry.init({
 });
 // TODO: Sentry.setUserContext({})
 
+/** The main app component */
 export default function App() {
     // The state storing the current task of the app (Only changed by load fn)
     const [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
@@ -45,6 +47,7 @@ export default function App() {
     const calendar = useContext(CalendarContext);
     const classes = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);
+    const preparedClasses = useContext(PreparedClassesContext);
 
     /** Async function to initialize the app and all needed stores */
     const Load = async (reset = false) => {
@@ -89,6 +92,9 @@ export default function App() {
         await hydrate(StorageKey.Classes, classes);
         // Hydrate the temp classes to = the saved classes
         tempClasses.hydrateFrom(classes);
+
+        // Hydrate the prepared classes store
+        await hydrate(StorageKey.PreparedClasses, preparedClasses);
 
         setCurrentTask(ApplicationState.Opening);
         // Restore current navigation state in development only

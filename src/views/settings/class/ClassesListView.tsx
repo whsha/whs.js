@@ -14,17 +14,19 @@ import ProblemsIcons from "../../../components/settings/ProblemsIcons";
 import { settingsViewStyles } from "../../../layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
-import { IClassMeta } from "../../../util/class/extentions";
-import { IDR, IMajor, IMinor } from "../../../util/class/full";
-import { irregularMeetDays } from "../../../util/class/primitives";
-import { useClasses } from "../../../util/hooks/classes/useClasses";
+import { IDR, IMajor, IMinor } from "../../../util/class/classes";
+import { IIdentifiable, irregularMeetDays } from "../../../util/class/primitives";
+import useClasses from "../../../util/hooks/classes/useClasses";
+import usePreparedClasses from "../../../util/hooks/classes/usePreparedClasses";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { SettingsParams } from "../../SettingsView";
 
+/** The main classes config view */
 export default function ClassesListView() {
     useNoHardwareBack();
     const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
     const classes = useClasses();
+    const preparedClasses = usePreparedClasses();
 
     const validation = useMemo(() => classes.validate(), [classes.temp]);
 
@@ -46,6 +48,7 @@ export default function ClassesListView() {
         if (validationResults.errorsSize > 0) {
             Alert.alert("You cannot save the classes in their current state", "There are errors with the classes that need to be resolved");
         } else {
+            preparedClasses.prepare(classes.temp);
             classes.save();
             navigation.goBack();
         }
@@ -102,7 +105,7 @@ export default function ClassesListView() {
         );
     };
 
-    const keyExtractor = (x: IClassMeta) => x.uuid;
+    const keyExtractor = (x: IIdentifiable) => x.uuid;
 
     const addMajor = () =>
         navigation.navigate({ name: "ConfigureMajor", params: { majorId: uuid() } });

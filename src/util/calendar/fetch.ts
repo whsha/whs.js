@@ -4,6 +4,7 @@
 
 import { Result } from "@badrap/result";
 
+/** The calender with only school days on it */
 const DAYONLYCALENDAR = "https://calendar.google.com/calendar/ical/wellesleyps.org_qvqdo2dkb151vorl1f0dkigin0%40group.calendar.google.com/public/basic.ics";
 // const ALLCALENDAR = " http://goo.gl/FR0zjg";
 

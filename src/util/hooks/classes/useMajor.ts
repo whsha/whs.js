@@ -5,11 +5,12 @@
 import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
-import { IMajor } from "../../class/full";
+import { IMajor } from "../../class/classes";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
-import { useClasses } from "./useClasses";
+import useClasses from "./useClasses";
 
+/** Create the default major with the given uuid */
 function newMajor(uuid: string): IMajor {
     return {
         block: BlockColor.None,
@@ -22,6 +23,7 @@ function newMajor(uuid: string): IMajor {
     };
 }
 
+/** Hook to use and modify a major given its id */
 export function useMajor(id: string): IUseClass<IMajor> {
     const classes = useClasses();
     const savedValue = classes.temp.majors.get(id);

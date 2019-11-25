@@ -20,6 +20,7 @@ import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
+/** The advisory configureation view */
 export default function AdvisoryConfigureView() {
     useNoHardwareBack();
 

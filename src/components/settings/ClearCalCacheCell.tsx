@@ -11,6 +11,7 @@ import { tableViewStyle } from "../../layout/default";
 
 dayjs.extend(relativeTime);
 
+/** A settings cell for clearing the calendar cache */
 export default function ClearCalCacheCell() {
     const calendar = useContext(CalendarContext);
     const [fromNow, setFromNow] = useState(dayjs(calendar.updated).fromNow());

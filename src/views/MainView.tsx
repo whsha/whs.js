@@ -4,7 +4,7 @@
 
 import { Ionicons } from "@expo/vector-icons";
 import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationProp, RouteProp } from "@react-navigation/core";
+import { RouteProp } from "@react-navigation/core";
 import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
@@ -12,23 +12,29 @@ import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/d
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
 
-export interface ITabParamList extends Record<string, object | undefined> {
+/** The parameters for the tab navigator */
+interface IMainTabParams {
+    /** The today view */
     Today: {
+        /** The date to show up */
         day: Date;
     };
+    /** The settings view */
     Settings: undefined;
 }
-export type TodayViewRouteProp = RouteProp<ITabParamList, "Today">;
-export type TodayViewNavProp = NavigationProp<ITabParamList, "Today">;
 
-export type SettingsViewRouteProp = RouteProp<ITabParamList, "Settings">;
-export type SettingsViewNavProp = NavigationProp<ITabParamList, "Settings">;
+/** The parameters for the tab navigator */
+export type MainTabParams = Pick<IMainTabParams, keyof IMainTabParams>;
 
-const Tab = createBottomTabNavigator<ITabParamList>();
+/** The bottom tab navigator */
+const Tab = createBottomTabNavigator<MainTabParams>();
 
+/** The main app view */
 export default function MainView() {
     const screenOptions: ((props: {
-        route: RouteProp<ITabParamList, string>;
+        /** The current route */
+        route: RouteProp<MainTabParams, keyof IMainTabParams>;
+        /** idk and idc */
         navigation: {};
     }) => BottomTabNavigationOptions) = ({ route }) => ({
         tabBarIcon: ({ color, size }) => {

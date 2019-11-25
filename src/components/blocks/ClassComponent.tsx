@@ -6,14 +6,15 @@ import React, { memo } from "react";
 import { Text, View } from "react-native";
 import { classComponentStyles } from "../../layout/default";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
-import { IClassBlock } from "../../util/class/display";
+import { ITimes } from "../../util/class/extentions";
+import { IAdvisedClass, IColored, INamed } from "../../util/class/primitives";
 
 /** A component that will display a class */
-function ClassComponent({block, end, name, room, start, teacher}: IClassBlock) {
+function ClassComponent({ end, start, name, block, teacher, room }: ITimes & IAdvisedClass & IColored & INamed) {
     return (
         <View style={classComponentStyles.container}>
             <View style={classComponentStyles.dualView}>
-                <Text style={[classComponentStyles.title, {color: getDisplayColorForBlock(block)}]}>{name.length === 0 ? "No Name" : name}</Text>
+                <Text style={[classComponentStyles.title, { color: getDisplayColorForBlock(block) }]}>{name.length === 0 ? "No Name" : name}</Text>
                 <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
             </View>
             <View style={[classComponentStyles.dualView, classComponentStyles.info]}>

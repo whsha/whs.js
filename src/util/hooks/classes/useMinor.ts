@@ -6,11 +6,12 @@ import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
 import { SchoolDay } from "../../calendar/types";
-import { IMinor } from "../../class/full";
+import { IMinor } from "../../class/classes";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
-import { useClasses } from "./useClasses";
+import useClasses from "./useClasses";
 
+/** Create a minor with the given uuid */
 function newMinor(uuid: string): IMinor {
     return {
         block: BlockColor.None,
@@ -31,6 +32,7 @@ function newMinor(uuid: string): IMinor {
     };
 }
 
+/** A hook to use and modify a minor given its uuid */
 export function useMinor(id: string): IUseClass<IMinor> {
     const classes = useClasses();
     const savedValue = classes.temp.minors.get(id);

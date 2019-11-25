@@ -6,11 +6,12 @@ import deepEqual from "deep-equal";
 import { useState } from "react";
 import { BlockColor } from "../../blocks/blockColor";
 import { SchoolDay } from "../../calendar/types";
-import { IDR } from "../../class/full";
+import { IDR } from "../../class/classes";
 import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
-import { useClasses } from "./useClasses";
+import useClasses from "./useClasses";
 
+/** Create a new DR */
 function newDR(uuid: string): IDR {
     return {
         block: BlockColor.None,
@@ -30,6 +31,7 @@ function newDR(uuid: string): IDR {
     };
 }
 
+/** Hook to use a DR */
 export function useDR(id: string): IUseClass<IDR> {
     const classes = useClasses();
     const savedValue = classes.temp.drs.get(id);

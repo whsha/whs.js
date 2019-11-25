@@ -24,6 +24,7 @@ import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
+/** The dr configure view */
 export default function DREditView() {
     useNoHardwareBack();
     const route = useRoute<RouteProp<SettingsParams, "ConfigureDR">>();
@@ -65,7 +66,7 @@ export default function DREditView() {
             <ScrollView>
                 <TableView>
                     <Section header="Color Block">
-                        <Cell cellContentView={<BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} hasNone={true} />} />
+                        <Cell cellContentView={<BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />} />
                     </Section>
                     <Section header="School Days">
                         <Cell cellContentView={<SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />} />

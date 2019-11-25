@@ -8,6 +8,7 @@ import { BlockColor } from "../../util/blocks/blockColor";
 import BlockColorPicker from "./BlockColorPicker";
 
 // TODO: Test presses
+/** Null function */
 const noll = () => void 0;
 
 describe("Tests different variations of <BlockColorPicker>", () => {

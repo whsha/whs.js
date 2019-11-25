@@ -8,7 +8,14 @@ import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";
 import { loadingViewStyle } from "../layout/default";
 
-function LoadingView({ task }: { task: ApplicationState }) {
+/** The props for the LoadingView */
+interface ILoadingProps {
+    /** The current task the app is on */
+    task: ApplicationState;
+}
+
+/** The view to show when the application is in any state other than loaded */
+function LoadingView({ task }: ILoadingProps) {
     return (
         <View>
             <Image source={Splash} style={loadingViewStyle.image} resizeMode={"contain"} />

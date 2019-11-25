@@ -4,16 +4,26 @@
 
 import React, { memo } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
-import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "../../util/hooks/classes/useClasses";
+import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "../../util/class/validation";
 import IconComponent from "../IconComponent";
 
-function ProblemsIcons({ errors = [], warnings = [] }: { errors?: ValidationError[]; warnings?: ValidationWarning[] }) {
+/** The props for the ProblemsIcons */
+interface IProblemsIconsProps {
+    /** The errors to show */
+    errors?: ValidationError[];
+    /** The warnings to show */
+    warnings?: ValidationWarning[];
+}
+
+/** A component to show the problems and errors with icons */
+function ProblemsIcons({ errors = [], warnings = [] }: IProblemsIconsProps) {
     const haswarns = warnings.length > 0;
     const haserrors = errors.length > 0;
     if (!haswarns && !haserrors) {
         return null;
     }
 
+    // TODO: better display
     const showWarns = () => Alert.alert(`${warnings.length} Validation Warning${warnings.length === 1 ? "" : "s"}`, warnings.map(x => `• ${ValidationWarningMessage[x]} (${ValidationWarning[x as unknown as keyof typeof ValidationWarning]})`).join("\n"));
     const showErrors = () => Alert.alert(`${errors.length} Validation Error${errors.length === 1 ? "" : "s"}`, errors.map(x => `• ${ValidationErrorMessage[x]} (${ValidationError[x as unknown as keyof typeof ValidationError]})`).join("\n"));
 

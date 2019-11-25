@@ -24,6 +24,7 @@ import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
+/** The minor configure view */
 export default function MinorEditView() {
     useNoHardwareBack();
     const route = useRoute<RouteProp<SettingsParams, "ConfigureMinor">>();

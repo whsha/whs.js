@@ -2,7 +2,8 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { useNavigation, useRoute } from "@react-navigation/core";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useContext } from "react";
@@ -10,17 +11,26 @@ import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderBu
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
 import { navigationHeaderPaddingStyle } from "../layout/default";
-import { TodayViewNavProp, TodayViewRouteProp } from "./MainView";
+import { MainTabParams } from "./MainView";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";
 
+/** The stack navigator for the today view */
 const TodayStack = createStackNavigator();
 
+/** The today tab view */
 export default function TodayView() {
     const calendar = useContext(CalendarContext);
 
-    const { params } = useRoute<TodayViewRouteProp>();
-    const navigation = useNavigation<TodayViewNavProp>();
+    const { params } = useRoute<RouteProp<MainTabParams, "Today">>();
+    const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Today">>();
+
+    navigation.addListener("tabPress", e => {
+        // Prevent default behavior
+        e.preventDefault();
+
+        goToToday();
+    });
 
     const day = dayjs(params.day);
 

@@ -9,6 +9,7 @@ import { ClassesContext, TempClassesContext } from "../../contexts";
 import { tableViewStyle } from "../../layout/default";
 import { clearClassesAlert } from "../../util/alerts";
 
+/** A settings cell to clear the classes */
 export default function ClearClassesCell() {
     const classes = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);

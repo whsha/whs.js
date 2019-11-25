@@ -22,6 +22,7 @@ import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 
+/** The major config view */
 export default function MajorEditView() {
     useNoHardwareBack();
     const route = useRoute<RouteProp<SettingsParams, "ConfigureMajor">>();

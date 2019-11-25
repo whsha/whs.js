@@ -11,12 +11,14 @@ import { ICalendarInformation, ICalendarSchoolDay } from "../util/calendar/types
 
 dayjs.extend(dayjsPluginUTC);
 
+/** The store that contains the parsed calendar */
 export default class CalendarStore {
     /** Get the current school day */
     public schoolDay(date: Dayjs): ICalendarSchoolDay | undefined {
         return this.schoolDays.get(date.format("YYYY-MM-DD"));
     }
 
+    /** A map that caches the next school day after a given date */
     @persist("map")
     private readonly nextSchoolDayMap = new Map<string, string | undefined>();
 
@@ -45,6 +47,7 @@ export default class CalendarStore {
     /** School calendar days mapped by the day */
     @persist("map") @observable
     private schoolDays = observable.map<string, ICalendarSchoolDay>();
+
     /** The last data this store was updated */
     @persist @observable
     private _updated = 0;
@@ -55,6 +58,8 @@ export default class CalendarStore {
     public async updateCalendar(parsed: ICalendarInformation) {
         // Clear the current stored school days
         this.schoolDays.clear();
+        // Clear the cached next school days
+        this.nextSchoolDayMap.clear();
         // Sort the parsed school days for ease of searching
         TimSort.sort(parsed.schoolDays, (a, b) => dayjs(a.date).diff(dayjs(b.date), "hour"));
         // Map them by date and store them in the school days

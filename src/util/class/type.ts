@@ -15,6 +15,7 @@ export enum ClassType {
     DR
 }
 
+/** Check if a class is of a specific type */
 export function hasClassType<T extends ClassType>(clazz: unknown): clazz is IClassType<T> {
     const possibleClass = clazz as Partial<IClassType<T>>;
 

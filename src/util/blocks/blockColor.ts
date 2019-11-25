@@ -13,6 +13,8 @@ export enum BlockColor {
     Tan = "tan",
     None = "none"
 }
+
+/** A const that stores all of the block colors */
 export const allBlockColors = [
     BlockColor.Red,
     BlockColor.Orange,
@@ -24,6 +26,7 @@ export const allBlockColors = [
     BlockColor.None
 ];
 
+/** A map of the block colors to their display colors */
 type BlockColorColorMap = {
     readonly [B in BlockColor]: string;
 };
@@ -43,6 +46,7 @@ const BlockColorDisplayColors: BlockColorColorMap = {
     [BlockColor.Yellow]: "gold"
 };
 
+/** Lookup the display color for the given block color */
 export function getDisplayColorForBlock(block: BlockColor) {
     return BlockColorDisplayColors[block];
 }

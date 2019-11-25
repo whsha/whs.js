@@ -12,19 +12,38 @@ import MajorEditView from "./settings/class/MajorEditView";
 import MinorEditView from "./settings/class/MinorEditView";
 import MainView from "./settings/MainSettingsView";
 
+/** The settings view stack navigator */
 const Stack = createStackNavigator<SettingsParams>();
 
+/** The settings parameters */
 export type SettingsParams = Pick<ISettingsParams, keyof ISettingsParams>;
 
+/** The settings parameters as an interface */
 interface ISettingsParams {
+    /** The main settings view */
     AllSettings: undefined;
+    /** The classes list view */
     ClassesList: undefined;
+    /** The advisory configure view */
     ConfigureAdvisory: undefined;
-    ConfigureMajor: { majorId: string };
-    ConfigureMinor: { minorId: string };
-    ConfigureDR: { drId: string };
+    /** The major configure view */
+    ConfigureMajor: {
+        /** The id of the major to configure */
+        majorId: string;
+    };
+    /** The minor configure view */
+    ConfigureMinor: {
+        /** The id of the minor to configure */
+        minorId: string;
+    };
+    /** The dr configure view */
+    ConfigureDR: {
+        /** The id of the dr to configure */
+        drId: string;
+    };
 }
 
+/** The view for the settings tab */
 export default function SettingsView() {
     return (
         <Stack.Navigator screenOptions={navigationHeaderPaddingStyle}>

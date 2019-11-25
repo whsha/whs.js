@@ -6,9 +6,13 @@ import React, { memo } from "react";
 import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
 import { headerStyles } from "../../layout/default";
 
+/** The props for a multiline header */
 interface IMultilineHeaderProps {
+    /** The header title */
     title: string;
+    /** The header subtitle */
     subtitle: string;
+    /** The header click callback */
     onClick?(event: GestureResponderEvent): void;
 }
 

@@ -4,39 +4,53 @@
 
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
-import { useObserver } from "mobx-react-lite";
-import React, { memo, useContext } from "react";
+import React from "react";
 import { ScrollView } from "react-native";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
-import ClassComponent from "../../components/blocks/ClassComponent";
-import FreeComponent from "../../components/blocks/FreeComponent";
-import { ClassesContext } from "../../contexts";
+import BlockComponent from "../../components/blocks/BlockComponent";
 import { settingsViewStyles } from "../../layout/default";
-import { allBlocks } from "../../util/blocks/block";
-import { BlockColor } from "../../util/blocks/blockColor";
-import { ICalendarSchoolDay } from "../../util/calendar/types";
-import { IAdvisory } from "../../util/class/advisory";
-import { getBlockColorsForDay } from "../../util/schoolDays";
+import { PreparedClasses } from "../../stores/preparedClassesStore";
+import { Block } from "../../util/blocks/block";
+import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
+import { IAdvisory } from "../../util/class/classes";
+import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
+import { BlockColorsForDay, getBlockColorsForDay } from "../../util/schoolDays";
 
 dayjs.extend(useCustomFormat);
 
-function ClassesView({ schoolDay }: { schoolDay: ICalendarSchoolDay }) {
-    const classes = useContext(ClassesContext);
-
-    const colors = allBlocks.map((x) => getBlockColorsForDay(schoolDay.dayNumber)[x]);
-
-    return useObserver(() => (
-        <ScrollView style={settingsViewStyles.container}>
-            {schoolDay.isHalf ? <HalfDayClasses advisory={classes.advisory} colors={colors} /> : <FullDayClasses advisory={classes.advisory} colors={colors} />}
-        </ScrollView>
-    ));
+/** The props for the classes view */
+interface IClassesViewProps {
+    /** The school day to show */
+    schoolDay: ICalendarSchoolDay;
 }
 
-export default memo(ClassesView);
+/** The today view when there are classes that day */
+export default function ClassesView({ schoolDay }: IClassesViewProps) {
+    const preparedClasses = usePreparedClasses();
 
-interface IClassesViewProps {
+    const colors = getBlockColorsForDay(schoolDay.dayNumber);
+
+    const classesView = (
+        schoolDay.isHalf ?
+            <HalfDayClasses advisory={preparedClasses.advisory} colors={colors} classes={preparedClasses.classes[schoolDay.dayNumber]} /> :
+            <FullDayClasses advisory={preparedClasses.advisory} colors={colors} classes={preparedClasses.classes[schoolDay.dayNumber]} />
+    );
+
+    return (
+        <ScrollView style={settingsViewStyles.container}>
+            {classesView}
+        </ScrollView>
+    );
+}
+
+/** The props for a class view */
+interface IBlocksViewProps {
+    /** The advisory for the day */
     advisory: IAdvisory;
-    colors: BlockColor[];
+    /** The colors as backups */
+    colors: BlockColorsForDay;
+    /** The classes to display */
+    classes: PreparedClasses[SchoolDay];
 }
 
 /*
@@ -48,65 +62,58 @@ Block D 10:55 AM–12:22 PM
 Block E 12:27-1:26 PM
 Block F 1:31-2:30 PM
 */
-const FullDayClasses = memo(({ advisory, colors }: IClassesViewProps) => (
-    <>
-        {/* FIXME: */}
-        <FreeComponent
-            block={colors[0]}
-            start={dayjs("7:30 AM", "h:mm A")}
-            end={dayjs("8:29 AM", "h:mm A")}
-        />
-        <ClassComponent
-            block={colors[1]}
-            start={dayjs("8:34 AM", "h:mm A")}
-            end={dayjs("9:33 AM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <AdvisoryComponent
-            {...advisory}
-            start={dayjs("9:38 AM", "h:mm A")}
-            end={dayjs("9:46 AM", "h:mm A")}
-        />
-        <ClassComponent
-            block={colors[2]}
-            start={dayjs("9:51 AM", "h:mm A")}
-            end={dayjs("10:50 AM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        {/* FIXME: LUNCH BLOCK */}
-        <ClassComponent
-            block={colors[3]}
-            // FIXME: LUNCH
-            start={dayjs("10:55 AM", "h:mm A")}
-            // FIXME: LUNCH
-            end={dayjs("12:22 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        {/* END FIXME: */}
-        <ClassComponent
-            block={colors[4]}
-            start={dayjs("12:27 PM", "h:mm A")}
-            end={dayjs("1:26 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <ClassComponent
-            block={colors[5]}
-            start={dayjs("1:31 PM", "h:mm A")}
-            end={dayjs("2:30 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-    </>
-));
+/** The display component for a full day */
+function FullDayClasses({ advisory, classes, colors }: IBlocksViewProps) {
+    return (
+        <>
+            <BlockComponent
+                block={colors[Block.A]}
+                clazz={classes[Block.A]}
+                start={dayjs("7:30 AM", "h:mm A")}
+                end={dayjs("8:29 AM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.B]}
+                clazz={classes[Block.B]}
+                start={dayjs("8:34 AM", "h:mm A")}
+                end={dayjs("9:33 AM", "h:mm A")}
+            />
+            <AdvisoryComponent
+                {...advisory}
+                start={dayjs("9:38 AM", "h:mm A")}
+                end={dayjs("9:46 AM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.C]}
+                clazz={classes[Block.C]}
+                start={dayjs("9:51 AM", "h:mm A")}
+                end={dayjs("10:50 AM", "h:mm A")}
+            />
+            {/* FIXME: LUNCH BLOCK */}
+            <BlockComponent
+                block={colors[Block.D]}
+                clazz={classes[Block.D]}
+                // FIXME: LUNCH
+                start={dayjs("10:55 AM", "h:mm A")}
+                // FIXME: LUNCH
+                end={dayjs("12:22 PM", "h:mm A")}
+            />
+            {/* END FIXME: */}
+            <BlockComponent
+                block={colors[Block.E]}
+                clazz={classes[Block.E]}
+                start={dayjs("12:27 PM", "h:mm A")}
+                end={dayjs("1:26 PM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.F]}
+                clazz={classes[Block.F]}
+                start={dayjs("1:31 PM", "h:mm A")}
+                end={dayjs("2:30 PM", "h:mm A")}
+            />
+        </>
+    );
+}
 
 /*
 Early Release Schedule
@@ -119,58 +126,51 @@ Block E-9:50-10:20 AM
 Block F-10:25-10:55 AM
 Advisory-11:00-11:30 AM
 */
-const HalfDayClasses = memo(({ advisory, colors }: IClassesViewProps) => (
-    <>
-        {/* FIXME: */}
-        <FreeComponent
-            block={colors[0]}
-            start={dayjs("7:30 AM", "h:mm A")}
-            end={dayjs("8:00 AM", "h:mm A")}
-        />
-        <ClassComponent
-            block={colors[1]}
-            start={dayjs("8:05 AM", "h:mm A")}
-            end={dayjs("8:35 AM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <ClassComponent
-            block={colors[2]}
-            start={dayjs("8:40 AM", "h:mm A")}
-            end={dayjs("9:10 AM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <ClassComponent
-            block={colors[3]}
-            start={dayjs("9:15 AM", "h:mm A")}
-            end={dayjs("9:45 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <ClassComponent
-            block={colors[4]}
-            start={dayjs("9:50 PM", "h:mm A")}
-            end={dayjs("10:20 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <ClassComponent
-            block={colors[5]}
-            start={dayjs("10:25 PM", "h:mm A")}
-            end={dayjs("10:55 PM", "h:mm A")}
-            name="Example"
-            room="100"
-            teacher="Mr. Example"
-        />
-        <AdvisoryComponent
-            {...advisory}
-            start={dayjs("11:00 PM", "h:mm A")}
-            end={dayjs("11:30 PM", "h:mm A")}
-        />
-    </>
-));
+/** The display component for a half day */
+function HalfDayClasses({ advisory, colors, classes }: IBlocksViewProps) {
+    return (
+        <>
+            <BlockComponent
+                block={colors[Block.A]}
+                clazz={classes[Block.A]}
+                start={dayjs("7:30 AM", "h:mm A")}
+                end={dayjs("8:00 AM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.B]}
+                clazz={classes[Block.B]}
+                start={dayjs("8:05 AM", "h:mm A")}
+                end={dayjs("8:35 AM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.C]}
+                clazz={classes[Block.C]}
+                start={dayjs("8:40 AM", "h:mm A")}
+                end={dayjs("9:10 AM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.D]}
+                clazz={classes[Block.D]}
+                start={dayjs("9:15 AM", "h:mm A")}
+                end={dayjs("9:45 PM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.E]}
+                clazz={classes[Block.E]}
+                start={dayjs("9:50 PM", "h:mm A")}
+                end={dayjs("10:20 PM", "h:mm A")}
+            />
+            <BlockComponent
+                block={colors[Block.F]}
+                clazz={classes[Block.F]}
+                start={dayjs("10:25 PM", "h:mm A")}
+                end={dayjs("10:55 PM", "h:mm A")}
+            />
+            <AdvisoryComponent
+                {...advisory}
+                start={dayjs("11:00 PM", "h:mm A")}
+                end={dayjs("11:30 PM", "h:mm A")}
+            />
+        </>
+    );
+}

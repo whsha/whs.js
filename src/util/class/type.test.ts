@@ -4,10 +4,11 @@
 
 import { BlockColor } from "../blocks/blockColor";
 import { SchoolDay } from "../calendar/types";
-import { IDR, IMajor, IMinor } from "./full";
+import { IDR, IMajor, IMinor } from "./classes";
 import { IAdvisedClass } from "./primitives";
 import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
 
+/** A sample major */
 const major: IMajor = {
     block: BlockColor.Red,
     lab: false,
@@ -18,6 +19,7 @@ const major: IMajor = {
     uuid: ""
 };
 
+/** A sample minor */
 const minor: IMinor = {
     block: BlockColor.Yellow,
     meets: {
@@ -36,6 +38,7 @@ const minor: IMinor = {
     uuid: ""
 };
 
+/** A sample DR */
 const dr: IDR = {
     block: BlockColor.Green,
     meets: {
@@ -53,6 +56,7 @@ const dr: IDR = {
     uuid: ""
 };
 
+/** A sample non class */
 const notclass: IAdvisedClass = {
     room: "Fitness center",
     teacher: "Mr. Test",

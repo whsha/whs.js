@@ -5,8 +5,9 @@
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
 import { useState } from "react";
-import { useClasses } from "./useClasses";
+import useClasses from "./useClasses";
 
+/** A hook to get the saved and a temp advisory */
 export default function useAdvisory() {
     const classes = useClasses();
     const [tempAdvisory, setTempAdvisory] = useState(classes.temp.advisory);

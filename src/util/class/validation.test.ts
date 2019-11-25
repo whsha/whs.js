@@ -4,12 +4,12 @@
 
 import { BlockColor } from "../blocks/blockColor";
 import { SchoolDay } from "../calendar/types";
-import { ValidationError, ValidationWarning } from "../hooks/classes/useClasses";
 import ProblemMap from "../problemMap";
 import { IrregularMeetDays } from "./primitives";
 import { ClassType } from "./type";
-import { validateDRs, validateMajors, validateMinors } from "./validation";
+import { validateDRs, validateMajors, validateMinors, ValidationError, ValidationWarning } from "./validation";
 
+/** Utility function to construct an irregular meet easy */
 function meets(one: boolean, two: boolean, three: boolean, four: boolean, five: boolean, six: boolean, seven: boolean) {
     return {
         [SchoolDay.One]: one,
@@ -120,7 +120,7 @@ describe("Detects errors and warnings in majors", () => {
             ValidationError.MajorHasDuplicateBlockColor
         ]);
         expect(problems.getErrors("uuid3")).toStrictEqual([
-            ValidationError.MajorMissingBlockColor
+            ValidationError.MissingBlockColor
         ]);
 
         expect(problems.warningsSize).toBe(3);
@@ -141,10 +141,10 @@ describe("Detects errors and warnings in majors", () => {
 });
 
 describe("Detects errors and warnings in minors", () => {
-    const majorColors = new Set<BlockColor>([
-        BlockColor.Red,
-        BlockColor.Green,
-        BlockColor.Blue
+    const majorColors = new Map<BlockColor, boolean>([
+        [BlockColor.Red, true],
+        [BlockColor.Green, false],
+        [BlockColor.Blue, true]
     ]);
 
     it("Can detect valid class configuration", () => {
@@ -266,10 +266,10 @@ describe("Detects errors and warnings in minors", () => {
 });
 
 describe("Detects errors and warnings in drs", () => {
-    const majorColors = new Set<BlockColor>([
-        BlockColor.Red,
-        BlockColor.Green,
-        BlockColor.Blue
+    const majorColors = new Map<BlockColor, boolean>([
+        [BlockColor.Red, true],
+        [BlockColor.Green, false],
+        [BlockColor.Blue, true]
     ]);
 
     const minorColors = new Map<BlockColor, IrregularMeetDays>([
@@ -325,7 +325,7 @@ describe("Detects errors and warnings in drs", () => {
 
         const drColors = validateDRs(problems, majorColors, minorColors, [
             {
-                block: BlockColor.Green,
+                block: BlockColor.Red,
                 meets: meets(false, true, false, true, true, false, false),
                 room: "",
                 teacher: "",

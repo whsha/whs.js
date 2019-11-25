@@ -4,7 +4,9 @@
 
 /** A Map to store multiple warnings and errors indexed by K */
 export default class ProblemMap<K, E, W> {
+    /** The errors that the map contains */
     private readonly errors: Map<K, E[]>;
+    /** The warnings that the map contains */
     private readonly warnings: Map<K, W[]>;
 
     constructor() {
@@ -69,11 +71,12 @@ export default class ProblemMap<K, E, W> {
         this.warnings.clear();
     }
 
-    /** The size of the map */
+    /** The size of the error map */
     get errorsSize() {
         return this.errors.size;
     }
 
+    /** The size of the warning map */
     get warningsSize() {
         return this.warnings.size;
     }

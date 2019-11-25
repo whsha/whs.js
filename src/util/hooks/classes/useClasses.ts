@@ -7,12 +7,24 @@ import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
-import { IAdvisory } from "../../class/advisory";
-import { IDR, IMajor, IMinor } from "../../class/full";
-import { validateDRs, validateMajors, validateMinors } from "../../class/validation";
+import { IAdvisory, IDR, IMajor,IMinor } from "../../class/classes";
+import { validateDRs, validateMajors, validateMinors, ValidationError, ValidationWarning } from "../../class/validation";
 import ProblemMap from "../../problemMap";
 
-export function useClasses() {
+/** An interface of the different classes */
+export interface IClasses {
+    /** The advisory */
+    advisory: IAdvisory;
+    /** A map of the drs mapped by their id */
+    drs: Map<string, IDR>;
+    /** A map of the majors mapped by their id */
+    majors: Map<string, IMajor>;
+    /** A map of the minors mapped by their id */
+    minors: Map<string, IMinor>;
+}
+
+/** A hook to read and modify the classes */
+export default function useClasses() {
     const savedClasses = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);
 
@@ -84,48 +96,3 @@ export function useClasses() {
         }
     }));
 }
-
-export enum ValidationError {
-    // Major only errors
-    MajorHasDuplicateBlockColor,
-    MajorMissingBlockColor,
-    // Minor only errors
-    MinorConflictWithMajor,
-    MinorConflictWithMinor,
-    // DR only errors
-    DRConflictWithMajor,
-    DRConflictWithMinor,
-    DRConflictWithDR,
-    // General errors
-    MissingMeetDay,
-    MeetsEveryDay,
-}
-
-export const ValidationErrorMessage: { [K in ValidationError]: string } = {
-    // Major only errors
-    [ValidationError.MajorHasDuplicateBlockColor]: "There exist two major classes that shares this block color",
-    [ValidationError.MajorMissingBlockColor]: "You must specify a block color for this major",
-    // Minor only errors
-    [ValidationError.MinorConflictWithMajor]: "A minor and a major cannot occupy the same color block",
-    [ValidationError.MinorConflictWithMinor]: "Two minors cannot occupy the same color and day blocks",
-    // DR only errors
-    [ValidationError.DRConflictWithMajor]: "A DR and a major cannot occupy the same color block",
-    [ValidationError.DRConflictWithMinor]: "A DR and a minor cannot occupy the same color and day blocks",
-    [ValidationError.DRConflictWithDR]: "Two DRs cannot occupy the same color and day blocks",
-    // General errors
-    [ValidationError.MissingMeetDay]: "You must choose one or more day that this class meets",
-    [ValidationError.MeetsEveryDay]: "A class that meets every day in the cycle should be replaced with a major",
-};
-
-export enum ValidationWarning {
-    // General warnings
-    MissingName,
-    MissingRoom,
-    MissingTeacher
-}
-
-export const ValidationWarningMessage: { [K in ValidationWarning]: string } = {
-    [ValidationWarning.MissingName]: "You should specify a name for this class",
-    [ValidationWarning.MissingRoom]: "You should specify a room for this class",
-    [ValidationWarning.MissingTeacher]: "You should specify a teacher for this class"
-};

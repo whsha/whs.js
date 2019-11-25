@@ -5,6 +5,7 @@
 import { StatusBar, StyleSheet } from "react-native";
 
 // TODO: move colors to /themes
+// tslint:disable:completed-docs
 
 export const navigationHeaderPaddingStyle = {
     headerLeftContainerStyle: { paddingLeft: 15 },

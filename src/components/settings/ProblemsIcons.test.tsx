@@ -4,7 +4,7 @@
 
 import React from "react";
 import { render } from "react-native-testing-library";
-import { ValidationError, ValidationWarning } from "../../util/hooks/classes/useClasses";
+import { ValidationError, ValidationWarning } from "../../util/class/validation";
 import ProblemsIcons from "./ProblemsIcons";
 
 // TODO: Handle press

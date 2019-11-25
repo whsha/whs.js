@@ -11,7 +11,16 @@ import { noSchoolViewStyles } from "../../layout/default";
 
 dayjs.extend(relativeTime);
 
-export default function NoSchoolView({ selectedDate, setDate }: { selectedDate: dayjs.Dayjs; setDate(date: dayjs.Dayjs): void }) {
+/** The props for NoSchoolView */
+interface INoSchoolViewProps {
+    /** The current date that is shown */
+    selectedDate: dayjs.Dayjs;
+    /** The method to set the date */
+    setDate(date: dayjs.Dayjs): void;
+}
+
+/** The today view when there is no school */
+export default function NoSchoolView({ selectedDate, setDate }: INoSchoolViewProps) {
     const calendar = useContext(CalendarContext);
     const [nextSchoolDay, setNextSchoolDay] = useState<Dayjs | undefined>(undefined);
 

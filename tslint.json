@@ -24,7 +24,18 @@
             true,
             "check-space"
         ],
-        "completed-docs": false,
+        "completed-docs": [
+            true,
+            "classes",
+            "enums",
+            "functions",
+            "interfaces",
+            "methods",
+            "namespaces",
+            "properties",
+            "types",
+            "variables"
+        ],
         "curly": true,
         "cyclomatic-complexity": true,
         "deprecation": true,
@@ -90,7 +101,10 @@
         "no-eval": true,
         "no-floating-promises": false,
         "no-for-in-array": true,
-        "no-implicit-dependencies": [true, "dev"],
+        "no-implicit-dependencies": [
+            true,
+            "dev"
+        ],
         "no-import-side-effect": true,
         "no-inferrable-types": true,
         "no-inferred-empty-object-type": true,
@@ -120,7 +134,13 @@
         "no-switch-case-fall-through": true,
         "no-this-assignment": true,
         "no-trailing-whitespace": true,
-        "no-unbound-method": true,
+        "no-unbound-method": [
+            true,
+            {
+                "ignore-static": true,
+                "allow-typeof": true
+            }
+        ],
         "no-unnecessary-callback-wrapper": true,
         "no-unnecessary-class": true,
         "no-unnecessary-initializer": true,
@@ -187,6 +207,6 @@
             "allow-pascal-case",
             "ban-keywords"
         ],
-        "whitespace": true        
+        "whitespace": true
     }
 }

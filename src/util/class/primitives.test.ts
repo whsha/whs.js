@@ -5,11 +5,13 @@
 import { SchoolDay } from "../calendar/types";
 import { IAdvisedClass, IIrregular, irregularMeetCount, irregularMeetDays, irregularMeetJoin, isAdvisedClass, isIrregular } from "./primitives";
 
+/** A sample advised class */
 const advisedClass: IAdvisedClass = {
     room: "100",
     teacher: "Mr. Teach",
 };
 
+/** A sample irregular */
 const irregular: IIrregular = {
     meets: {
         [SchoolDay.One]: true,
@@ -22,6 +24,7 @@ const irregular: IIrregular = {
     }
 };
 
+/** A sample malformed irregular */
 const malIrregular: IIrregular = {
     meets: {
         [SchoolDay.One]: false,
