@@ -2,14 +2,16 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { StackNavigationOptions } from "@react-navigation/stack";
 import { StatusBar, StyleSheet } from "react-native";
 
 // TODO: move colors to /themes
 // tslint:disable:completed-docs
 
-export const navigationHeaderPaddingStyle = {
+export const navigationHeaderPaddingStyle: StackNavigationOptions = {
     headerLeftContainerStyle: { paddingLeft: 15 },
-    headerRightContainerStyle: { paddingRight: 15 }
+    headerRightContainerStyle: { paddingRight: 15 },
+    headerTitleAlign: "center"
 };
 
 export const classComponentStyles = StyleSheet.create({
