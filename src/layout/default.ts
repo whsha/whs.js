@@ -16,7 +16,8 @@ export const navigationHeaderPaddingStyle: StackNavigationOptions = {
 
 export const classComponentStyles = StyleSheet.create({
     colorblindColor: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        paddingHorizontal: 10
     },
     container: {
         backgroundColor: "#FFFFFF",

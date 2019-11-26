@@ -9,6 +9,7 @@ import { observable, toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import React, { useContext } from "react";
 import { Alert, Clipboard, Linking, ScrollView, Switch, Text, View } from "react-native";
+import PickerSelect from "react-native-picker-select";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
@@ -16,6 +17,7 @@ import ResetClassesCell from "../../components/settings/ClearClassesCell";
 import { TempClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../layout/default";
 import ClassesStore from "../../stores/classesStore";
+import { LabelPosition } from "../../stores/preferencesStore";
 import { openLinkInBrowserAlert } from "../../util/alerts";
 import usePreferences from "../../util/hooks/usePreferences";
 import { SettingsParams } from "../SettingsView";
@@ -73,8 +75,21 @@ export default function MainSettingsView() {
         ]);
     };
 
+    // TODO: OWN PAGE
     const updateLabelColors = (val: boolean) =>
         preferences.accessibility.labelColors = val;
+
+    const updateMatchLabelColors = (val: boolean) =>
+        preferences.accessibility.matchLabelColors = val;
+
+    const updateLabelPosition = (val: LabelPosition) =>
+        preferences.accessibility.labelPosition = val;
+
+    const labelPositionPickerValues = [
+        { label: "Left", value: LabelPosition.Left },
+        { label: "Center", value: LabelPosition.Center },
+        { label: "Right", value: LabelPosition.Right },
+    ];
 
     return (
         <View style={settingsViewStyles.container}>
@@ -87,7 +102,9 @@ export default function MainSettingsView() {
                         <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                     </Section>
                     <Section header="Accessibility">
-                        <Cell title="Label Colors" cellAccessoryView={useObserver(() => <Switch value={preferences.accessibility.labelColors} onValueChange={updateLabelColors} />)} />
+                        <Cell title="Text Labels for Colors" cellAccessoryView={useObserver(() => <Switch value={preferences.accessibility.labelColors} onValueChange={updateLabelColors} />)} />
+                        <Cell title="Match Colors on Labels" cellAccessoryView={useObserver(() => <Switch value={preferences.accessibility.matchLabelColors} onValueChange={updateMatchLabelColors} disabled={!preferences.accessibility.labelColors} />)} isDisabled={!preferences.accessibility.labelColors} />
+                        <Cell title="Position of Label" cellAccessoryView={useObserver(() => <PickerSelect value={preferences.accessibility.labelPosition} onValueChange={updateLabelPosition} items={labelPositionPickerValues} style={{ inputIOS: { height: "100%", paddingHorizontal: 10 }, inputAndroid: { height: "100%", paddingHorizontal: 10 } }} disabled={!preferences.accessibility.labelColors} />)} isDisabled={!preferences.accessibility.labelColors} />
                     </Section>
                     <Section header="Legal">
                         <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />

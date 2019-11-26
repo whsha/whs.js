@@ -65,12 +65,11 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
       ]
     }
   >
-    <Text
-      numberOfLines={1}
+    <View
       style={
         Array [
           Object {
-            "color": "#808080",
+            "flexDirection": "row",
           },
           Object {
             "flex": 1,
@@ -79,14 +78,28 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Mr. Teacher Man
-    </Text>
-    <Text
-      numberOfLines={1}
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Mr. Teacher Man
+      </Text>
+    </View>
+    <View
       style={
         Array [
           Object {
-            "color": "#808080",
+            "flexDirection": "row",
           },
           Object {
             "flex": 1,
@@ -95,8 +108,23 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Office
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Office
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -166,12 +194,11 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
       ]
     }
   >
-    <Text
-      numberOfLines={1}
+    <View
       style={
         Array [
           Object {
-            "color": "#808080",
+            "flexDirection": "row",
           },
           Object {
             "flex": 1,
@@ -180,14 +207,28 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Mr. Teacher Man
-    </Text>
-    <Text
-      numberOfLines={1}
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Mr. Teacher Man
+      </Text>
+    </View>
+    <View
       style={
         Array [
           Object {
-            "color": "#808080",
+            "flexDirection": "row",
           },
           Object {
             "flex": 1,
@@ -196,8 +237,23 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Office
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Office
+      </Text>
+    </View>
   </View>
 </View>
 `;

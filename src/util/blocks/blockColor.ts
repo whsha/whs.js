@@ -11,7 +11,7 @@ export enum BlockColor {
     Blue = "Blue",
     Purple = "Purple",
     Tan = "Tan",
-    None = "None"
+    None = "No Color"
 }
 
 /** A map of the block colors to their display colors */
