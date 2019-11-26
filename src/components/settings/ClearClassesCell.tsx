@@ -2,23 +2,24 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
+import { useNavigation } from "@react-navigation/core";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useContext } from "react";
-import { Alert } from "react-native";
 import { Cell } from "react-native-tableview-simple";
-import { ClassesContext, TempClassesContext } from "../../contexts";
+import { TempClassesContext } from "../../contexts";
 import { tableViewStyle } from "../../layout/default";
 import { clearClassesAlert } from "../../util/alerts";
+import { SettingsParams } from "../../views/SettingsView";
 
 /** A settings cell to clear the classes */
 export default function ClearClassesCell() {
-    const classes = useContext(ClassesContext);
+    const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
     const tempClasses = useContext(TempClassesContext);
 
     const clear = () => clearClassesAlert(() => {
-        classes.clear();
         tempClasses.clear();
 
-        Alert.alert("Classes cleared");
+        navigation.navigate("ClassesList");
     });
 
     return (
