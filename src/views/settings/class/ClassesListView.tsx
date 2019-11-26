@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useMemo } from "react";
-import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView, Text } from "react-native";
+import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -149,9 +149,6 @@ export default function ClassesListView() {
                         />
                         <Cell title="Add a DR" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addDr} />
                         <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} isDisabled={true} />
-                    </Section>
-                    <Section header="Debug">
-                        <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>} />
                     </Section>
                 </TableView>
             </ScrollView>
