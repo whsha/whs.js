@@ -21,7 +21,7 @@ function FreeComponent({ start, end, block }: ITimes & IColored) {
                 <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
             </View>
             <View style={[classComponentStyles.multiView, classComponentStyles.info]}>
-            {preferences.accessability.labelColors ? <Text style={[classComponentStyles.dim, classComponentStyles.multiMiddle, classComponentStyles.colorblindColor, { color: getDisplayColorForBlock(block) }]}>{block}</Text> : null}
+            {preferences.accessibility.labelColors ? <Text style={[classComponentStyles.dim, classComponentStyles.multiMiddle, classComponentStyles.colorblindColor, { color: getDisplayColorForBlock(block) }]}>{block}</Text> : null}
             </View>
         </View>
     );

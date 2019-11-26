@@ -14,7 +14,7 @@ class AccessibilityPreferences {
 
 /** A store of all of the user's preferenses */
 export default class PreferencesStore {
-    /** The preferenses pertaining to the user's accessability */
+    /** The preferenses pertaining to the user's accessibility */
     @persist("object", AccessibilityPreferences)
-    public accessability: AccessibilityPreferences = new AccessibilityPreferences();
+    public accessibility: AccessibilityPreferences = new AccessibilityPreferences();
 }

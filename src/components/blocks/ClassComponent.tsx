@@ -22,7 +22,7 @@ function ClassComponent({ end, start, name, block, teacher, room }: ITimes & IAd
             </View>
             <View style={[classComponentStyles.multiView, classComponentStyles.info]}>
                 <Text style={[classComponentStyles.dim, classComponentStyles.multiLeft]} numberOfLines={1}>{teacher.length === 0 ? "No Teacher" : teacher}</Text>
-                {preferences.accessability.labelColors ? <Text style={[classComponentStyles.dim, classComponentStyles.multiMiddle, classComponentStyles.colorblindColor, { color: getDisplayColorForBlock(block) }]}>{block}</Text> : null}
+                {preferences.accessibility.labelColors ? <Text style={[classComponentStyles.dim, classComponentStyles.multiMiddle, classComponentStyles.colorblindColor, { color: getDisplayColorForBlock(block) }]}>{block}</Text> : null}
                 <Text style={[classComponentStyles.dim, classComponentStyles.multiRight]} numberOfLines={1}>{room.length === 0 ? "No Room" : `${isNaN(parseInt(room, 10)) ? "" : "Room "}${room}`}</Text>
             </View>
         </View>

@@ -74,7 +74,7 @@ export default function MainSettingsView() {
     };
 
     const updateLabelColors = (val: boolean) =>
-        preferences.accessability.labelColors = val;
+        preferences.accessibility.labelColors = val;
 
     return (
         <View style={settingsViewStyles.container}>
@@ -86,8 +86,8 @@ export default function MainSettingsView() {
                         <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
                         <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                     </Section>
-                    <Section header="Accessability">
-                        <Cell title="Label Colors" cellAccessoryView={useObserver(() => <Switch value={preferences.accessability.labelColors} onValueChange={updateLabelColors} />)} />
+                    <Section header="Accessibility">
+                        <Cell title="Label Colors" cellAccessoryView={useObserver(() => <Switch value={preferences.accessibility.labelColors} onValueChange={updateLabelColors} />)} />
                     </Section>
                     <Section header="Legal">
                         <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
