@@ -19,7 +19,7 @@ function ClassComponent({ end, start, name, block, teacher, room }: ITimes & IAd
             </View>
             <View style={[classComponentStyles.dualView, classComponentStyles.info]}>
                 <Text style={[classComponentStyles.dim, classComponentStyles.teacher]} numberOfLines={1}>{teacher.length === 0 ? "No Teacher" : teacher}</Text>
-                <Text style={[classComponentStyles.dim, classComponentStyles.room]} numberOfLines={1}>{room.length === 0 ? "No Room" : `Room ${room}`}</Text>
+                <Text style={[classComponentStyles.dim, classComponentStyles.room]} numberOfLines={1}>{room.length === 0 ? "No Room" : `${isNaN(parseInt(room, 10)) ? "" : "Room "}${room}`}</Text>
             </View>
         </View>
     );
