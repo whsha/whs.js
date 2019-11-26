@@ -6,7 +6,7 @@ import { observable } from "mobx";
 import { persist } from "mobx-persist";
 
 /** A store for the preferenses pertaining to accessibility */
-export class AccessibilityPreferences {
+class AccessibilityPreferences {
     /** Weather or not the names of the class colors should be displayed */
     @observable @persist
     public labelColors = false;
