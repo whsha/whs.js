@@ -11,40 +11,16 @@ export interface IIdentifiable {
     readonly uuid: string;
 }
 
-/** Check if the class is named */
-export function isIdentifiable(clazz: unknown): clazz is IIdentifiable {
-    const possibleClass = clazz as Partial<IIdentifiable>;
-
-    // Make sure fields exist
-    return possibleClass.uuid !== undefined;
-}
-
 /** A block that has a color to go along with it */
 export interface IColored {
     /** The block color which the class meets */
     block: BlockColor;
 }
 
-/** Check if the class is colored */
-export function isColored(clazz: unknown): clazz is IColored {
-    const possibleClass = clazz as Partial<IColored>;
-
-    // Make sure fields exist
-    return possibleClass.block !== undefined;
-}
-
 /** A block that has a name attached to it */
 export interface INamed {
     /** The name of the class */
     name: string;
-}
-
-/** Check if the class is named */
-export function isNamed(clazz: unknown): clazz is INamed {
-    const possibleClass = clazz as Partial<INamed>;
-
-    // Make sure fields exist
-    return possibleClass.name !== undefined;
 }
 
 /** A block that has a teacher that either teaches or advises it */

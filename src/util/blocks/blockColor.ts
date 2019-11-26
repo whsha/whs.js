@@ -14,18 +14,6 @@ export enum BlockColor {
     None = "none"
 }
 
-/** A const that stores all of the block colors */
-export const allBlockColors = [
-    BlockColor.Red,
-    BlockColor.Orange,
-    BlockColor.Yellow,
-    BlockColor.Green,
-    BlockColor.Blue,
-    BlockColor.Purple,
-    BlockColor.Tan,
-    BlockColor.None
-];
-
 /** A map of the block colors to their display colors */
 type BlockColorColorMap = {
     readonly [B in BlockColor]: string;

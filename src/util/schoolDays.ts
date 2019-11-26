@@ -7,14 +7,14 @@ import { BlockColor } from "./blocks/blockColor";
 import { SchoolDay } from "./calendar/types";
 
 /** A map of the blocks to their schooldays to their colors */
-export type BlockDayColorMap = {
+type BlockDayColorMap = {
     readonly [B in Block]: {
         [D in SchoolDay]: BlockColor;
     }
 };
 
 /** A map of block colors to their school days and the blocks they meet then */
-export type ColorSchoolDayBlockMap = {
+type ColorSchoolDayBlockMap = {
     readonly [B in BlockColor]: {
         [S in SchoolDay]?: Block;
     }

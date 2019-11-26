@@ -3,7 +3,7 @@
  */
 
 import { StackNavigationOptions } from "@react-navigation/stack";
-import { StatusBar, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 // TODO: move colors to /themes
 // tslint:disable:completed-docs
@@ -177,13 +177,6 @@ export const noSchoolViewStyles = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         width: "100%"
-    }
-});
-
-export const todayViewStyles = StyleSheet.create({
-    todayView: {
-        flex: 1,
-        paddingTop: StatusBar.currentHeight
     }
 });
 

@@ -32,14 +32,3 @@ export enum SchoolDay {
     Six = 6,
     Seven = 7
 }
-
-/** An array of all of the school days */
-export const allSchoolDays: SchoolDay[] = [
-    SchoolDay.One,
-    SchoolDay.Two,
-    SchoolDay.Three,
-    SchoolDay.Four,
-    SchoolDay.Five,
-    SchoolDay.Six,
-    SchoolDay.Seven
-];

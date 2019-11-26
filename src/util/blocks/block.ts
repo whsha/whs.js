@@ -11,13 +11,3 @@ export enum Block {
     E = "e",
     F = "f"
 }
-
-/** A const that stores all of the blocks for a day */
-export const allBlocks = [
-    Block.A,
-    Block.B,
-    Block.C,
-    Block.D,
-    Block.E,
-    Block.F
-];

@@ -21,14 +21,14 @@ export default interface IUseClass<C extends IClassType<ClassType>> {
 }
 
 /** Helper type to get the mutable values from a type */
-export type Mutables<T> = Pick<T, WritableKeys<T>>;
+type Mutables<T> = Pick<T, WritableKeys<T>>;
 
 /** Helper type for WritableKeys */
-export type IfEquals<X, Y, A = X, B = never> =
+type IfEquals<X, Y, A = X, B = never> =
     (<T>() => T extends X ? 1 : 2) extends
     (<T>() => T extends Y ? 1 : 2) ? A : B;
 
 /** Helper type for Mutables */
-export type WritableKeys<T> = {
+type WritableKeys<T> = {
     [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
 }[keyof T];

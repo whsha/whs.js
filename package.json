@@ -8,8 +8,9 @@
         "doctor": "expo doctor",
         "eject": "expo eject",
         "lint": "tslint --project ./tsconfig.json",
+        "exportlint": "ts-unused-exports tsconfig.json --ignorePaths=App.ts",
         "typecheck": "tsc --noEmit",
-        "todo": "git grep --heading -EI \"TODO|FIXME\" -- :*.tsx?",
+        "todo": "git grep --heading -EIn \"(TODO|FIXME):\"",
         "test": "jest --verbose",
         "testcov": "jest --coverage --verbose"
     },
@@ -62,6 +63,7 @@
         "jest-fetch-mock": "^2.1.2",
         "react-native-testing-library": "^1.11.1",
         "ts-jest": "^24.0.2",
+        "ts-unused-exports": "^5.1.0",
         "tslint": "^5.16.0",
         "tslint-react": "^4.0.0",
         "typescript": "^3.4.5"
@@ -104,8 +106,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn typecheck && yarn lint",
-            "pre-push": "yarn typecheck && yarn lint && yarn test",
+            "pre-commit": "yarn typecheck && yarn lint && yarn exportlint",
+            "pre-push": "yarn typecheck && yarn lint && yarn test && yarn exportlint",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
