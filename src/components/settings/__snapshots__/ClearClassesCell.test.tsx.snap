@@ -1,81 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders <ClearClassesCell/> 1`] = `
-<View
-  accessible={true}
-  isTVSelectable={true}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={null}
->
-  <RCTSafeAreaView
-    emulateUnlessSupported={true}
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        Object {
-          "backgroundColor": "#FFF",
-        },
-      ]
+<RNCSafeAreaView
+  onInsetsChange={[Function]}
+  style={
+    Object {
+      "flex": 1,
     }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "minHeight": 44,
-            "paddingLeft": 15,
-            "paddingRight": 20,
-          },
-          Object {
-            "backgroundColor": "#FFF",
-          },
-          Object {},
-        ]
-      }
-    >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "paddingVertical": 10,
-          }
-        }
-      >
-        <Text
-          allowFontScaling={true}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "flex": 1,
-                "fontSize": 16,
-                "letterSpacing": -0.32,
-              },
-              Object {
-                "color": "#000",
-              },
-              Object {
-                "color": "#FF5050",
-              },
-            ]
-          }
-        >
-          Clear Classes
-        </Text>
-      </View>
-    </View>
-  </RCTSafeAreaView>
-</View>
+  }
+/>
 `;
