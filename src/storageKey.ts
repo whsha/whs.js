@@ -10,6 +10,8 @@ enum StorageKey {
     Classes = "@whs.js/classes",
     /** The Prepared Classes */
     PreparedClasses = "@whs.js/classes-prepared",
+    /** The user's preferences */
+    Preferences = "@whs.js/preferences",
     /** The saved navigation state */
     Navigation = "@whs.js/navigation"
 }

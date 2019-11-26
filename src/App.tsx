@@ -10,7 +10,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import * as Sentry from "sentry-expo";
-import { CalendarContext, ClassesContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
@@ -25,6 +25,7 @@ export enum ApplicationState {
     DownloadingCal = "Downloading Calendar",
     ParsingCal = "Parsing Calendar",
     SavingCal = "Saving Calendar",
+    LoadingPreferences = "Loading Preferences",
     LoadingClasses = "Loading Classes",
     Opening = "Opening App",
     Loaded = "Loaded",
@@ -48,6 +49,7 @@ export default function App() {
     const classes = useContext(ClassesContext);
     const tempClasses = useContext(TempClassesContext);
     const preparedClasses = useContext(PreparedClassesContext);
+    const preferences = useContext(PreferencesStoreContext);
 
     /** Async function to initialize the app and all needed stores */
     const Load = async (reset = false) => {
@@ -86,6 +88,10 @@ export default function App() {
             // Update the calendar with the given parsed info
             await calendar.updateCalendar(parsed);
         }
+
+        setCurrentTask(ApplicationState.LoadingPreferences);
+        // Hydrate the preferences store
+        await hydrate(StorageKey.Preferences, preferences);
 
         setCurrentTask(ApplicationState.LoadingClasses);
         // Hydrate the classes store

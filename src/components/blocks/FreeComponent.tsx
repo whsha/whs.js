@@ -8,14 +8,20 @@ import { classComponentStyles } from "../../layout/default";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
 import { ITimes } from "../../util/class/extentions";
 import { IColored } from "../../util/class/primitives";
+import usePreferences from "../../util/hooks/usePreferences";
 
 /** A component to display a free block */
 function FreeComponent({ start, end, block }: ITimes & IColored) {
+    const preferences = usePreferences();
+
     return (
         <View style={classComponentStyles.container}>
-            <View style={classComponentStyles.dualView}>
+            <View style={classComponentStyles.multiView}>
                 <Text style={[classComponentStyles.title, { color: getDisplayColorForBlock(block) }]}>Free</Text>
                 <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
+            </View>
+            <View style={[classComponentStyles.multiView, classComponentStyles.info]}>
+            {preferences.accessability.labelColors ? <Text style={[classComponentStyles.dim, classComponentStyles.multiMiddle, classComponentStyles.colorblindColor, { color: getDisplayColorForBlock(block) }]}>{block}</Text> : null}
             </View>
         </View>
     );

@@ -15,6 +15,9 @@ export const navigationHeaderPaddingStyle: StackNavigationOptions = {
 };
 
 export const classComponentStyles = StyleSheet.create({
+    colorblindColor: {
+        fontWeight: "bold"
+    },
     container: {
         backgroundColor: "#FFFFFF",
         // borderBottomColor: "#CECECE",
@@ -27,20 +30,26 @@ export const classComponentStyles = StyleSheet.create({
     dim: {
         color: "#808080"
     },
-    dualView: {
-        alignItems: "baseline",
-        flexDirection: "row",
-        flexWrap: "nowrap",
-        justifyContent: "space-between"
-    },
     info: {
         marginTop: 5
     },
-    room: {
-        overflow: "visible"
+    multiLeft: {
+        flex: 1,
+        textAlign: "left"
     },
-    teacher: {
-        maxWidth: "50%"
+    multiMiddle: {
+        flex: 1,
+        textAlign: "center"
+    },
+    multiRight: {
+        flex: 1,
+        textAlign: "right"
+    },
+    multiView: {
+        alignContent: "stretch",
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        justifyContent: "space-between"
     },
     title: {
         color: "#A0A0A0",

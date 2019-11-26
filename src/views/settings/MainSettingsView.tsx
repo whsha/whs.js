@@ -6,8 +6,9 @@ import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Constants from "expo-constants";
 import { observable, toJS } from "mobx";
+import { useObserver } from "mobx-react-lite";
 import React, { useContext } from "react";
-import { Alert, Clipboard, Linking, ScrollView, Text, View } from "react-native";
+import { Alert, Clipboard, Linking, ScrollView, Switch, Text, View } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
@@ -16,12 +17,14 @@ import { TempClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../layout/default";
 import ClassesStore from "../../stores/classesStore";
 import { openLinkInBrowserAlert } from "../../util/alerts";
+import usePreferences from "../../util/hooks/usePreferences";
 import { SettingsParams } from "../SettingsView";
 
 /** The main settings view */
 export default function MainSettingsView() {
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
     const tempClasses = useContext(TempClassesContext);
+    const preferences = usePreferences();
 
     const navigateTo = (to: keyof SettingsParams) =>
         () => navigation.navigate(to);
@@ -70,6 +73,9 @@ export default function MainSettingsView() {
         ]);
     };
 
+    const updateLabelColors = (val: boolean) =>
+        preferences.accessability.labelColors = val;
+
     return (
         <View style={settingsViewStyles.container}>
             <ScrollView>
@@ -79,6 +85,9 @@ export default function MainSettingsView() {
                         <Cell title="Configure Lunches" accessory="DisclosureIndicator" /* onPress={navigateTo("LunchesSettings")} */ isDisabled={true} />
                         <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
                         <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
+                    </Section>
+                    <Section header="Accessability">
+                        <Cell title="Label Colors" cellAccessoryView={useObserver(() => <Switch value={preferences.accessability.labelColors} onValueChange={updateLabelColors} />)} />
                     </Section>
                     <Section header="Legal">
                         <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />

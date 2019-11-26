@@ -15,7 +15,7 @@ exports[`Tests different variations of <FreeComponent> Renders FreeComponent 1`]
   <View
     style={
       Object {
-        "alignItems": "baseline",
+        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -50,5 +50,20 @@ exports[`Tests different variations of <FreeComponent> Renders FreeComponent 1`]
       8:30 AM
     </Text>
   </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  />
 </View>
 `;

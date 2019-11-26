@@ -15,7 +15,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
   <View
     style={
       Object {
-        "alignItems": "baseline",
+        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -49,7 +49,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     style={
       Array [
         Object {
-          "alignItems": "baseline",
+          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -68,7 +68,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             "color": "#808080",
           },
           Object {
-            "maxWidth": "50%",
+            "flex": 1,
+            "textAlign": "left",
           },
         ]
       }
@@ -83,7 +84,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             "color": "#808080",
           },
           Object {
-            "overflow": "visible",
+            "flex": 1,
+            "textAlign": "right",
           },
         ]
       }
@@ -109,7 +111,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
   <View
     style={
       Object {
-        "alignItems": "baseline",
+        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -143,7 +145,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     style={
       Array [
         Object {
-          "alignItems": "baseline",
+          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -162,7 +164,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             "color": "#808080",
           },
           Object {
-            "maxWidth": "50%",
+            "flex": 1,
+            "textAlign": "left",
           },
         ]
       }
@@ -177,7 +180,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             "color": "#808080",
           },
           Object {
-            "overflow": "visible",
+            "flex": 1,
+            "textAlign": "right",
           },
         ]
       }

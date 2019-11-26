@@ -5,6 +5,7 @@
 import { createContext } from "react";
 import CalendarStore from "./stores/calendarStore";
 import ClassesStore from "./stores/classesStore";
+import PreferencesStore from "./stores/preferencesStore";
 import PreparedClassesStore from "./stores/preparedClassesStore";
 
 /** The context to access the reload function */
@@ -21,3 +22,6 @@ export const TempClassesContext = createContext(new ClassesStore());
 
 /** The context to access the prepared classes */
 export const PreparedClassesContext = createContext(new PreparedClassesStore());
+
+/** The context to access the user's preferences */
+export const PreferencesStoreContext = createContext(new PreferencesStore());

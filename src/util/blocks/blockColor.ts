@@ -4,14 +4,14 @@
 
 /** Colors of the blocks */
 export enum BlockColor {
-    Red = "red",
-    Orange = "orange",
-    Yellow = "yellow",
-    Green = "green",
-    Blue = "blue",
-    Purple = "purple",
-    Tan = "tan",
-    None = "none"
+    Red = "Red",
+    Orange = "Orange",
+    Yellow = "Yellow",
+    Green = "Green",
+    Blue = "Blue",
+    Purple = "Purple",
+    Tan = "Tan",
+    None = "None"
 }
 
 /** A map of the block colors to their display colors */

@@ -7,6 +7,7 @@
 [![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js/master.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
 
 [See **Rewrite** project for roadmap](https://github.com/DusterTheFirst/whs.js/projects/1)

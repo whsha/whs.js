@@ -12,13 +12,13 @@ import { ITimes } from "../../util/class/extentions";
 function AdvisoryComponent({teacher, room, end, start}: IAdvisory & ITimes) {
     return (
         <View style={classComponentStyles.container}>
-            <View style={classComponentStyles.dualView}>
+            <View style={classComponentStyles.multiView}>
                 <Text style={classComponentStyles.title}>Advisory</Text>
                 <Text style={classComponentStyles.dim}>{start.format("h:mm")} - {end.format("h:mm A")}</Text>
             </View>
-            <View style={[classComponentStyles.dualView, classComponentStyles.info]}>
-                <Text style={[classComponentStyles.dim, classComponentStyles.teacher]} numberOfLines={1}>{teacher.length === 0 ? "No Advisor" : teacher}</Text>
-                <Text style={[classComponentStyles.dim, classComponentStyles.room]} numberOfLines={1}>{room.length === 0 ? "No Room" : `Room ${room}`}</Text>
+            <View style={[classComponentStyles.multiView, classComponentStyles.info]}>
+                <Text style={[classComponentStyles.dim, classComponentStyles.multiLeft]} numberOfLines={1}>{teacher.length === 0 ? "No Advisor" : teacher}</Text>
+                <Text style={[classComponentStyles.dim, classComponentStyles.multiRight]} numberOfLines={1}>{room.length === 0 ? "No Room" : `Room ${room}`}</Text>
             </View>
         </View>
     );
