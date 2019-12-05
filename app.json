@@ -1,10 +1,12 @@
 {
   "expo": {
     "android": {
-      "package": "com.dusterthefirst.whs"
+      "package": "com.dusterthefirst.whs",
+      "versionCode": 2,
+      "permissions": []
     },
     "androidStatusBar": {
-      "barStyle": "dark-content",
+      "barStyle": "light-content",
       "backgroundColor": "#000000"
     },
     "assetBundlePatterns": [
