@@ -59,6 +59,8 @@ export default class PreparedClassesStore {
             for (const schoolDay of schoolDays) {
                 const block = getBlockForColorOnDay(major.block, schoolDay);
 
+                console.log(major, schoolDay, block);
+
                 prepared[schoolDay][block] = major;
 
                 // If this is a lab, add it to block A

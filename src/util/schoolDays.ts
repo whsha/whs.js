@@ -24,7 +24,6 @@ type ColorSchoolDayBlockMap = {
 // tslint:disable: object-literal-sort-keys
 const MapOfBlocksToColor: BlockDayColorMap = {
     [Block.A]: {
-        // TODO: LAB BLOCKS
         [SchoolDay.One]: BlockColor.None,
         [SchoolDay.Two]: BlockColor.None,
         [SchoolDay.Three]: BlockColor.None,
@@ -115,7 +114,7 @@ const MapOfColorsToSchoolDaysToBlocks: ColorSchoolDayBlockMap = {
     },
     [BlockColor.Green]: {
         [SchoolDay.One]: Block.D,
-        [SchoolDay.Three]: Block.A,
+        [SchoolDay.Three]: Block.B,
         [SchoolDay.Four]: Block.D,
         [SchoolDay.Six]: Block.D,
         [SchoolDay.Seven]: Block.D
