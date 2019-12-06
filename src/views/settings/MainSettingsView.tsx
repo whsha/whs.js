@@ -14,6 +14,7 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
+import RePrepareClassesCell from "../../components/settings/RePrepareClassesCell";
 import { TempClassesContext } from "../../contexts";
 import { settingsViewStyles } from "../../layout/default";
 import ClassesStore from "../../stores/classesStore";
@@ -121,6 +122,7 @@ export default function MainSettingsView() {
                     <Section header="Clear" footer="If your schedule shows up incorrectly, clearing the caches may help.">
                         <ClearCalCacheCell />
                         <ResetClassesCell />
+                        <RePrepareClassesCell />
                     </Section>
                 </TableView>
             </ScrollView>
