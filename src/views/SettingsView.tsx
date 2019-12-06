@@ -5,6 +5,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../layout/default";
+import AccessibilitySettingsView from "./settings/AccessibilitySettingsView";
 import AdvisoryConfigureView from "./settings/class/AdvisoryEditView";
 import ClassesListView from "./settings/class/ClassesListView";
 import DREditView from "./settings/class/DREditView";
@@ -20,6 +21,8 @@ export type SettingsParams = Pick<ISettingsParams, keyof ISettingsParams>;
 
 /** The settings parameters as an interface */
 interface ISettingsParams {
+    /** The accessibility settings view */
+    Accessibility: undefined;
     /** The main settings view */
     AllSettings: undefined;
     /** The classes list view */
@@ -46,13 +49,14 @@ interface ISettingsParams {
 /** The view for the settings tab */
 export default function SettingsView() {
     return (
-        <Stack.Navigator screenOptions={navigationHeaderPaddingStyle}>
+        <Stack.Navigator>
             <Stack.Screen name="AllSettings" component={MainView} options={{ title: "Settings" }} />
-            <Stack.Screen name="ClassesList" component={ClassesListView} options={{ title: "Class Settings", gestureEnabled: false }} />
-            <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false }} />
-            <Stack.Screen name="ConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false }} />
-            <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false }} />
-            <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false }} />
+            <Stack.Screen name="Accessibility" component={AccessibilitySettingsView} options={{ title: "Accessibility Options" }} />
+            <Stack.Screen name="ClassesList" component={ClassesListView} options={{ title: "Class Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="ConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
         </Stack.Navigator>
     );
 }
