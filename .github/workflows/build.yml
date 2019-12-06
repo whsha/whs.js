@@ -6,6 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - &CacheYarn
+        name: Cache yarn
+        uses: actions/cache@v1
+        with:
+          path: /home/runner/.cache/yarn/v6
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - &CacheNodeModule
+        name: Cache yarn
+        uses: actions/cache@v1
+        with:
+          path: /home/runner/.cache/yarn/v6
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - run: yarn run typecheck
   test:
@@ -13,6 +25,8 @@ jobs:
     needs: typecheck
     steps:
       - uses: actions/checkout@v1
+      - *CacheYarn
+      - *CacheNodeModule
       - run: yarn
       - run: yarn run testcov --forceExit
       - uses: codecov/codecov-action@v1.0.2
@@ -23,6 +37,8 @@ jobs:
     needs: typecheck
     steps:
       - uses: actions/checkout@v1
+      - *CacheYarn
+      - *CacheNodeModule
       - run: yarn
       - run: yarn run lint
       - run: yarn run exportlint
@@ -32,6 +48,8 @@ jobs:
     steps:
       - run: yarn global add expo-cli
       - uses: actions/checkout@v1
+      - *CacheYarn
+      - *CacheNodeModule
       - run: yarn
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
