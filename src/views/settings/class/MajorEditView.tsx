@@ -63,9 +63,7 @@ export default function MajorEditView() {
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
-                    <Section header="Color Block">
-                        <Cell cellContentView={<BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />} />
-                    </Section>
+                    <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
                     <Section header="Basic Info">
                         <Cell title="Name" cellAccessoryView={<TextInput placeholder="ACP US History" value={replaceSpaceWithNBSP(major.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
                         <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(major.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />

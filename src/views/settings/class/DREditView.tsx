@@ -65,12 +65,8 @@ export default function DREditView() {
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
-                    <Section header="Color Block">
-                        <Cell cellContentView={<BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />} />
-                    </Section>
-                    <Section header="School Days">
-                        <Cell cellContentView={<SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />} />
-                    </Section>
+                    <BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />
+                    <SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />
                     <Section header="Basic Info">
                         <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(DR.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
                         <Cell title="Room" cellAccessoryView={<TextInput placeholder="437" value={replaceSpaceWithNBSP(DR.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />

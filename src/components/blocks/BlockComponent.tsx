@@ -21,18 +21,7 @@ function BlockComponent({ end, start, clazz, block }: IDisplayBlock) {
     if (clazz === undefined) {
         return <FreeComponent start={start} end={end} block={block} />;
     } else {
-        if (isMajor(clazz)) {
-            return (
-                <ClassComponent
-                    start={start}
-                    end={end}
-                    name={clazz.name}
-                    block={clazz.block}
-                    room={clazz.room}
-                    teacher={clazz.teacher}
-                />
-            );
-        } else if (isMinor(clazz)) {
+        if (isMajor(clazz) || isMinor(clazz)) {
             return (
                 <ClassComponent
                     start={start}

@@ -2,10 +2,9 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { memo, useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { schoolDayPickerStyles } from "../../layout/default";
+import React, { memo, useEffect, useMemo, } from "react";
+import { Cell, Section } from "react-native-tableview-simple";
+import { tabBarIconSelectedColor } from "../../layout/default";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { SchoolDay } from "../../util/calendar/types";
 import { IrregularMeetDays } from "../../util/class/primitives";
@@ -23,59 +22,52 @@ interface ISchoolDayPickerProps {
 
 /** A component for picking the school days that a class meets on */
 export default function SchoolDayPicker({ onToggle, value, blockColorRestraint }: ISchoolDayPickerProps) {
-    const toggle = (day: SchoolDay) => () => onToggle(day);
-
-    const schoolDays = getSchoolDaysThatHaveColor(blockColorRestraint);
+    const schoolDays = useMemo(() => getSchoolDaysThatHaveColor(blockColorRestraint), [blockColorRestraint]);
 
     return (
-        <ScrollView horizontal={true}>
-            <DayPicker day={SchoolDay.One} selected={value[SchoolDay.One]} onPress={toggle(SchoolDay.One)} disabled={schoolDays.indexOf(SchoolDay.One) === -1} />
-            <DayPicker day={SchoolDay.Two} selected={value[SchoolDay.Two]} onPress={toggle(SchoolDay.Two)} disabled={schoolDays.indexOf(SchoolDay.Two) === -1} />
-            <DayPicker day={SchoolDay.Three} selected={value[SchoolDay.Three]} onPress={toggle(SchoolDay.Three)} disabled={schoolDays.indexOf(SchoolDay.Three) === -1} />
-            <DayPicker day={SchoolDay.Four} selected={value[SchoolDay.Four]} onPress={toggle(SchoolDay.Four)} disabled={schoolDays.indexOf(SchoolDay.Four) === -1} />
-            <DayPicker day={SchoolDay.Five} selected={value[SchoolDay.Five]} onPress={toggle(SchoolDay.Five)} disabled={schoolDays.indexOf(SchoolDay.Five) === -1} />
-            <DayPicker day={SchoolDay.Six} selected={value[SchoolDay.Six]} onPress={toggle(SchoolDay.Six)} disabled={schoolDays.indexOf(SchoolDay.Six) === -1} />
-            <DayPicker day={SchoolDay.Seven} selected={value[SchoolDay.Seven]} onPress={toggle(SchoolDay.Seven)} disabled={schoolDays.indexOf(SchoolDay.Seven) === -1} />
-        </ScrollView>
+        <Section header="School Days">
+            <DayPicker day={SchoolDay.One} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Two} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Three} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Four} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Five} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Six} value={value} toggle={onToggle} enabledDays={schoolDays} />
+            <DayPicker day={SchoolDay.Seven} value={value} toggle={onToggle} enabledDays={schoolDays} />
+        </Section>
     );
 }
 
-/** The props for a DayPicker */
-interface IDayPickerProps<T extends SchoolDay> {
-    /** The day to pick */
-    day: T;
-    /** If the day is disabled */
-    disabled?: boolean;
-    /** If the day is selected */
-    selected: boolean;
-    /** The callback for when the day is pressed */
-    onPress?(): void;
+/** The props for DayPicker */
+interface IDayPickerProps<D extends SchoolDay> {
+    /** The day for the picker */
+    day: D;
+    /** The current selected value */
+    value: IrregularMeetDays;
+    /** The callback to use to pick a new day */
+    toggle(day: D): void;
+    /** The school days that are enabled */
+    enabledDays: SchoolDay[];
 }
 
-/** The individual days in the SchoolDayPicker component */
-const DayPicker = memo(<T extends SchoolDay>({ day, disabled = false, selected, onPress }: IDayPickerProps<T>) => {
-    const containerStyles = [
-        schoolDayPickerStyles.container,
-        selected ? schoolDayPickerStyles.containerSelected : undefined,
-        disabled ? schoolDayPickerStyles.containerDisabled : undefined
-    ];
-
-    const textStyles = [
-        schoolDayPickerStyles.number,
-        selected ? schoolDayPickerStyles.numberSelected : undefined,
-    ];
+/** The cell to choose colors with */
+const DayPicker = memo(<D extends SchoolDay>({ day, enabledDays, toggle, value }: IDayPickerProps<D>) => {
+    const disabled = !enabledDays.includes(day);
+    const selected = value[day] === true;
+    const toggleCallback = () => toggle(day);
 
     useEffect(() => {
-        if (disabled && selected && onPress !== undefined) {
-            onPress();
+        if (disabled && selected) {
+            toggleCallback();
         }
-    }, [disabled, selected, onPress]);
+    }, [disabled, selected]);
 
     return (
-        <TouchableOpacity onPress={onPress} disabled={disabled}>
-            <View style={containerStyles}>
-                <Text style={textStyles}>{day}</Text>
-            </View>
-        </TouchableOpacity>
+        <Cell
+            title={`Day ${day}`}
+            onPress={toggleCallback}
+            titleTextColor={tabBarIconSelectedColor}
+            accessory={selected ? "Checkmark" : undefined}
+            isDisabled={disabled}
+        />
     );
 });

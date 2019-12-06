@@ -66,12 +66,8 @@ export default function MinorEditView() {
         <SafeAreaView style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
-                    <Section header="Color Block">
-                        <Cell cellContentView={<BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />} />
-                    </Section>
-                    <Section header="School Days">
-                        <Cell cellContentView={<SchoolDayPicker value={minor.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={minor.tempValue.block} />} />
-                    </Section>
+                    <BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />
+                    <SchoolDayPicker value={minor.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={minor.tempValue.block} />
                     <Section header="Basic Info">
                         <Cell title="Name" cellAccessoryView={<TextInput placeholder="You and the Law" value={replaceSpaceWithNBSP(minor.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
                         <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(minor.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
