@@ -25,7 +25,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     <Text
       style={
         Object {
-          "color": "#A0A0A0",
+          "color": "#444444",
           "fontSize": 25,
           "fontWeight": "bold",
         }
@@ -121,7 +121,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     <Text
       style={
         Object {
-          "color": "#A0A0A0",
+          "color": "#444444",
           "fontSize": 25,
           "fontWeight": "bold",
         }
