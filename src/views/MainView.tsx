@@ -8,7 +8,7 @@ import { RouteProp } from "@react-navigation/core";
 import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
-import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../layout/default";
+import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../styles/layout/default";
 import SettingsView from "./SettingsView";
 import TodayView from "./TodayView";
 

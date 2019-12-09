@@ -4,7 +4,7 @@
 
 import React, { memo } from "react";
 import { Text, View } from "react-native";
-import { classComponentStyles } from "../../layout/default";
+import { classComponentStyles } from "../../styles/layout/default";
 import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
 import { ITimes } from "../../util/class/extentions";
 import { IColored } from "../../util/class/primitives";

@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useContext } from "react";
 import { Cell } from "react-native-tableview-simple";
 import { TempClassesContext } from "../../contexts";
-import { tableViewStyle } from "../../layout/default";
+import { tableViewStyle } from "../../styles/layout/default";
 import { clearClassesAlert } from "../../util/alerts";
 import { SettingsParams } from "../../views/SettingsView";
 

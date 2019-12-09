@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Cell } from "react-native-tableview-simple";
-import { tableViewStyle } from "../../layout/default";
+import { tableViewStyle } from "../../styles/layout/default";
 import useClasses from "../../util/hooks/classes/useClasses";
 import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
 

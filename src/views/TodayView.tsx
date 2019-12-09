@@ -10,7 +10,7 @@ import React, { useContext } from "react";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
-import { navigationHeaderPaddingStyle } from "../layout/default";
+import { navigationHeaderPaddingStyle } from "../styles/layout/default";
 import { MainTabParams } from "./MainView";
 import ClassesView from "./today/ClassesView";
 import NoSchoolView from "./today/NoSchoolView";

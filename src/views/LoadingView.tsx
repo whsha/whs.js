@@ -6,7 +6,7 @@ import React, { memo } from "react";
 import { Image, Text, View } from "react-native";
 import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";
-import { loadingViewStyle } from "../layout/default";
+import { loadingViewStyle } from "../styles/layout/default";
 
 /** The props for the LoadingView */
 interface ILoadingProps {

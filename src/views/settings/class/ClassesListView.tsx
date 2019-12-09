@@ -11,7 +11,7 @@ import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import ProblemsIcons from "../../../components/settings/ProblemsIcons";
-import { settingsViewStyles } from "../../../layout/default";
+import { settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IDR, IMajor, IMinor } from "../../../util/class/classes";

@@ -4,7 +4,7 @@
 
 import React, { memo, useEffect, useMemo, } from "react";
 import { Cell, Section } from "react-native-tableview-simple";
-import { tabBarIconSelectedColor } from "../../layout/default";
+import { tabBarIconSelectedColor } from "../../styles/layout/default";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { SchoolDay } from "../../util/calendar/types";
 import { IrregularMeetDays } from "../../util/class/primitives";

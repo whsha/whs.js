@@ -4,7 +4,7 @@
 
 import React, { memo } from "react";
 import { Text, View } from "react-native";
-import { classComponentStyles } from "../../layout/default";
+import { classComponentStyles } from "../../styles/layout/default";
 import { IAdvisory } from "../../util/class/classes";
 import { ITimes } from "../../util/class/extentions";
 

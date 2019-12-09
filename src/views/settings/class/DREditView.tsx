@@ -13,7 +13,7 @@ import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import SchoolDayPicker from "../../../components/settings/SchoolDayPicker";
-import { settingsViewStyles, tableViewStyle } from "../../../layout/default";
+import { settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { SchoolDay } from "../../../util/calendar/types";

@@ -14,8 +14,8 @@ import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
 import RePrepareClassesCell from "../../components/settings/RePrepareClassesCell";
 import { TempClassesContext } from "../../contexts";
-import { settingsViewStyles } from "../../layout/default";
 import ClassesStore from "../../stores/classesStore";
+import { settingsViewStyles } from "../../styles/layout/default";
 import { openLinkInBrowserAlert } from "../../util/alerts";
 import { SettingsParams } from "../SettingsView";
 

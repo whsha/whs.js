@@ -5,7 +5,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { memo } from "react";
 import { Platform, Text, TouchableOpacity } from "react-native";
-import { headerButtonStyles } from "../../layout/default";
+import { headerButtonStyles } from "../../styles/layout/default";
 
 /** The props for a disableable header button */
 interface IDisableable {

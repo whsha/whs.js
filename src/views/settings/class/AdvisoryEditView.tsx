@@ -11,7 +11,7 @@ import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
-import { settingsViewStyles } from "../../../layout/default";
+import { settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";

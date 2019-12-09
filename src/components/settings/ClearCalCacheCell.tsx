@@ -7,7 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { Cell } from "react-native-tableview-simple";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
-import { tableViewStyle } from "../../layout/default";
+import { tableViewStyle } from "../../styles/layout/default";
 
 dayjs.extend(relativeTime);
 

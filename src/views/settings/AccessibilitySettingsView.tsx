@@ -7,7 +7,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 import { Switch } from "react-native-gesture-handler";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { settingsViewStyles } from "../../layout/default";
+import { settingsViewStyles } from "../../styles/layout/default";
 import usePreferences from "../../util/hooks/usePreferences";
 
 /** The settings to control different accessibility functionalitys of the app */
