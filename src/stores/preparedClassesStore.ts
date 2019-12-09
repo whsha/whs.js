@@ -7,6 +7,7 @@ import { persist } from "mobx-persist";
 import { Block } from "../util/blocks/block";
 import { SchoolDay } from "../util/calendar/types";
 import { IAdvisory, IDR, IMajor, IMinor } from "../util/class/classes";
+import { DayLunchMap, Lunch } from "../util/class/lunch";
 import { irregularMeetDays } from "../util/class/primitives";
 import { IClasses } from "../util/hooks/classes/useClasses";
 import { getBlockForColorOnDay, getSchoolDaysThatHaveColor } from "../util/schoolDays";
@@ -34,7 +35,19 @@ export default class PreparedClassesStore {
 
     /** The advisory */
     @persist("object") @observable
-    public advisory: IAdvisory = {room: "", teacher: ""};
+    public advisory: IAdvisory = { room: "", teacher: "" };
+
+    /** The lunches for a user */
+    @persist("object") @observable
+    public lunches: DayLunchMap = {
+        [SchoolDay.One]: Lunch.First,
+        [SchoolDay.Two]: Lunch.First,
+        [SchoolDay.Three]: Lunch.First,
+        [SchoolDay.Four]: Lunch.First,
+        [SchoolDay.Five]: Lunch.First,
+        [SchoolDay.Six]: Lunch.First,
+        [SchoolDay.Seven]: Lunch.First
+    };
 
     /** Prepare classes from a classes store */
     // tslint:disable-next-line: no-unbound-method
@@ -85,6 +98,7 @@ export default class PreparedClassesStore {
         }
 
         this.advisory = unlinkedClasses.advisory;
+        this.lunches = unlinkedClasses.lunches;
         this.prepared = prepared;
     }
 

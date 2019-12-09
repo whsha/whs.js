@@ -11,15 +11,15 @@ import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderBu
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
 import { navigationHeaderPaddingStyle } from "../styles/layout/default";
-import { MainTabParams } from "./MainView";
-import ClassesView from "./today/ClassesView";
-import NoSchoolView from "./today/NoSchoolView";
+import ClassesView from "../views/today/ClassesView";
+import NoSchoolView from "../views/today/NoSchoolView";
+import { MainTabParams } from "./MainNavigator";
 
 /** The stack navigator for the today view */
 const TodayStack = createStackNavigator();
 
 /** The today tab view */
-export default function TodayView() {
+export default function TodayNavigator() {
     const calendar = useContext(CalendarContext);
 
     const { params } = useRoute<RouteProp<MainTabParams, "Today">>();

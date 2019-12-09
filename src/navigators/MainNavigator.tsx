@@ -9,8 +9,8 @@ import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
 import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../styles/layout/default";
-import SettingsView from "./SettingsView";
-import TodayView from "./TodayView";
+import SettingsNavigator from "./SettingsNavigator";
+import TodayNavigator from "./TodayNaviator";
 
 /** The parameters for the tab navigator */
 interface IMainTabParams {
@@ -30,7 +30,7 @@ export type MainTabParams = Pick<IMainTabParams, keyof IMainTabParams>;
 const Tab = createBottomTabNavigator<MainTabParams>();
 
 /** The main app view */
-export default function MainView() {
+export default function MainNavigator() {
     const screenOptions: ((props: {
         /** The current route */
         route: RouteProp<MainTabParams, keyof IMainTabParams>;
@@ -64,8 +64,8 @@ export default function MainView() {
             screenOptions={screenOptions}
             tabBarOptions={tabBarOptions}
         >
-            <Tab.Screen name="Today" component={TodayView} initialParams={{ day: dayjs().startOf("day").toDate() }} />
-            <Tab.Screen name="Settings" component={SettingsView} />
+            <Tab.Screen name="Today" component={TodayNavigator} initialParams={{ day: dayjs().startOf("day").toDate() }} />
+            <Tab.Screen name="Settings" component={SettingsNavigator} />
         </Tab.Navigator>
     );
 }

@@ -12,13 +12,13 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
+import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { useMajor } from "../../../util/hooks/classes/useMajor";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
 import { replaceSpaceWithNBSP } from "../../../util/textUtils";
-import { SettingsParams } from "../../SettingsView";
 
 dayjs.extend(useCustomFormat);
 

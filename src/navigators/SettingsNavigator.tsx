@@ -5,13 +5,14 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../styles/layout/default";
-import AccessibilitySettingsView from "./settings/AccessibilitySettingsView";
-import AdvisoryConfigureView from "./settings/class/AdvisoryEditView";
-import ClassesListView from "./settings/class/ClassesListView";
-import DREditView from "./settings/class/DREditView";
-import MajorEditView from "./settings/class/MajorEditView";
-import MinorEditView from "./settings/class/MinorEditView";
-import MainView from "./settings/MainSettingsView";
+import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
+import AdvisoryConfigureView from "../views/settings/class/AdvisoryEditView";
+import ClassesListView from "../views/settings/class/ClassesListView";
+import DREditView from "../views/settings/class/DREditView";
+import LunchEditView from "../views/settings/class/LunchEditView";
+import MajorEditView from "../views/settings/class/MajorEditView";
+import MinorEditView from "../views/settings/class/MinorEditView";
+import MainView from "../views/settings/MainSettingsView";
 
 /** The settings view stack navigator */
 const Stack = createStackNavigator<SettingsParams>();
@@ -44,10 +45,12 @@ interface ISettingsParams {
         /** The id of the dr to configure */
         drId: string;
     };
+    /** The lunches configure view */
+    ConfigureLunches: undefined;
 }
 
 /** The view for the settings tab */
-export default function SettingsView() {
+export default function SettingsNavigator() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="AllSettings" component={MainView} options={{ title: "Settings" }} />
@@ -57,6 +60,7 @@ export default function SettingsView() {
             <Stack.Screen name="ConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="ConfigureLunches" component={LunchEditView} options={{ title: "Edit Lunches" }} />
         </Stack.Navigator>
     );
 }

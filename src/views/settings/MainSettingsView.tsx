@@ -7,17 +7,17 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import Constants from "expo-constants";
 import { observable, toJS } from "mobx";
 import React, { useContext } from "react";
-import { Alert, Clipboard, Linking, ScrollView, Text, View } from "react-native";
+import { Alert, Clipboard, Linking, ScrollView, Text } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
 import RePrepareClassesCell from "../../components/settings/RePrepareClassesCell";
 import { TempClassesContext } from "../../contexts";
+import { SettingsParams } from "../../navigators/SettingsNavigator";
 import ClassesStore from "../../stores/classesStore";
 import { settingsViewStyles } from "../../styles/layout/default";
 import { openLinkInBrowserAlert } from "../../util/alerts";
-import { SettingsParams } from "../SettingsView";
 
 /** The main settings view */
 export default function MainSettingsView() {
@@ -72,37 +72,34 @@ export default function MainSettingsView() {
     };
 
     return (
-        <View style={settingsViewStyles.container}>
-            <ScrollView>
-                <TableView>
-                    <Section header="Class Settings">
-                        <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
-                        <Cell title="Configure Lunches" accessory="DisclosureIndicator" /* onPress={navigateTo("LunchesSettings")} */ isDisabled={true} />
-                        <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
-                        <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
-                    </Section>
-                    <Section header="Accessibility">
-                        <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
-                    </Section>
-                    <Section header="Legal">
-                        <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
-                        <Cell title="View 3rd Party Licenses" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("")} isDisabled={true} />
-                    </Section>
-                    <Section header="App Info">
-                        <Cell title="Help" accessory="Detail" /* onPress={navigateTo("HelpView")} */ isDisabled={true} />
-                        <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
-                        <Cell title="Changelog" accessory="DisclosureIndicator" /* onPress={navigateTo("ChangelogView")} */ isDisabled={true} />
-                        <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}</Text>} />
-                        <Cell title="Build" cellAccessoryView={<Text>{Constants.nativeBuildVersion}</Text>} />
-                        <Cell title="Release Channel" cellAccessoryView={<Text>{Constants.manifest.releaseChannel as string}</Text>} />
-                    </Section>
-                    <Section header="Reset" footer="If your schedule shows up incorrectly, clearing the caches may help.">
-                        <ClearCalCacheCell />
-                        <ResetClassesCell />
-                        <RePrepareClassesCell />
-                    </Section>
-                </TableView>
-            </ScrollView>
-        </View>
+        <ScrollView style={settingsViewStyles.container}>
+            <TableView>
+                <Section header="Class Settings">
+                    <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
+                    <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
+                    <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
+                </Section>
+                <Section header="Accessibility">
+                    <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
+                </Section>
+                <Section header="Legal">
+                    <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
+                    <Cell title="View 3rd Party Licenses" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("")} isDisabled={true} />
+                </Section>
+                <Section header="App Info">
+                    <Cell title="Help" accessory="Detail" /* onPress={navigateTo("HelpView")} */ isDisabled={true} />
+                    <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
+                    <Cell title="Changelog" accessory="DisclosureIndicator" /* onPress={navigateTo("ChangelogView")} */ isDisabled={true} />
+                    <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}</Text>} />
+                    <Cell title="Build" cellAccessoryView={<Text>{Constants.nativeBuildVersion}</Text>} />
+                    <Cell title="Release Channel" cellAccessoryView={<Text>{Constants.manifest.releaseChannel as string}</Text>} />
+                </Section>
+                <Section header="Reset" footer="If your schedule shows up incorrectly, clearing the caches may help.">
+                    <ClearCalCacheCell />
+                    <ResetClassesCell />
+                    <RePrepareClassesCell />
+                </Section>
+            </TableView>
+        </ScrollView>
     );
 }

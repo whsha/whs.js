@@ -11,11 +11,11 @@ import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
 import LoadingView from "./views/LoadingView";
-import MainView from "./views/MainView";
 
 /** The internal state of the application setup */
 export enum ApplicationState {
@@ -130,7 +130,7 @@ export default function App() {
     const MainViewContents = () => (
         <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
             <ReloadFunctionContext.Provider value={Load}>
-                <MainView />
+                <MainNavigator />
             </ReloadFunctionContext.Provider>
         </NavigationNativeContainer>
     );

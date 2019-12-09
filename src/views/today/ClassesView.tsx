@@ -8,11 +8,13 @@ import React from "react";
 import { ScrollView } from "react-native";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import BlockComponent from "../../components/blocks/BlockComponent";
+import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
 import { PreparedClasses } from "../../stores/preparedClassesStore";
 import { settingsViewStyles } from "../../styles/layout/default";
 import { Block } from "../../util/blocks/block";
 import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
 import { IAdvisory } from "../../util/class/classes";
+import { Lunch } from "../../util/class/lunch";
 import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
 import { BlockColorsForDay, getBlockColorsForDay } from "../../util/schoolDays";
 
@@ -30,15 +32,16 @@ export default function ClassesView({ schoolDay }: IClassesViewProps) {
 
     const colors = getBlockColorsForDay(schoolDay.dayNumber);
 
-    const classesView = (
-        schoolDay.isHalf ?
-            <HalfDayClasses advisory={preparedClasses.advisory} colors={colors} classes={preparedClasses.classes[schoolDay.dayNumber]} /> :
-            <FullDayClasses advisory={preparedClasses.advisory} colors={colors} classes={preparedClasses.classes[schoolDay.dayNumber]} />
-    );
+    const properties: IBlocksViewProps = {
+        advisory: preparedClasses.advisory,
+        classes: preparedClasses.classes[schoolDay.dayNumber],
+        colors,
+        lunch: preparedClasses.lunches[schoolDay.dayNumber]
+    };
 
     return (
         <ScrollView style={settingsViewStyles.container}>
-            {classesView}
+            {schoolDay.isHalf ? <HalfDayClasses {...properties} /> : <FullDayClasses {...properties} />}
         </ScrollView>
     );
 }
@@ -51,6 +54,8 @@ interface IBlocksViewProps {
     colors: BlockColorsForDay;
     /** The classes to display */
     classes: PreparedClasses[SchoolDay];
+    /** The lunch fot the day */
+    lunch: Lunch;
 }
 
 /*
@@ -62,8 +67,26 @@ Block D 10:55 AM–12:22 PM
 Block E 12:27-1:26 PM
 Block F 1:31-2:30 PM
 */
+
+// FIXME: Correct timings
+/** The timings for the lunch sections */
+const LUNCH_TIMES = {
+    A: {
+        end: dayjs("11:22 AM", "h:mm A"),
+        start: dayjs("10:55 AM", "h:mm A")
+    },
+    B: {
+        end: dayjs("11:52 AM", "h:mm A"),
+        start: dayjs("11:25 AM", "h:mm A")
+    },
+    C: {
+        end: dayjs("12:22 PM", "h:mm A"),
+        start: dayjs("11:55 AM", "h:mm A")
+    }
+};
+
 /** The display component for a full day */
-function FullDayClasses({ advisory, classes, colors }: IBlocksViewProps) {
+function FullDayClasses({ advisory, classes, colors, lunch }: IBlocksViewProps) {
     return (
         <>
             <BlockComponent
@@ -89,16 +112,12 @@ function FullDayClasses({ advisory, classes, colors }: IBlocksViewProps) {
                 start={dayjs("9:51 AM", "h:mm A")}
                 end={dayjs("10:50 AM", "h:mm A")}
             />
-            {/* FIXME: LUNCH BLOCK */}
-            <BlockComponent
+            <LunchBlockComponent
                 block={colors[Block.D]}
                 clazz={classes[Block.D]}
-                // FIXME: LUNCH
-                start={dayjs("10:55 AM", "h:mm A")}
-                // FIXME: LUNCH
-                end={dayjs("12:22 PM", "h:mm A")}
+                times={LUNCH_TIMES}
+                lunch={lunch}
             />
-            {/* END FIXME: */}
             <BlockComponent
                 block={colors[Block.E]}
                 clazz={classes[Block.E]}

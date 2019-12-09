@@ -11,6 +11,7 @@ import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
 import ProblemsIcons from "../../../components/settings/ProblemsIcons";
+import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
@@ -19,7 +20,6 @@ import { IIdentifiable, irregularMeetDays } from "../../../util/class/primitives
 import useClasses from "../../../util/hooks/classes/useClasses";
 import usePreparedClasses from "../../../util/hooks/classes/usePreparedClasses";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
-import { SettingsParams } from "../../SettingsView";
 
 /** The main classes config view */
 export default function ClassesListView() {
@@ -121,6 +121,9 @@ export default function ClassesListView() {
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
                         <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
+                    </Section>
+                    <Section header="Lunches">
+                        <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={goTo("ConfigureLunches", undefined)} />
                     </Section>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle.">
                         <FlatList

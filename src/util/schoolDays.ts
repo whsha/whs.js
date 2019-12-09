@@ -166,6 +166,11 @@ export function getLabBlockColorForDay(day: SchoolDay) {
     return MapOfBlocksToColor[Block.B][day];
 }
 
+/** Function to get the block color that has a lunch on the given day */
+export function getLunchBlockColorForDay(day: SchoolDay) {
+    return MapOfBlocksToColor[Block.D][day];
+}
+
 /** Function to get the school days that have a specific color */
 export function getSchoolDaysThatHaveColor(color: BlockColor): SchoolDay[] {
     return Object.keys(MapOfColorsToSchoolDaysToBlocks[color])

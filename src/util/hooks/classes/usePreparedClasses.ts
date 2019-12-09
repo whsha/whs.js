@@ -14,6 +14,7 @@ export default function usePreparedClasses() {
     return useObserver(() => ({
         advisory: context.advisory,
         classes: context.prepared,
+        lunches: context.lunches,
         prepare(classes: IClasses) {
             context.prepare(classes);
         },

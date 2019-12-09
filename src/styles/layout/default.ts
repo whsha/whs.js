@@ -53,7 +53,7 @@ export const classComponentStyles = StyleSheet.create({
         justifyContent: "space-between"
     },
     title: {
-        color: "#A0A0A0",
+        color: "#444444",
         fontSize: 25,
         fontWeight: "bold"
     }

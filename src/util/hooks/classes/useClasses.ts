@@ -7,7 +7,9 @@ import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
+import { SchoolDay } from "../../calendar/types";
 import { IAdvisory, IDR, IMajor,IMinor } from "../../class/classes";
+import { DayLunchMap, Lunch } from "../../class/lunch";
 import { validateDRs, validateMajors, validateMinors, ValidationError, ValidationWarning } from "../../class/validation";
 import ProblemMap from "../../problemMap";
 
@@ -15,6 +17,8 @@ import ProblemMap from "../../problemMap";
 export interface IClasses {
     /** The advisory */
     advisory: IAdvisory;
+    /** The advisory */
+    lunches: DayLunchMap;
     /** A map of the drs mapped by their id */
     drs: Map<string, IDR>;
     /** A map of the majors mapped by their id */
@@ -32,12 +36,14 @@ export default function useClasses() {
         saved: {
             advisory: savedClasses.advisory,
             drs: savedClasses.DRs,
+            lunches: savedClasses.lunches,
             majors: savedClasses.majors,
             minors: savedClasses.minors
         },
         temp: {
             advisory: tempClasses.advisory,
             drs: tempClasses.DRs,
+            lunches: tempClasses.lunches,
             majors: tempClasses.majors,
             minors: tempClasses.minors
         },
@@ -61,6 +67,9 @@ export default function useClasses() {
         },
         updateDR(id: string, data: IDR) {
             tempClasses.DRs.set(id, data);
+        },
+        updateLunch(day: SchoolDay, lunch: Lunch) {
+            tempClasses.lunches[day] = lunch;
         },
         deleteMajor(id: string) {
             tempClasses.majors.delete(id);
