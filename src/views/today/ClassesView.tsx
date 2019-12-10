@@ -68,23 +68,6 @@ Block E 12:27-1:26 PM
 Block F 1:31-2:30 PM
 */
 
-// FIXME: Correct timings
-/** The timings for the lunch sections */
-const LUNCH_TIMES = {
-    A: {
-        end: dayjs("11:22 AM", "h:mm A"),
-        start: dayjs("10:55 AM", "h:mm A")
-    },
-    B: {
-        end: dayjs("11:52 AM", "h:mm A"),
-        start: dayjs("11:25 AM", "h:mm A")
-    },
-    C: {
-        end: dayjs("12:22 PM", "h:mm A"),
-        start: dayjs("11:55 AM", "h:mm A")
-    }
-};
-
 /** The display component for a full day */
 function FullDayClasses({ advisory, classes, colors, lunch }: IBlocksViewProps) {
     return (
@@ -115,7 +98,6 @@ function FullDayClasses({ advisory, classes, colors, lunch }: IBlocksViewProps) 
             <LunchBlockComponent
                 block={colors[Block.D]}
                 clazz={classes[Block.D]}
-                times={LUNCH_TIMES}
                 lunch={lunch}
             />
             <BlockComponent

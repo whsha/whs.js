@@ -8,7 +8,7 @@ import parseCalendar from "./parse";
 import { SchoolDay } from "./types";
 
 /** The mock calendar data */
-const calendarData = readFileSync(resolve(__dirname, "../../../__mocks__/calendar.ics")).toString();
+const calendarData = readFileSync(resolve(__dirname, "../../__mocks__/calendar.ics")).toString();
 
 describe("Tests parser with mock data", () => {
     const calendar = parseCalendar(calendarData);

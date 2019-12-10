@@ -1,0 +1,731 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of classes Renders LunchBlockComponent with a dr 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "green",
+            },
+          ]
+        }
+      >
+        Directed Reaserch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        10:55
+         - 
+        11:22 AM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Dr. Test
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Room 102
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        Lunch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:25
+         - 
+        11:52 AM
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "green",
+            },
+          ]
+        }
+      >
+        Directed Reaserch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:55
+         - 
+        12:22 PM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Dr. Test
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Room 102
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`Tests different variations of classes Renders LunchBlockComponent with a free 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "purple",
+            },
+          ]
+        }
+      >
+        Free
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        10:55
+         - 
+        11:22 AM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        Lunch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:25
+         - 
+        11:52 AM
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "purple",
+            },
+          ]
+        }
+      >
+        Free
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:55
+         - 
+        12:22 PM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`Tests different variations of classes Renders LunchBlockComponent with a major 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        Lunch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        10:55
+         - 
+        11:22 AM
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "red",
+            },
+          ]
+        }
+      >
+        Test Major
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:25
+         - 
+        12:22 PM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Mr. Test
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Fitness center
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`Tests different variations of classes Renders LunchBlockComponent with a minor 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+            Object {
+              "color": "gold",
+            },
+          ]
+        }
+      >
+        Test minor
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        10:55
+         - 
+        11:52 AM
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignContent": "stretch",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "justifyContent": "space-between",
+          },
+          Object {
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+          ]
+        }
+      >
+        Mrs. Test
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Room 334
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "height": 75,
+        "justifyContent": "center",
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444444",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        Lunch
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#808080",
+          }
+        }
+      >
+        11:55
+         - 
+        12:22 PM
+      </Text>
+    </View>
+  </View>,
+]
+`;

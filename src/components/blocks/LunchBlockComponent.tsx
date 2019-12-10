@@ -4,8 +4,7 @@
 
 import React, { memo } from "react";
 import { IDR, IMajor, IMinor } from "../../util/class/classes";
-import { ITimes } from "../../util/class/extentions";
-import { Lunch } from "../../util/class/lunch";
+import { Lunch, LUNCH_TIMES as times } from "../../util/class/lunch";
 import { IColored } from "../../util/class/primitives";
 import BlockComponent from "./BlockComponent";
 import LunchComponent from "./LunchComponent";
@@ -17,18 +16,18 @@ interface ILunchBlock extends IColored {
     /** The class to display */
     clazz?: IMajor | IMinor | IDR;
     /** The timings for the classes */
-    times: {
-        /** The first part of the lunch block */
-        A: ITimes;
-        /** The second part of the lunch block */
-        B: ITimes;
-        /** The third part of the lunch block */
-        C: ITimes;
-    };
+    // times: {
+    //     /** The first part of the lunch block */
+    //     A: ITimes;
+    //     /** The second part of the lunch block */
+    //     B: ITimes;
+    //     /** The third part of the lunch block */
+    //     C: ITimes;
+    // };
 }
 
 /** A component that will display a block of many variety */
-function LunchBlockComponent({ lunch, clazz, times, block }: ILunchBlock) {
+function LunchBlockComponent({ lunch, clazz, block }: ILunchBlock) {
     if (lunch === Lunch.First) {
         return (
             <>

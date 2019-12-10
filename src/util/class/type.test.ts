@@ -2,65 +2,8 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "../blocks/blockColor";
-import { SchoolDay } from "../calendar/types";
-import { IDR, IMajor, IMinor } from "./classes";
-import { IAdvisedClass } from "./primitives";
+import { dr, major, minor, notclass } from "../../__mocks__/classes";
 import { ClassType, getClassType, hasClassType, isDR, isMajor, isMinor } from "./type";
-
-/** A sample major */
-const major: IMajor = {
-    block: BlockColor.Red,
-    lab: false,
-    name: "Test Major",
-    room: "Fitness center",
-    teacher: "Mr. Test",
-    type: ClassType.Major,
-    uuid: ""
-};
-
-/** A sample minor */
-const minor: IMinor = {
-    block: BlockColor.Yellow,
-    meets: {
-        [SchoolDay.One]: false,
-        [SchoolDay.Two]: true,
-        [SchoolDay.Three]: false,
-        [SchoolDay.Four]: true,
-        [SchoolDay.Five]: true,
-        [SchoolDay.Six]: true,
-        [SchoolDay.Seven]: true,
-    },
-    name: "Test minor",
-    room: "334",
-    teacher: "Mrs. Test",
-    type: ClassType.Minor,
-    uuid: ""
-};
-
-/** A sample DR */
-const dr: IDR = {
-    block: BlockColor.Green,
-    meets: {
-        [SchoolDay.One]: true,
-        [SchoolDay.Two]: false,
-        [SchoolDay.Three]: false,
-        [SchoolDay.Four]: false,
-        [SchoolDay.Five]: true,
-        [SchoolDay.Six]: true,
-        [SchoolDay.Seven]: true,
-    },
-    room: "102",
-    teacher: "Dr. Test",
-    type: ClassType.DR,
-    uuid: ""
-};
-
-/** A sample non class */
-const notclass: IAdvisedClass = {
-    room: "Fitness center",
-    teacher: "Mr. Test",
-};
 
 describe("Get classtype from ClassType<T>", () => {
     it("hasClassType", () => {

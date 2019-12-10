@@ -17,13 +17,13 @@
 
 ## Stable
 - [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
-- iOS Download
-- Android Download
+- iOS App Store
+- [Android Play Store](https://play.google.com/store/apps/details?id=com.dusterthefirst.whs)
 
-## Staging
+## Beta
 - [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)
-- iOS Download
-- Android Download
+- [iOS TestFlight](https://testflight.apple.com/join/sM9ElvxR)
+- [Android Play Store Opt-In Link](https://play.google.com/apps/testing/com.dusterthefirst.whs)
 
 # Code Coverage
 [![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)

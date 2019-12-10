@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests different variations of <ClassComponent> Renders ClassComponent with a numerical room 1`] = `
+exports[`Renders a free 1`] = `
 <View
   style={
     Object {
@@ -31,12 +31,80 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
             "fontWeight": "bold",
           },
           Object {
-            "color": "red",
+            "color": "#C0C0C0",
           },
         ]
       }
     >
-      Class
+      Free
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      7:30
+       - 
+      8:30 AM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`Tests different variations of classes Renders BlockComponent with a dr 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignContent": "stretch",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      Directed Reaserch
     </Text>
     <Text
       style={
@@ -79,7 +147,7 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Mr. Teacher Man
+      Dr. Test
     </Text>
     <Text
       numberOfLines={1}
@@ -95,13 +163,13 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Office
+      Room 102
     </Text>
   </View>
 </View>
 `;
 
-exports[`Tests different variations of <ClassComponent> Renders ClassComponent with a string room 1`] = `
+exports[`Tests different variations of classes Renders BlockComponent with a major 1`] = `
 <View
   style={
     Object {
@@ -137,7 +205,7 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Class
+      Test Major
     </Text>
     <Text
       style={
@@ -180,7 +248,7 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Mr. Teacher Man
+      Mr. Test
     </Text>
     <Text
       numberOfLines={1}
@@ -196,7 +264,108 @@ exports[`Tests different variations of <ClassComponent> Renders ClassComponent w
         ]
       }
     >
-      Office
+      Fitness center
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of classes Renders BlockComponent with a minor 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": 75,
+      "justifyContent": "center",
+      "padding": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignContent": "stretch",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "gold",
+          },
+        ]
+      }
+    >
+      Test minor
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#808080",
+        }
+      }
+    >
+      12:14
+       - 
+      1:24 PM
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignContent": "stretch",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      Mrs. Test
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Room 334
     </Text>
   </View>
 </View>
