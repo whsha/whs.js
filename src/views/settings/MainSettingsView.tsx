@@ -12,6 +12,7 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import ResetClassesCell from "../../components/settings/ClearClassesCell";
+import RemoveOpenedKey from "../../components/settings/RemoveOpenedKey";
 import RePrepareClassesCell from "../../components/settings/RePrepareClassesCell";
 import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
@@ -98,6 +99,7 @@ export default function MainSettingsView() {
                     <ClearCalCacheCell />
                     <ResetClassesCell />
                     <RePrepareClassesCell />
+                    <RemoveOpenedKey />
                 </Section>
             </TableView>
         </ScrollView>

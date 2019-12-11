@@ -4,6 +4,7 @@
 
 import { InitialState, NavigationState } from "@react-navigation/core";
 import { NavigationNativeContainer } from "@react-navigation/native";
+import { Updates } from "expo";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
@@ -53,6 +54,13 @@ export default function App() {
 
     /** Async function to initialize the app and all needed stores */
     const Load = async (reset = false) => {
+        if (await AsyncStorage.getItem(StorageKey.HasOpened) === null) {
+            await AsyncStorage.setItem(StorageKey.HasOpened, "yah");
+            await Updates.reload();
+
+            return;
+        }
+
         setCurrentTask(ApplicationState.PreparingMP);
 
         // Setup Mobx-Persist
