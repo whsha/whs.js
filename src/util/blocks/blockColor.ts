@@ -2,8 +2,6 @@
  * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
  */
 
-import { useMemo } from "react";
-
 /** Colors of the blocks */
 export enum BlockColor {
     Red = "Red",
@@ -38,5 +36,5 @@ const BlockColorDisplayColors: BlockColorColorMap = {
 
 /** Lookup the display color for the given block color */
 export function getDisplayColorForBlock(block: BlockColor | undefined) {
-    return useMemo(() => block === undefined ? undefined : BlockColorDisplayColors[block], [block]);
+    return block === undefined ? undefined : BlockColorDisplayColors[block];
 }
