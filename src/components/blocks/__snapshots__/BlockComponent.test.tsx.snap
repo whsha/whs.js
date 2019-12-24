@@ -47,7 +47,16 @@ exports[`Renders a free 1`] = `
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -63,7 +72,9 @@ exports[`Renders a free 1`] = `
               "flex": 1,
               "textAlign": "right",
             },
-            undefined,
+            Object {
+              "flex": 0,
+            },
           ]
         }
       >
@@ -123,7 +134,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -141,7 +161,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
             },
             Object {
               "flex": 0,
-              "paddingLeft": 5,
             },
           ]
         }
@@ -249,7 +268,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -267,7 +295,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
             },
             Object {
               "flex": 0,
-              "paddingLeft": 5,
             },
           ]
         }
@@ -375,7 +402,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -393,7 +429,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
             },
             Object {
               "flex": 0,
-              "paddingLeft": 5,
             },
           ]
         }

@@ -47,7 +47,16 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -65,7 +74,6 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             },
             Object {
               "flex": 0,
-              "paddingLeft": 5,
             },
           ]
         }
@@ -173,7 +181,16 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "alignItems": "center",
+            "flex": 1,
             "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           },
         ]
       }
@@ -191,7 +208,6 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
             },
             Object {
               "flex": 0,
-              "paddingLeft": 5,
             },
           ]
         }

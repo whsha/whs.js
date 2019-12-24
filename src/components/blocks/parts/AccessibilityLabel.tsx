@@ -13,21 +13,24 @@ import usePreferences from "../../../util/hooks/usePreferences";
 /** The accessability label for classes */
 export default function AccessibilityLabel({ block }: IColored) {
     const preferences = usePreferences();
+    const displayColor = getDisplayColorForBlock(block);
 
-    if (useObserver(() => preferences.accessibility.labelColors) && block !== BlockColor.None) {
-        const colorStyle = useObserver(() => preferences.accessibility.matchLabelColors ? { color: getDisplayColorForBlock(block) } : undefined);
+    return useObserver(() => {
+        if (preferences.accessibility.labelColors && block !== BlockColor.None) {
+            const colorStyle = preferences.accessibility.matchLabelColors ? { color: displayColor } : undefined;
 
-        return (
-            <View style={[classesStyle.middle, classesStyle.container]}>
-                <Text
-                    style={[classesStyle.dim, classesStyle.middle, classesStyle.colorblindColor, colorStyle]}
-                    numberOfLines={1}
-                >
-                    {block}
-                </Text>
-            </View>
-        );
-    } else {
-        return null;
-    }
+            return (
+                <View style={[classesStyle.middle, classesStyle.container]}>
+                    <Text
+                        style={[classesStyle.dim, classesStyle.middle, classesStyle.noFlex, classesStyle.colorblindColor, colorStyle]}
+                        numberOfLines={1}
+                    >
+                        {block}
+                    </Text>
+                </View>
+            );
+        } else {
+            return null;
+        }
+    });
 }

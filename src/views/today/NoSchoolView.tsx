@@ -14,9 +14,9 @@ dayjs.extend(relativeTime);
 /** The props for NoSchoolView */
 interface INoSchoolViewProps {
     /** The current date that is shown */
-    selectedDate: dayjs.Dayjs;
+    selectedDate: Dayjs;
     /** The method to set the date */
-    setDate(date: dayjs.Dayjs): void;
+    setDate(date: Dayjs): void;
 }
 
 /** The today view when there is no school */

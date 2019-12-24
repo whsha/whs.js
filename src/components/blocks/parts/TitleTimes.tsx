@@ -5,7 +5,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { classesStyle } from "../../../styles/layout/default";
-import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
+import { BlockColor, getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { ITimes } from "../../../util/class/extentions";
 import { IColored, INamed } from "../../../util/class/primitives";
 import AccessibilityLabel from "./AccessibilityLabel";
@@ -28,9 +28,9 @@ export default function TitleTimes({ name, start, end, block, showAccessibilityL
                 {name.length === 0 ? "No Name" : name}
             </Text>
             {showAccessibilityLabel && block !== undefined ? <AccessibilityLabel block={block} /> : null}
-            <View style={[classesStyle.container]}>
+            <View style={[classesStyle.container, showAccessibilityLabel && block !== BlockColor.None ? undefined : classesStyle.times, classesStyle.endstop]}>
                 <Text
-                    style={[classesStyle.dim, classesStyle.right, showAccessibilityLabel ? undefined : classesStyle.times]}
+                    style={[classesStyle.dim, classesStyle.right, classesStyle.noFlex]}
                     numberOfLines={1}
                 >
                     {start.format("h:mm")} - {end.format("h:mm A")}

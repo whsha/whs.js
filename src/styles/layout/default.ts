@@ -21,10 +21,15 @@ export const classesStyle = StyleSheet.create({
     },
     container: {
         alignItems: "center",
-        justifyContent: "center",
+        flex: 1,
+        justifyContent: "center"
     },
     dim: {
         color: "#808080",
+    },
+    endstop: {
+        flexDirection: "row",
+        justifyContent: "flex-end"
     },
     info: {
         marginTop: 5
@@ -36,6 +41,9 @@ export const classesStyle = StyleSheet.create({
     middle: {
         flex: 1,
         textAlign: "center",
+    },
+    noFlex: {
+        flex: 0
     },
     outerContainer: {
         alignItems: "center",
@@ -54,7 +62,7 @@ export const classesStyle = StyleSheet.create({
     },
     times: {
         flex: 0,
-        paddingLeft: 5,
+        paddingLeft: 5
     },
     title: {
         color: "#444444",
