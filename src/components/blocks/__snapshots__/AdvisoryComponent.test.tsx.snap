@@ -4,18 +4,16 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -23,33 +21,65 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
-        Object {
-          "color": "#444444",
-          "fontSize": 25,
-          "fontWeight": "bold",
-        }
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+          Object {
+            "color": undefined,
+          },
+        ]
       }
     >
       Advisory
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      11:00
-       - 
-      11:30 PM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+              "paddingLeft": 5,
+            },
+          ]
+        }
+      >
+        11:00
+         - 
+        11:30 PM
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -100,18 +130,16 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -119,33 +147,65 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
-        Object {
-          "color": "#444444",
-          "fontSize": 25,
-          "fontWeight": "bold",
-        }
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+          Object {
+            "color": undefined,
+          },
+        ]
       }
     >
       Advisory
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      9:38
-       - 
-      9:46 AM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+              "paddingLeft": 5,
+            },
+          ]
+        }
+      >
+        9:38
+         - 
+        9:46 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -186,7 +246,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         ]
       }
     >
-      Room Office
+      Office
     </Text>
   </View>
 </View>

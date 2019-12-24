@@ -4,18 +4,16 @@ exports[`Renders a free 1`] = `
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -23,12 +21,18 @@ exports[`Renders a free 1`] = `
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
         Array [
           Object {
             "color": "#444444",
             "fontSize": 25,
             "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
           },
           Object {
             "color": "#C0C0C0",
@@ -38,33 +42,37 @@ exports[`Renders a free 1`] = `
     >
       Free
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      7:30
-       - 
-      8:30 AM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            undefined,
+          ]
+        }
+      >
+        7:30
+         - 
+        8:30 AM
+      </Text>
+    </View>
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "alignContent": "stretch",
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-        },
-        Object {
-          "marginTop": 5,
-        },
-      ]
-    }
-  />
 </View>
 `;
 
@@ -72,18 +80,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -91,12 +97,18 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
         Array [
           Object {
             "color": "#444444",
             "fontSize": 25,
             "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
           },
           Object {
             "color": "green",
@@ -106,23 +118,44 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
     >
       Directed Reaserch
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      12:14
-       - 
-      1:24 PM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+              "paddingLeft": 5,
+            },
+          ]
+        }
+      >
+        12:14
+         - 
+        1:24 PM
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -173,18 +206,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -192,12 +223,18 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
         Array [
           Object {
             "color": "#444444",
             "fontSize": 25,
             "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
           },
           Object {
             "color": "red",
@@ -207,23 +244,44 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
     >
       Test Major
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      7:30
-       - 
-      8:30 AM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+              "paddingLeft": 5,
+            },
+          ]
+        }
+      >
+        7:30
+         - 
+        8:30 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -274,18 +332,16 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#FFFFFF",
-      "height": 75,
       "justifyContent": "center",
       "padding": 10,
-      "width": "100%",
     }
   }
 >
   <View
     style={
       Object {
-        "alignContent": "stretch",
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
@@ -293,12 +349,18 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
     }
   >
     <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
       style={
         Array [
           Object {
             "color": "#444444",
             "fontSize": 25,
             "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
           },
           Object {
             "color": "gold",
@@ -308,23 +370,44 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
     >
       Test minor
     </Text>
-    <Text
+    <View
       style={
-        Object {
-          "color": "#808080",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+        ]
       }
     >
-      12:14
-       - 
-      1:24 PM
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+              "paddingLeft": 5,
+            },
+          ]
+        }
+      >
+        12:14
+         - 
+        1:24 PM
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",

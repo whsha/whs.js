@@ -14,48 +14,52 @@ export const navigationHeaderPaddingStyle: StackNavigationOptions = {
     headerTitleAlign: "center"
 };
 
-export const classComponentStyles = StyleSheet.create({
+export const classesStyle = StyleSheet.create({
     colorblindColor: {
         fontWeight: "bold",
         paddingHorizontal: 10
     },
     container: {
-        backgroundColor: "#FFFFFF",
-        // borderBottomColor: "#CECECE",
-        // borderBottomWidth: 1,
-        height: 75,
+        alignItems: "center",
         justifyContent: "center",
-        padding: 10,
-        width: "100%"
     },
     dim: {
-        color: "#808080"
+        color: "#808080",
     },
     info: {
         marginTop: 5
     },
-    multiLeft: {
+    left: {
         flex: 1,
-        textAlign: "left"
+        textAlign: "left",
     },
-    multiMiddle: {
+    middle: {
         flex: 1,
-        textAlign: "center"
+        textAlign: "center",
     },
-    multiRight: {
+    outerContainer: {
+        alignItems: "center",
+        backgroundColor: "#FFFFFF",
+        justifyContent: "center",
+        padding: 10
+    },
+    right: {
         flex: 1,
         textAlign: "right"
     },
-    multiView: {
-        alignContent: "stretch",
+    row: {
         flexDirection: "row",
         flexWrap: "nowrap",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+    },
+    times: {
+        flex: 0,
+        paddingLeft: 5,
     },
     title: {
         color: "#444444",
         fontSize: 25,
-        fontWeight: "bold"
+        fontWeight: "bold",
     }
 });
 

@@ -5,18 +5,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -24,12 +22,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "green",
@@ -39,23 +43,44 @@ Array [
       >
         Directed Reaserch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        10:55
-         - 
-        11:22 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          10:55
+           - 
+          11:22 AM
+        </Text>
+      </View>
     </View>
     <View
       style={
         Array [
           Object {
-            "alignContent": "stretch",
             "flexDirection": "row",
             "flexWrap": "nowrap",
             "justifyContent": "space-between",
@@ -103,18 +128,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -122,6 +145,8 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
@@ -129,39 +154,66 @@ Array [
               "fontSize": 25,
               "fontWeight": "bold",
             },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+            Object {
+              "color": undefined,
+            },
           ]
         }
       >
         Lunch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:25
-         - 
-        11:52 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          11:25
+           - 
+          11:52 AM
+        </Text>
+      </View>
     </View>
   </View>,
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -169,12 +221,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "green",
@@ -184,23 +242,44 @@ Array [
       >
         Directed Reaserch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:55
-         - 
-        12:22 PM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          11:55
+           - 
+          12:22 PM
+        </Text>
+      </View>
     </View>
     <View
       style={
         Array [
           Object {
-            "alignContent": "stretch",
             "flexDirection": "row",
             "flexWrap": "nowrap",
             "justifyContent": "space-between",
@@ -253,18 +332,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -272,12 +349,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "purple",
@@ -287,49 +370,51 @@ Array [
       >
         Free
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        10:55
-         - 
-        11:22 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              undefined,
+            ]
+          }
+        >
+          10:55
+           - 
+          11:22 AM
+        </Text>
+      </View>
     </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignContent": "stretch",
-            "flexDirection": "row",
-            "flexWrap": "nowrap",
-            "justifyContent": "space-between",
-          },
-          Object {
-            "marginTop": 5,
-          },
-        ]
-      }
-    />
   </View>,
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -337,46 +422,75 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+            Object {
+              "color": undefined,
             },
           ]
         }
       >
         Lunch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:25
-         - 
-        11:52 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          11:25
+           - 
+          11:52 AM
+        </Text>
+      </View>
     </View>
   </View>,
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -384,12 +498,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "purple",
@@ -399,33 +519,37 @@ Array [
       >
         Free
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:55
-         - 
-        12:22 PM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              undefined,
+            ]
+          }
+        >
+          11:55
+           - 
+          12:22 PM
+        </Text>
+      </View>
     </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignContent": "stretch",
-            "flexDirection": "row",
-            "flexWrap": "nowrap",
-            "justifyContent": "space-between",
-          },
-          Object {
-            "marginTop": 5,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;
@@ -435,18 +559,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -454,6 +576,8 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
@@ -461,39 +585,66 @@ Array [
               "fontSize": 25,
               "fontWeight": "bold",
             },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+            Object {
+              "color": undefined,
+            },
           ]
         }
       >
         Lunch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        10:55
-         - 
-        11:22 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          10:55
+           - 
+          11:22 AM
+        </Text>
+      </View>
     </View>
   </View>,
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -501,12 +652,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "red",
@@ -516,23 +673,44 @@ Array [
       >
         Test Major
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:25
-         - 
-        12:22 PM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          11:25
+           - 
+          12:22 PM
+        </Text>
+      </View>
     </View>
     <View
       style={
         Array [
           Object {
-            "alignContent": "stretch",
             "flexDirection": "row",
             "flexWrap": "nowrap",
             "justifyContent": "space-between",
@@ -585,18 +763,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -604,12 +780,18 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#444444",
               "fontSize": 25,
               "fontWeight": "bold",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
             },
             Object {
               "color": "gold",
@@ -619,23 +801,44 @@ Array [
       >
         Test minor
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        10:55
-         - 
-        11:52 AM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          10:55
+           - 
+          11:52 AM
+        </Text>
+      </View>
     </View>
     <View
       style={
         Array [
           Object {
-            "alignContent": "stretch",
             "flexDirection": "row",
             "flexWrap": "nowrap",
             "justifyContent": "space-between",
@@ -683,18 +886,16 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
         "backgroundColor": "#FFFFFF",
-        "height": 75,
         "justifyContent": "center",
         "padding": 10,
-        "width": "100%",
       }
     }
   >
     <View
       style={
         Object {
-          "alignContent": "stretch",
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
@@ -702,6 +903,8 @@ Array [
       }
     >
       <Text
+        ellipsizeMode="middle"
+        numberOfLines={1}
         style={
           Array [
             Object {
@@ -709,22 +912,51 @@ Array [
               "fontSize": 25,
               "fontWeight": "bold",
             },
+            Object {
+              "flex": 1,
+              "textAlign": "left",
+            },
+            Object {
+              "color": undefined,
+            },
           ]
         }
       >
         Lunch
       </Text>
-      <Text
+      <View
         style={
-          Object {
-            "color": "#808080",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
         }
       >
-        11:55
-         - 
-        12:22 PM
-      </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#808080",
+              },
+              Object {
+                "flex": 1,
+                "textAlign": "right",
+              },
+              Object {
+                "flex": 0,
+                "paddingLeft": 5,
+              },
+            ]
+          }
+        >
+          11:55
+           - 
+          12:22 PM
+        </Text>
+      </View>
     </View>
   </View>,
 ]
