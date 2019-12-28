@@ -12,7 +12,8 @@ dayjs.extend(useCustomFormat);
 export enum Lunch {
     First,
     Second,
-    Third
+    Third,
+    None
 }
 
 /** The lunches mapped by the school day. */

@@ -17,13 +17,13 @@ export default class ClassesStore {
     /** The lunches for a user */
     @persist("object") @observable
     public lunches: DayLunchMap = {
-        [SchoolDay.One]: Lunch.First,
-        [SchoolDay.Two]: Lunch.First,
-        [SchoolDay.Three]: Lunch.First,
-        [SchoolDay.Four]: Lunch.First,
-        [SchoolDay.Five]: Lunch.First,
-        [SchoolDay.Six]: Lunch.First,
-        [SchoolDay.Seven]: Lunch.First
+        [SchoolDay.One]: Lunch.None,
+        [SchoolDay.Two]: Lunch.None,
+        [SchoolDay.Three]: Lunch.None,
+        [SchoolDay.Four]: Lunch.None,
+        [SchoolDay.Five]: Lunch.None,
+        [SchoolDay.Six]: Lunch.None,
+        [SchoolDay.Seven]: Lunch.None
     };
 
     /** A map of the users Majors by their uuid */
@@ -56,13 +56,13 @@ export default class ClassesStore {
     public clear() {
         this.advisory = { room: "", teacher: "" };
         this.lunches = {
-            [SchoolDay.One]: Lunch.First,
-            [SchoolDay.Two]: Lunch.First,
-            [SchoolDay.Three]: Lunch.First,
-            [SchoolDay.Four]: Lunch.First,
-            [SchoolDay.Five]: Lunch.First,
-            [SchoolDay.Six]: Lunch.First,
-            [SchoolDay.Seven]: Lunch.First
+            [SchoolDay.One]: Lunch.None,
+            [SchoolDay.Two]: Lunch.None,
+            [SchoolDay.Three]: Lunch.None,
+            [SchoolDay.Four]: Lunch.None,
+            [SchoolDay.Five]: Lunch.None,
+            [SchoolDay.Six]: Lunch.None,
+            [SchoolDay.Seven]: Lunch.None
         };
         this.majors = observable.map();
         this.minors = observable.map();

@@ -10,6 +10,7 @@ import { Cell, Section, Separator, TableView } from "react-native-tableview-simp
 import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import IconComponent from "../../../components/IconComponent";
+import ClearClassesCell from "../../../components/settings/ClearClassesCell";
 import ProblemsIcons from "../../../components/settings/ProblemsIcons";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { settingsViewStyles } from "../../../styles/layout/default";
@@ -113,7 +114,6 @@ export default function ClassesListView() {
         navigation.navigate({ name: "ConfigureMinor", params: { minorId: uuid() } });
     const addDr = () =>
         navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
-    const fillDrs = () => void 0;
 
     return (
         <SafeAreaView style={settingsViewStyles.container}>
@@ -151,7 +151,11 @@ export default function ClassesListView() {
                             ItemSeparatorComponent={Separator}
                         />
                         <Cell title="Add a DR" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addDr} />
-                        <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} isDisabled={true} />
+                        {/* TODO: */}
+                        {/* <Cell title="Fill Drs" cellAccessoryView={<IconComponent name="color-fill" />} titleTextColor={"#1f85cc"} onPress={fillDrs} /> */}
+                    </Section>
+                    <Section header="Clear">
+                        <ClearClassesCell />
                     </Section>
                 </TableView>
             </ScrollView>

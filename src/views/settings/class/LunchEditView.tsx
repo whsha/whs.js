@@ -27,6 +27,11 @@ export default function LunchEditView() {
     const DaySelector = ({ item }: IDaySelectorProps) => useObserver(() => (
         <Section header={`Day ${item} (${getLunchBlockColorForDay(item)})`}>
             <Cell
+                title="No Lunch"
+                accessory={classes.temp.lunches[item] === Lunch.None ? "Checkmark" : undefined}
+                onPress={updateLunchForDay(item, Lunch.None)}
+            />
+            <Cell
                 title="First Lunch"
                 accessory={classes.temp.lunches[item] === Lunch.First ? "Checkmark" : undefined}
                 onPress={updateLunchForDay(item, Lunch.First)}

@@ -43,12 +43,16 @@ function LunchBlockComponent({ lunch, clazz, block }: ILunchBlock) {
                 <BlockComponent start={times.C.start} end={times.C.end} block={block} clazz={clazz} />
             </>
         );
-    } else {
+    } else if (lunch === Lunch.Third) {
         return (
             <>
                 <BlockComponent start={times.A.start} end={times.B.end} block={block} clazz={clazz} />
                 <LunchComponent start={times.C.start} end={times.C.end} />
             </>
+        );
+    } else {
+        return (
+            <BlockComponent start={times.A.start} end={times.C.end} block={block} clazz={clazz} />
         );
     }
 }

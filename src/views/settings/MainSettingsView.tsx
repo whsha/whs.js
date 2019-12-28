@@ -11,9 +11,6 @@ import { Alert, Clipboard, Linking, ScrollView, Text } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
-import ResetClassesCell from "../../components/settings/ClearClassesCell";
-import RemoveOpenedKey from "../../components/settings/RemoveOpenedKey";
-import RePrepareClassesCell from "../../components/settings/RePrepareClassesCell";
 import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import ClassesStore from "../../stores/classesStore";
@@ -83,23 +80,18 @@ export default function MainSettingsView() {
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
                 </Section>
+                <Section header="App Info">
+                    <Cell title="Help" accessory="Detail" /* onPress={navigateTo("HelpView")} */ isDisabled={true} />
+                    <Cell title="Changelog" accessory="DisclosureIndicator" /* onPress={navigateTo("ChangelogView")} */ isDisabled={true} />
+                    <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
+                    <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}-{Constants.nativeBuildVersion} ({Constants.manifest.releaseChannel as string})</Text>} />
+                </Section>
                 <Section header="Legal">
                     <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
                     <Cell title="View 3rd Party Licenses" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("")} isDisabled={true} />
                 </Section>
-                <Section header="App Info">
-                    <Cell title="Help" accessory="Detail" /* onPress={navigateTo("HelpView")} */ isDisabled={true} />
-                    <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
-                    <Cell title="Changelog" accessory="DisclosureIndicator" /* onPress={navigateTo("ChangelogView")} */ isDisabled={true} />
-                    <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}</Text>} />
-                    <Cell title="Build" cellAccessoryView={<Text>{Constants.nativeBuildVersion}</Text>} />
-                    <Cell title="Release Channel" cellAccessoryView={<Text>{Constants.manifest.releaseChannel as string}</Text>} />
-                </Section>
                 <Section header="Reset" footer="If your schedule shows up incorrectly, clearing the caches may help.">
                     <ClearCalCacheCell />
-                    <ResetClassesCell />
-                    <RePrepareClassesCell />
-                    <RemoveOpenedKey />
                 </Section>
             </TableView>
         </ScrollView>

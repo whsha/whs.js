@@ -40,13 +40,13 @@ export default class PreparedClassesStore {
     /** The lunches for a user */
     @persist("object") @observable
     public lunches: DayLunchMap = {
-        [SchoolDay.One]: Lunch.First,
-        [SchoolDay.Two]: Lunch.First,
-        [SchoolDay.Three]: Lunch.First,
-        [SchoolDay.Four]: Lunch.First,
-        [SchoolDay.Five]: Lunch.First,
-        [SchoolDay.Six]: Lunch.First,
-        [SchoolDay.Seven]: Lunch.First
+        [SchoolDay.One]: Lunch.None,
+        [SchoolDay.Two]: Lunch.None,
+        [SchoolDay.Three]: Lunch.None,
+        [SchoolDay.Four]: Lunch.None,
+        [SchoolDay.Five]: Lunch.None,
+        [SchoolDay.Six]: Lunch.None,
+        [SchoolDay.Seven]: Lunch.None
     };
 
     /** Prepare classes from a classes store */
