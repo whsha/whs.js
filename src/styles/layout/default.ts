@@ -142,7 +142,7 @@ export const tabBarIconSelectedColor = "#2f95dc";
 
 export const loadingViewStyle = StyleSheet.create({
     image: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#000000",
         height: "100%",
         width: "100%"
     },
@@ -157,7 +157,7 @@ export const loadingViewStyle = StyleSheet.create({
         width: "100%"
     },
     taskText: {
-        color: "#A0A0A0",
+        color: "#ffffff",
         fontSize: 20
     }
 });

@@ -7,7 +7,7 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#FFFFFF"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -26,13 +26,13 @@
       "ios",
       "android"
     ],
-    "primaryColor": "#ffffff",
+    "primaryColor": "#000000",
     "privacy": "public",
     "scheme": "whsjs",
     "sdkVersion": "35.0.0",
     "slug": "WHS",
     "splash": {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#000000",
       "image": "./assets/splash.png",
       "resizeMode": "contain"
     },
