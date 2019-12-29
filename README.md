@@ -29,6 +29,9 @@
 [![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 
+# Privacy Policy
+The app provides a privacy policy [here](https://whs.dusterthefirst.com/PRIVACY)
+
 # License
     whs.js - Wellesley High School helper application
     Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
