@@ -2,7 +2,7 @@
   "expo": {
     "android": {
       "package": "com.dusterthefirst.whs",
-      "versionCode": 1,
+      "versionCode": 4,
       "permissions": []
     },
     "androidStatusBar": {
@@ -18,7 +18,7 @@
     "ios": {
       "bundleIdentifier": "com.dusterthefirst.whs",
       "supportsTablet": true,
-      "buildNumber": "1"
+      "buildNumber": "4"
     },
     "name": "WHS",
     "orientation": "portrait",
