@@ -81,14 +81,11 @@ export default function MainSettingsView() {
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
                 </Section>
                 <Section header="App Info">
-                    <Cell title="Help" accessory="Detail" /* onPress={navigateTo("HelpView")} */ isDisabled={true} />
-                    <Cell title="Changelog" accessory="DisclosureIndicator" /* onPress={navigateTo("ChangelogView")} */ isDisabled={true} />
+                    <Cell title="Feedback Discord Server" accessory="DisclosureIndicator" onPress={openLink("https://discord.gg/7q3TxUH")} />
+                    <Cell title="Feedback Email" accessory="DisclosureIndicator" onPress={openLink("mailto:whs-feedback@dusterthefirst.com")} />
                     <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
+                    <Cell title="License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://whs.dusterthefirst.com/LICENSE")} />
                     <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}-{Constants.nativeBuildVersion} ({Constants.manifest.releaseChannel as string})</Text>} />
-                </Section>
-                <Section header="Legal">
-                    <Cell title="View License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
-                    <Cell title="View 3rd Party Licenses" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("")} isDisabled={true} />
                 </Section>
                 <Section header="Reset" footer="If your schedule shows up incorrectly, clearing the caches may help.">
                     <ClearCalCacheCell />
