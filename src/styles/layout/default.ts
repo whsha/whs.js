@@ -49,7 +49,12 @@ export const classesStyle = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#FFFFFF",
         justifyContent: "center",
-        padding: 10
+        padding: 10,
+    },
+    outerContainerEditView: {
+        paddingHorizontal: 0,
+        paddingVertical: 10,
+        width: "100%"
     },
     right: {
         flex: 1,
@@ -172,7 +177,7 @@ export const settingsViewStyles = StyleSheet.create({
         flex: 1,
         fontSize: 15,
         height: 40,
-        textAlign: "right",
+        textAlign: "left",
     }
 });
 

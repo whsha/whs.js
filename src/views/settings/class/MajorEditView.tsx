@@ -13,12 +13,11 @@ import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
+import { classesStyle, settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { useMajor } from "../../../util/hooks/classes/useMajor";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
-import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 
 dayjs.extend(useCustomFormat);
 
@@ -65,13 +64,13 @@ export default function MajorEditView() {
                 <TableView>
                     <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
                     <Section header="Basic Info">
-                        <Cell title="Name" cellAccessoryView={<TextInput placeholder="ACP US History" value={replaceSpaceWithNBSP(major.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(major.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Room" cellAccessoryView={<TextInput placeholder="107" value={replaceSpaceWithNBSP(major.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Class Name" value={major.tempValue.name} onChangeText={updateName} style={settingsViewStyles.textInput} numberOfLines={1} />} />
+                        <Cell cellContentView={<TextInput placeholder="Teacher" value={major.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Room" value={major.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
                         <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
                     </Section>
                     <Section header="Example">
-                        <Cell cellAccessoryView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
+                        <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
                     </Section>
                     <Section>
                         <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />

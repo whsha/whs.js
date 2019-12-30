@@ -14,13 +14,12 @@ import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import SchoolDayPicker from "../../../components/settings/SchoolDayPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
+import { classesStyle, settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { SchoolDay } from "../../../util/calendar/types";
 import { useMinor } from "../../../util/hooks/classes/useMinor";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
-import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 
 dayjs.extend(useCustomFormat);
 
@@ -69,12 +68,12 @@ export default function MinorEditView() {
                     <BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />
                     <SchoolDayPicker value={minor.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={minor.tempValue.block} />
                     <Section header="Basic Info">
-                        <Cell title="Name" cellAccessoryView={<TextInput placeholder="You and the Law" value={replaceSpaceWithNBSP(minor.tempValue.name)} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mrs. Teach" value={replaceSpaceWithNBSP(minor.tempValue.teacher)} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Room" cellAccessoryView={<TextInput placeholder="437" value={replaceSpaceWithNBSP(minor.tempValue.room)} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Class Name" value={minor.tempValue.name} onChangeText={updateName} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Teacher" value={minor.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Room" value={minor.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
                     </Section>
                     <Section header="Example">
-                        <Cell cellAccessoryView={<ClassComponent block={minor.tempValue.block} name={minor.tempValue.name} room={minor.tempValue.room} teacher={minor.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
+                        <Cell cellContentView={<ClassComponent block={minor.tempValue.block} name={minor.tempValue.name} room={minor.tempValue.room} teacher={minor.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
                     </Section>
                     <Section>
                         <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />

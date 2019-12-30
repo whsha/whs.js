@@ -12,11 +12,10 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { settingsViewStyles } from "../../../styles/layout/default";
+import { classesStyle, settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
-import { replaceSpaceWithNBSP } from "../../../util/textUtils";
 
 dayjs.extend(useCustomFormat);
 
@@ -35,7 +34,7 @@ export default function AdvisoryConfigureView() {
 
     const goBack = () => {
         if (updated) {
-           discardChangesAlert(() => navigation.goBack());
+            discardChangesAlert(() => navigation.goBack());
         } else {
             navigation.goBack();
         }
@@ -55,11 +54,11 @@ export default function AdvisoryConfigureView() {
             <ScrollView>
                 <TableView>
                     <Section header="Options">
-                        <Cell title="Teacher" cellAccessoryView={<TextInput placeholder="Mr. Teach" value={replaceSpaceWithNBSP(tempAdvisory.teacher)} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Room" cellAccessoryView={<TextInput placeholder="107" value={replaceSpaceWithNBSP(tempAdvisory.room)} onChangeText={setRoom} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Teacher" value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} />
+                        <Cell cellContentView={<TextInput placeholder="Room" value={tempAdvisory.room} onChangeText={setRoom} style={settingsViewStyles.textInput} />} />
                     </Section>
                     <Section header="Example">
-                        <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")} />} />
+                        <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
                     </Section>
                 </TableView>
             </ScrollView>
