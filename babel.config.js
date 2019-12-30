@@ -1,11 +1,13 @@
-module.exports = function (api) {
-    api.cache(true);
-    return {
+module.exports = api => {
+    const isTest = api.env('test');
+
+    return isTest ? {
         presets: [
-            [
-                "@babel/preset-typescript"
-            ],
-            'babel-preset-expo'
+            "expo",
+            "@babel/env"
         ],
-    };
-};
+        plugins: [
+            "@babel/plugin-proposal-class-properties"
+        ]
+    } : { presets: ["expo"] };
+}

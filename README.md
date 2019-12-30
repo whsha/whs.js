@@ -1,26 +1,40 @@
 # Wellesley High School Helper App
 
-## TODO
-- Make global styles
-    - Dark theme?
-- Colors for the classes as fixed hex values rather than strings
-- Ability to edit advisory
-- Fix all TODOS
-- Refractor
-- Seperate all AsyncStorage methods into their own files
-- integrate liscense
-- credits
-- CI
+[![David](https://img.shields.io/david/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/network/dependencies)
+[![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
+[![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js/master.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+[![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
 
-# Code Smell in React
+[See **Rewrite** project for roadmap](https://github.com/DusterTheFirst/whs.js/projects/1)
 
-There's no shortage of ways to build applications with React, but one thing is for sure — React shines the brightest when it is used as a reactive view layer sitting on top of the state of your application. If you use it for more than that, e.g. the UI is responsible for determining when and how to load data or the UI stores certain aspects of state, this can quickly lead to code smell.
+# Downloads
+[Builds](https://expo.io/@dusterthefirst/WHS/builds?release-channel=staging)
 
-In order to keep our React projects from growing messy, we need store the application state completely outside of the UI. This will not only make our application more stable, but it will also make testing extremely simple, as we can test the UI and the state separately.
+## Stable
+- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
+- iOS App Store
+- [Android Play Store](https://play.google.com/store/apps/details?id=com.dusterthefirst.whs)
+
+## Beta
+- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)
+- [iOS TestFlight](https://testflight.apple.com/join/sM9ElvxR)
+- [Android Play Store Opt-In Link](https://play.google.com/apps/testing/com.dusterthefirst.whs)
+
+# Code Coverage
+[![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+[![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+
+# Privacy Policy
+The app provides a privacy policy [here](https://whs.dusterthefirst.com/PRIVACY)
 
 # License
     whs.js - Wellesley High School helper application
-    Copyright (C) 2018  Zachary Kohnen (DusterTheFirst)
+    Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,11 +48,3 @@ In order to keep our React projects from growing messy, we need store the applic
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-# TODO?
-
-  You should also get your employer (if you work as a programmer) or school,
-if any, to sign a "copyright disclaimer" for the program, if necessary.
-For more information on this, and how to apply and follow the GNU GPL, see
-<https://www.gnu.org/licenses/>.
-

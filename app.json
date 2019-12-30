@@ -1,32 +1,61 @@
 {
-    "expo": {
-        "name": "WHS",
-        "description": "Helper app for Wellesley High School",
-        "slug": "WHS",
-        "privacy": "public",
-        "sdkVersion": "31.0.0",
-        "platforms": [
-            "ios",
-            "android"
-        ],
-        "version": "0.0.1",
-        "orientation": "portrait",
-        "icon": "./assets/icon.png",
-        "splash": {
-            "image": "./assets/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": [
-            "**/*"
-        ],
-        "ios": {
-            "supportsTablet": true
-        },
-        "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
-        "scheme": "whs"
+  "expo": {
+    "android": {
+      "package": "com.dusterthefirst.whs",
+      "versionCode": 5,
+      "permissions": []
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "packagerOpts": {
+      "assetExts": [
+        "md"
+      ]
+    },
+    "description": "Helper app for Wellesley High School",
+    "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
+    "icon": "./assets/icon.png",
+    "ios": {
+      "bundleIdentifier": "com.dusterthefirst.whs",
+      "supportsTablet": true,
+      "buildNumber": "5"
+    },
+    "name": "WHS",
+    "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "primaryColor": "#000000",
+    "privacy": "public",
+    "scheme": "whsjs",
+    "sdkVersion": "35.0.0",
+    "slug": "WHS",
+    "splash": {
+      "backgroundColor": "#000000",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain"
+    },
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0
+    },
+    "version": "1.0.0",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "dusterthefirst",
+            "project": "whs"
+          }
+        }
+      ]
     }
+  }
 }

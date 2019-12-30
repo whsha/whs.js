@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <IconComponent/> Renders <IconComponent name="cog" size={20}/> 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -3,
+    }
+  }
+>
+  <Text />
+</View>
+`;
+
+exports[`Tests different variations of <IconComponent/> Renders <IconComponent name="list"/> 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -3,
+    }
+  }
+>
+  <Text />
+</View>
+`;

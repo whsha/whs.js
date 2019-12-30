@@ -1,89 +1,152 @@
-import React from "react";
-import {
-    createBottomTabNavigator,
-    createStackNavigator,
-    NavigationParams,
-    NavigationScreenConfig,
-    NavigationScreenProp,
-    NavigationTabScreenOptions
-} from "react-navigation";
-import TabBarIcon from "./elements/TabBarIcon";
-import CalendarView from "./views/CalendarView";
-import SettingsView from "./views/SetingsView";
-import { AboutView, LicenseView } from "./views/settings/AboutViews";
-import ClassSetupView from "./views/settings/ClassSetupView";
-import AdvisoryEditorView from "./views/settings/editor/AdvisoryEditorView";
-import ClassEditorView from "./views/settings/editor/ClassEditorView";
-import LunchEditorView from "./views/settings/editor/LunchEditorView";
-import TodayView from "./views/TodayView";
+/*!
+ * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
+ */
 
-export interface INavigationElementProps<S = {}, P = NavigationParams> {
-    navigation: NavigationScreenProp<S, P>;
+import { InitialState, NavigationState } from "@react-navigation/core";
+import { NavigationNativeContainer } from "@react-navigation/native";
+import { Updates } from "expo";
+import Constants from "expo-constants";
+import { create } from "mobx-persist";
+import React, { useContext, useEffect, useState } from "react";
+import { AsyncStorage, StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-view";
+import * as Sentry from "sentry-expo";
+import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import MainNavigator from "./navigators/MainNavigator";
+import StorageKey from "./storageKey";
+import fetchCalendar from "./util/calendar/fetch";
+import parseCalendar from "./util/calendar/parse";
+import LoadingView from "./views/LoadingView";
+
+/** The internal state of the application setup */
+export enum ApplicationState {
+    Setup = "Setting Up",
+    PreparingMP = "Preparing mobx-persist",
+    LoadingCal = "Loading Calendar",
+    DownloadingCal = "Downloading Calendar",
+    ParsingCal = "Parsing Calendar",
+    SavingCal = "Saving Calendar",
+    LoadingPreferences = "Loading Preferences",
+    LoadingClasses = "Loading Classes",
+    Opening = "Opening App",
+    Loaded = "Loaded",
+    Errored = "ERRORED",
 }
 
-// The stack navigator for the Home page
-const HomeStackNavigator = createStackNavigator({
-    Today: TodayView
-}, {
-    cardStyle: {
-        backfaceVisibility: "visible",
-        backgroundColor: "white"
-    },
-    initialRouteName: "Today"
+Sentry.init({
+    dsn: "https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747",
+    environment: Constants.manifest.releaseChannel as string
 });
-HomeStackNavigator.navigationOptions = (): NavigationScreenConfig<NavigationTabScreenOptions> => {
-    return {
-        tabBarLabel: "Home",
-        tabBarIcon: ({ focused }) => <TabBarIcon name="list" focused={focused} />
+// TODO: Sentry.setUserContext({})
+
+/** The main app component */
+export default function App() {
+    // The state storing the current task of the app (Only changed by load fn)
+    const [currentTask, setCurrentTask] = useState<ApplicationState>(ApplicationState.Setup);
+    // The state storing the loaded initial navigation state (Only changed by load fn)
+    const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
+    // The hydrated stores
+    const calendar = useContext(CalendarContext);
+    const classes = useContext(ClassesContext);
+    const tempClasses = useContext(TempClassesContext);
+    const preparedClasses = useContext(PreparedClassesContext);
+    const preferences = useContext(PreferencesStoreContext);
+
+    /** Async function to initialize the app and all needed stores */
+    const Load = async (reset = false) => {
+        if (await AsyncStorage.getItem(StorageKey.HasOpened) === null) {
+            await AsyncStorage.setItem(StorageKey.HasOpened, "yah");
+            await Updates.reload();
+
+            return;
+        }
+
+        setCurrentTask(ApplicationState.PreparingMP);
+
+        // Setup Mobx-Persist
+        const hydrate = create({
+            jsonify: true,
+            storage: AsyncStorage
+        });
+
+        setCurrentTask(ApplicationState.LoadingCal);
+
+        // Load from cache if exists
+        await hydrate(StorageKey.Calendar, calendar);
+
+        // If not loaded, download it
+        if (calendar.updated.getTime() === 0 || reset) {
+            setCurrentTask(ApplicationState.DownloadingCal);
+
+            // Fetch the calendar off of the interweb
+            const rawcal = await fetchCalendar();
+
+            if (rawcal.isErr) {
+                setCurrentTask(ApplicationState.Errored);
+                console.error(rawcal.error);
+
+                return;
+            }
+
+            setCurrentTask(ApplicationState.ParsingCal);
+            // Parse the calendar
+            const parsed = parseCalendar(rawcal.unwrap());
+
+            setCurrentTask(ApplicationState.SavingCal);
+            // Update the calendar with the given parsed info
+            await calendar.updateCalendar(parsed);
+        }
+
+        setCurrentTask(ApplicationState.LoadingPreferences);
+        // Hydrate the preferences store
+        await hydrate(StorageKey.Preferences, preferences);
+
+        setCurrentTask(ApplicationState.LoadingClasses);
+        // Hydrate the classes store
+        await hydrate(StorageKey.Classes, classes);
+        // Hydrate the temp classes to = the saved classes
+        tempClasses.hydrateFrom(classes);
+
+        // Hydrate the prepared classes store
+        await hydrate(StorageKey.PreparedClasses, preparedClasses);
+
+        setCurrentTask(ApplicationState.Opening);
+        // Restore current navigation state in development only
+        if (__DEV__) {
+            const navstate = await AsyncStorage.getItem(StorageKey.Navigation);
+            if (navstate !== null) {
+                setInitialNavState(JSON.parse(navstate) as InitialState);
+            }
+        }
+
+        setCurrentTask(ApplicationState.Loaded);
     };
-};
 
-// The stack navigator for the Settings page
-const SettingsStackNavigator = createStackNavigator({
-    MainSettings: SettingsView,
-        ClassSetup: ClassSetupView,
-            EditClass: ClassEditorView,
-            EditAdvisory: AdvisoryEditorView,
-            EditLunches: LunchEditorView,
-        About: { screen: AboutView, navigationOptions: { title: "About" }},
-        License: { screen: LicenseView, navigationOptions: { title: "License" }}
-}, {
-    cardStyle: {
-        backfaceVisibility: "visible",
-        backgroundColor: "white"
-    },
-    initialRouteName: "MainSettings"
-});
-let navops: NavigationScreenConfig<NavigationTabScreenOptions> = ({navigation}) => ({
-    tabBarLabel: "Settings",
-    tabBarIcon: ({ focused }) => <TabBarIcon name="cog" focused={focused} />,
-    tabBarVisible: navigation.state.index === 0
-});
-SettingsStackNavigator.navigationOptions = navops;
+    const changeNavState = (state?: Partial<NavigationState>) => {
+        if (state !== undefined) {
+            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
+        }
+    };
 
-// The tab navigator
-export default createBottomTabNavigator({
-    Calendar: CalendarView,
-    Home: HomeStackNavigator,
-    Settings: SettingsStackNavigator
-}, {
-    initialRouteName: "Home",
-    swipeEnabled: true
-});
+    useEffect(() => {
+        Load().catch((reason) => {
+            setCurrentTask(ApplicationState.Errored);
+            console.error(reason);
+        });
+    }, []);
 
-/**
- * ROUTES
- *
- * BottomTabNavigator
- * | Calendar                           => Calendar View
- * | Home (StackNavigator)
- * | | Today                            => Today View
- * | Settings (StackNavigator)
- * | | MainSettings                     => SettingsView
- * | |  ClassSetup                       => ClassSetupView
- * | |    EditClass                        => ClassEditorView
- * | |    EditAdvisory                     => AdvisoryEditorView
- * | |    EditLunches                      => LunchEditorView
- * | |  About                            => AboutView
- * | |  License                          => LicenseView
- */
+    const MainViewContents = () => (
+        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+            <ReloadFunctionContext.Provider value={Load}>
+                <MainNavigator />
+            </ReloadFunctionContext.Provider>
+        </NavigationNativeContainer>
+    );
+
+    return (
+        <SafeAreaProvider>
+            <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
+            {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+        </SafeAreaProvider>
+    );
+}

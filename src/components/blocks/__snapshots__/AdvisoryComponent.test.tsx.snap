@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a numerical room 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "justifyContent": "center",
+      "padding": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+          Object {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      Advisory
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+            },
+          ]
+        }
+      >
+        11:00
+         - 
+        11:30 PM
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Room 132
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a string room 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "justifyContent": "center",
+      "padding": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      ellipsizeMode="middle"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#444444",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+          Object {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      Advisory
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          Object {
+            "flex": 0,
+            "paddingLeft": 5,
+          },
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+            },
+            Object {
+              "flex": 1,
+              "textAlign": "right",
+            },
+            Object {
+              "flex": 0,
+            },
+          ]
+        }
+      >
+        9:38
+         - 
+        9:46 AM
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      Mr. Teacher Man
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+          },
+          Object {
+            "flex": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Office
+    </Text>
+  </View>
+</View>
+`;
