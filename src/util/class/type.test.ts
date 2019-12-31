@@ -1,5 +1,5 @@
 /*!
- * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
 import { dr, major, minor, notclass } from "../../__mocks__/classes";

@@ -34,7 +34,7 @@ The app provides a privacy policy [here](https://whs.dusterthefirst.com/PRIVACY)
 
 # License
     whs.js - Wellesley High School helper application
-    Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
+    Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
