@@ -1,5 +1,5 @@
 /*!
- * Copyright (C) 2018-2019  Zachary Kohnen (DusterTheFirst)
+ * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
 import { useObserver } from "mobx-react-lite";
