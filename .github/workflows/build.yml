@@ -112,4 +112,4 @@ jobs:
           SENDER_URL: ${{github.events.sender.url}}
           SENDER_AVATAR: ${{github.events.sender.avatar_url}}
           WEBHOOK_URL: ${{secrets.release_webhook}}
-          STABLE_WEBHOOK_URL: ${{secrets.release_webhook}}
+          STABLE_WEBHOOK_URL: ${{secrets.stable_release_webhook}}
