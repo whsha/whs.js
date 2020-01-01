@@ -17,7 +17,7 @@
 
 ## Stable
 - [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
-- iOS App Store
+- [iOS App Store](https://apps.apple.com/us/app/whs-helper-app/id1488677026)
 - [Android Play Store](https://play.google.com/store/apps/details?id=com.dusterthefirst.whs)
 
 ## Beta
