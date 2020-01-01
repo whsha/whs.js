@@ -7,10 +7,11 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { classesStyle, settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
@@ -59,7 +60,7 @@ export default function MajorEditView() {
     const updateTeacher = (teacher: string) => major.update({ teacher });
 
     return (
-        <SafeAreaView style={settingsViewStyles.container}>
+        <NavigationKeyboardAvoidingView>
             <ScrollView>
                 <TableView>
                     <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
@@ -77,6 +78,6 @@ export default function MajorEditView() {
                     </Section>
                 </TableView>
             </ScrollView>
-        </SafeAreaView>
+        </NavigationKeyboardAvoidingView>
     );
 }

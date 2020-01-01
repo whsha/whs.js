@@ -37,7 +37,7 @@ function BlockComponent({ end, start, clazz, block }: IDisplayBlock) {
                 <ClassComponent
                     start={start}
                     end={end}
-                    name="Directed Reaserch"
+                    name="Directed research"
                     block={clazz.block}
                     room={clazz.room}
                     teacher={clazz.teacher}

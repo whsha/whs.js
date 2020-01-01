@@ -7,10 +7,11 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { classesStyle, settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
@@ -50,7 +51,7 @@ export default function AdvisoryConfigureView() {
     });
 
     return (
-        <SafeAreaView style={settingsViewStyles.container}>
+        <NavigationKeyboardAvoidingView>
             <ScrollView>
                 <TableView>
                     <Section header="Options">
@@ -62,6 +63,6 @@ export default function AdvisoryConfigureView() {
                     </Section>
                 </TableView>
             </ScrollView>
-        </SafeAreaView>
+        </NavigationKeyboardAvoidingView>
     );
 }

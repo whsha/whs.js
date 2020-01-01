@@ -7,10 +7,11 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
+import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import SchoolDayPicker from "../../../components/settings/SchoolDayPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
@@ -62,7 +63,7 @@ export default function MinorEditView() {
     const toggleMeet = (day: SchoolDay) => minor.update(pre => ({ meets: { ...pre.meets, [day]: !pre.meets[day] } }));
 
     return (
-        <SafeAreaView style={settingsViewStyles.container}>
+        <NavigationKeyboardAvoidingView>
             <ScrollView>
                 <TableView>
                     <BlockColorPicker value={minor.tempValue.block} onPick={updateBlock} hasNone={true} />
@@ -80,6 +81,6 @@ export default function MinorEditView() {
                     </Section>
                 </TableView>
             </ScrollView>
-        </SafeAreaView>
+        </NavigationKeyboardAvoidingView>
     );
 }
