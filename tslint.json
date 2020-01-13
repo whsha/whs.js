@@ -99,7 +99,7 @@
         "no-empty": true,
         "no-empty-interface": true,
         "no-eval": true,
-        "no-floating-promises": false,
+        "no-floating-promises": true,
         "no-for-in-array": true,
         "no-implicit-dependencies": [
             true,

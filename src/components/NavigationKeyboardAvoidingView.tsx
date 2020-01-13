@@ -18,8 +18,7 @@ export default function NavigationKeyboardAvoidingView({ children }: PropsWithCh
         // A delay to allow for the render to finish before computing the height
         setTimeout(() => {
             if (viewRef.current !== null) {
-                viewRef.current.measure((x, y, width, height, pageX, pageY) => {
-                    console.warn(x, y, width, height, pageX, pageY);
+                viewRef.current.measure((_x, _y, _width, _height, _pageX, pageY) => {
                     setKeyLayoutHeight(pageY);
                 });
             }

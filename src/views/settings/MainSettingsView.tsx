@@ -30,7 +30,7 @@ export default function MainSettingsView() {
 
     const backupClasses = () => {
         Clipboard.setString(JSON.stringify(toJS(tempClasses, { recurseEverything: true })));
-        Alert.alert("Copied to clipboard!", "Save this somewhere safe incase you need to reuse it");
+        Alert.alert("Copied to clipboard!", "Save this somewhere safe in case you need to reuse it");
     };
 
     const loadClasses = () => {
@@ -51,19 +51,21 @@ export default function MainSettingsView() {
                             if (parsed.DRs === undefined
                                 || parsed.advisory === undefined
                                 || parsed.majors === undefined
-                                || parsed.minors === undefined) {
+                                || parsed.minors === undefined
+                                || parsed.lunches === undefined) {
                                 throw new Error();
                             }
                             tempClasses.DRs = observable.map(parsed.DRs);
                             tempClasses.advisory = parsed.advisory;
                             tempClasses.majors = observable.map(parsed.majors);
                             tempClasses.minors = observable.map(parsed.minors);
+                            tempClasses.lunches = parsed.lunches;
 
                             navigation.navigate("ClassesList");
                         } catch {
                             Alert.alert("Failed to load from clipboard", "The clipboard contents were not valid classes or there was a problem loading them");
                         }
-                    });
+                    }).catch((e) => console.error("Failed to get string from clipboard", e));
                 }
             }
         ]);
@@ -73,7 +75,7 @@ export default function MainSettingsView() {
         <ScrollView style={settingsViewStyles.container}>
             <TableView>
                 <Section header="Class Settings">
-                    <Cell title="Configure Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
+                    <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
                     <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
                     <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                 </Section>
@@ -82,7 +84,8 @@ export default function MainSettingsView() {
                 </Section>
                 <Section header="App Info">
                     <Cell title="Feedback Discord Server" accessory="DisclosureIndicator" onPress={openLink("https://discord.gg/7q3TxUH")} />
-                    <Cell title="Feedback Email" accessory="DisclosureIndicator" onPress={openLink("mailto:whs-feedback@dusterthefirst.com")} />
+                    <Cell title="Feedback Email" accessory="DisclosureIndicator" onPress={openLink("mailto:feedback@whs.dusterthefirst.com")} />
+                    <Cell title="Service Status" accessory="DisclosureIndicator" onPress={openLink("https://status.whs.dusterthefirst.com/")} />
                     <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
                     <Cell title="License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
                     <Cell title="Privacy Policy" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://whs.dusterthefirst.com/PRIVACY")} />

@@ -6,7 +6,7 @@ import { Alert } from "react-native";
 
 /** Alert the user that they will be clearing their classes */
 export function clearClassesAlert(successCallback: () => void) {
-    Alert.alert("Are you sure you want to clear your classes", "This action is irreversable", [
+    Alert.alert("Are you sure you want to clear your classes?", "This action is irreversible", [
         {
             style: "cancel",
             text: "Cancel"

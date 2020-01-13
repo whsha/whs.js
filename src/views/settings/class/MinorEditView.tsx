@@ -20,13 +20,12 @@ import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { SchoolDay } from "../../../util/calendar/types";
 import { useMinor } from "../../../util/hooks/classes/useMinor";
-import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
+import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The minor configure view */
 export default function MinorEditView() {
-    useNoHardwareBack();
     const route = useRoute<RouteProp<SettingsParams, "ConfigureMinor">>();
     const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMinor">>();
 
@@ -43,6 +42,8 @@ export default function MinorEditView() {
         minor.save();
         navigation.goBack();
     };
+
+    useOverrideBackButton(goBack);
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,

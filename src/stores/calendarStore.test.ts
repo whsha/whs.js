@@ -15,11 +15,13 @@ describe("Test the functionality of a normal CalendarStore", () => {
     it("Instanciates correctly", () => {
         expect(store).toBeInstanceOf(CalendarStore);
     });
-    it("Updates the calendar correctly", () => {
+    it("Updates the calendar correctly", async (done) => {
 
-        store.updateCalendar(mockCalendar);
+        await store.updateCalendar(mockCalendar);
 
         expect(store).toMatchSnapshot();
+
+        done();
     });
 
     it("Returns updated as a date", () => {

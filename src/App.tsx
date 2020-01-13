@@ -3,13 +3,14 @@
  */
 
 import { InitialState, NavigationState } from "@react-navigation/core";
-import { NavigationNativeContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
 import { Updates } from "expo";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
+import { useScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
 import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
@@ -32,6 +33,8 @@ export enum ApplicationState {
     Loaded = "Loaded",
     Errored = "ERRORED",
 }
+
+useScreens();
 
 Sentry.init({
     dsn: "https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747",
@@ -124,7 +127,7 @@ export default function App() {
 
     const changeNavState = (state?: Partial<NavigationState>) => {
         if (state !== undefined) {
-            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
+            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state)).catch((e) => console.warn("Failed to set navigation state", e));
         }
     };
 
@@ -136,7 +139,7 @@ export default function App() {
     }, []);
 
     const MainViewContents = () => (
-        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={DefaultTheme}>
             <ReloadFunctionContext.Provider value={Load}>
                 <MainNavigator />
             </ReloadFunctionContext.Provider>

@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
 import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../styles/layout/default";
-import SettingsNavigator from "./SettingsNavigator";
+import SettingsNavigator, { SettingsParams } from "./SettingsNavigator";
 import TodayNavigator from "./TodayNaviator";
 
 /** The parameters for the tab navigator */
@@ -36,22 +36,37 @@ export default function MainNavigator() {
         route: RouteProp<MainTabParams, keyof IMainTabParams>;
         /** idk and idc */
         navigation: {};
-    }) => BottomTabNavigationOptions) = ({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-            let iconName = `${Platform.OS === "ios" ? "ios" : "md"}-`;
+    }) => BottomTabNavigationOptions) = ({ route }) => {
+        const routeName: keyof IMainTabParams | keyof SettingsParams =
+            // @ts-ignore
+            // tslint:disable-next-line: no-unsafe-any
+            route.state ? route.state.routes[route.state.index].name : "Today";
 
-            if (route.name === "Today") {
-                iconName += `list`; // ${focused ? "-box" : ""}
-            } else if (route.name === "Settings") {
-                iconName += "cog";
-            }
-            // else if (route.name === "Calendar") {
-            //     iconName += "calendar";
-            // }
+        return {
+            tabBarIcon: ({ color, size }) => {
+                let iconName = `${Platform.OS === "ios" ? "ios" : "md"}-`;
 
-            return <Ionicons name={iconName} size={size} color={color} />;
-        }
-    });
+                if (route.name === "Today") {
+                    iconName += `list`; // ${focused ? "-box" : ""}
+                } else if (route.name === "Settings") {
+                    iconName += "cog";
+                }
+                // else if (route.name === "Calendar") {
+                //     iconName += "calendar";
+                // }
+
+                return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarVisible: !(
+                routeName === "ClassesList"
+                || routeName === "ConfigureDR"
+                || routeName === "ConfigureAdvisory"
+                || routeName === "ConfigureLunches"
+                || routeName === "ConfigureMajor"
+                || routeName === "ConfigureMinor"
+            )
+        };
+    };
 
     const tabBarOptions: BottomTabBarOptions = {
         activeTintColor: tabBarIconSelectedColor,
