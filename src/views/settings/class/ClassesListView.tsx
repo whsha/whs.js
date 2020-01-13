@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useMemo } from "react";
-import { Alert, FlatList, ListRenderItem, SafeAreaView, ScrollView } from "react-native";
+import { Alert, FlatList, ListRenderItem, ScrollView, View } from "react-native";
 import { Cell, Section, Separator, TableView } from "react-native-tableview-simple";
 import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -117,7 +117,7 @@ export default function ClassesListView() {
         navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
 
     return (
-        <SafeAreaView style={settingsViewStyles.container}>
+        <View style={settingsViewStyles.container}>
             <ScrollView>
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
@@ -160,6 +160,6 @@ export default function ClassesListView() {
                     </Section>
                 </TableView>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 }
