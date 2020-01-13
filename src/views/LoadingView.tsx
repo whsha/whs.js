@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Image, StatusBar, Text, View } from "react-native";
 import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";
@@ -16,11 +16,19 @@ interface ILoadingProps {
 
 /** The view to show when the application is in any state other than loaded */
 function LoadingView({ task }: ILoadingProps) {
+    const [displayStatus, setDisplayStatus] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => setDisplayStatus(true), 10000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
     return (
         <View>
             <StatusBar barStyle="light-content" />
             <Image source={Splash} style={loadingViewStyle.image} resizeMode={"contain"} />
-            <View style={loadingViewStyle.overlay}>
+            <View style={[loadingViewStyle.overlay, { display: displayStatus ? "flex" : "none" }]}>
                 <Text style={loadingViewStyle.taskText}>{task}...</Text>
             </View>
         </View>
