@@ -121,10 +121,10 @@ export default function ClassesListView() {
             <ScrollView>
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
-                        <Cell title="Configure Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
+                        <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
                     </Section>
                     <Section header="Lunches">
-                        <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={goTo("ConfigureLunches", undefined)} />
+                        <Cell title="Edit Lunches" accessory="DisclosureIndicator" onPress={goTo("ConfigureLunches", undefined)} />
                     </Section>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle during a color block.">
                         <FlatList
