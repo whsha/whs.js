@@ -3,7 +3,7 @@
  */
 
 import { InitialState, NavigationState } from "@react-navigation/core";
-import { NavigationNativeContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
 import { Updates } from "expo";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
@@ -139,7 +139,7 @@ export default function App() {
     }, []);
 
     const MainViewContents = () => (
-        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState}>
+        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={DefaultTheme}>
             <ReloadFunctionContext.Provider value={Load}>
                 <MainNavigator />
             </ReloadFunctionContext.Provider>

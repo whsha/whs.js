@@ -51,13 +51,15 @@ export default function MainSettingsView() {
                             if (parsed.DRs === undefined
                                 || parsed.advisory === undefined
                                 || parsed.majors === undefined
-                                || parsed.minors === undefined) {
+                                || parsed.minors === undefined
+                                || parsed.lunches === undefined) {
                                 throw new Error();
                             }
                             tempClasses.DRs = observable.map(parsed.DRs);
                             tempClasses.advisory = parsed.advisory;
                             tempClasses.majors = observable.map(parsed.majors);
                             tempClasses.minors = observable.map(parsed.minors);
+                            tempClasses.lunches = parsed.lunches;
 
                             navigation.navigate("ClassesList");
                         } catch {

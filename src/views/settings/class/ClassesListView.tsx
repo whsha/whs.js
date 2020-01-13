@@ -24,7 +24,7 @@ import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 /** The main classes config view */
 export default function ClassesListView() {
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ClassesList">>();
     const classes = useClasses();
     const preparedClasses = usePreparedClasses();
 
