@@ -32,6 +32,10 @@
 # Privacy Policy
 The app provides a privacy policy [here](https://whs.dusterthefirst.com/PRIVACY)
 
+# Developing
+In order to develop the application, you need [node.js](https://nodejs.org/) and [yarn](https://yarnpkg.com/).
+Please read our [CONTRIBUTING guielines](CONTRIBUTING.md) for more about the tools we use and how to provide usefule contributions to the project.
+
 # License
     whs.js - Wellesley High School helper application
     Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
