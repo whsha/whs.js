@@ -25,7 +25,7 @@ export default function NoSchoolView({ selectedDate, setDate }: INoSchoolViewPro
     const [nextSchoolDay, setNextSchoolDay] = useState<Dayjs | undefined>(undefined);
 
     useEffect(() => {
-        (async () => setNextSchoolDay(calendar.nextSchoolDayAfter(selectedDate)))();
+        (async () => setNextSchoolDay(calendar.nextSchoolDayAfter(selectedDate)))().catch((e) => console.warn("Failed to get next school day", e));
     }, [selectedDate, calendar]);
 
     const goToNextSchoolDay = () => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay);

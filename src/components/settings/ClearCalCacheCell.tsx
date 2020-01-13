@@ -24,7 +24,7 @@ export default function ClearCalCacheCell() {
     }, []);
 
     const clearCalendarCache = () => {
-        load(true);
+        load(true).catch((e) => console.warn("Failed to reload app", e));
     };
 
     return (

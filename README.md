@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/github/license/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/DusterTheFirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/dusterthefirst/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
-[![Actions Status](https://github.com/DusterTheFirst/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
+[![Actions Status](https://github.com/whsha/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/dusterthefirst/whs.js/master.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)

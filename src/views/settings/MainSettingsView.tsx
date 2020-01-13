@@ -63,7 +63,7 @@ export default function MainSettingsView() {
                         } catch {
                             Alert.alert("Failed to load from clipboard", "The clipboard contents were not valid classes or there was a problem loading them");
                         }
-                    });
+                    }).catch((e) => console.error("Failed to get string from clipboard", e));
                 }
             }
         ]);

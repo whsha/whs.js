@@ -42,19 +42,19 @@ export default function TodayNavigator() {
     const schoolDay = calendar.schoolDay(day);
 
     const goToToday = () => {
-        Haptics.impactAsync();
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
         navigation.navigate("Today", { day: dayjs().startOf("day").toDate() });
     };
     const goTo = (date: Dayjs) => {
-        Haptics.impactAsync();
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
         navigation.navigate("Today", { day: date.toDate() });
     };
     const left = () => {
-        Haptics.impactAsync();
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
         navigation.navigate("Today", { day: day.subtract(1, "day").toDate() });
     };
     const right = () => {
-        Haptics.impactAsync();
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
         navigation.navigate("Today", { day: day.add(1, "day").toDate() });
     };
 

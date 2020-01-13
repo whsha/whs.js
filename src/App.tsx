@@ -127,7 +127,7 @@ export default function App() {
 
     const changeNavState = (state?: Partial<NavigationState>) => {
         if (state !== undefined) {
-            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state));
+            AsyncStorage.setItem(StorageKey.Navigation, JSON.stringify(state)).catch((e) => console.warn("Failed to set navigation state", e));
         }
     };
 
