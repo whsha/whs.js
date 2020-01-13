@@ -16,14 +16,12 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { classesStyle, settingsViewStyles } from "../../../styles/layout/default";
 import { discardChangesAlert } from "../../../util/alerts";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
-import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
+import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The advisory configureation view */
 export default function AdvisoryConfigureView() {
-    useNoHardwareBack();
-
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
     const {
         save,
@@ -44,6 +42,8 @@ export default function AdvisoryConfigureView() {
         save();
         navigation.navigate("ClassesList");
     };
+
+    useOverrideBackButton(goBack);
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,

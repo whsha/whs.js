@@ -20,13 +20,12 @@ import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { SchoolDay } from "../../../util/calendar/types";
 import { useDR } from "../../../util/hooks/classes/useDR";
-import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
+import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The dr configure view */
 export default function DREditView() {
-    useNoHardwareBack();
     const route = useRoute<RouteProp<SettingsParams, "ConfigureDR">>();
     const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureDR">>();
 
@@ -43,6 +42,8 @@ export default function DREditView() {
         DR.save();
         navigation.goBack();
     };
+
+    useOverrideBackButton(goBack);
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,

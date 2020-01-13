@@ -18,13 +18,13 @@ import { classesStyle, settingsViewStyles, tableViewStyle } from "../../../style
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { useMajor } from "../../../util/hooks/classes/useMajor";
-import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
+import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The major config view */
 export default function MajorEditView() {
-    useNoHardwareBack();
+
     const route = useRoute<RouteProp<SettingsParams, "ConfigureMajor">>();
     const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
 
@@ -41,6 +41,8 @@ export default function MajorEditView() {
         major.save();
         navigation.goBack();
     };
+
+    useOverrideBackButton(goBack);
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,

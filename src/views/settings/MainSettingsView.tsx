@@ -30,7 +30,7 @@ export default function MainSettingsView() {
 
     const backupClasses = () => {
         Clipboard.setString(JSON.stringify(toJS(tempClasses, { recurseEverything: true })));
-        Alert.alert("Copied to clipboard!", "Save this somewhere safe incase you need to reuse it");
+        Alert.alert("Copied to clipboard!", "Save this somewhere safe in case you need to reuse it");
     };
 
     const loadClasses = () => {

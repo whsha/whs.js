@@ -20,11 +20,10 @@ import { IDR, IMajor, IMinor } from "../../../util/class/classes";
 import { IIdentifiable, irregularMeetDays } from "../../../util/class/primitives";
 import useClasses from "../../../util/hooks/classes/useClasses";
 import usePreparedClasses from "../../../util/hooks/classes/usePreparedClasses";
-import useNoHardwareBack from "../../../util/hooks/useNoHardwareBack";
+import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 /** The main classes config view */
 export default function ClassesListView() {
-    useNoHardwareBack();
     const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
     const classes = useClasses();
     const preparedClasses = usePreparedClasses();
@@ -54,6 +53,8 @@ export default function ClassesListView() {
             navigation.goBack();
         }
     };
+
+    useOverrideBackButton(goBack);
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,
@@ -125,23 +126,23 @@ export default function ClassesListView() {
                     <Section header="Lunches">
                         <Cell title="Configure Lunches" accessory="DisclosureIndicator" onPress={goTo("ConfigureLunches", undefined)} />
                     </Section>
-                    <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle.">
+                    <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle during a color block.">
                         <FlatList
                             keyExtractor={keyExtractor}
                             data={Array.from(classes.temp.majors.values())}
                             renderItem={majorRenderItem}
                             ItemSeparatorComponent={Separator}
                         />
-                        <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMajor} />
+                        <Cell title="Add a major" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMajor} />
                     </Section>
-                    <Section header="Minors" footer="Minors are any class that meets less than 5 times a cycle">
+                    <Section header="Minors" footer="Minors are any class that meets less than 5 times a cycle or meet only during the 730 slot.">
                         <FlatList
                             keyExtractor={keyExtractor}
                             data={Array.from(classes.temp.minors.values())}
                             renderItem={minorRenderItem}
                             ItemSeparatorComponent={Separator}
                         />
-                        <Cell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMinor} />
+                        <Cell title="Add a minor" cellAccessoryView={<IconComponent name="add-circle-outline" />} titleTextColor={"#1f85cc"} onPress={addMinor} />
                     </Section>
                     <Section header="DRs" footer="A DR or Directed Research is what lowerclassmen have in place of a free block. They are simply advised free blocks.">
                         <FlatList
