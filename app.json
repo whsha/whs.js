@@ -10,13 +10,8 @@
             "backgroundColor": "#FFFFFF"
         },
         "assetBundlePatterns": [
-            "**/*"
+            "assets/*"
         ],
-        "packagerOpts": {
-            "assetExts": [
-                "md"
-            ]
-        },
         "description": "Helper app for Wellesley High School",
         "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
         "icon": "./assets/icon.png",
