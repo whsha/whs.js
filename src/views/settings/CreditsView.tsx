@@ -18,9 +18,9 @@ export default function CreditsView() {
             <Text style={{ fontSize: 20 }}>
                 <Text style={{ fontWeight: "bold" }}>Nathaniel Kohnen</Text> - Head of Marketing
             </Text>
-            <Text style={{ fontWeight: "700", fontSize: 25, paddingVertical: 10 }}>😎Sponsors:😎</Text>
+            <Text style={{ fontWeight: "700", fontSize: 25, paddingVertical: 10 }}>Sponsors:</Text>
             <Text style={{ fontSize: 20 }}>
-                <Text style={{ fontWeight: "bold" }}>Elliot Kovacs</Text> - Assistant to the Lead Developer
+                <Text style={{ fontWeight: "bold" }}>😎Elliot Kovacs</Text> - Assistant to the Lead Developer
             </Text>
         </ScrollView>
     );
