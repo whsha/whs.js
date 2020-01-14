@@ -18,7 +18,6 @@ The core team works directly on GitHub and all work is public.
 2. Run `yarn` to setup the developement environment.
 3. Do the changes you want and test them out in the example app before sending a pull request.
 
-
 ### Commit message convention
 
 We prefix our commit messages with one of the following to signify the kind of change:
