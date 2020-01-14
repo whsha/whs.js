@@ -37,7 +37,7 @@ export default function MainNavigator() {
         /** idk and idc */
         navigation: {};
     }) => BottomTabNavigationOptions) = ({ route }) => {
-        const routeName: keyof IMainTabParams | keyof SettingsParams =
+        const routeName: keyof IMainTabParams | keyof SettingsParams | "Classes" =
             // @ts-ignore
             // tslint:disable-next-line: no-unsafe-any
             route.state ? route.state.routes[route.state.index].name : "Today";
@@ -57,14 +57,8 @@ export default function MainNavigator() {
 
                 return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarVisible: !(
-                routeName === "ClassesList"
-                || routeName === "ConfigureDR"
-                || routeName === "ConfigureAdvisory"
-                || routeName === "ConfigureLunches"
-                || routeName === "ConfigureMajor"
-                || routeName === "ConfigureMinor"
-            )
+            tabBarVisible:
+                routeName === "AllSettings" || routeName === "Classes"
         };
     };
 
