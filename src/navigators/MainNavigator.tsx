@@ -58,7 +58,8 @@ export default function MainNavigator() {
                 return <Ionicons name={iconName} size={size} color={color} />;
             },
             tabBarVisible:
-                routeName === "AllSettings" || routeName === "Classes"
+                routeName === "AllSettings" || routeName === "Classes" ||
+                routeName === "Today" || routeName === "Settings"
         };
     };
 
