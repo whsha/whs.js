@@ -1,11 +1,11 @@
 # Wellesley High School Helper App
 
-[![David](https://img.shields.io/david/whsha/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/network/dependencies)
-[![GitHub](https://img.shields.io/github/license/whsha/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/whsha/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/whsha/whs.js.svg)](https://github.com/DusterTheFirst/whs.js/pulls)
-[![Actions Status](https://github.com/whsha/whs.js/workflows/Build%20App/badge.svg)](https://github.com/DusterTheFirst/whs.js/actions)
-[![Codecov](https://img.shields.io/codecov/c/github/whsha/whs.js/master.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+[![David](https://img.shields.io/david/whsha/whs.js.svg)](https://github.com/whsha/whs.js/network/dependencies)
+[![GitHub](https://img.shields.io/github/license/whsha/whs.js.svg)](https://github.com/whsha/whs.js/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/whsha/whs.js.svg)](https://github.com/whsha/whs.js/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/whsha/whs.js.svg)](https://github.com/whsha/whs.js/pulls)
+[![Actions Status](https://github.com/whsha/whs.js/workflows/Build%20App/badge.svg)](https://github.com/whsha/whs.js/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/whsha/whs.js/master.svg)](https://codecov.io/gh/whsha/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
@@ -26,8 +26,8 @@
 - [Android Play Store Opt-In Link](https://play.google.com/apps/testing/com.dusterthefirst.whs)
 
 # Code Coverage
-[![Coverage Over Time](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
-[![Sunburst Graph](https://codecov.io/gh/DusterTheFirst/whs.js/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/DusterTheFirst/whs.js)
+[![Coverage Over Time](https://codecov.io/gh/whsha/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/whsha/whs.js)
+[![Sunburst Graph](https://codecov.io/gh/whsha/whs.js/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/whsha/whs.js)
 
 # Privacy Policy
 The app provides a privacy policy [here](https://whs.dusterthefirst.com/PRIVACY)
