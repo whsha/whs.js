@@ -38,8 +38,7 @@
             "resizeMode": "contain"
         },
         "updates": {
-            "enabled": true,
-            "fallbackToCacheTimeout": 0
+            "enabled": true
         },
         "version": "1.0.1",
         "hooks": {
