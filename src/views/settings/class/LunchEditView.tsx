@@ -4,7 +4,7 @@
 
 import { useObserver } from "mobx-react-lite";
 import React from "react";
-import { FlatList, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { settingsViewStyles } from "../../../styles/layout/default";
 import { SchoolDay } from "../../../util/calendar/types";
@@ -49,17 +49,10 @@ export default function LunchEditView() {
         </Section>
     ));
 
-    const renderItem = ({ item }: IDaySelectorProps) => <DaySelector item={item} />;
-    const keyExtractor = (_: SchoolDay, index: number) => index.toString();
-
     return (
         <ScrollView style={settingsViewStyles.container}>
             <TableView>
-                <FlatList
-                    data={[SchoolDay.One, SchoolDay.Two, SchoolDay.Three, SchoolDay.Four, SchoolDay.Five, SchoolDay.Six, SchoolDay.Seven]}
-                    renderItem={renderItem}
-                    keyExtractor={keyExtractor}
-                />
+                {[SchoolDay.One, SchoolDay.Two, SchoolDay.Three, SchoolDay.Four, SchoolDay.Five, SchoolDay.Six, SchoolDay.Seven].map((x, i) => <DaySelector item={x} key={i}/>)}
             </TableView>
         </ScrollView>
     );
