@@ -72,7 +72,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test, lint, typecheck]
     steps:
-      - run: yarn global add expo-cli
       - uses: actions/checkout@v1
       - name: Cache yarn
         uses: actions/cache@v1
