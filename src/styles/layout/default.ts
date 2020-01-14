@@ -206,3 +206,19 @@ export const noSchoolViewStyles = StyleSheet.create({
         width: "100%"
     }
 });
+
+export const creditsViewStyles = StyleSheet.create({
+    header: {
+        fontSize: 23,
+        fontWeight: "700",
+        paddingVertical: 10,
+        textAlign: "center"
+    },
+    item: {
+        fontSize: 18,
+        textAlign: "center"
+    },
+    name: {
+        fontWeight: "bold"
+    }
+});
