@@ -14,10 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: yarn
-      - run: yarn run testcov --forceExit
-      - uses: codecov/codecov-action@v1.0.2
-        with:
-          token: ${{secrets.codecov_token}}
+      - run: yarn run test --forceExit
   lint:
     runs-on: ubuntu-latest
     needs: typecheck
