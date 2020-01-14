@@ -80,7 +80,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -214,7 +216,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -348,7 +352,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -451,7 +457,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -554,7 +562,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -657,7 +667,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -790,7 +802,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     </View>
     <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1003,7 +1017,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1261,7 +1277,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1364,7 +1382,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1622,7 +1642,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1755,7 +1777,9 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
     </View>
     <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}

@@ -80,7 +80,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -183,7 +185,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -286,7 +290,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -389,7 +395,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -523,7 +531,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -626,7 +636,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -728,7 +740,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     </View>
     <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -910,7 +924,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1013,7 +1029,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1116,7 +1134,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1219,7 +1239,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1353,7 +1375,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1456,7 +1480,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1559,7 +1585,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1661,7 +1689,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     </View>
     <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1843,7 +1873,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1946,7 +1978,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -2049,7 +2083,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -2152,7 +2188,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -2255,7 +2293,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -2358,7 +2398,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     <View>
       <View
         accessible={true}
+        focusable={true}
         isTVSelectable={true}
+        onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -2460,7 +2502,9 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
     </View>
     <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}

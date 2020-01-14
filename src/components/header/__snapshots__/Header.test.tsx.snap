@@ -3,7 +3,9 @@
 exports[`Tests different header buttons Renders <HeaderCancelButton/> 1`] = `
 <View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -33,7 +35,9 @@ exports[`Tests different header buttons Renders <HeaderLeftArrow/> 1`] = `
 <View
   accessibilityLabel="LeftArrow"
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -59,7 +63,9 @@ exports[`Tests different header buttons Renders <HeaderRightArrow/> 1`] = `
 <View
   accessibilityLabel="RightArrow"
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -84,7 +90,9 @@ exports[`Tests different header buttons Renders <HeaderRightArrow/> 1`] = `
 exports[`Tests different header buttons Renders <HeaderSaveButton/> 1`] = `
 <View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -119,7 +127,9 @@ exports[`Tests different header buttons Renders <HeaderSaveButton/> 1`] = `
 exports[`Tests different variations of <MultilineHeader> Renders <MultilineHeaderTitle title="test title" subtitle="e"/> 1`] = `
 <View
   accessible={true}
+  focusable={false}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
