@@ -1,62 +1,62 @@
 {
-  "expo": {
-    "android": {
-      "package": "com.dusterthefirst.whs",
-      "versionCode": 6,
-      "permissions": []
-    },
-    "androidStatusBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#FFFFFF"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "packagerOpts": {
-      "assetExts": [
-        "md"
-      ]
-    },
-    "description": "Helper app for Wellesley High School",
-    "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
-    "icon": "./assets/icon.png",
-    "ios": {
-      "bundleIdentifier": "com.dusterthefirst.whs",
-      "supportsTablet": true,
-      "buildNumber": "6"
-    },
-    "name": "WHS",
-    "orientation": "portrait",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "backgroundColor": "#000000",
-    "primaryColor": "#000000",
-    "privacy": "public",
-    "scheme": "whsjs",
-    "sdkVersion": "36.0.0",
-    "slug": "WHS",
-    "splash": {
-      "backgroundColor": "#000000",
-      "image": "./assets/splash.png",
-      "resizeMode": "contain"
-    },
-    "updates": {
-      "enabled": true,
-      "fallbackToCacheTimeout": 0
-    },
-    "version": "1.0.0",
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "dusterthefirst",
-            "project": "whs"
-          }
+    "expo": {
+        "android": {
+            "package": "com.dusterthefirst.whs",
+            "versionCode": 6,
+            "permissions": []
+        },
+        "androidStatusBar": {
+            "barStyle": "light-content",
+            "backgroundColor": "#FFFFFF"
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "packagerOpts": {
+            "assetExts": [
+                "md"
+            ]
+        },
+        "description": "Helper app for Wellesley High School",
+        "githubUrl": "https://github.com/DusterTheFirst/whs.js/",
+        "icon": "./assets/icon.png",
+        "ios": {
+            "bundleIdentifier": "com.dusterthefirst.whs",
+            "supportsTablet": true,
+            "buildNumber": "6"
+        },
+        "name": "WHS",
+        "orientation": "portrait",
+        "platforms": [
+            "ios",
+            "android"
+        ],
+        "backgroundColor": "#000000",
+        "primaryColor": "#000000",
+        "privacy": "public",
+        "scheme": "whsjs",
+        "sdkVersion": "36.0.0",
+        "slug": "WHS",
+        "splash": {
+            "backgroundColor": "#000000",
+            "image": "./assets/splash.png",
+            "resizeMode": "contain"
+        },
+        "updates": {
+            "enabled": true,
+            "fallbackToCacheTimeout": 0
+        },
+        "version": "1.0.0",
+        "hooks": {
+            "postPublish": [
+                {
+                    "file": "sentry-expo/upload-sourcemaps",
+                    "config": {
+                        "organization": "dusterthefirst",
+                        "project": "whs"
+                    }
+                }
+            ]
         }
-      ]
     }
-  }
 }
