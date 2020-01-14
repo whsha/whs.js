@@ -12,6 +12,7 @@ import DREditView from "../views/settings/class/DREditView";
 import LunchEditView from "../views/settings/class/LunchEditView";
 import MajorEditView from "../views/settings/class/MajorEditView";
 import MinorEditView from "../views/settings/class/MinorEditView";
+import CreditsView from "../views/settings/CreditsView";
 import MainView from "../views/settings/MainSettingsView";
 
 /** The settings view stack navigator */
@@ -47,6 +48,8 @@ interface ISettingsParams {
     };
     /** The lunches configure view */
     ConfigureLunches: undefined;
+    /** The credits view */
+    Credits: undefined;
 }
 
 /** The view for the settings tab */
@@ -61,6 +64,7 @@ export default function SettingsNavigator() {
             <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureLunches" component={LunchEditView} options={{ title: "Edit Lunches" }} />
+            <Stack.Screen name="Credits" component={CreditsView} options={{ title: "Credits" }} />
         </Stack.Navigator>
     );
 }

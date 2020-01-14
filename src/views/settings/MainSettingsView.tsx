@@ -86,6 +86,7 @@ export default function MainSettingsView() {
                     <Cell title="Feedback Discord Server" accessory="DisclosureIndicator" onPress={openLink("https://discord.gg/7q3TxUH")} />
                     <Cell title="Feedback Email" accessory="DisclosureIndicator" onPress={openLink("mailto:feedback@whs.dusterthefirst.com")} />
                     <Cell title="Service Status" accessory="DisclosureIndicator" onPress={openLink("https://status.whs.dusterthefirst.com/")} />
+                    <Cell title="Credits" accessory="DisclosureIndicator" onPress={navigateTo("Credits")} />
                     <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
                     <Cell title="License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
                     <Cell title="Privacy Policy" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://whs.dusterthefirst.com/PRIVACY")} />
