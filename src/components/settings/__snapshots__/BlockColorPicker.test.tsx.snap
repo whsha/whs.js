@@ -143,7 +143,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "red",
+                      "color": "#c93a3a",
                     },
                     Object {},
                   ]
@@ -248,7 +248,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "orange",
+                      "color": "#eb8a29",
                     },
                     Object {},
                   ]
@@ -353,7 +353,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "gold",
+                      "color": "#ddc923",
                     },
                     Object {},
                   ]
@@ -458,7 +458,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "green",
+                      "color": "#5da539",
                     },
                     Object {},
                   ]
@@ -594,7 +594,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "blue",
+                      "color": "#2b5cbf",
                     },
                     Object {},
                   ]
@@ -699,7 +699,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "purple",
+                      "color": "#8f4bb7",
                     },
                     Object {},
                   ]
@@ -803,7 +803,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                     "letterSpacing": -0.32,
                   },
                   Object {
-                    "color": "tan",
+                    "color": "#ad855e",
                   },
                   Object {},
                 ]
@@ -987,7 +987,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "red",
+                      "color": "#c93a3a",
                     },
                     Object {},
                   ]
@@ -1092,7 +1092,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "orange",
+                      "color": "#eb8a29",
                     },
                     Object {},
                   ]
@@ -1197,7 +1197,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "gold",
+                      "color": "#ddc923",
                     },
                     Object {},
                   ]
@@ -1302,7 +1302,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "green",
+                      "color": "#5da539",
                     },
                     Object {},
                   ]
@@ -1438,7 +1438,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "blue",
+                      "color": "#2b5cbf",
                     },
                     Object {},
                   ]
@@ -1543,7 +1543,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "purple",
+                      "color": "#8f4bb7",
                     },
                     Object {},
                   ]
@@ -1648,7 +1648,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "tan",
+                      "color": "#ad855e",
                     },
                     Object {},
                   ]
@@ -1752,7 +1752,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                     "letterSpacing": -0.32,
                   },
                   Object {
-                    "color": "#C0C0C0",
+                    "color": "#999999",
                   },
                   Object {},
                 ]
@@ -1936,7 +1936,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "red",
+                      "color": "#c93a3a",
                     },
                     Object {},
                   ]
@@ -2041,7 +2041,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "orange",
+                      "color": "#eb8a29",
                     },
                     Object {},
                   ]
@@ -2146,7 +2146,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "gold",
+                      "color": "#ddc923",
                     },
                     Object {},
                   ]
@@ -2251,7 +2251,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "green",
+                      "color": "#5da539",
                     },
                     Object {},
                   ]
@@ -2356,7 +2356,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "blue",
+                      "color": "#2b5cbf",
                     },
                     Object {},
                   ]
@@ -2461,7 +2461,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "purple",
+                      "color": "#8f4bb7",
                     },
                     Object {},
                   ]
@@ -2565,7 +2565,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                     "letterSpacing": -0.32,
                   },
                   Object {
-                    "color": "tan",
+                    "color": "#ad855e",
                   },
                   Object {},
                 ]
