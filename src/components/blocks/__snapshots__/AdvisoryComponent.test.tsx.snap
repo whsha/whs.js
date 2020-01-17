@@ -3,21 +3,29 @@
 exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a numerical room 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
@@ -27,15 +35,12 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#444444",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": undefined,
           },
         ]
       }
@@ -43,18 +48,11 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
       Advisory
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -67,13 +65,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -91,8 +84,6 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-        },
-        Object {
           "marginTop": 5,
         },
       ]
@@ -104,9 +95,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "left",
           },
         ]
@@ -120,9 +111,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "right",
           },
         ]
@@ -137,21 +128,29 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
 exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryComponent with a string room 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
@@ -161,15 +160,12 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#444444",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": undefined,
           },
         ]
       }
@@ -177,18 +173,11 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
       Advisory
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -201,13 +190,8 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -225,8 +209,6 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-        },
-        Object {
           "marginTop": 5,
         },
       ]
@@ -238,9 +220,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "left",
           },
         ]
@@ -254,9 +236,9 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "right",
           },
         ]

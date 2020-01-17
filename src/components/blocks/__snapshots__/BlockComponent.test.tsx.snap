@@ -3,39 +3,45 @@
 exports[`Renders a free 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
+      classColor="No Color"
       ellipsizeMode="middle"
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#444444",
+            "color": "#999999",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": "#999999",
           },
         ]
       }
@@ -43,18 +49,11 @@ exports[`Renders a free 1`] = `
       Free
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -67,13 +66,8 @@ exports[`Renders a free 1`] = `
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -90,39 +84,45 @@ exports[`Renders a free 1`] = `
 exports[`Tests different variations of classes Renders BlockComponent with a dr 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
+      classColor="Green"
       ellipsizeMode="middle"
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#444444",
+            "color": "#5da539",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": "#5da539",
           },
         ]
       }
@@ -130,18 +130,11 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
       Directed research
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -154,13 +147,8 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -178,8 +166,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-        },
-        Object {
           "marginTop": 5,
         },
       ]
@@ -191,9 +177,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "left",
           },
         ]
@@ -207,9 +193,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "right",
           },
         ]
@@ -224,39 +210,45 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
 exports[`Tests different variations of classes Renders BlockComponent with a major 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
+      classColor="Red"
       ellipsizeMode="middle"
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#444444",
+            "color": "#c93a3a",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": "#c93a3a",
           },
         ]
       }
@@ -264,18 +256,11 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
       Test Major
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -288,13 +273,8 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -312,8 +292,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-        },
-        Object {
           "marginTop": 5,
         },
       ]
@@ -325,9 +303,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "left",
           },
         ]
@@ -341,9 +319,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "right",
           },
         ]
@@ -358,39 +336,45 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
 exports[`Tests different variations of classes Renders BlockComponent with a minor 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#FFFFFF",
-      "justifyContent": "center",
-      "padding": 10,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "nowrap",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
     }
   >
     <Text
+      classColor="Yellow"
       ellipsizeMode="middle"
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#444444",
+            "color": "#ddc923",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "fontSize": 25,
             "fontWeight": "bold",
-          },
-          Object {
-            "flex": 1,
             "textAlign": "left",
-          },
-          Object {
-            "color": "#ddc923",
           },
         ]
       }
@@ -398,18 +382,11 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
       Test minor
     </Text>
     <View
+      flex={false}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "flex": 0,
-            "paddingLeft": 5,
-          },
-          Object {
             "flexDirection": "row",
             "justifyContent": "flex-end",
           },
@@ -422,13 +399,8 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
           Array [
             Object {
               "color": "#808080",
-            },
-            Object {
-              "flex": 1,
+              "paddingLeft": 5,
               "textAlign": "right",
-            },
-            Object {
-              "flex": 0,
             },
           ]
         }
@@ -446,8 +418,6 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-        },
-        Object {
           "marginTop": 5,
         },
       ]
@@ -459,9 +429,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "left",
           },
         ]
@@ -475,9 +445,9 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
         Array [
           Object {
             "color": "#808080",
-          },
-          Object {
-            "flex": 1,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "textAlign": "right",
           },
         ]
