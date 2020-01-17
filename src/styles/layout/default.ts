@@ -14,68 +14,6 @@ export const navigationHeaderPaddingStyle: StackNavigationOptions = {
     headerTitleAlign: "center"
 };
 
-export const classesStyle = StyleSheet.create({
-    colorblindColor: {
-        fontWeight: "bold",
-        paddingHorizontal: 10
-    },
-    container: {
-        alignItems: "center",
-        flex: 1,
-        justifyContent: "center"
-    },
-    dim: {
-        color: "#808080",
-    },
-    endstop: {
-        flexDirection: "row",
-        justifyContent: "flex-end"
-    },
-    info: {
-        marginTop: 5
-    },
-    left: {
-        flex: 1,
-        textAlign: "left",
-    },
-    middle: {
-        flex: 1,
-        textAlign: "center",
-    },
-    noFlex: {
-        flex: 0
-    },
-    outerContainer: {
-        alignItems: "center",
-        backgroundColor: "#FFFFFF",
-        justifyContent: "center",
-        padding: 10,
-    },
-    outerContainerEditView: {
-        paddingHorizontal: 0,
-        paddingVertical: 10,
-        width: "100%"
-    },
-    right: {
-        flex: 1,
-        textAlign: "right"
-    },
-    row: {
-        flexDirection: "row",
-        flexWrap: "nowrap",
-        justifyContent: "space-between",
-    },
-    times: {
-        flex: 0,
-        paddingLeft: 5
-    },
-    title: {
-        color: "#444444",
-        fontSize: 25,
-        fontWeight: "bold",
-    }
-});
-
 export const headerStyles = StyleSheet.create({
     header: {
         alignItems: "center",

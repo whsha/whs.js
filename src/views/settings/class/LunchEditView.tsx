@@ -4,7 +4,7 @@
 
 import { useObserver } from "mobx-react-lite";
 import React from "react";
-import { ScrollView, SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { settingsViewStyles } from "../../../styles/layout/default";
 import { SchoolDay } from "../../../util/calendar/types";

@@ -11,14 +11,14 @@ import { AsyncStorage, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
+import { ThemeProvider } from "styled-components";
 import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
+import { lightTheme } from "./styles/theme";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
 import LoadingView from "./views/LoadingView";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "./styles/theme";
 
 /** The internal state of the application setup */
 export enum ApplicationState {

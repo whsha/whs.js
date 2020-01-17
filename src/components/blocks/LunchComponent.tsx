@@ -3,17 +3,16 @@
  */
 
 import React, { memo } from "react";
-import { View } from "react-native";
-import { classesStyle } from "../../styles/layout/default";
+import { ClassContainerView } from "../../styles/components/view";
 import { ITimes } from "../../util/class/extentions";
 import TitleTimes from "./parts/TitleTimes";
 
 /** A component to display a lunch block */
 function LunchComponent({ start, end }: ITimes) {
     return (
-        <View style={classesStyle.outerContainer}>
+        <ClassContainerView>
             <TitleTimes start={start} end={end} name="Lunch" />
-        </View>
+        </ClassContainerView>
     );
 }
 

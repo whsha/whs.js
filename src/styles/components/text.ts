@@ -6,7 +6,7 @@ import styled from "styled-components/native";
 import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
 
 /** Text that is not the main color but a bit more dim */
-export const DimText = styled.Text(({ theme }) => ({
+const DimText = styled.Text(({ theme }) => ({
     color: theme.colors.dimText
 }));
 

@@ -7,14 +7,14 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { ScrollView, TextInput, SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView, TextInput } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { classesStyle, settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
+import { settingsViewStyles, tableViewStyle } from "../../../styles/layout/default";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { useMajor } from "../../../util/hooks/classes/useMajor";
@@ -74,7 +74,7 @@ export default function MajorEditView() {
                             <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
+                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
                         </Section>
                         <Section>
                             <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />
