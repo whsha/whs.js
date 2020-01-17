@@ -14,66 +14,6 @@ export const navigationHeaderPaddingStyle: StackNavigationOptions = {
     headerTitleAlign: "center"
 };
 
-export const headerStyles = StyleSheet.create({
-    header: {
-        alignItems: "center",
-        backgroundColor: "#fff",
-        borderBottomColor: "#eee",
-        borderBottomWidth: 1,
-        height: 50,
-        justifyContent: "center",
-    },
-    headerSubtitle: {
-        color: "#808080",
-        fontSize: 12,
-        textAlign: "center"
-    },
-    headerTitle: {
-        fontSize: 15,
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    leftButton: {
-        left: 0,
-        marginHorizontal: 15,
-        marginVertical: 10,
-        position: "absolute",
-    },
-    rightButton: {
-        marginHorizontal: 15,
-        marginVertical: 10,
-        position: "absolute",
-        right: 0
-    },
-    singleHeaderTitle: {
-        fontSize: 18,
-        fontWeight: "500",
-        textAlign: "center"
-    }
-});
-
-export const headerButtonStyles = StyleSheet.create({
-    arrowButton: {
-        alignItems: "center",
-        flex: 1,
-        height: 30,
-        justifyContent: "center",
-        width: 30
-    },
-    button: {
-        color: "#2f95dc",
-        fontSize: 17
-    },
-    buttonContainer: {
-    },
-    disabled: {
-        color: "#dadada"
-    },
-    doneButton: {
-        fontWeight: "bold"
-    }
-});
-
 export const tableViewStyle = StyleSheet.create({
     redbutton: {
         color: "#FF5050"

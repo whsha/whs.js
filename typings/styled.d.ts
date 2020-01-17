@@ -7,6 +7,8 @@ declare module "styled-components" {
             text: string;
             dimText: string;
             titleColor: string;
+            disabledColor: string;
+            buttonColor: string;
         };
     };
 }

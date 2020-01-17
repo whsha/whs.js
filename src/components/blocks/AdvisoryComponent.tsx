@@ -3,7 +3,7 @@
  */
 
 import React, { memo } from "react";
-import { ClassContainerView } from "../../styles/components/view";
+import { ClassContainerView } from "../../styles/components/class";
 import { IAdvisory } from "../../util/class/classes";
 import { ITimes } from "../../util/class/extentions";
 import ExtraInfo from "./parts/ExtraInfo";
