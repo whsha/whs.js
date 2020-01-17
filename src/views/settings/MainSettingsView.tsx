@@ -7,14 +7,14 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import Constants from "expo-constants";
 import { observable, toJS } from "mobx";
 import React, { useContext } from "react";
-import { Alert, Clipboard, Linking, ScrollView, Text } from "react-native";
+import { Alert, Clipboard, Linking, Text } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import ClassesStore from "../../stores/classesStore";
-import { settingsViewStyles } from "../../styles/layout/default";
+import { SettingsScrollView } from "../../styles/components/settings";
 import { openLinkInBrowserAlert } from "../../util/alerts";
 
 /** The main settings view */
@@ -72,7 +72,7 @@ export default function MainSettingsView() {
     };
 
     return (
-        <ScrollView style={settingsViewStyles.container}>
+        <SettingsScrollView>
             <TableView>
                 <Section header="Class Settings">
                     <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
@@ -96,6 +96,6 @@ export default function MainSettingsView() {
                     <ClearCalCacheCell />
                 </Section>
             </TableView>
-        </ScrollView>
+        </SettingsScrollView>
     );
 }

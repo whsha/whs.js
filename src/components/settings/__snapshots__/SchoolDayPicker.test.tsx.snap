@@ -143,9 +143,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -279,9 +283,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -415,9 +423,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -520,9 +532,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -625,9 +641,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -730,9 +750,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -865,9 +889,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                     "letterSpacing": -0.32,
                   },
                   Object {
-                    "color": "#2f95dc",
+                    "color": "#000",
                   },
-                  Object {},
+                  Array [
+                    Object {
+                      "color": "#1f85cc",
+                    },
+                  ],
                 ]
               }
             >
@@ -1080,9 +1108,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -1340,9 +1372,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -1445,9 +1481,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -1705,9 +1745,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#2f95dc",
+                      "color": "#000",
                     },
-                    Object {},
+                    Array [
+                      Object {
+                        "color": "#1f85cc",
+                      },
+                    ],
                   ]
                 }
               >
@@ -1840,9 +1884,13 @@ exports[`Tests different variations of <SchoolDayPicker> Renders SchoolDayPicker
                     "letterSpacing": -0.32,
                   },
                   Object {
-                    "color": "#2f95dc",
+                    "color": "#000",
                   },
-                  Object {},
+                  Array [
+                    Object {
+                      "color": "#1f85cc",
+                    },
+                  ],
                 ]
               }
             >

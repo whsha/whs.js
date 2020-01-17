@@ -7,13 +7,13 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView, TextInput } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import AdvisoryComponent from "../../../components/blocks/AdvisoryComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { settingsViewStyles } from "../../../styles/layout/default";
+import { SettingsTextInput } from "../../../styles/components/settings";
 import { discardChangesAlert } from "../../../util/alerts";
 import useAdvisory from "../../../util/hooks/classes/useAdvisory";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
@@ -56,8 +56,8 @@ export default function AdvisoryConfigureView() {
                 <SafeAreaView>
                     <TableView>
                         <Section header="Options">
-                            <Cell cellContentView={<TextInput placeholder="Teacher" value={tempAdvisory.teacher} onChangeText={setTeacher} style={settingsViewStyles.textInput} />} />
-                            <Cell cellContentView={<TextInput placeholder="Room" value={tempAdvisory.room} onChangeText={setRoom} style={settingsViewStyles.textInput} />} />
+                            <Cell cellContentView={<SettingsTextInput placeholder="Teacher" value={tempAdvisory.teacher} onChangeText={setTeacher} />} />
+                            <Cell cellContentView={<SettingsTextInput placeholder="Room" value={tempAdvisory.room} onChangeText={setRoom} />} />
                         </Section>
                         <Section header="Example">
                             <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")} />} />

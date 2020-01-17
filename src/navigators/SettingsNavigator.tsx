@@ -4,7 +4,7 @@
 
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { navigationHeaderPaddingStyle } from "../styles/layout/default";
+import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
 import AdvisoryConfigureView from "../views/settings/class/AdvisoryEditView";
 import ClassesListView from "../views/settings/class/ClassesListView";

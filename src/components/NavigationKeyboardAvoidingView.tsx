@@ -3,8 +3,8 @@
  */
 
 import React, { createRef, PropsWithChildren, useEffect, useState } from "react";
-import { KeyboardAvoidingView, View } from "react-native";
-import { settingsViewStyles } from "../styles/layout/default";
+import { View } from "react-native";
+import { FlexKeyboardAvoidingView, FlexView } from "../styles/components/general";
 
 /** A "wrapper" for KeyboardAvoidingView that works in a react-navigation navigator */
 export default function NavigationKeyboardAvoidingView({ children }: PropsWithChildren<{}>) {
@@ -26,10 +26,10 @@ export default function NavigationKeyboardAvoidingView({ children }: PropsWithCh
     }, []);
 
     return (
-        <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={keyAvoidOffset} style={settingsViewStyles.container}>
-            <View style={settingsViewStyles.container} ref={viewRef}>
+        <FlexKeyboardAvoidingView behavior="padding" keyboardVerticalOffset={keyAvoidOffset}>
+            <FlexView ref={viewRef}>
                 {children}
-            </View>
-        </KeyboardAvoidingView>
+            </FlexView>
+        </FlexKeyboardAvoidingView>
     );
 }

@@ -27,8 +27,8 @@ interface IDisabledProps {
 /** A header button */
 export const HeaderButtonText = styled.Text<IDisabledProps>(props => ({
     color: props.disabled === true
-        ? props.theme.colors.buttonColor
-        : props.theme.colors.buttonColor,
+        ? props.theme.colors.disabled
+        : props.theme.colors.button,
     fontSize: 17
 }));
 

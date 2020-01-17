@@ -222,9 +222,11 @@ exports[`Renders <ClearClassesCell/> 1`] = `
                                 Object {
                                   "color": "#000",
                                 },
-                                Object {
-                                  "color": "#FF5050",
-                                },
+                                Array [
+                                  Object {
+                                    "color": "#ff5050",
+                                  },
+                                ],
                               ]
                             }
                           >

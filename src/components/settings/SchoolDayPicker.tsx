@@ -3,8 +3,8 @@
  */
 
 import React, { memo, useEffect, useMemo, } from "react";
-import { Cell, Section } from "react-native-tableview-simple";
-import { tabBarIconSelectedColor } from "../../styles/layout/default";
+import { Section } from "react-native-tableview-simple";
+import { ButtonCell } from "../../styles/components/tableview";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { SchoolDay } from "../../util/calendar/types";
 import { IrregularMeetDays } from "../../util/class/primitives";
@@ -62,10 +62,9 @@ const DayPicker = memo(<D extends SchoolDay>({ day, enabledDays, toggle, value }
     }, [disabled, selected]);
 
     return (
-        <Cell
+        <ButtonCell
             title={`Day ${day}`}
             onPress={toggleCallback}
-            titleTextColor={tabBarIconSelectedColor}
             accessory={selected ? "Checkmark" : undefined}
             isDisabled={disabled}
         />

@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Ionicons } from "@expo/vector-icons";
 import React, { memo } from "react";
 import { Platform, TouchableOpacity } from "react-native";
 import { HeaderArrowButtonTouchable, HeaderButtonText, HeaderDoneButtonText } from "../../styles/components/header";
+import { IonIconButton } from "../../styles/components/ionicons";
 
 /** The props for a disableable header button */
 interface IDisableable {
@@ -41,10 +41,9 @@ export const HeaderCancelButton = memo(({ onPress }: IPressableButton) => {
 export const HeaderLeftArrow = memo(({ onPress }: IPressableButton) => {
     return (
         <HeaderArrowButtonTouchable onPress={onPress} accessibilityLabel="LeftArrow">
-            <Ionicons
+            <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-back`}
                 size={22}
-                color={"#2f95dc"}
             />
         </HeaderArrowButtonTouchable>
     );
@@ -54,7 +53,7 @@ export const HeaderLeftArrow = memo(({ onPress }: IPressableButton) => {
 export const HeaderRightArrow = memo(({ onPress }: IPressableButton) => {
     return (
         <HeaderArrowButtonTouchable onPress={onPress} accessibilityLabel="RightArrow">
-            <Ionicons
+            <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-forward`}
                 size={22}
                 color={"#2f95dc"}

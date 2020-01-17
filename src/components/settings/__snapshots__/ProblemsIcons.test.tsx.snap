@@ -3,10 +3,12 @@
 exports[`Renders different sets of problem icons Renders with both errors and warnings 1`] = `
 <View
   style={
-    Object {
-      "flexDirection": "row",
-      "paddingRight": 10,
-    }
+    Array [
+      Object {
+        "flexDirection": "row",
+        "paddingRight": 10,
+      },
+    ]
   }
 >
   <View
@@ -32,11 +34,13 @@ exports[`Renders different sets of problem icons Renders with both errors and wa
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "gold",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "gold",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       2
@@ -74,11 +78,13 @@ exports[`Renders different sets of problem icons Renders with both errors and wa
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "red",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "red",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       3
@@ -101,10 +107,12 @@ exports[`Renders different sets of problem icons Renders with no problems 1`] = 
 exports[`Renders different sets of problem icons Renders with only errors 1`] = `
 <View
   style={
-    Object {
-      "flexDirection": "row",
-      "paddingRight": 10,
-    }
+    Array [
+      Object {
+        "flexDirection": "row",
+        "paddingRight": 10,
+      },
+    ]
   }
 >
   <View
@@ -130,11 +138,13 @@ exports[`Renders different sets of problem icons Renders with only errors 1`] = 
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "gold",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "gold",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       0
@@ -172,11 +182,13 @@ exports[`Renders different sets of problem icons Renders with only errors 1`] = 
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "red",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "red",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       3
@@ -197,10 +209,12 @@ exports[`Renders different sets of problem icons Renders with only errors 1`] = 
 exports[`Renders different sets of problem icons Renders with only warnings 1`] = `
 <View
   style={
-    Object {
-      "flexDirection": "row",
-      "paddingRight": 10,
-    }
+    Array [
+      Object {
+        "flexDirection": "row",
+        "paddingRight": 10,
+      },
+    ]
   }
 >
   <View
@@ -226,11 +240,13 @@ exports[`Renders different sets of problem icons Renders with only warnings 1`] 
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "gold",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "gold",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       2
@@ -268,11 +284,13 @@ exports[`Renders different sets of problem icons Renders with only warnings 1`] 
   >
     <Text
       style={
-        Object {
-          "alignSelf": "center",
-          "color": "red",
-          "paddingRight": 5,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "red",
+            "paddingRight": 5,
+          },
+        ]
       }
     >
       0

@@ -48,7 +48,7 @@ export const ClassTitleText = styled(LeftClassText)<IClassColoredComponentProps>
     (props) => ({
         color:
             getDisplayColorForBlock(props.classColor)
-            ?? props.theme.colors.titleColor,
+            ?? props.theme.colors.title,
         fontSize: 25,
         fontWeight: "bold",
     })
