@@ -36,7 +36,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "green",
+              "color": "#5da539",
             },
           ]
         }
@@ -251,7 +251,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "green",
+              "color": "#5da539",
             },
           ]
         }
@@ -387,7 +387,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "purple",
+              "color": "#8848ad",
             },
           ]
         }
@@ -552,7 +552,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "purple",
+              "color": "#8848ad",
             },
           ]
         }
@@ -722,7 +722,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "red",
+              "color": "#c93a3a",
             },
           ]
         }
@@ -858,7 +858,7 @@ Array [
               "textAlign": "left",
             },
             Object {
-              "color": "gold",
+              "color": "#ddc923",
             },
           ]
         }

@@ -35,7 +35,7 @@ exports[`Renders a free 1`] = `
             "textAlign": "left",
           },
           Object {
-            "color": "#C0C0C0",
+            "color": "#999999",
           },
         ]
       }
@@ -122,7 +122,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
             "textAlign": "left",
           },
           Object {
-            "color": "green",
+            "color": "#5da539",
           },
         ]
       }
@@ -256,7 +256,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
             "textAlign": "left",
           },
           Object {
-            "color": "red",
+            "color": "#c93a3a",
           },
         ]
       }
@@ -390,7 +390,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
             "textAlign": "left",
           },
           Object {
-            "color": "gold",
+            "color": "#ddc923",
           },
         ]
       }
