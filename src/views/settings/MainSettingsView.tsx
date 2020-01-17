@@ -76,8 +76,8 @@ export default function MainSettingsView() {
             <TableView>
                 <Section header="Class Settings">
                     <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
-                    <Cell title="Backup Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
-                    <Cell title="Load Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
+                    <Cell title="Export Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
+                    <Cell title="Import Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                 </Section>
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />

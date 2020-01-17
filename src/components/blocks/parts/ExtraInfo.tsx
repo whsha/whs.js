@@ -3,28 +3,22 @@
  */
 
 import React from "react";
-import { Text, View } from "react-native";
-import { classesStyle } from "../../../styles/layout/default";
+import { LeftClassText, RightClassText } from "../../../styles/components/text";
+import { ClassViewInfoRow } from "../../../styles/components/view";
 import { IAdvisedClass, IColored } from "../../../util/class/primitives";
 import AccessibilityLabel from "./AccessibilityLabel";
 
 /** The extra info section of the class component */
 export default function ExtraInfo({ teacher, room, block }: IAdvisedClass & Partial<IColored>) {
     return (
-        <View style={[classesStyle.row, classesStyle.info]}>
-            <Text
-                style={[classesStyle.dim, classesStyle.left]}
-                numberOfLines={1}
-            >
+        <ClassViewInfoRow>
+            <LeftClassText numberOfLines={1}>
                 {teacher.length === 0 ? "No Teacher" : teacher}
-            </Text>
+            </LeftClassText>
             {block !== undefined ? <AccessibilityLabel block={block} /> : null}
-            <Text
-                style={[classesStyle.dim, classesStyle.right]}
-                numberOfLines={1}
-            >
+            <RightClassText numberOfLines={1}>
                 {room.length === 0 ? "No Room" : `${isNaN(parseInt(room, 10)) ? "" : "Room "}${room}`}
-            </Text>
-        </View>
+            </RightClassText>
+        </ClassViewInfoRow>
     );
 }

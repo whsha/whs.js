@@ -17,6 +17,8 @@ import StorageKey from "./storageKey";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
 import LoadingView from "./views/LoadingView";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "./styles/theme";
 
 /** The internal state of the application setup */
 export enum ApplicationState {
@@ -140,8 +142,10 @@ export default function App() {
 
     return (
         <SafeAreaProvider>
-            <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
-            {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+            <ThemeProvider theme={lightTheme}>
+                <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
+                {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+            </ThemeProvider>
         </SafeAreaProvider>
     );
 }

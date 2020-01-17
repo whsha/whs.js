@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput, SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -63,22 +63,24 @@ export default function MajorEditView() {
 
     return (
         <NavigationKeyboardAvoidingView>
-            <ScrollView>
-                <TableView>
-                    <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
-                    <Section header="Basic Info">
-                        <Cell cellContentView={<TextInput placeholder="Class Name" value={major.tempValue.name} onChangeText={updateName} style={settingsViewStyles.textInput} numberOfLines={1} />} />
-                        <Cell cellContentView={<TextInput placeholder="Teacher" value={major.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell cellContentView={<TextInput placeholder="Room" value={major.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
-                        <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
-                    </Section>
-                    <Section header="Example">
-                        <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
-                    </Section>
-                    <Section>
-                        <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />
-                    </Section>
-                </TableView>
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
+                <SafeAreaView>
+                    <TableView>
+                        <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
+                        <Section header="Basic Info">
+                            <Cell cellContentView={<TextInput placeholder="Class Name" value={major.tempValue.name} onChangeText={updateName} style={settingsViewStyles.textInput} numberOfLines={1} />} />
+                            <Cell cellContentView={<TextInput placeholder="Teacher" value={major.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
+                            <Cell cellContentView={<TextInput placeholder="Room" value={major.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
+                            <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
+                        </Section>
+                        <Section header="Example">
+                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
+                        </Section>
+                        <Section>
+                            <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />
+                        </Section>
+                    </TableView>
+                </SafeAreaView>
             </ScrollView>
         </NavigationKeyboardAvoidingView>
     );

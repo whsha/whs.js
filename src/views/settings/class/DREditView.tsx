@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput, SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -64,21 +64,23 @@ export default function DREditView() {
 
     return (
         <NavigationKeyboardAvoidingView>
-            <ScrollView>
-                <TableView>
-                    <BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />
-                    <SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />
-                    <Section header="Basic Info">
-                        <Cell cellContentView={<TextInput placeholder="Teacher" value={DR.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
-                        <Cell cellContentView={<TextInput placeholder="Room" value={DR.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
-                    </Section>
-                    <Section header="Example">
-                        <Cell cellContentView={<ClassComponent block={DR.tempValue.block} name="DR" room={DR.tempValue.room} teacher={DR.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
-                    </Section>
-                    <Section>
-                        <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />
-                    </Section>
-                </TableView>
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
+                <SafeAreaView>
+                    <TableView>
+                        <BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />
+                        <SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />
+                        <Section header="Basic Info">
+                            <Cell cellContentView={<TextInput placeholder="Teacher" value={DR.tempValue.teacher} onChangeText={updateTeacher} style={settingsViewStyles.textInput} />} />
+                            <Cell cellContentView={<TextInput placeholder="Room" value={DR.tempValue.room} onChangeText={updateRoom} style={settingsViewStyles.textInput} />} />
+                        </Section>
+                        <Section header="Example">
+                            <Cell cellContentView={<ClassComponent block={DR.tempValue.block} name="DR" room={DR.tempValue.room} teacher={DR.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} style={classesStyle.outerContainerEditView} />} />
+                        </Section>
+                        <Section>
+                            <Cell title={"Delete"} titleTextStyle={tableViewStyle.redbutton} onPress={pomptDelete} />
+                        </Section>
+                    </TableView>
+                </SafeAreaView>
             </ScrollView>
         </NavigationKeyboardAvoidingView>
     );

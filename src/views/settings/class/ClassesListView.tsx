@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useMemo } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -126,8 +126,8 @@ export default function ClassesListView() {
         navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
 
     return (
-        <View style={settingsViewStyles.container}>
-            <ScrollView>
+        <ScrollView style={settingsViewStyles.container} contentInsetAdjustmentBehavior="automatic" >
+            <SafeAreaView >
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
                         <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
@@ -153,7 +153,7 @@ export default function ClassesListView() {
                         <ClearClassesCell />
                     </Section>
                 </TableView>
-            </ScrollView>
-        </View>
+            </SafeAreaView>
+        </ScrollView>
     );
 }
