@@ -4,9 +4,9 @@
 
 import React, { memo } from "react";
 import { Alert } from "react-native";
+import {ErrorsCount, ProblemsButton, ProblemsIconsView, WarningsCount} from "../../styles/components/problemsicons";
 import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "../../util/class/validation";
 import IconComponent from "../IconComponent";
-import {ProblemsIconsView, ProblemsButton, WarningsCount, ErrorsCount} from "../../styles/components/problemsicons";
 
 /** The props for the ProblemsIcons */
 interface IProblemsIconsProps {

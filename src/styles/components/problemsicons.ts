@@ -3,7 +3,7 @@
  */
 
 import styled from "styled-components/native";
-import { IDisplayableProps } from "./common"
+import { IDisplayableProps } from "./common";
 
 /** The view for the icons */
 export const ProblemsIconsView = styled.View({

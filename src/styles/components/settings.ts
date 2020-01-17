@@ -4,12 +4,6 @@
 
 import styled from "styled-components/native";
 
-/** A view wtih styles */
-export const SettingsView = styled.View(props => ({
-    backgroundColor: props.theme.colors.background,
-    flex: 1
-}));
-
 /** A scrollview wtih styles */
 export const SettingsScrollView = styled.ScrollView(props => ({
     backgroundColor: props.theme.colors.background,

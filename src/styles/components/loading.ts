@@ -3,7 +3,7 @@
  */
 
 import styled from "styled-components/native";
-import { IDisplayableProps } from "./Helpers";
+import { IDisplayableProps } from "./common";
 
 /** The image to display on the loading view */
 export const LoadingImage = styled.Image({
