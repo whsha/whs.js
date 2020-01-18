@@ -15,9 +15,18 @@ class AccessibilityPreferences {
     public matchLabelColors = false;
 }
 
+/** The display theme to use */
+export enum Theme {
+    Light,
+    Dark
+}
+
 /** A store of all of the user's preferenses */
 export default class PreferencesStore {
     /** The preferenses pertaining to the user's accessibility */
     @persist("object", AccessibilityPreferences) @observable
     public accessibility: AccessibilityPreferences = new AccessibilityPreferences();
+    /** The theme preferences */
+    @persist @observable
+    public theme = Theme.Light;
 }

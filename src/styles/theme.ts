@@ -20,3 +20,20 @@ export const lightTheme: DefaultTheme = {
         white: "#ffffff",
     },
 };
+
+/** The dark theme defaults */
+export const darkTheme: DefaultTheme = {
+    colors: {
+        background: "#000000",
+        border: "#A0A0A0",
+        button: "#1f85cc",
+        dimText: "#808080",
+        disabled: "#7a7a7a",
+        error: "#ff5050",
+        input: "#555555",
+        main: "#000000",
+        text: "#ffffff",
+        title: "#444444",
+        white: "#ffffff",
+    },
+};
