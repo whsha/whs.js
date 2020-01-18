@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useMemo } from "react";
-import { Alert, SafeAreaView, ScrollView } from "react-native";
+import { Alert, SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import uuid from "uuid";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -13,7 +13,7 @@ import IconComponent from "../../../components/IconComponent";
 import ClearClassesCell from "../../../components/settings/ClearClassesCell";
 import ProblemsIcons from "../../../components/settings/ProblemsIcons";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
-import { settingsViewStyles } from "../../../styles/layout/default";
+import { SettingsScrollView } from "../../../styles/components/settings";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
 import { IDR, IMajor, IMinor } from "../../../util/class/classes";
@@ -126,8 +126,8 @@ export default function ClassesListView() {
         navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
 
     return (
-        <ScrollView style={settingsViewStyles.container} contentInsetAdjustmentBehavior="automatic" >
-            <SafeAreaView >
+        <SettingsScrollView contentInsetAdjustmentBehavior="automatic">
+            <SafeAreaView>
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
                         <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
@@ -154,6 +154,6 @@ export default function ClassesListView() {
                     </Section>
                 </TableView>
             </SafeAreaView>
-        </ScrollView>
+        </SettingsScrollView>
     );
 }

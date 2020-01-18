@@ -4,8 +4,7 @@
 
 import { useObserver } from "mobx-react-lite";
 import React from "react";
-import { ColorblindLabelText } from "../../../styles/components/text";
-import { MiddleClassView } from "../../../styles/components/view";
+import { ColorblindLabelText, MiddleClassView } from "../../../styles/components/class";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { IColored } from "../../../util/class/primitives";
 import usePreferences from "../../../util/hooks/usePreferences";

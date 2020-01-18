@@ -6,6 +6,7 @@ import React from "react";
 import { render } from "react-native-testing-library";
 import { BlockColor } from "../../util/blocks/blockColor";
 import { SchoolDay } from "../../util/calendar/types";
+import ThemeWrapper from "../test-helpers/ThemeWrapper";
 import SchoolDayPicker from "./SchoolDayPicker";
 
 /** A helper function to construct an irregular map */
@@ -24,7 +25,16 @@ function meets(one: boolean, two: boolean, three: boolean, four: boolean, five: 
 describe("Tests different variations of <SchoolDayPicker>", () => {
     it("Renders SchoolDayPicker", () => {
         const callback = jest.fn();
-        const comp = render(<SchoolDayPicker value={meets(true, true, false, false, false, true, true)} onToggle={callback} blockColorRestraint={BlockColor.None} />);
+        const comp = render(
+            (
+                <SchoolDayPicker
+                    value={meets(true, true, false, false, false, true, true)}
+                    onToggle={callback}
+                    blockColorRestraint={BlockColor.None}
+                />
+            ),
+            { wrapper: ThemeWrapper }
+        );
 
         expect(comp.toJSON()).toMatchSnapshot();
         expect(callback).toHaveBeenCalledTimes(0);
@@ -32,7 +42,16 @@ describe("Tests different variations of <SchoolDayPicker>", () => {
 
     it("Renders SchoolDayPicker with a restaint and corrects value", () => {
         const callback = jest.fn();
-        const comp = render(<SchoolDayPicker value={meets(true, true, false, true, true, true, true)} onToggle={callback} blockColorRestraint={BlockColor.Green} />);
+        const comp = render(
+            (
+                <SchoolDayPicker
+                    value={meets(true, true, false, true, true, true, true)}
+                    onToggle={callback}
+                    blockColorRestraint={BlockColor.Green}
+                />
+            ),
+            { wrapper: ThemeWrapper }
+        );
 
         expect(comp.toJSON()).toMatchSnapshot();
         expect(callback).toHaveBeenCalledTimes(2);

@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Ionicons } from "@expo/vector-icons";
 import React, { memo } from "react";
-import { Platform, Text, TouchableOpacity } from "react-native";
-import { headerButtonStyles } from "../../styles/layout/default";
+import { Platform, TouchableOpacity } from "react-native";
+import { HeaderArrowButtonTouchable, HeaderButtonText, HeaderDoneButtonText } from "../../styles/components/header";
+import { IonIconButton } from "../../styles/components/ionicons";
 
 /** The props for a disableable header button */
 interface IDisableable {
@@ -22,8 +22,8 @@ interface IPressableButton {
 /** A save header button */
 export const HeaderSaveButton = memo(({ onPress, disabled }: IDisableable & IPressableButton) => {
     return (
-        <TouchableOpacity style={headerButtonStyles.buttonContainer} onPress={onPress} disabled={disabled}>
-            <Text style={[headerButtonStyles.button, headerButtonStyles.doneButton, disabled === true ? headerButtonStyles.disabled : undefined]}>Save</Text>
+        <TouchableOpacity onPress={onPress} disabled={disabled}>
+            <HeaderDoneButtonText disabled={disabled}>Save</HeaderDoneButtonText>
         </TouchableOpacity>
     );
 });
@@ -31,8 +31,8 @@ export const HeaderSaveButton = memo(({ onPress, disabled }: IDisableable & IPre
 /** A cancel header button */
 export const HeaderCancelButton = memo(({ onPress }: IPressableButton) => {
     return (
-        <TouchableOpacity style={headerButtonStyles.buttonContainer} onPress={onPress}>
-            <Text style={headerButtonStyles.button}>Cancel</Text>
+        <TouchableOpacity onPress={onPress}>
+            <HeaderButtonText>Cancel</HeaderButtonText>
         </TouchableOpacity>
     );
 });
@@ -40,25 +40,24 @@ export const HeaderCancelButton = memo(({ onPress }: IPressableButton) => {
 /** A left header arrow button */
 export const HeaderLeftArrow = memo(({ onPress }: IPressableButton) => {
     return (
-        <TouchableOpacity onPress={onPress} style={headerButtonStyles.arrowButton} accessibilityLabel="LeftArrow">
-            <Ionicons
+        <HeaderArrowButtonTouchable onPress={onPress} accessibilityLabel="LeftArrow">
+            <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-back`}
                 size={22}
-                color={"#2f95dc"}
             />
-        </TouchableOpacity>
+        </HeaderArrowButtonTouchable>
     );
 });
 
 /** A right header arrow button */
 export const HeaderRightArrow = memo(({ onPress }: IPressableButton) => {
     return (
-        <TouchableOpacity onPress={onPress} style={headerButtonStyles.arrowButton} accessibilityLabel="RightArrow">
-            <Ionicons
+        <HeaderArrowButtonTouchable onPress={onPress} accessibilityLabel="RightArrow">
+            <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-arrow-forward`}
                 size={22}
                 color={"#2f95dc"}
             />
-        </TouchableOpacity>
+        </HeaderArrowButtonTouchable>
     );
 });

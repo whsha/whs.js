@@ -2,9 +2,9 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Ionicons } from "@expo/vector-icons";
 import React, { memo } from "react";
 import { Platform, StyleProp, TextStyle, View } from "react-native";
+import { IonIconButton } from "../styles/components/ionicons";
 
 /** The props for an IconComponent */
 interface IIconComponentProps {
@@ -21,14 +21,14 @@ interface IIconComponentProps {
 }
 
 /** A memoized component wrapper for IonIcons */
-function IconComponent({ name, size = 22, color = "#2f95dc", style, onPress }: IIconComponentProps) {
+function IconComponent({ name, size = 22, color, style, onPress }: IIconComponentProps) {
     return (
         <View style={{ marginBottom: -3 }}>
-            <Ionicons
+            <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${name}`}
                 size={size}
                 color={color}
-                style={style}
+                style={[style, { color }]}
                 onPress={onPress}
             />
         </View>

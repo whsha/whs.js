@@ -7,9 +7,16 @@ import { DefaultTheme } from "styled-components";
 /** The light theme defaults */
 export const lightTheme: DefaultTheme = {
     colors: {
+        background: "#efeff4",
+        border: "#A0A0A0",
+        button: "#1f85cc", // "#2f95dc",
         dimText: "#808080",
-        main: "#FFFFFF",
+        disabled: "#dadada",
+        error: "#ff5050",
+        input: "#555555",
+        main: "#ffffff",
         text: "#000000",
-        titleColor: "#444444"
+        title: "#444444",
+        white: "#ffffff",
     },
 };

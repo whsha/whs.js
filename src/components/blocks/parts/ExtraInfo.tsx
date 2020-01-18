@@ -3,8 +3,7 @@
  */
 
 import React from "react";
-import { LeftClassText, RightClassText } from "../../../styles/components/text";
-import { ClassViewInfoRow } from "../../../styles/components/view";
+import { ClassViewInfoRow, LeftClassText, RightClassText } from "../../../styles/components/class";
 import { IAdvisedClass, IColored } from "../../../util/class/primitives";
 import AccessibilityLabel from "./AccessibilityLabel";
 

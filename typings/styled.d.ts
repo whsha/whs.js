@@ -6,7 +6,14 @@ declare module "styled-components" {
             main: string;
             text: string;
             dimText: string;
-            titleColor: string;
+            title: string;
+            disabled: string;
+            button: string;
+            error: string;
+            white: string;
+            background: string;
+            input: string;
+            border: string;
         };
     };
 }

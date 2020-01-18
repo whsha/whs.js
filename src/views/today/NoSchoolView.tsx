@@ -5,9 +5,9 @@
 import dayjs, { Dayjs } from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
 import { CalendarContext } from "../../contexts";
-import { noSchoolViewStyles } from "../../styles/layout/default";
+import { DimText } from "../../styles/components/common";
+import { GoToNextSchoolDayButton, GoToNextSchoolDayText, NoSchoolContainerView } from "../../styles/components/noschool";
 
 dayjs.extend(relativeTime);
 
@@ -31,11 +31,11 @@ export default function NoSchoolView({ selectedDate, setDate }: INoSchoolViewPro
     const goToNextSchoolDay = () => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay);
 
     return (
-        <View style={noSchoolViewStyles.noSchoolView}>
-            <TouchableOpacity onPress={goToNextSchoolDay} style={noSchoolViewStyles.goToNextSchoolDay}>
-                <Text style={noSchoolViewStyles.goToNextSchoolDayText}>Go to next school day</Text>
-                <Text style={noSchoolViewStyles.goToNextSchoolDayDiffText}>{nextSchoolDay === undefined ? "Calculating ..." : nextSchoolDay.startOf("day").from(selectedDate.startOf("day"))}</Text>
-            </TouchableOpacity>
-        </View>
+        <NoSchoolContainerView>
+            <GoToNextSchoolDayButton onPress={goToNextSchoolDay}>
+                <GoToNextSchoolDayText>Go to next school day</GoToNextSchoolDayText>
+                <DimText>{nextSchoolDay === undefined ? "Calculating ..." : nextSchoolDay.startOf("day").from(selectedDate.startOf("day"))}</DimText>
+            </GoToNextSchoolDayButton>
+        </NoSchoolContainerView>
     );
 }

@@ -3,8 +3,7 @@
  */
 
 import React from "react";
-import { ClassTitleText, TimesText } from "../../../styles/components/text";
-import { ClassViewRow, TimesView } from "../../../styles/components/view";
+import { ClassTitleText, ClassViewRow, TimesText, TimesView } from "../../../styles/components/class";
 import { BlockColor } from "../../../util/blocks/blockColor";
 import { ITimes } from "../../../util/class/extentions";
 import { IColored, INamed } from "../../../util/class/primitives";

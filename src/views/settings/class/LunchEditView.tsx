@@ -4,9 +4,9 @@
 
 import { useObserver } from "mobx-react-lite";
 import React from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { settingsViewStyles } from "../../../styles/layout/default";
+import { SettingsScrollView } from "../../../styles/components/settings";
 import { SchoolDay } from "../../../util/calendar/types";
 import { Lunch } from "../../../util/class/lunch";
 import useClasses from "../../../util/hooks/classes/useClasses";
@@ -50,12 +50,12 @@ export default function LunchEditView() {
     ));
 
     return (
-        <ScrollView style={settingsViewStyles.container} contentInsetAdjustmentBehavior="automatic">
+        <SettingsScrollView contentInsetAdjustmentBehavior="automatic">
             <SafeAreaView>
                 <TableView>
                     {[SchoolDay.One, SchoolDay.Two, SchoolDay.Three, SchoolDay.Four, SchoolDay.Five, SchoolDay.Six, SchoolDay.Seven].map((x, i) => <DaySelector item={x} key={i} />)}
                 </TableView>
             </SafeAreaView>
-        </ScrollView>
+        </SettingsScrollView>
     );
 }

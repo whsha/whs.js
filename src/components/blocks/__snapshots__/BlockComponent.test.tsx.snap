@@ -6,7 +6,7 @@ exports[`Renders a free 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -87,7 +87,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -213,7 +213,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -339,7 +339,7 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,

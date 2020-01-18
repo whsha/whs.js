@@ -5,10 +5,9 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useContext } from "react";
-import { Cell } from "react-native-tableview-simple";
 import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
-import { tableViewStyle } from "../../styles/layout/default";
+import { RedCell } from "../../styles/components/tableview";
 import { clearClassesAlert } from "../../util/alerts";
 
 /** A settings cell to clear the classes */
@@ -23,6 +22,6 @@ export default function ClearClassesCell() {
     });
 
     return (
-        <Cell title="Clear Classes" titleTextStyle={tableViewStyle.redbutton} onPress={clear} />
+        <RedCell title="Clear Classes" onPress={clear} />
     );
 }

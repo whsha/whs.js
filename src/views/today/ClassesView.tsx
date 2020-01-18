@@ -5,12 +5,11 @@
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { ScrollView } from "react-native";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import BlockComponent from "../../components/blocks/BlockComponent";
 import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
 import { PreparedClasses } from "../../stores/preparedClassesStore";
-import { settingsViewStyles } from "../../styles/layout/default";
+import { SettingsScrollView } from "../../styles/components/settings";
 import { Block } from "../../util/blocks/block";
 import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
 import { IAdvisory } from "../../util/class/classes";
@@ -40,9 +39,9 @@ export default function ClassesView({ schoolDay }: IClassesViewProps) {
     };
 
     return (
-        <ScrollView style={settingsViewStyles.container}>
+        <SettingsScrollView>
             {schoolDay.isHalf ? <HalfDayClasses {...properties} /> : <FullDayClasses {...properties} />}
-        </ScrollView>
+        </SettingsScrollView>
     );
 }
 
