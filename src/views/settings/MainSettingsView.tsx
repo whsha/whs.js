@@ -7,15 +7,13 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import Constants from "expo-constants";
 import { observable, toJS } from "mobx";
 import React, { useContext } from "react";
-import { Alert, Clipboard, Linking, Text } from "react-native";
+import { Alert, Clipboard, Text } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import IconComponent from "../../components/IconComponent";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import ClassesStore from "../../stores/classesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
-import { openLinkInBrowserAlert } from "../../util/alerts";
 
 /** The main settings view */
 export default function MainSettingsView() {
@@ -25,16 +23,13 @@ export default function MainSettingsView() {
     const navigateTo = (to: keyof SettingsParams) =>
         () => navigation.navigate(to);
 
-    const openLink = (link: string) =>
-        () => openLinkInBrowserAlert(() => Linking.openURL(link));
-
     const backupClasses = () => {
         Clipboard.setString(JSON.stringify(toJS(tempClasses, { recurseEverything: true })));
         Alert.alert("Copied to clipboard!", "Save this somewhere safe in case you need to reuse it");
     };
 
     const loadClasses = () => {
-        Alert.alert("Load from clipboard?", "Make sure you have the classes copied into your clipboard", [
+        Alert.alert("Import from clipboard?", "Make sure you have the classes copied into your clipboard", [
             {
                 style: "default",
                 text: "Cancel"
@@ -83,13 +78,8 @@ export default function MainSettingsView() {
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
                 </Section>
                 <Section header="App Info">
-                    <Cell title="Feedback Discord Server" accessory="DisclosureIndicator" onPress={openLink("https://discord.gg/7q3TxUH")} />
-                    <Cell title="Feedback Email" accessory="DisclosureIndicator" onPress={openLink("mailto:feedback@whs.dusterthefirst.com")} />
-                    <Cell title="Service Status" accessory="DisclosureIndicator" onPress={openLink("https://status.whs.dusterthefirst.com/")} />
                     <Cell title="Credits" accessory="DisclosureIndicator" onPress={navigateTo("Credits")} />
-                    <Cell title="Source Code" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js")} />
-                    <Cell title="License" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")} />
-                    <Cell title="Privacy Policy" cellAccessoryView={<IconComponent name="open" />} onPress={openLink("https://whs.dusterthefirst.com/PRIVACY")} />
+                    <Cell title="Links" accessory="DisclosureIndicator" onPress={navigateTo("Links")} />
                     <Cell title="Version" cellAccessoryView={<Text>{Constants.nativeAppVersion}-{Constants.nativeBuildVersion} ({Constants.manifest.releaseChannel as string})</Text>} />
                 </Section>
                 <Section header="Reset" footer="If your schedule shows up incorrectly, clearing the caches may help.">

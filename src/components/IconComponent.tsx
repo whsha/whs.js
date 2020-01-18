@@ -21,14 +21,13 @@ interface IIconComponentProps {
 }
 
 /** A memoized component wrapper for IonIcons */
-function IconComponent({ name, size = 22, color, style, onPress }: IIconComponentProps) {
+function IconComponent({ name, size = 22, style, color, onPress }: IIconComponentProps) {
     return (
         <View style={{ marginBottom: -3 }}>
             <IonIconButton
                 name={`${Platform.OS === "ios" ? "ios" : "md"}-${name}`}
                 size={size}
-                color={color}
-                style={[style, { color }]}
+                style={[style, color !== undefined ? { color } : undefined]}
                 onPress={onPress}
             />
         </View>
