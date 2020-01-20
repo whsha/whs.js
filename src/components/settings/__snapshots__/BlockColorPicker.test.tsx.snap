@@ -353,7 +353,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#ddc923",
+                      "color": "#e8df38",
                     },
                     Object {},
                   ]
@@ -1197,7 +1197,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#ddc923",
+                      "color": "#e8df38",
                     },
                     Object {},
                   ]
@@ -2146,7 +2146,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                       "letterSpacing": -0.32,
                     },
                     Object {
-                      "color": "#ddc923",
+                      "color": "#e8df38",
                     },
                     Object {},
                   ]
