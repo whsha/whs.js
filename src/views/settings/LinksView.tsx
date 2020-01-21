@@ -51,6 +51,11 @@ export default function LinksView() {
                         accessory="DisclosureIndicator"
                         onPress={openLink("https://github.com/DusterTheFirst/whs.js")}
                     />
+                    <Cell
+                        title="Changelog"
+                        accessory="DisclosureIndicator"
+                        onPress={openLink("https://whs.dusterthefirst.com/CHANGELOG")}
+                    />
                 </Section>
             </TableView>
         </SettingsScrollView>
