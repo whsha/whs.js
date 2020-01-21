@@ -29,6 +29,8 @@ export default function TodayNavigator() {
     const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Today">>();
 
     navigation.addListener("tabPress", e => {
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
+
         if (navigation.isFocused()) {
             // Prevent default behavior
             e.preventDefault();
