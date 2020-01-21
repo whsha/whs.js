@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/whsha/whs.js/compare/v1.1.0...v1.2.0) (2020-01-21)
+
+
+### Features
+
+* add changelog link to settings ([e0e247e](https://github.com/whsha/whs.js/commit/e0e247e2691a124e0f01ded4089a9cbb4184da55))
+* allow for system theme to be used to select app theme ([b1505ec](https://github.com/whsha/whs.js/commit/b1505ec94b816e595230bc2a52543110998aaaa0))
+* tab bar has haptics on all tabs ([885edbb](https://github.com/whsha/whs.js/commit/885edbb121fce214e2b8a2fc5b727a578727963a))
+
+
+### Bug Fixes
+
+* move over to @whsha/classes/v1 ([2323b5c](https://github.com/whsha/whs.js/commit/2323b5c0d4ba7e6e266ef22d9964391ba44bdf25))
+
 ## 1.1.0 (2020-01-19)
 
 
