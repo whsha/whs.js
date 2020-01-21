@@ -12,5 +12,11 @@ module.exports = {
             filename: 'app.json',
             updater: require.resolve('standard-version-expo/ios'),
         }
+    ],
+    packageFiles: [
+        {
+            filename: 'package.json',
+            type: 'json'
+        }
     ]
 };

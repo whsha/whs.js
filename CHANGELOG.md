@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.1.1](https://github.com/whsha/whs.js/compare/v1.2.0...v1.1.1) (2020-01-21)
 
-## [1.2.0](https://github.com/whsha/whs.js/compare/v1.1.0...v1.2.0) (2020-01-21)
-
 
 ### Features
 
