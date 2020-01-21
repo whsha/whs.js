@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import { Lunch, LUNCH_TIMES as times } from "@whsha/classes/v1/class/lunch";
+import { IColored } from "@whsha/classes/v1/class/primitives";
 import React, { memo } from "react";
-import { IDR, IMajor, IMinor } from "../../util/class/classes";
-import { Lunch, LUNCH_TIMES as times } from "../../util/class/lunch";
-import { IColored } from "../../util/class/primitives";
 import BlockComponent from "./BlockComponent";
 import LunchComponent from "./LunchComponent";
 

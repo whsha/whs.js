@@ -2,9 +2,9 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { ITimes } from "@whsha/classes/v1/class/extentions";
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
-import { ITimes } from "../../util/class/extentions";
 import TitleTimes from "./parts/TitleTimes";
 
 /** A component to display a lunch block */

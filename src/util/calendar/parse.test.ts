@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import parseCalendar from "./parse";
-import { SchoolDay } from "./types";
 
 /** The mock calendar data */
 const calendarData = readFileSync(resolve(__dirname, "../../__mocks__/calendar.ics")).toString();

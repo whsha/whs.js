@@ -2,6 +2,8 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+
 /** The information about a calendar */
 export interface ICalendarInformation {
     /** The school days */
@@ -20,15 +22,4 @@ export interface ICalendarSchoolDay {
     meta?: string;
     /** The date the day is on formatted as YYYY-MM-DD */
     date: string;
-}
-
-/** A numeric value denoting the school day in the 7 day cycle */
-export enum SchoolDay {
-    One = 1,
-    Two = 2,
-    Three = 3,
-    Four = 4,
-    Five = 5,
-    Six = 6,
-    Seven = 7
 }

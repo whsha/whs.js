@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import { ITimes } from "@whsha/classes/v1/class/extentions";
+import { IColored } from "@whsha/classes/v1/class/primitives";
+import { isMajor, isMinor } from "@whsha/classes/v1/class/type";
 import React, { memo } from "react";
-import { IDR, IMajor, IMinor } from "../../util/class/classes";
-import { ITimes } from "../../util/class/extentions";
-import { IColored } from "../../util/class/primitives";
-import { isMajor, isMinor } from "../../util/class/type";
 import ClassComponent from "./ClassComponent";
 import FreeComponent from "./FreeComponent";
 

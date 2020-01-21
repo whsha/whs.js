@@ -2,9 +2,9 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { IAdvisedClass, IColored } from "@whsha/classes/v1/class/primitives";
 import React from "react";
 import { ClassViewInfoRow, LeftClassText, RightClassText } from "../../../styles/components/class";
-import { IAdvisedClass, IColored } from "../../../util/class/primitives";
 import AccessibilityLabel from "./AccessibilityLabel";
 
 /** The extra info section of the class component */

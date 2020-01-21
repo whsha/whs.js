@@ -2,6 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { Block } from "@whsha/classes/v1/blocks/block";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IAdvisory } from "@whsha/classes/v1/class/classes";
+import { Lunch } from "@whsha/classes/v1/class/lunch";
+import { BlockColorsForDay, getBlockColorsForDay } from "@whsha/classes/v1/schoolDays";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
@@ -10,12 +15,8 @@ import BlockComponent from "../../components/blocks/BlockComponent";
 import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
 import { PreparedClasses } from "../../stores/preparedClassesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
-import { Block } from "../../util/blocks/block";
-import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
-import { IAdvisory } from "../../util/class/classes";
-import { Lunch } from "../../util/class/lunch";
+import { ICalendarSchoolDay } from "../../util/calendar/types";
 import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
-import { BlockColorsForDay, getBlockColorsForDay } from "../../util/schoolDays";
 
 dayjs.extend(useCustomFormat);
 

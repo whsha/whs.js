@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "@whsha/classes/v1/class/validation";
 import React, { memo } from "react";
 import { Alert } from "react-native";
 import {ErrorsCount, ProblemsButton, ProblemsIconsView, WarningsCount} from "../../styles/components/problemsicons";
-import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "../../util/class/validation";
 import IconComponent from "../IconComponent";
 
 /** The props for the ProblemsIcons */

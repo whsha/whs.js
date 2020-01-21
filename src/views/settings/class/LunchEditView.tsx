@@ -2,15 +2,15 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { Lunch } from "@whsha/classes/v1/class/lunch";
+import { getLunchBlockColorForDay } from "@whsha/classes/v1/schoolDays";
 import { useObserver } from "mobx-react-lite";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { SettingsScrollView } from "../../../styles/components/settings";
-import { SchoolDay } from "../../../util/calendar/types";
-import { Lunch } from "../../../util/class/lunch";
 import useClasses from "../../../util/hooks/classes/useClasses";
-import { getLunchBlockColorForDay } from "../../../util/schoolDays";
 
 /** The day selector properties */
 interface IDaySelectorProps {

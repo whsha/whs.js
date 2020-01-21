@@ -2,9 +2,9 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { ValidationError, ValidationWarning } from "@whsha/classes/v1/class/validation";
 import React from "react";
 import { render } from "react-native-testing-library";
-import { ValidationError, ValidationWarning } from "../../util/class/validation";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";
 import ProblemsIcons from "./ProblemsIcons";
 

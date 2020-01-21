@@ -2,9 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import dayjs from "dayjs";
 import ICal from "ical.js";
-import { ICalendarInformation, ICalendarSchoolDay, SchoolDay } from "./types";
+import { ICalendarInformation, ICalendarSchoolDay } from "./types";
 
 /** The regex used to match school days */
 const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;

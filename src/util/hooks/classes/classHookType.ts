@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { ClassType, IClassType } from "../../class/type";
+import { ClassType, IClassType } from "@whsha/classes/v1/class/type";
 
 /** The class hook return type */
 export default interface IUseClass<C extends IClassType<ClassType>> {
