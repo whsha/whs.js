@@ -2,15 +2,15 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { Block } from "@whsha/classes/v1/blocks/block";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IAdvisory, IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import { DayLunchMap, Lunch } from "@whsha/classes/v1/class/lunch";
+import { irregularMeetDays } from "@whsha/classes/v1/class/primitives";
+import { getBlockForColorOnDay, getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
 import { action, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
-import { Block } from "../util/blocks/block";
-import { SchoolDay } from "../util/calendar/types";
-import { IAdvisory, IDR, IMajor, IMinor } from "../util/class/classes";
-import { DayLunchMap, Lunch } from "../util/class/lunch";
-import { irregularMeetDays } from "../util/class/primitives";
 import { IClasses } from "../util/hooks/classes/useClasses";
-import { getBlockForColorOnDay, getSchoolDaysThatHaveColor } from "../util/schoolDays";
 
 /** A way of storing classes that is easy to use for a today view */
 export type PreparedClasses = {

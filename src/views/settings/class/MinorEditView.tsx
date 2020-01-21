@@ -4,6 +4,8 @@
 
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
@@ -18,8 +20,6 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { RedCell } from "../../../styles/components/tableview";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
-import { BlockColor } from "../../../util/blocks/blockColor";
-import { SchoolDay } from "../../../util/calendar/types";
 import { useMinor } from "../../../util/hooks/classes/useMinor";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 

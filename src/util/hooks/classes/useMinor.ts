@@ -2,12 +2,12 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IMinor } from "@whsha/classes/v1/class/classes";
+import { ClassType } from "@whsha/classes/v1/class/type";
 import deepEqual from "deep-equal";
 import { useState } from "react";
-import { BlockColor } from "../../blocks/blockColor";
-import { SchoolDay } from "../../calendar/types";
-import { IMinor } from "../../class/classes";
-import { ClassType } from "../../class/type";
 import IUseClass from "./classHookType";
 import useClasses from "./useClasses";
 

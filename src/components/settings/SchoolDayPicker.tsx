@@ -2,13 +2,13 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IrregularMeetDays } from "@whsha/classes/v1/class/primitives";
+import { getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
 import React, { memo, useEffect, useMemo, } from "react";
 import { Section } from "react-native-tableview-simple";
 import { ButtonCell } from "../../styles/components/tableview";
-import { BlockColor } from "../../util/blocks/blockColor";
-import { SchoolDay } from "../../util/calendar/types";
-import { IrregularMeetDays } from "../../util/class/primitives";
-import { getSchoolDaysThatHaveColor } from "../../util/schoolDays";
 
 /** The props for a SchoolDayPicker */
 interface ISchoolDayPickerProps {

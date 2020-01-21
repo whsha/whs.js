@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { IColored } from "@whsha/classes/v1/class/primitives";
 import { useObserver } from "mobx-react-lite";
 import React from "react";
 import { ColorblindLabelText, MiddleClassView } from "../../../styles/components/class";
-import { BlockColor } from "../../../util/blocks/blockColor";
-import { IColored } from "../../../util/class/primitives";
 import usePreferences from "../../../util/hooks/usePreferences";
 
 /** The accessability label for classes */

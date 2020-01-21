@@ -2,13 +2,13 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { dr, major, minor } from "@whsha/classes/v1/__mocks__/classes";
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { Lunch } from "@whsha/classes/v1/class/lunch";
 import dayjs from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { render } from "react-native-testing-library";
-import { dr, major, minor } from "../../__mocks__/classes";
-import { BlockColor } from "../../util/blocks/blockColor";
-import { Lunch } from "../../util/class/lunch";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";
 import LunchBlockComponent from "./LunchBlockComponent";
 

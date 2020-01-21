@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { ITimes } from "@whsha/classes/v1/class/extentions";
+import { IColored, INamed } from "@whsha/classes/v1/class/primitives";
 import React from "react";
 import { ClassTitleText, ClassViewRow, TimesText, TimesView } from "../../../styles/components/class";
-import { BlockColor } from "../../../util/blocks/blockColor";
-import { ITimes } from "../../../util/class/extentions";
-import { IColored, INamed } from "../../../util/class/primitives";
 import AccessibilityLabel from "./AccessibilityLabel";
 
 /** Interface for props for TitleTimes */

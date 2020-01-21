@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IAdvisory, IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import { DayLunchMap, Lunch } from "@whsha/classes/v1/class/lunch";
 import { action, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
-import { SchoolDay } from "../util/calendar/types";
-import { IAdvisory, IDR, IMajor, IMinor } from "../util/class/classes";
-import { DayLunchMap, Lunch } from "../util/class/lunch";
 
 /** Store containig the users classes */
 export default class ClassesStore {

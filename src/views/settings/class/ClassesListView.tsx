@@ -4,6 +4,8 @@
 
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import { irregularMeetDays } from "@whsha/classes/v1/class/primitives";
 import React, { useMemo } from "react";
 import { Alert, SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
@@ -16,8 +18,6 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsScrollView } from "../../../styles/components/settings";
 import { discardChangesAlert } from "../../../util/alerts";
 import { getDisplayColorForBlock } from "../../../util/blocks/blockColor";
-import { IDR, IMajor, IMinor } from "../../../util/class/classes";
-import { irregularMeetDays } from "../../../util/class/primitives";
 import useClasses from "../../../util/hooks/classes/useClasses";
 import usePreparedClasses from "../../../util/hooks/classes/usePreparedClasses";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
