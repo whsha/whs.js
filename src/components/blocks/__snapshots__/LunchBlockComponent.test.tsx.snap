@@ -50,7 +50,7 @@ Array [
         Directed research
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -172,7 +172,7 @@ Array [
         Lunch
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -250,7 +250,7 @@ Array [
         Directed research
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -378,7 +378,7 @@ Array [
         Free
       </Text>
       <View
-        flex={true}
+        doFlex={true}
         style={
           Array [
             Object {
@@ -458,7 +458,7 @@ Array [
         Lunch
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -536,7 +536,7 @@ Array [
         Free
       </Text>
       <View
-        flex={true}
+        doFlex={true}
         style={
           Array [
             Object {
@@ -621,7 +621,7 @@ Array [
         Lunch
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -699,7 +699,7 @@ Array [
         Test Major
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -827,7 +827,7 @@ Array [
         Test minor
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {
@@ -949,7 +949,7 @@ Array [
         Lunch
       </Text>
       <View
-        flex={false}
+        doFlex={false}
         style={
           Array [
             Object {

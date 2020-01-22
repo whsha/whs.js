@@ -27,7 +27,7 @@ export default function TitleTimes({ name, start, end, block, showAccessibilityL
                 {name.length === 0 ? "No Name" : name}
             </ClassTitleText>
             {showAccessibilityLabel && block !== undefined ? <AccessibilityLabel block={block} /> : null}
-            <TimesView flex={showAccessibilityLabel && block !== BlockColor.None}>
+            <TimesView doFlex={showAccessibilityLabel && block !== BlockColor.None}>
                 <TimesText numberOfLines={1}>
                     {start.format("h:mm")} - {end.format("h:mm A")}
                 </TimesText>

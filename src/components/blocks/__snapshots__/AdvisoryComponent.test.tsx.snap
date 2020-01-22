@@ -48,7 +48,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
       Advisory
     </Text>
     <View
-      flex={false}
+      doFlex={false}
       style={
         Array [
           Object {
@@ -173,7 +173,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
       Advisory
     </Text>
     <View
-      flex={false}
+      doFlex={false}
       style={
         Array [
           Object {
