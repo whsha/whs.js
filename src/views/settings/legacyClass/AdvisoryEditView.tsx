@@ -15,7 +15,7 @@ import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboa
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { discardChangesAlert } from "../../../util/alerts";
-import useAdvisory from "../../../util/hooks/classes/useAdvisory";
+import useAdvisory from "../../../util/hooks/legacyClasses/useAdvisory";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
@@ -40,7 +40,7 @@ export default function AdvisoryConfigureView() {
     };
     const done = () => {
         save();
-        navigation.navigate("ClassesList");
+        navigation.navigate("LegacyClassesList");
     };
 
     useOverrideBackButton(goBack);

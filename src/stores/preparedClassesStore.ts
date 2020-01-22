@@ -10,7 +10,7 @@ import { irregularMeetDays } from "@whsha/classes/v1/class/primitives";
 import { getBlockForColorOnDay, getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
 import { action, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
-import { IClasses } from "../util/hooks/classes/useClasses";
+import { IClasses } from "../util/hooks/legacyClasses/useClasses";
 
 /** A way of storing classes that is easy to use for a today view */
 export type PreparedClasses = {

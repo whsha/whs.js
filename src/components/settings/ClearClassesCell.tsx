@@ -18,7 +18,7 @@ export default function ClearClassesCell() {
     const clear = () => clearClassesAlert(() => {
         tempClasses.clear();
 
-        navigation.navigate("ClassesList");
+        navigation.navigate("LegacyClassesList");
     });
 
     return (

@@ -20,15 +20,15 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { RedCell } from "../../../styles/components/tableview";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
-import { useMinor } from "../../../util/hooks/classes/useMinor";
+import { useMinor } from "../../../util/hooks/legacyClasses/useMinor";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The minor configure view */
 export default function MinorEditView() {
-    const route = useRoute<RouteProp<SettingsParams, "ConfigureMinor">>();
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMinor">>();
+    const route = useRoute<RouteProp<SettingsParams, "LegacyConfigureMinor">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "LegacyConfigureMinor">>();
 
     const minor = useMinor(route.params.minorId);
 

@@ -20,15 +20,15 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { RedCell } from "../../../styles/components/tableview";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
-import { useDR } from "../../../util/hooks/classes/useDR";
+import { useDR } from "../../../util/hooks/legacyClasses/useDR";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
 /** The dr configure view */
 export default function DREditView() {
-    const route = useRoute<RouteProp<SettingsParams, "ConfigureDR">>();
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureDR">>();
+    const route = useRoute<RouteProp<SettingsParams, "LegacyConfigureDR">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "LegacyConfigureDR">>();
 
     const DR = useDR(route.params.drId);
 

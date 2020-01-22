@@ -10,7 +10,7 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { SettingsScrollView } from "../../../styles/components/settings";
-import useClasses from "../../../util/hooks/classes/useClasses";
+import useClasses from "../../../util/hooks/legacyClasses/useClasses";
 
 /** The day selector properties */
 interface IDaySelectorProps {

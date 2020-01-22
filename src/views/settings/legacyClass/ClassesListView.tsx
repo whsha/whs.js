@@ -18,13 +18,13 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { getDisplayColorForBlock } from "../../../styles/blockColor";
 import { SettingsScrollView } from "../../../styles/components/settings";
 import { discardChangesAlert } from "../../../util/alerts";
-import useClasses from "../../../util/hooks/classes/useClasses";
-import usePreparedClasses from "../../../util/hooks/classes/usePreparedClasses";
+import useClasses from "../../../util/hooks/legacyClasses/useClasses";
+import usePreparedClasses from "../../../util/hooks/legacyClasses/usePreparedClasses";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 /** The main classes config view */
 export default function ClassesListView() {
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ClassesList">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "LegacyClassesList">>();
     const classes = useClasses();
     const preparedClasses = usePreparedClasses();
 
@@ -79,7 +79,7 @@ export default function ClassesListView() {
             cellStyle={clazz.lab ? "Subtitle" : undefined}
             accessory="DisclosureIndicator"
             titleTextColor={getDisplayColorForBlock(clazz.block)}
-            onPress={goTo("ConfigureMajor", { majorId: clazz.uuid })}
+            onPress={goTo("LegacyConfigureMajor", { majorId: clazz.uuid })}
             key={key}
         />
     );
@@ -95,7 +95,7 @@ export default function ClassesListView() {
                 cellStyle={"Subtitle"}
                 accessory="DisclosureIndicator"
                 titleTextColor={getDisplayColorForBlock(clazz.block)}
-                onPress={goTo("ConfigureMinor", { minorId: clazz.uuid })}
+                onPress={goTo("LegacyConfigureMinor", { minorId: clazz.uuid })}
                 key={key}
             />
         );
@@ -112,28 +112,28 @@ export default function ClassesListView() {
                 cellStyle={"Subtitle"}
                 accessory="DisclosureIndicator"
                 titleTextColor={getDisplayColorForBlock(clazz.block)}
-                onPress={goTo("ConfigureDR", { drId: clazz.uuid })}
+                onPress={goTo("LegacyConfigureDR", { drId: clazz.uuid })}
                 key={key}
             />
         );
     };
 
     const addMajor = () =>
-        navigation.navigate({ name: "ConfigureMajor", params: { majorId: uuid() } });
+        navigation.navigate({ name: "LegacyConfigureMajor", params: { majorId: uuid() } });
     const addMinor = () =>
-        navigation.navigate({ name: "ConfigureMinor", params: { minorId: uuid() } });
+        navigation.navigate({ name: "LegacyConfigureMinor", params: { minorId: uuid() } });
     const addDr = () =>
-        navigation.navigate({ name: "ConfigureDR", params: { drId: uuid() } });
+        navigation.navigate({ name: "LegacyConfigureDR", params: { drId: uuid() } });
 
     return (
         <SettingsScrollView contentInsetAdjustmentBehavior="automatic">
             <SafeAreaView>
                 <TableView>
                     <Section header="Advisory" footer="Basically your homeroom">
-                        <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
+                        <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("LegacyConfigureAdvisory", undefined)} />
                     </Section>
                     <Section header="Lunches">
-                        <Cell title="Edit Lunches" accessory="DisclosureIndicator" onPress={goTo("ConfigureLunches", undefined)} />
+                        <Cell title="Edit Lunches" accessory="DisclosureIndicator" onPress={goTo("LegacyConfigureLunches", undefined)} />
                     </Section>
                     <Section header="Majors" footer="Majors are classes that meet the full 5 days of the cycle during a color block.">
                         {Array.from(classes.temp.majors.values()).map((major, key) => <MajorCell clazz={major} key={key} />)}

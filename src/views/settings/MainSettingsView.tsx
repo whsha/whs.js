@@ -56,7 +56,7 @@ export default function MainSettingsView() {
                             tempClasses.minors = observable.map(parsed.minors);
                             tempClasses.lunches = parsed.lunches;
 
-                            navigation.navigate("ClassesList");
+                            navigation.navigate("LegacyClassesList");
                         } catch {
                             Alert.alert("Failed to load from clipboard", "The clipboard contents were not valid classes or there was a problem loading them");
                         }
@@ -70,12 +70,12 @@ export default function MainSettingsView() {
         <SettingsScrollView>
             <TableView>
                 <Section header="Class Settings">
-                    <Cell title="Edit Classes" accessory="DisclosureIndicator" isDisabled={true} />
+                    <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("LegacyClassesList")} />
                     <Cell title="Export Classes" accessory="DisclosureIndicator" isDisabled={true} />
                     <Cell title="Import Classes" accessory="DisclosureIndicator" isDisabled={true} />
                 </Section>
                 <Section header="Legacy Class Settings">
-                    <Cell title="Edit Legacy Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
+                    <Cell title="Edit Legacy Classes" accessory="DisclosureIndicator" onPress={navigateTo("LegacyClassesList")} />
                     <Cell title="Export Legacy Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
                     <Cell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                 </Section>

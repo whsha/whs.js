@@ -18,7 +18,7 @@ import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { RedCell } from "../../../styles/components/tableview";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
-import { useMajor } from "../../../util/hooks/classes/useMajor";
+import { useMajor } from "../../../util/hooks/legacyClasses/useMajor";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
@@ -26,8 +26,8 @@ dayjs.extend(useCustomFormat);
 /** The major config view */
 export default function MajorEditView() {
 
-    const route = useRoute<RouteProp<SettingsParams, "ConfigureMajor">>();
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
+    const route = useRoute<RouteProp<SettingsParams, "LegacyConfigureMajor">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "LegacyConfigureMajor">>();
 
     const major = useMajor(route.params.majorId);
 

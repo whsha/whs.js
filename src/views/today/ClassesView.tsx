@@ -16,7 +16,7 @@ import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
 import { PreparedClasses } from "../../stores/preparedClassesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
 import { ICalendarSchoolDay } from "../../util/calendar/types";
-import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
+import usePreparedClasses from "../../util/hooks/legacyClasses/usePreparedClasses";
 
 dayjs.extend(useCustomFormat);
 

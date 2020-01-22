@@ -9,6 +9,7 @@ import * as Haptics from "expo-haptics";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
+import { default as ClassesListViewNew } from "../views/settings/class/ClassesListView";
 import CreditsView from "../views/settings/CreditsView";
 import AdvisoryConfigureView from "../views/settings/legacyClass/AdvisoryEditView";
 import ClassesListView from "../views/settings/legacyClass/ClassesListView";
@@ -32,31 +33,43 @@ interface ISettingsParams {
     Accessibility: undefined;
     /** The main settings view */
     AllSettings: undefined;
-    /** The classes list view */
-    ClassesList: undefined;
-    /** The advisory configure view */
-    ConfigureAdvisory: undefined;
-    /** The major configure view */
-    ConfigureMajor: {
-        /** The id of the major to configure */
-        majorId: string;
-    };
-    /** The minor configure view */
-    ConfigureMinor: {
-        /** The id of the minor to configure */
-        minorId: string;
-    };
-    /** The dr configure view */
-    ConfigureDR: {
-        /** The id of the dr to configure */
-        drId: string;
-    };
-    /** The lunches configure view */
-    ConfigureLunches: undefined;
     /** The credits view */
     Credits: undefined;
     /** The links page */
     Links: undefined;
+
+    /** The classes list view */
+    ClassesList: undefined;
+    // /** The advisory edit view */
+    // ConfigureAdvisory: undefined;
+    // /** The class edit view */
+    // ConfigureClass: {
+    //     /** The id of the class to configure */
+    //     uuid: string;
+    // };
+
+    // TODO: REMOVE
+    /** The classes list view */
+    LegacyClassesList: undefined;
+    /** The advisory configure view */
+    LegacyConfigureAdvisory: undefined;
+    /** The major configure view */
+    LegacyConfigureMajor: {
+        /** The id of the major to configure */
+        majorId: string;
+    };
+    /** The minor configure view */
+    LegacyConfigureMinor: {
+        /** The id of the minor to configure */
+        minorId: string;
+    };
+    /** The dr configure view */
+    LegacyConfigureDR: {
+        /** The id of the dr to configure */
+        drId: string;
+    };
+    /** The lunches configure view */
+    LegacyConfigureLunches: undefined;
 }
 
 /** The view for the settings tab */
@@ -71,14 +84,17 @@ export default function SettingsNavigator() {
         <Stack.Navigator>
             <Stack.Screen name="AllSettings" component={MainSettingsView} options={{ title: "Settings" }} />
             <Stack.Screen name="Accessibility" component={AccessibilitySettingsView} options={{ title: "Accessibility Options" }} />
-            <Stack.Screen name="ClassesList" component={ClassesListView} options={{ title: "Class Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureLunches" component={LunchEditView} options={{ title: "Edit Lunches" }} />
+            <Stack.Screen name="ClassesList" component={ClassesListViewNew} options={{ title: "Class Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="Credits" component={CreditsView} options={{ title: "Credits" }} />
             <Stack.Screen name="Links" component={LinksView} options={{ title: "Links" }} />
+
+            {/* TODO: REMOVE */}
+            <Stack.Screen name="LegacyClassesList" component={ClassesListView} options={{ title: "Class Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="LegacyConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="LegacyConfigureMajor" component={MajorEditView} options={{ title: "Edit Major", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="LegacyConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="LegacyConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
+            <Stack.Screen name="LegacyConfigureLunches" component={LunchEditView} options={{ title: "Edit Lunches" }} />
         </Stack.Navigator>
     );
 }
