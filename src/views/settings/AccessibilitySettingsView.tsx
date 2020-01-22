@@ -9,10 +9,12 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { Theme } from "../../stores/preferencesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
 import usePreferences from "../../util/hooks/usePreferences";
+import useTheme from "../../util/hooks/useTheme";
 
 /** The settings to control different accessibility functionalitys of the app */
 export default function AccessibilitySettingsView() {
     const preferences = usePreferences();
+    const theme = useTheme();
 
     const updateLabelColors = (val: boolean) =>
         preferences.accessibility.labelColors = val;
@@ -21,7 +23,10 @@ export default function AccessibilitySettingsView() {
         preferences.accessibility.matchLabelColors = val;
 
     const updateTheme = (val: boolean) =>
-        preferences.theme = val ? Theme.Dark : Theme.Light;
+        preferences.theme.theme = val ? Theme.Dark : Theme.Light;
+
+    const updateMatchTheme = (val: boolean) =>
+        preferences.theme.matchSystemTheme = val;
 
     const TextLabelsSwitch = useObserver(() => (
         <Switch
@@ -34,14 +39,20 @@ export default function AccessibilitySettingsView() {
         <Switch
             value={preferences.accessibility.matchLabelColors}
             onValueChange={updateMatchLabelColors}
-            disabled={!preferences.accessibility.labelColors}
         />
     ));
 
     const DarkThemeSwitch = useObserver(() => (
         <Switch
-            value={preferences.theme === Theme.Dark}
+            value={preferences.theme.theme === Theme.Dark}
             onValueChange={updateTheme}
+        />
+    ));
+
+    const SystemThemeSwitch = useObserver(() => (
+        <Switch
+            value={preferences.theme.matchSystemTheme}
+            onValueChange={updateMatchTheme}
         />
     ));
 
@@ -50,10 +61,14 @@ export default function AccessibilitySettingsView() {
             <TableView>
                 <Section header="Class Color Labels" footer="These settings would add labels to the class display in order to assist users that have trouble differentiating the different colors in identifying the block colors">
                     <Cell title="Text Labels for Colors" cellAccessoryView={TextLabelsSwitch} />
-                    <Cell title="Match Colors on Labels" cellAccessoryView={MatchColorsSwitch} isDisabled={!preferences.accessibility.labelColors} />
+                    {/* Hide the option if the label colors are disabled */}
+                    {preferences.accessibility.labelColors ? <Cell title="Match Colors on Labels" cellAccessoryView={MatchColorsSwitch} /> : undefined}
                 </Section>
                 <Section header="Theme">
-                    <Cell title="Dark Theme (Alpha)" cellAccessoryView={DarkThemeSwitch} />
+                    {/* Hide the switch if the system does not have a theme preference */}
+                    {theme.device !== undefined ? <Cell title="Match System Theme" cellAccessoryView={SystemThemeSwitch} /> : undefined}
+                    {/* Hide the option if the theme is using the system theme */}
+                    {!preferences.theme.matchSystemTheme ? <Cell title="Dark Theme (Alpha)" cellAccessoryView={DarkThemeSwitch} /> : undefined}
                 </Section>
             </TableView>
         </SettingsScrollView>

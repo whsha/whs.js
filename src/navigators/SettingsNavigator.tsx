@@ -2,7 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/core";
 import { createStackNavigator } from "@react-navigation/stack";
+import * as Haptics from "expo-haptics";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
@@ -15,6 +18,7 @@ import MinorEditView from "../views/settings/class/MinorEditView";
 import CreditsView from "../views/settings/CreditsView";
 import LinksView from "../views/settings/LinksView";
 import MainView from "../views/settings/MainSettingsView";
+import { MainTabParams } from "./MainNavigator";
 
 /** The settings view stack navigator */
 const Stack = createStackNavigator<SettingsParams>();
@@ -57,6 +61,12 @@ interface ISettingsParams {
 
 /** The view for the settings tab */
 export default function SettingsNavigator() {
+    const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Settings">>();
+
+    navigation.addListener("tabPress", () => {
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
+    });
+
     return (
         <Stack.Navigator>
             <Stack.Screen name="AllSettings" component={MainView} options={{ title: "Settings" }} />

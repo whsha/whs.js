@@ -9,6 +9,7 @@ import { create } from "mobx-persist";
 import { useObserver } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage, StatusBar } from "react-native";
+import { AppearanceProvider } from "react-native-appearance";
 import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
@@ -20,6 +21,7 @@ import { Theme } from "./stores/preferencesStore";
 import { darkTheme, lightTheme } from "./styles/theme";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
+import useTheme from "./util/hooks/useTheme";
 import LoadingView from "./views/LoadingView";
 
 /** The internal state of the application setup */
@@ -97,6 +99,7 @@ export default function App() {
         }
 
         setCurrentTask(ApplicationState.LoadingPreferences);
+
         // Hydrate the preferences store
         await hydrate(StorageKey.Preferences, preferences);
 
@@ -134,9 +137,11 @@ export default function App() {
         });
     }, []);
 
-    const theme = useObserver(() => preferences.theme === Theme.Light ? lightTheme : darkTheme);
-    const navTheme = useObserver(() => preferences.theme === Theme.Light ? DefaultTheme : DarkTheme);
-    const barStyle = useObserver(() => preferences.theme === Theme.Light ? "dark-content" : "light-content");
+    const theme = useTheme();
+
+    const apptheme = useObserver(() => theme.computed === Theme.Light ? lightTheme : darkTheme);
+    const navTheme = useObserver(() => theme.computed === Theme.Light ? DefaultTheme : DarkTheme);
+    const barStyle = useObserver(() => theme.computed === Theme.Light ? "dark-content" : "light-content");
 
     const MainViewContents = () => (
         <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={navTheme}>
@@ -148,10 +153,12 @@ export default function App() {
 
     return (
         <SafeAreaProvider>
-            <ThemeProvider theme={theme}>
-                <StatusBar barStyle={barStyle} translucent={false} hidden={false} />
-                {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
-            </ThemeProvider>
+            <AppearanceProvider>
+                <ThemeProvider theme={apptheme}>
+                    <StatusBar barStyle={barStyle} translucent={false} hidden={false} />
+                    {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+                </ThemeProvider>
+            </AppearanceProvider>
         </SafeAreaProvider>
     );
 }
