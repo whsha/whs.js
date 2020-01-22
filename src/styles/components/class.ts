@@ -78,13 +78,13 @@ export const ClassViewInfoRow = styled(ClassViewRow)({
 /** Props for a styled component that can have a dynamic flex state */
 interface IFlexableProps {
     /** The flex state */
-    flex: boolean;
+    doFlex: boolean;
 }
 
 /** The view to surround the times part of the class */
 export const TimesView = styled.View<IFlexableProps>(props => ({
     alignItems: "center",
-    flex: props.flex ? 1 : undefined,
+    flex: props.doFlex ? 1 : undefined,
     flexDirection: "row",
     justifyContent: "flex-end"
 }));
