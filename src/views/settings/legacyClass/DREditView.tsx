@@ -5,8 +5,9 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
@@ -14,32 +15,32 @@ import ClassComponent from "../../../components/blocks/ClassComponent";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
 import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import BlockColorPicker from "../../../components/settings/BlockColorPicker";
+import SchoolDayPicker from "../../../components/settings/SchoolDayPicker";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { SettingsTextInput } from "../../../styles/components/settings";
 import { RedCell } from "../../../styles/components/tableview";
 import { deleteClassAlert, discardChangesAlert } from "../../../util/alerts";
-import { useMajor } from "../../../util/hooks/classes/useMajor";
+import { useDR } from "../../../util/hooks/classes/useDR";
 import useOverrideBackButton from "../../../util/hooks/useOverrideBackButton";
 
 dayjs.extend(useCustomFormat);
 
-/** The major config view */
-export default function MajorEditView() {
+/** The dr configure view */
+export default function DREditView() {
+    const route = useRoute<RouteProp<SettingsParams, "ConfigureDR">>();
+    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureDR">>();
 
-    const route = useRoute<RouteProp<SettingsParams, "ConfigureMajor">>();
-    const navigation = useNavigation<StackNavigationProp<SettingsParams, "ConfigureMajor">>();
-
-    const major = useMajor(route.params.majorId);
+    const DR = useDR(route.params.drId);
 
     const goBack = () => {
-        if (major.updated) {
+        if (DR.updated) {
             discardChangesAlert(() => navigation.goBack());
         } else {
             navigation.goBack();
         }
     };
     const done = () => {
-        major.save();
+        DR.save();
         navigation.goBack();
     };
 
@@ -47,35 +48,34 @@ export default function MajorEditView() {
 
     navigation.setOptions({
         headerLeft: () => <HeaderCancelButton onPress={goBack} />,
-        headerRight: () => <HeaderSaveButton onPress={done} disabled={!major.updated} />,
+        headerRight: () => <HeaderSaveButton onPress={done} disabled={!DR.updated} />,
     });
 
     const pomptDelete = () =>
         deleteClassAlert(() => {
-            major.delete();
+            DR.delete();
             navigation.goBack();
         });
 
-    const updateBlock = (block: BlockColor) => major.update({ block });
-    const toggleLab = () => major.update(pre => ({ lab: !pre.lab }));
-    const updateName = (name: string) => major.update({ name });
-    const updateRoom = (room: string) => major.update({ room });
-    const updateTeacher = (teacher: string) => major.update({ teacher });
+    const updateBlock = (block: BlockColor) => DR.update({ block });
+    const updateRoom = (room: string) => DR.update({ room });
+    const updateTeacher = (teacher: string) => DR.update({ teacher });
+
+    const toggleMeet = (day: SchoolDay) => DR.update(pre => ({ meets: { ...pre.meets, [day]: !pre.meets[day] } }));
 
     return (
         <NavigationKeyboardAvoidingView>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <SafeAreaView>
                     <TableView>
-                        <BlockColorPicker value={major.tempValue.block} onPick={updateBlock} />
+                        <BlockColorPicker value={DR.tempValue.block} onPick={updateBlock} />
+                        <SchoolDayPicker value={DR.tempValue.meets} onToggle={toggleMeet} blockColorRestraint={DR.tempValue.block} />
                         <Section header="Basic Info">
-                            <Cell cellContentView={<SettingsTextInput placeholder="Class Name" value={major.tempValue.name} onChangeText={updateName} numberOfLines={1} />} />
-                            <Cell cellContentView={<SettingsTextInput placeholder="Teacher" value={major.tempValue.teacher} onChangeText={updateTeacher} />} />
-                            <Cell cellContentView={<SettingsTextInput placeholder="Room" value={major.tempValue.room} onChangeText={updateRoom} />} />
-                            <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
+                            <Cell cellContentView={<SettingsTextInput placeholder="Teacher" value={DR.tempValue.teacher} onChangeText={updateTeacher} />} />
+                            <Cell cellContentView={<SettingsTextInput placeholder="Room" value={DR.tempValue.room} onChangeText={updateRoom} />} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
+                            <Cell cellContentView={<ClassComponent block={DR.tempValue.block} name="DR" room={DR.tempValue.room} teacher={DR.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
                         </Section>
                         <Section>
                             <RedCell title={"Delete"} onPress={pomptDelete} />

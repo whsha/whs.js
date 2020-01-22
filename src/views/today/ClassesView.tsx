@@ -8,7 +8,7 @@ import { IAdvisory } from "@whsha/classes/v1/class/classes";
 import { Lunch } from "@whsha/classes/v1/class/lunch";
 import { BlockColorsForDay, getBlockColorsForDay } from "@whsha/classes/v1/schoolDays";
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
 import BlockComponent from "../../components/blocks/BlockComponent";

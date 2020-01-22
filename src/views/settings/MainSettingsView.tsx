@@ -4,21 +4,21 @@
 
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
-import Constants from "expo-constants";
+import { default as Constants } from "expo-constants";
 import { observable, toJS } from "mobx";
 import React, { useContext } from "react";
 import { Alert, Clipboard, Text } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
-import { TempClassesContext } from "../../contexts";
+import { LegacyTempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
-import ClassesStore from "../../stores/classesStore";
+import LegacyClassesStore from "../../stores/legacyClassesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
 
 /** The main settings view */
 export default function MainSettingsView() {
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
-    const tempClasses = useContext(TempClassesContext);
+    const tempClasses = useContext(LegacyTempClassesContext);
 
     const navigateTo = (to: keyof SettingsParams) =>
         () => navigation.navigate(to);
@@ -41,7 +41,7 @@ export default function MainSettingsView() {
                     Clipboard.getString().then(text => {
                         // FIXME: Clean this up
                         try {
-                            const parsed = JSON.parse(text) as Partial<ClassesStore>;
+                            const parsed = JSON.parse(text) as Partial<LegacyClassesStore>;
 
                             if (parsed.DRs === undefined
                                 || parsed.advisory === undefined
@@ -70,9 +70,14 @@ export default function MainSettingsView() {
         <SettingsScrollView>
             <TableView>
                 <Section header="Class Settings">
-                    <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
-                    <Cell title="Export Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
-                    <Cell title="Import Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
+                    <Cell title="Edit Classes" accessory="DisclosureIndicator" isDisabled={true} />
+                    <Cell title="Export Classes" accessory="DisclosureIndicator" isDisabled={true} />
+                    <Cell title="Import Classes" accessory="DisclosureIndicator" isDisabled={true} />
+                </Section>
+                <Section header="Legacy Class Settings">
+                    <Cell title="Edit Legacy Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
+                    <Cell title="Export Legacy Classes" accessory="DisclosureIndicator" onPress={backupClasses} />
+                    <Cell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={loadClasses} />
                 </Section>
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />

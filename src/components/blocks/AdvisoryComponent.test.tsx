@@ -3,7 +3,7 @@
  */
 
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { render } from "react-native-testing-library";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";

@@ -5,7 +5,7 @@
 import { dr, major, minor } from "@whsha/classes/v1/__mocks__/classes";
 import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { render } from "react-native-testing-library";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";

@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";

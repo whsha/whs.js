@@ -4,7 +4,7 @@
 
 import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import styled from "styled-components/native";
-import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
+import { getDisplayColorForBlock } from "../blockColor";
 import { DimText } from "./common";
 
 /** Text to be placed on the left of the class display */

@@ -11,7 +11,7 @@ import deepEqual from "deep-equal";
 import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
-import { ClassesContext, TempClassesContext } from "../../../contexts";
+import { LegacyClassesContext, LegacyTempClassesContext } from "../../../contexts";
 
 /** An interface of the different classes */
 export interface IClasses {
@@ -29,8 +29,8 @@ export interface IClasses {
 
 /** A hook to read and modify the classes */
 export default function useClasses() {
-    const savedClasses = useContext(ClassesContext);
-    const tempClasses = useContext(TempClassesContext);
+    const savedClasses = useContext(LegacyClassesContext);
+    const tempClasses = useContext(LegacyTempClassesContext);
 
     return useObserver(() => ({
         saved: {

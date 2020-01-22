@@ -4,7 +4,7 @@
 
 import { InitialState, NavigationState } from "@react-navigation/core";
 import { DarkTheme, DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
-import Constants from "expo-constants";
+import { default as Constants } from "expo-constants";
 import { create } from "mobx-persist";
 import { useObserver } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
@@ -14,7 +14,7 @@ import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
 import { ThemeProvider } from "styled-components";
-import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import { CalendarContext, LegacyClassesContext, LegacyTempClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
 import { Theme } from "./stores/preferencesStore";
@@ -55,8 +55,8 @@ export default function App() {
     const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     // The hydrated stores
     const calendar = useContext(CalendarContext);
-    const classes = useContext(ClassesContext);
-    const tempClasses = useContext(TempClassesContext);
+    const classes = useContext(LegacyClassesContext);
+    const tempClasses = useContext(LegacyTempClassesContext);
     const preparedClasses = useContext(PreparedClassesContext);
     const preferences = useContext(PreferencesStoreContext);
 

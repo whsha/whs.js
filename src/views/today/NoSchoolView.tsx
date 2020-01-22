@@ -3,7 +3,7 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+import { default as relativeTime } from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../../contexts";
 import { DimText } from "../../styles/components/common";

@@ -9,15 +9,15 @@ import * as Haptics from "expo-haptics";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
-import AdvisoryConfigureView from "../views/settings/class/AdvisoryEditView";
-import ClassesListView from "../views/settings/class/ClassesListView";
-import DREditView from "../views/settings/class/DREditView";
-import LunchEditView from "../views/settings/class/LunchEditView";
-import MajorEditView from "../views/settings/class/MajorEditView";
-import MinorEditView from "../views/settings/class/MinorEditView";
 import CreditsView from "../views/settings/CreditsView";
+import AdvisoryConfigureView from "../views/settings/legacyClass/AdvisoryEditView";
+import ClassesListView from "../views/settings/legacyClass/ClassesListView";
+import DREditView from "../views/settings/legacyClass/DREditView";
+import LunchEditView from "../views/settings/legacyClass/LunchEditView";
+import MajorEditView from "../views/settings/legacyClass/MajorEditView";
+import MinorEditView from "../views/settings/legacyClass/MinorEditView";
 import LinksView from "../views/settings/LinksView";
-import MainView from "../views/settings/MainSettingsView";
+import MainSettingsView from "../views/settings/MainSettingsView";
 import { MainTabParams } from "./MainNavigator";
 
 /** The settings view stack navigator */
@@ -69,7 +69,7 @@ export default function SettingsNavigator() {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name="AllSettings" component={MainView} options={{ title: "Settings" }} />
+            <Stack.Screen name="AllSettings" component={MainSettingsView} options={{ title: "Settings" }} />
             <Stack.Screen name="Accessibility" component={AccessibilitySettingsView} options={{ title: "Accessibility Options" }} />
             <Stack.Screen name="ClassesList" component={ClassesListView} options={{ title: "Class Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Advisory Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />

@@ -3,7 +3,7 @@
  */
 
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import mockCalendar from "../__mocks__/calendar.json";
 import CalendarStore from "./calendarStore";
 

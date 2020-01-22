@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import dayjs from "dayjs";
-import useCustomFormat from "dayjs/plugin/customParseFormat";
+import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";

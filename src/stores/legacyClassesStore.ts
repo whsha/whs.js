@@ -9,7 +9,7 @@ import { action, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
 
 /** Store containig the users classes */
-export default class ClassesStore {
+export default class LegacyClassesStore {
     /** The users advisory */
     @persist("object") @observable
     public advisory: IAdvisory = { room: "", teacher: "" };
@@ -39,7 +39,7 @@ export default class ClassesStore {
     /** Load the data from another classes store into this classes store without linking the two */
     // tslint:disable-next-line: no-unbound-method
     @action.bound
-    public hydrateFrom(linkedstore: ClassesStore) {
+    public hydrateFrom(linkedstore: LegacyClassesStore) {
         // Clone store as to not link to it
         const store = toJS(linkedstore, { exportMapsAsObjects: false, recurseEverything: true });
 

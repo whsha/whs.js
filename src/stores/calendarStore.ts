@@ -3,7 +3,7 @@
  */
 
 import dayjs, { Dayjs } from "dayjs";
-import dayjsPluginUTC from "dayjs/plugin/utc";
+import { default as dayjsPluginUTC } from "dayjs/plugin/utc";
 import { action, computed, observable } from "mobx";
 import { persist } from "mobx-persist";
 import * as TimSort from "timsort";

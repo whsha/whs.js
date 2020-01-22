@@ -3,7 +3,7 @@
  */
 
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+import { default as relativeTime } from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
 import { RedCell } from "../../styles/components/tableview";
