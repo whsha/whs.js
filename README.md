@@ -8,7 +8,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/whsha/whs.js/master.svg)](https://codecov.io/gh/whsha/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![Discord](https://img.shields.io/discord/521150060147245066.svg)]()
+[![Discord](https://img.shields.io/discord/521150060147245066.svg)][discord]
 
 # Downloads
 There are different ways of downloading and using the app. For the layman, you will most probably want to download the app off of
