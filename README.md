@@ -11,12 +11,12 @@
 [![Discord](https://img.shields.io/discord/521150060147245066.svg)]()
 
 # Downloads
-There are different ways of downloading and using the app. For the layman, you will most probbably want to download the app off of
+There are different ways of downloading and using the app. For the layman, you will most probably want to download the app off of
 the [Apple App store][appstore] or the [Google Play Store][playstore] and recieve over-the-air (OTA) updates automatically once the
 updates have been tested.
 
-If you want to become a part of the beta program, you can join them using the [links below](#Beta).
-> **BE WARNED:** when using the beta version of the app there is *NO GUARENTEES* that the app will work as intended due to hidden
+If you want to become a part of the beta program, you can join it using the [links below](#Beta).
+> **BE WARNED:** when using the beta version of the app there is *NO GUARENTEE* that the app will work as intended due to hidden
 bugs that may enter the program. It is your duty as a beta tester to report *any bug or problem* that you run into either through
 the [Discord Server][discord] or the [Feedback Email][feedback-email].
 
