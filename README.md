@@ -8,22 +8,47 @@
 [![Codecov](https://img.shields.io/codecov/c/github/whsha/whs.js/master.svg)](https://codecov.io/gh/whsha/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![Discord](https://img.shields.io/discord/521150060147245066.svg)](https://discord.gg/7q3TxUH)
-
-[See **Rewrite** project for roadmap](https://github.com/DusterTheFirst/whs.js/projects/1)
+[![Discord](https://img.shields.io/discord/521150060147245066.svg)][discord]
 
 # Downloads
-[Builds](https://expo.io/@dusterthefirst/WHS/builds?release-channel=staging)
+There are different ways of downloading and using the app. For the layman, you will most probably want to download the app off of
+the [Apple App store][appstore] or the [Google Play Store][playstore] and recieve over-the-air (OTA) updates automatically once the
+updates have been tested.
+
+If you want to become a part of the beta program, you can join it using the [links below](#Beta).
+> **BE WARNED:** when using the beta version of the app there is *NO GUARENTEE* that the app will work as intended due to hidden
+bugs that may enter the program. It is your duty as a beta tester to report *any bug or problem* that you run into either through
+the [Discord Server][discord] or the [Feedback Email][feedback-email].
+
+If you would like to test even more bleeding edge features, you can also use expo release channels starting with `alpha-`.
+The names follow the names of the branches of this repository 
+> branch `darktheme` would be released on the expo channel `alpha-darktheme`.
 
 ## Stable
-- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=stable)
-- [iOS App Store](https://apps.apple.com/us/app/whs-helper-app/id1488677026)
-- [Android Play Store](https://play.google.com/store/apps/details?id=com.dusterthefirst.whs)
+- [Expo Link][expo-stable]
+- [iOS App Store][appstore]
+- [Android Play Store][playstore]
 
 ## Beta
-- [Expo Link](https://exp.host/@dusterthefirst/WHS?release-channel=staging)
-- [iOS TestFlight](https://testflight.apple.com/join/sM9ElvxR)
-- [Android Play Store Opt-In Link](https://play.google.com/apps/testing/com.dusterthefirst.whs)
+- [Expo Link][expo-staging]
+- [iOS TestFlight][testflight]
+- [Android Play Store Opt-In Link][playstore-beta]
+
+<!-- iOS Links -->
+[appstore]: https://apps.apple.com/us/app/whs-helper-app/id1488677026 "Apple App Store Link"
+[testflight]: https://testflight.apple.com/join/sM9ElvxR "Apple TestFlight Link"
+
+<!-- Android Links -->
+[playstore]: https://play.google.com/store/apps/details?id=com.dusterthefirst.whs "Google Play Store Link"
+[playstore-beta]: https://play.google.com/apps/testing/com.dusterthefirst.whs "Google Play Store Beta Opt-In Link"
+
+<!-- Expo Links -->
+[expo-stable]: https://exp.host/@dusterthefirst/WHS?release-channel=stable "Expo Stable link"
+[expo-staging]: https://exp.host/@dusterthefirst/WHS?release-channel=staging "Expo Beta link"
+
+<!-- Support links -->
+[discord]: https://discord.gg/7q3TxUH "Support Discord"
+[feedback-email]: mailto:feedback@whs.dusterthefirst.com "Feedback Email"
 
 # Code Coverage
 [![Coverage Over Time](https://codecov.io/gh/whsha/whs.js/branch/master/graphs/commits.svg)](https://codecov.io/gh/whsha/whs.js)
