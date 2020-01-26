@@ -55,7 +55,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn run testcov --forceExit
-      - uses: codecov/codecov-action@v1.0.2
+      - uses: codecov/codecov-action@v1
         with:
           token: ${{secrets.codecov_token}}
   lint:
