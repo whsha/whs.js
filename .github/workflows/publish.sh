@@ -3,7 +3,7 @@ set -e
 echo Logging into Expo
 yarn expo login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
 
-BRANCH=$(echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})")
+BRANCH=$(echo ${GITHUB_REF#refs/heads/})
 CHANNEL=$([ $IS_STABLE = "true" ] && echo "stable" || ([ $IS_MASTER = "true" ] && echo "staging" || echo "alpha-$BRANCH"))
 
 echo Publishing to $CHANNEL
