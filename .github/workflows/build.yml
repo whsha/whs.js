@@ -117,7 +117,6 @@ jobs:
       - name: Install Sentry CLI
         run: curl -sL https://sentry.io/get-cli/ | bash
       - name: Publish
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
         run: sh .github/workflows/publish.sh
         env:
           # Expo data
@@ -134,5 +133,7 @@ jobs:
           SENDER_USERNAME: ${{github.events.sender.login}}
           SENDER_URL: ${{github.events.sender.url}}
           SENDER_AVATAR: ${{github.events.sender.avatar_url}}
+          # Webhook urls
           WEBHOOK_URL: ${{secrets.release_webhook}}
+          ALPHA_WEBHOOK_URL: ${{secrets.alpha_release_webhook}}
           STABLE_WEBHOOK_URL: ${{secrets.stable_release_webhook}}
