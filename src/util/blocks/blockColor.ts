@@ -20,7 +20,7 @@ const BlockColorDisplayColors: BlockColorColorMap = {
     [BlockColor.Purple]: "#8848ad",
     [BlockColor.Red]: "#c93a3a",
     [BlockColor.Tan]: "#ad855e",
-    [BlockColor.Yellow]: "#e9dc0f"
+    [BlockColor.Yellow]: "#ebd124"
 };
 
 /** Lookup the display color for the given block color */
