@@ -13,11 +13,11 @@ export const lightTheme: DefaultTheme = {
         dimText: "#808080",
         disabled: "#dadada",
         error: "#ff5050",
+        foreground: "#ffffff",
         input: "#555555",
-        main: "#ffffff",
         text: "#000000",
         title: "#444444",
-        white: "#ffffff",
+        warning: "#ffecb3"
     },
 };
 
@@ -25,15 +25,15 @@ export const lightTheme: DefaultTheme = {
 export const darkTheme: DefaultTheme = {
     colors: {
         background: "#000000",
-        border: "#A0A0A0",
+        border: "#3d3d41", // 48484a
         button: "#1f85cc",
-        dimText: "#808080",
+        dimText: "#98989e",
         disabled: "#7a7a7a",
         error: "#ff5050",
-        input: "#555555",
-        main: "#000000",
-        text: "#ffffff",
+        foreground: "#1c1c1e",
+        input: "#eeeeee",
+        text: "#eeeeee",
         title: "#444444",
-        white: "#ffffff",
+        warning: "#664d00"
     },
 };

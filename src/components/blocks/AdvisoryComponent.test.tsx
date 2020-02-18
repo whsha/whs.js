@@ -17,7 +17,7 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
             (
                 <AdvisoryComponent
                     room="Office"
-                    teacher="Mr. Teacher Man"
+                    advisor="Mr. Teacher Man"
                     start={dayjs("9:38 AM", "h:mm A")}
                     end={dayjs("9:46 AM", "h:mm A")}
                 />
@@ -30,9 +30,9 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
     it("Renders AdvisoryComponent with a numerical room", () => {
         const comp = render(
             (
-                < AdvisoryComponent
+                <AdvisoryComponent
                     room="132"
-                    teacher="Mr. Teacher Man"
+                    advisor="Mr. Teacher Man"
                     start={dayjs("11:00 PM", "h:mm A")}
                     end={dayjs("11:30 PM", "h:mm A")}
                 />

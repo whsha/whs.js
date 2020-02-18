@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/github/license/whsha/whs.js.svg)](https://github.com/whsha/whs.js/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/whsha/whs.js.svg)](https://github.com/whsha/whs.js/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/whsha/whs.js.svg)](https://github.com/whsha/whs.js/pulls)
-[![Actions Status](https://github.com/whsha/whs.js/workflows/Build%20App/badge.svg)](https://github.com/whsha/whs.js/actions)
+[![Actions Status](https://img.shields.io/github/workflow/status/whsha/whs.js/Build%20App.svg)](https://github.com/whsha/whs.js/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/whsha/whs.js/master.svg)](https://codecov.io/gh/whsha/whs.js)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)

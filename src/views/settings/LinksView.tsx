@@ -4,8 +4,8 @@
 
 import React from "react";
 import { Linking } from "react-native";
-import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { SettingsScrollView } from "../../styles/components/settings";
+import { ButtonCell, Section, TableView } from "../../styles/components/tableview";
 import { openLinkInBrowserAlert } from "../../util/alerts";
 
 /** A view containing many links */
@@ -17,43 +17,36 @@ export default function LinksView() {
         <SettingsScrollView>
             <TableView>
                 <Section header="Help">
-                    <Cell
+                    <ButtonCell
                         title="Feedback Discord Server"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://discord.gg/7q3TxUH")}
                     />
-                    <Cell
+                    <ButtonCell
                         title="Feedback Email"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("mailto:feedback@whs.dusterthefirst.com")}
                     />
                 </Section>
                 <Section header="Legal">
-                    <Cell
+                    <ButtonCell
                         title="License"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://github.com/DusterTheFirst/whs.js/blob/master/LICENSE")}
                     />
-                    <Cell
+                    <ButtonCell
                         title="Privacy Policy"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://whs.dusterthefirst.com/PRIVACY")}
                     />
                 </Section>
                 <Section header="Other">
-                    <Cell
+                    <ButtonCell
                         title="Service Status"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://status.whs.dusterthefirst.com/")}
                     />
-                    <Cell
+                    <ButtonCell
                         title="Source Code"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://github.com/DusterTheFirst/whs.js")}
                     />
-                    <Cell
+                    <ButtonCell
                         title="Changelog"
-                        accessory="DisclosureIndicator"
                         onPress={openLink("https://whs.dusterthefirst.com/CHANGELOG")}
                     />
                 </Section>

@@ -22,7 +22,7 @@ export const GoToNextSchoolDayText = styled.Text(props => ({
 /** The button to go the next school day */
 export const GoToNextSchoolDayButton = styled.TouchableOpacity(props => ({
     alignItems: "flex-end",
-    backgroundColor: "white",
+    backgroundColor: props.theme.colors.foreground,
     borderColor: props.theme.colors.border,
     borderRadius: 10,
     borderWidth: 1,

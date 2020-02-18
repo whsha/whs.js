@@ -3,10 +3,10 @@
  */
 
 import styled from "styled-components/native";
-import { DimText } from "./common";
+import { DimText, Text } from "./common";
 
 /** Title text for a header */
-export const HeaderTitleText = styled.Text({
+export const HeaderTitleText = styled(Text)({
     fontSize: 15,
     fontWeight: "bold",
     textAlign: "center"
@@ -25,7 +25,7 @@ interface IDisabledProps {
 }
 
 /** A header button */
-export const HeaderButtonText = styled.Text<IDisabledProps>(props => ({
+export const HeaderButtonText = styled(Text)<IDisabledProps>(props => ({
     color: props.disabled === true
         ? props.theme.colors.disabled
         : props.theme.colors.button,

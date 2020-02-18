@@ -6,11 +6,8 @@ import { Block } from "@whsha/classes/v1/blocks/block";
 import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import { IAdvisory, IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
 import { DayLunchMap, Lunch } from "@whsha/classes/v1/class/lunch";
-import { irregularMeetDays } from "@whsha/classes/v1/class/primitives";
-import { getBlockForColorOnDay, getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
-import { action, observable, toJS } from "mobx";
+import { action, observable } from "mobx";
 import { persist } from "mobx-persist";
-import { IClasses } from "../util/hooks/legacyClasses/useClasses";
 
 /** A way of storing classes that is easy to use for a today view */
 export type PreparedClasses = {
@@ -49,58 +46,58 @@ export default class PreparedClassesStore {
         [SchoolDay.Seven]: Lunch.None
     };
 
-    /** Prepare classes from a classes store */
-    // tslint:disable-next-line: no-unbound-method
-    @action.bound
-    public prepare(classes: IClasses) {
-        // Clone store as to not link to it
-        const unlinkedClasses = toJS(classes, { recurseEverything: true, exportMapsAsObjects: false });
+    // /** Prepare classes from a classes store */
+    // // tslint:disable-next-line: no-unbound-method
+    // @action.bound
+    // public prepare(classes: IClasses) {
+    //     // Clone store as to not link to it
+    //     const unlinkedClasses = toJS(classes, { recurseEverything: true, exportMapsAsObjects: false });
 
-        const prepared: PreparedClasses = {
-            [SchoolDay.One]: {},
-            [SchoolDay.Two]: {},
-            [SchoolDay.Three]: {},
-            [SchoolDay.Four]: {},
-            [SchoolDay.Five]: {},
-            [SchoolDay.Six]: {},
-            [SchoolDay.Seven]: {}
-        };
+    //     const prepared: PreparedClasses = {
+    //         [SchoolDay.One]: {},
+    //         [SchoolDay.Two]: {},
+    //         [SchoolDay.Three]: {},
+    //         [SchoolDay.Four]: {},
+    //         [SchoolDay.Five]: {},
+    //         [SchoolDay.Six]: {},
+    //         [SchoolDay.Seven]: {}
+    //     };
 
-        for (const major of unlinkedClasses.majors.values()) {
-            const schoolDays = getSchoolDaysThatHaveColor(major.block);
+    //     for (const major of unlinkedClasses.majors.values()) {
+    //         const schoolDays = getSchoolDaysThatHaveColor(major.block);
 
-            for (const schoolDay of schoolDays) {
-                const block = getBlockForColorOnDay(major.block, schoolDay);
+    //         for (const schoolDay of schoolDays) {
+    //             const block = getBlockForColorOnDay(major.block, schoolDay);
 
-                prepared[schoolDay][block] = major;
+    //             prepared[schoolDay][block] = major;
 
-                // If this is a lab, add it to block A
-                if (block === Block.B && major.lab) {
-                    prepared[schoolDay][Block.A] = major;
-                }
-            }
-        }
+    //             // If this is a lab, add it to block A
+    //             if (block === Block.B && major.lab) {
+    //                 prepared[schoolDay][Block.A] = major;
+    //             }
+    //         }
+    //     }
 
-        for (const minor of unlinkedClasses.minors.values()) {
-            for (const schoolDay of irregularMeetDays(minor)) {
-                const block = getBlockForColorOnDay(minor.block, schoolDay);
+    //     for (const minor of unlinkedClasses.minors.values()) {
+    //         for (const schoolDay of irregularMeetDays(minor)) {
+    //             const block = getBlockForColorOnDay(minor.block, schoolDay);
 
-                prepared[schoolDay][block] = minor;
-            }
-        }
+    //             prepared[schoolDay][block] = minor;
+    //         }
+    //     }
 
-        for (const dr of unlinkedClasses.drs.values()) {
-            for (const schoolDay of irregularMeetDays(dr)) {
-                const block = getBlockForColorOnDay(dr.block, schoolDay);
+    //     for (const dr of unlinkedClasses.drs.values()) {
+    //         for (const schoolDay of irregularMeetDays(dr)) {
+    //             const block = getBlockForColorOnDay(dr.block, schoolDay);
 
-                prepared[schoolDay][block] = dr;
-            }
-        }
+    //             prepared[schoolDay][block] = dr;
+    //         }
+    //     }
 
-        this.advisory = unlinkedClasses.advisory;
-        this.lunches = unlinkedClasses.lunches;
-        this.prepared = prepared;
-    }
+    //     this.advisory = unlinkedClasses.advisory;
+    //     this.lunches = unlinkedClasses.lunches;
+    //     this.prepared = prepared;
+    // }
 
     /** Clear the classes store */
     // tslint:disable-next-line: no-unbound-method

@@ -14,3 +14,8 @@ export interface IDisplayableProps {
 export const DimText = styled.Text(({ theme }) => ({
     color: theme.colors.dimText
 }));
+
+/** Text that is the main color */
+export const Text = styled.Text(({theme}) => ({
+    color: theme.colors.text
+}));

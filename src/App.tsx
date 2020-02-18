@@ -3,7 +3,7 @@
  */
 
 import { InitialState, NavigationState } from "@react-navigation/core";
-import { DarkTheme, DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
+import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { default as Constants } from "expo-constants";
 import { create } from "mobx-persist";
 import { useObserver } from "mobx-react-lite";
@@ -14,7 +14,7 @@ import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
 import { ThemeProvider } from "styled-components";
-import { CalendarContext, LegacyClassesContext, LegacyTempClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext } from "./contexts";
+import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
 import { Theme } from "./stores/preferencesStore";
@@ -55,8 +55,8 @@ export default function App() {
     const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     // The hydrated stores
     const calendar = useContext(CalendarContext);
-    const classes = useContext(LegacyClassesContext);
-    const tempClasses = useContext(LegacyTempClassesContext);
+    const classes = useContext(ClassesContext);
+    const tempClasses = useContext(TempClassesContext);
     const preparedClasses = useContext(PreparedClassesContext);
     const preferences = useContext(PreferencesStoreContext);
 
@@ -144,11 +144,11 @@ export default function App() {
     const barStyle = useObserver(() => theme.computed === Theme.Light ? "dark-content" : "light-content");
 
     const MainViewContents = () => (
-        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={navTheme}>
+        <NavigationContainer initialState={initialNavState} onStateChange={changeNavState} theme={navTheme}>
             <ReloadFunctionContext.Provider value={Load}>
                 <MainNavigator />
             </ReloadFunctionContext.Provider>
-        </NavigationNativeContainer>
+        </NavigationContainer>
     );
 
     return (

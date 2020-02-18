@@ -92,7 +92,7 @@ export const TimesView = styled.View<IFlexableProps>(props => ({
 /** The view for containing a class */
 export const ClassContainerView = styled.View(props => ({
     alignItems: "center",
-    backgroundColor: props.theme.colors.main,
+    backgroundColor: props.theme.colors.background,
     justifyContent: "center",
     padding: 10,
     width: "100%"

@@ -5,7 +5,7 @@
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useContext } from "react";
-import { LegacyTempClassesContext } from "../../contexts";
+import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import { RedCell } from "../../styles/components/tableview";
 import { clearClassesAlert } from "../../util/alerts";
@@ -13,12 +13,12 @@ import { clearClassesAlert } from "../../util/alerts";
 /** A settings cell to clear the classes */
 export default function ClearClassesCell() {
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
-    const tempClasses = useContext(LegacyTempClassesContext);
+    const tempClasses = useContext(TempClassesContext);
 
     const clear = () => clearClassesAlert(() => {
         tempClasses.clear();
 
-        navigation.navigate("LegacyClassesList");
+        navigation.navigate("ClassesList");
     });
 
     return (

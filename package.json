@@ -82,6 +82,7 @@
         "rimraf": "^3.0.0",
         "standard-version": "^7.1.0",
         "standard-version-expo": "^1.0.0",
+        "ts-essentials": "^5.0.0",
         "ts-jest": "^24.0.2",
         "ts-unused-exports": "^5.1.0",
         "tslint": "^5.16.0",

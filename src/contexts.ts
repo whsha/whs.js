@@ -4,7 +4,7 @@
 
 import { createContext } from "react";
 import CalendarStore from "./stores/calendarStore";
-import LegacyClassesStore from "./stores/legacyClassesStore";
+import ClassesStore from "./stores/classesStore";
 import PreferencesStore from "./stores/preferencesStore";
 import PreparedClassesStore from "./stores/preparedClassesStore";
 
@@ -20,9 +20,8 @@ export const PreparedClassesContext = createContext(new PreparedClassesStore());
 /** The context to access the user's preferences */
 export const PreferencesStoreContext = createContext(new PreferencesStore());
 
-// TODO: REMOVE
 /** The context to access the saved classes */
-export const LegacyClassesContext = createContext(new LegacyClassesStore());
+export const ClassesContext = createContext(new ClassesStore());
 
 /** The context to access the temp classes */
-export const LegacyTempClassesContext = createContext(new LegacyClassesStore());
+export const TempClassesContext = createContext(new ClassesStore());

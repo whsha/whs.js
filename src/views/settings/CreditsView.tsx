@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { Text } from "react-native";
+import { Text } from "../../styles/components/common";
 import { CreditsHeader, CreditsItem, CreditsName } from "../../styles/components/credits";
 import { SettingsScrollView } from "../../styles/components/settings";
 

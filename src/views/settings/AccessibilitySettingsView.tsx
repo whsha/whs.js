@@ -5,9 +5,9 @@
 import { useObserver } from "mobx-react-lite";
 import React from "react";
 import { Switch } from "react-native-gesture-handler";
-import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { Theme } from "../../stores/preferencesStore";
 import { SettingsScrollView } from "../../styles/components/settings";
+import { Cell, Section, TableView } from "../../styles/components/tableview";
 import usePreferences from "../../util/hooks/usePreferences";
 import useTheme from "../../util/hooks/useTheme";
 
@@ -68,7 +68,7 @@ export default function AccessibilitySettingsView() {
                     {/* Hide the switch if the system does not have a theme preference */}
                     {theme.device !== undefined ? <Cell title="Match System Theme" cellAccessoryView={SystemThemeSwitch} /> : undefined}
                     {/* Hide the option if the theme is using the system theme */}
-                    {!preferences.theme.matchSystemTheme ? <Cell title="Dark Theme (Alpha)" cellAccessoryView={DarkThemeSwitch} /> : undefined}
+                    {!preferences.theme.matchSystemTheme ? <Cell title="Dark Theme (Beta)" cellAccessoryView={DarkThemeSwitch} /> : undefined}
                 </Section>
             </TableView>
         </SettingsScrollView>

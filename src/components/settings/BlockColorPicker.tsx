@@ -4,8 +4,8 @@
 
 import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import React, { memo } from "react";
-import { Cell, Section } from "react-native-tableview-simple";
 import { getDisplayColorForBlock } from "../../styles/blockColor";
+import { Cell, Section } from "../../styles/components/tableview";
 
 /** The props for BlockColorPicker */
 interface IBlockColorPickerProps {
