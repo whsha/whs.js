@@ -10,7 +10,7 @@ import { action, observable } from "mobx";
 import { persist } from "mobx-persist";
 
 /** A way of storing classes that is easy to use for a today view */
-export type PreparedClasses = {
+type PreparedClasses = {
     [K in SchoolDay]: {
         [B in Block]?: IMajor | IMinor | IDR
     }

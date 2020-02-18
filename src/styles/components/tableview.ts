@@ -16,12 +16,6 @@ export const Section = styled(Base.Section).attrs<unknown, Base.SectionProps>(pr
     separatorTintColor: props.theme.colors.border
 }))``;
 
-/** A styled version of the `Separator` */
-export const Separator = styled(Base.Separator).attrs<unknown, Base.SeparatorProps>(props => ({
-    backgroundColor: props.theme.colors.background,
-    tintColor: props.theme.colors.border
-}))``;
-
 /** Props on a cell for use of displaying verification information */
 interface ICellVerifProps {
     /** Warning */
