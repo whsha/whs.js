@@ -35,9 +35,14 @@ export const Cell = styled(Base.Cell).attrs<ICellVerifProps, Base.CellProps & IC
     titleTextColor: props.titleTextColor ?? props.theme.colors.text,
 }))``;
 
-/** A red/warning cell */
+/** A red/fatal cell */
 export const RedCell = styled(Cell).attrs<unknown, Base.CellProps>(props => ({
     titleTextColor: props.theme.colors.error
+}))``;
+
+/** A yellow/warning cell */
+export const YellowCell = styled(Cell).attrs<unknown, Base.CellProps>(props => ({
+    titleTextColor: props.theme.colors.warning
 }))``;
 
 /** A cell that wants to be pressed */

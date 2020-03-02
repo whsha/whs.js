@@ -9,12 +9,13 @@ import migratetov2 from "@whsha/classes/migrate/tov2";
 import { default as Constants } from "expo-constants";
 import { toJS } from "mobx";
 import React from "react";
-import { Clipboard } from "react-native";
+import { AsyncStorage, Clipboard } from "react-native";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
+import StorageKey from "../../storageKey";
 import { DimText } from "../../styles/components/common";
 import { SettingsScrollView } from "../../styles/components/settings";
-import { Cell, Section, TableView } from "../../styles/components/tableview";
+import { Cell, Section, TableView, YellowCell } from "../../styles/components/tableview";
 import { copiedToClipboardAlert, importFromClipboardAlert, invalidClassesAlert } from "../../util/alerts";
 import useClasses from "../../util/hooks/useClasses";
 
@@ -29,6 +30,13 @@ export default function MainSettingsView() {
     const exportClasses = () => {
         Clipboard.setString(JSON.stringify(toJS(classes.saved, { recurseEverything: true })));
         copiedToClipboardAlert();
+    };
+
+    const exportLegacyClasses = () => {
+        AsyncStorage.getItem(StorageKey.ClassesV1).then((classesv1) => {
+            Clipboard.setString(classesv1 ?? "");
+            copiedToClipboardAlert();
+        }).catch((e) => console.error(e));
     };
 
     const importLegacyClasses = () => importFromClipboardAlert(() =>
@@ -53,7 +61,8 @@ export default function MainSettingsView() {
                     <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
                     <Cell title="Export Classes" accessory="DisclosureIndicator" onPress={exportClasses} />
                     <Cell title="Import Classes" accessory="DisclosureIndicator" isDisabled={true} />
-                    <Cell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={importLegacyClasses} />
+                    <YellowCell title="Recover Legacy Classes" accessory="DisclosureIndicator" onPress={exportLegacyClasses} />
+                    <YellowCell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={importLegacyClasses} />
                 </Section>
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />
