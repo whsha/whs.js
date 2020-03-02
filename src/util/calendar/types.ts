@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 
 /** The information about a calendar */
 export interface ICalendarInformation {
@@ -22,4 +22,6 @@ export interface ICalendarSchoolDay {
     meta?: string;
     /** The date the day is on formatted as YYYY-MM-DD */
     date: string;
+    /** If the day is an mcas day */
+    isMCAS: boolean;
 }

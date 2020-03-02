@@ -2,8 +2,8 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { BlockColor } from "@whsha/classes/v2/block";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 import React from "react";
 import { render } from "react-native-testing-library";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";

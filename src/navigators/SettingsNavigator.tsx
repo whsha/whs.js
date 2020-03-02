@@ -58,8 +58,8 @@ export default function SettingsNavigator() {
             <Stack.Screen name="AllSettings" component={MainSettingsView} options={{ title: "Settings" }} />
             <Stack.Screen name="Accessibility" component={AccessibilitySettingsView} options={{ title: "Accessibility Options" }} />
             <Stack.Screen name="ClassesList" component={ClassesListView} options={{ title: "Classes Settings", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
-            <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Edit Advisory", gestureEnabled: false }} />
-            <Stack.Screen name="ConfigureClass" component={ClassConfigureView} options={{ title: "Edit Class", gestureEnabled: false }} />
+            <Stack.Screen name="ConfigureAdvisory" component={AdvisoryConfigureView} options={{ title: "Edit Advisory" }} />
+            <Stack.Screen name="ConfigureClass" component={ClassConfigureView} options={{ title: "Edit Class" }} />
             <Stack.Screen name="Credits" component={CreditsView} options={{ title: "Credits" }} />
             <Stack.Screen name="Links" component={LinksView} options={{ title: "Links" }} />
         </Stack.Navigator>

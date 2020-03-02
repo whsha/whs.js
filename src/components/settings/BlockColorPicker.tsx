@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { BlockColor } from "@whsha/classes/v2/block";
 import React, { memo } from "react";
 import { getDisplayColorForBlock } from "../../styles/blockColor";
 import { Cell, Section } from "../../styles/components/tableview";

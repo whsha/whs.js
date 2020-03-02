@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import parseCalendar from "./parse";
@@ -12,7 +12,6 @@ const calendarData = readFileSync(resolve(__dirname, "../../__mocks__/calendar.i
 
 describe("Tests parser with mock data", () => {
     const calendar = parseCalendar(calendarData);
-
     it("Parses schooldays and matches the snapshot", () => {
         expect(calendar.schoolDays).toMatchSnapshot();
     });

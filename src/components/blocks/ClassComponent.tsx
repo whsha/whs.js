@@ -2,19 +2,25 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { ITimes } from "@whsha/classes/v1/class/extentions";
-import { IAdvisedClass, IColored, INamed } from "@whsha/classes/v1/class/primitives";
+import { IClass } from "@whsha/classes/v2/class";
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
 import ExtraInfo from "./parts/ExtraInfo";
 import TitleTimes from "./parts/TitleTimes";
+import { ITimes } from "./times";
+
+/** The props for a class component */
+interface IDisplayClass extends ITimes {
+    /** The class to display */
+    clazz: IClass;
+}
 
 /** A component that will display a class */
-function ClassComponent({ end, start, name, block, teacher, room }: ITimes & IAdvisedClass & IColored & INamed) {
+function ClassComponent({ end, start, clazz }: IDisplayClass) {
     return (
         <ClassContainerView>
-            <TitleTimes block={block} start={start} end={end} name={name} />
-            <ExtraInfo room={room} teacher={teacher} block={block} />
+            <TitleTimes block={clazz.block} start={start} end={end} name={clazz.name} />
+            <ExtraInfo room={clazz.room} teacher={clazz.teacher} block={clazz.block} />
         </ClassContainerView>
     );
 }

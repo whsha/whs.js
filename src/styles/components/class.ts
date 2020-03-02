@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { BlockColor } from "@whsha/classes/v2/block";
 import styled from "styled-components/native";
 import { getDisplayColorForBlock } from "../blockColor";
 import { DimText } from "./common";

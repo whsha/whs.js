@@ -9,14 +9,14 @@ import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
 import SettingsNavigator, { SettingsParams } from "./SettingsNavigator";
-import TodayNavigator from "./TodayNaviator";
+import TodayNavigator, { TODAY_DAY_FORMAT } from "./TodayNaviator";
 
 /** The parameters for the tab navigator */
 interface IMainTabParams {
     /** The today view */
     Today: {
         /** The date to show up */
-        day: Date;
+        day: string;
     };
     /** The settings view */
     Settings: undefined;
@@ -67,7 +67,7 @@ export default function MainNavigator() {
             initialRouteName="Today"
             screenOptions={screenOptions}
         >
-            <Tab.Screen name="Today" component={TodayNavigator} initialParams={{ day: dayjs().startOf("day").toDate() }} />
+            <Tab.Screen name="Today" component={TodayNavigator} initialParams={{ day: dayjs().startOf("day").format(TODAY_DAY_FORMAT)}} />
             <Tab.Screen name="Settings" component={SettingsNavigator} />
         </Tab.Navigator>
     );

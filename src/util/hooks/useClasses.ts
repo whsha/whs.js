@@ -2,34 +2,37 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import { BlockColor } from "@whsha/classes/v2/block";
 import { IClass } from "@whsha/classes/v2/class";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 import { Semester } from "@whsha/classes/v2/semester";
+import { ClassesStorev2, PreparedClassesStorev2 } from "@whsha/classes/v2/store";
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { DeepReadonly } from "ts-essentials";
 import uuid from "uuid";
-import { ClassesContext, TempClassesContext } from "../../contexts";
-import ClassesStore from "../../stores/classesStore";
+import { TempClassesContext } from "../../contexts";
+import usePreparedClasses from "./usePreparedClasses";
 
 /** A hook to access and manipulate the users classes */
 export default function useClasses() {
-    const savedClasses = useContext(ClassesContext);
+    const savedClasses = usePreparedClasses();
     const tempClasses = useContext(TempClassesContext);
 
     return useObserver(() => ({
-        saved: savedClasses as DeepReadonly<ClassesStore>,
-        temp: tempClasses as Readonly<ClassesStore>,
+        saved: savedClasses as DeepReadonly<PreparedClassesStorev2>,
+        temp: tempClasses as Readonly<ClassesStorev2>,
         save() {
-            savedClasses.hydrateFrom(tempClasses);
+            savedClasses.prepare(tempClasses);
         },
         revert() {
             tempClasses.hydrateFrom(savedClasses);
         },
-        updated: !deepEqual(toJS(savedClasses), toJS(tempClasses), { strict: true }),
+        updated:
+            !deepEqual(toJS(savedClasses.advisory), toJS(tempClasses.advisory), { strict: true }) &&
+            !deepEqual(toJS(savedClasses.classes), toJS(tempClasses.classes), { strict: true }),
         addClass() {
             const clazz: IClass = {
                 // ID

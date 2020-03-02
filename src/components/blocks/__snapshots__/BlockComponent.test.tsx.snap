@@ -1,12 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders a free 1`] = `
+exports[`Renders BlockComponent with a class 1`] = `
 <View
   style={
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#efeff4",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <Text
+      classColor="Red"
+      ellipsizeMode="middle"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#c93a3a",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      No Name
+    </Text>
+    <View
+      doFlex={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        7:30
+         - 
+        8:30 AM
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      No Teacher
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      No Room
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Renders BlockComponent with a free 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#efeff4",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -77,384 +203,6 @@ exports[`Renders a free 1`] = `
         8:30 AM
       </Text>
     </View>
-  </View>
-</View>
-`;
-
-exports[`Tests different variations of classes Renders BlockComponent with a dr 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "justifyContent": "center",
-        "paddingBottom": 10,
-        "paddingLeft": 10,
-        "paddingRight": 10,
-        "paddingTop": 10,
-        "width": "100%",
-      },
-    ]
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-        },
-      ]
-    }
-  >
-    <Text
-      classColor="Green"
-      ellipsizeMode="middle"
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#5da539",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "fontSize": 25,
-            "fontWeight": "bold",
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Directed research
-    </Text>
-    <View
-      doFlex={false}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#808080",
-              "paddingLeft": 5,
-              "textAlign": "right",
-            },
-          ]
-        }
-      >
-        12:14
-         - 
-        1:24 PM
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-          "marginTop": 5,
-        },
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Dr. Test
-    </Text>
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "right",
-          },
-        ]
-      }
-    >
-      Room 102
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`Tests different variations of classes Renders BlockComponent with a major 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "justifyContent": "center",
-        "paddingBottom": 10,
-        "paddingLeft": 10,
-        "paddingRight": 10,
-        "paddingTop": 10,
-        "width": "100%",
-      },
-    ]
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-        },
-      ]
-    }
-  >
-    <Text
-      classColor="Red"
-      ellipsizeMode="middle"
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#c93a3a",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "fontSize": 25,
-            "fontWeight": "bold",
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Test Major
-    </Text>
-    <View
-      doFlex={false}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#808080",
-              "paddingLeft": 5,
-              "textAlign": "right",
-            },
-          ]
-        }
-      >
-        7:30
-         - 
-        8:30 AM
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-          "marginTop": 5,
-        },
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Mr. Test
-    </Text>
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "right",
-          },
-        ]
-      }
-    >
-      Fitness center
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`Tests different variations of classes Renders BlockComponent with a minor 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "justifyContent": "center",
-        "paddingBottom": 10,
-        "paddingLeft": 10,
-        "paddingRight": 10,
-        "paddingTop": 10,
-        "width": "100%",
-      },
-    ]
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-        },
-      ]
-    }
-  >
-    <Text
-      classColor="Yellow"
-      ellipsizeMode="middle"
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#e9dc0f",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "fontSize": 25,
-            "fontWeight": "bold",
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Test minor
-    </Text>
-    <View
-      doFlex={false}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#808080",
-              "paddingLeft": 5,
-              "textAlign": "right",
-            },
-          ]
-        }
-      >
-        12:14
-         - 
-        1:24 PM
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "nowrap",
-          "justifyContent": "space-between",
-          "marginTop": 5,
-        },
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "left",
-          },
-        ]
-      }
-    >
-      Mrs. Test
-    </Text>
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#808080",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "textAlign": "right",
-          },
-        ]
-      }
-    >
-      Room 334
-    </Text>
   </View>
 </View>
 `;

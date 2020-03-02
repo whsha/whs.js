@@ -4,15 +4,18 @@
 
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { parsev1 } from "@whsha/classes/migrate/parse";
+import migratetov2 from "@whsha/classes/migrate/tov2";
 import { default as Constants } from "expo-constants";
 import { toJS } from "mobx";
 import React from "react";
-import { Alert, Clipboard } from "react-native";
+import { Clipboard } from "react-native";
 import ClearCalCacheCell from "../../components/settings/ClearCalCacheCell";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import { DimText } from "../../styles/components/common";
 import { SettingsScrollView } from "../../styles/components/settings";
 import { Cell, Section, TableView } from "../../styles/components/tableview";
+import { copiedToClipboardAlert, importFromClipboardAlert, invalidClassesAlert } from "../../util/alerts";
 import useClasses from "../../util/hooks/useClasses";
 
 /** The main settings view */
@@ -25,8 +28,23 @@ export default function MainSettingsView() {
 
     const exportClasses = () => {
         Clipboard.setString(JSON.stringify(toJS(classes.saved, { recurseEverything: true })));
-        Alert.alert("Copied to clipboard!", "Save this somewhere safe in case you need to reuse it");
+        copiedToClipboardAlert();
     };
+
+    const importLegacyClasses = () => importFromClipboardAlert(() =>
+        Clipboard.getString().then((str) => {
+            try {
+                const oldClasses = parsev1(JSON.parse(str));
+                const newClasses = migratetov2(oldClasses);
+                classes.temp.hydrateFrom(newClasses);
+                classes.saved.prepare(classes.temp);
+
+                navigation.navigate("ClassesList");
+            } catch {
+                invalidClassesAlert();
+            }
+        }).catch((e) => console.error(e))
+    );
 
     return (
         <SettingsScrollView>
@@ -35,7 +53,7 @@ export default function MainSettingsView() {
                     <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
                     <Cell title="Export Classes" accessory="DisclosureIndicator" onPress={exportClasses} />
                     <Cell title="Import Classes" accessory="DisclosureIndicator" isDisabled={true} />
-                    <Cell title="Import Legacy Classes" accessory="DisclosureIndicator" isDisabled={true} />
+                    <Cell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={importLegacyClasses} />
                 </Section>
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />

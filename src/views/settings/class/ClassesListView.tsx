@@ -12,7 +12,6 @@ import IconComponent from "../../../components/IconComponent";
 import ClearClassesCell from "../../../components/settings/ClearClassesCell";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
 import { getDisplayColorForBlock } from "../../../styles/blockColor";
-import { Text } from "../../../styles/components/common";
 import { SettingsScrollView } from "../../../styles/components/settings";
 import { ButtonCell, Cell, Section, TableView } from "../../../styles/components/tableview";
 import { discardChangesAlert } from "../../../util/alerts";
@@ -35,7 +34,6 @@ export default function ClassesListView() {
             });
         } else {
             navigation.goBack();
-            classes.revert();
         }
     };
     const done = () => {
@@ -95,14 +93,11 @@ export default function ClassesListView() {
                         <Cell title="Edit Advisory" accessory="DisclosureIndicator" onPress={goTo("ConfigureAdvisory", undefined)} />
                     </Section>
                     <Section header="Classes" footer="Majors are classes that meet the full 5 days of the cycle during a color block.">
-                        {Array.from(classes.temp.classes.values()).map((major, key) => <ClassCell clazz={major} key={key} />)}
+                        {Array.from(classes.temp.classes.values()).map((clazz, key) => <ClassCell clazz={clazz} key={key} />)}
                         <ButtonCell title="Add a class" cellAccessoryView={<IconComponent name="add-circle-outline" />} onPress={addClass} />
                     </Section>
                     <Section>
                         <ClearClassesCell />
-                    </Section>
-                    <Section header="Developer">
-                        <Cell cellContentView={<Text>{JSON.stringify(classes, undefined, 4)}</Text>} />
                     </Section>
                 </TableView>
             </SafeAreaView>

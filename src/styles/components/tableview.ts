@@ -31,8 +31,8 @@ export const Cell = styled(Base.Cell).attrs<ICellVerifProps, Base.CellProps & IC
     highlightUnderlayColor: props.theme.colors.border,
     // TODO: Better presentation
     onPressDetailAccessory: () => console.warn(props.error ?? props.warning ?? "There is no error"),
-    subtitleColor: props.theme.colors.dimText,
-    titleTextColor: props.theme.colors.text,
+    subtitleColor: props.subtitleColor ?? props.theme.colors.dimText,
+    titleTextColor: props.titleTextColor ?? props.theme.colors.text,
 }))``;
 
 /** A red/warning cell */

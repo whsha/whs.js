@@ -2,15 +2,20 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
-import { IColored } from "@whsha/classes/v1/class/primitives";
+import { BlockColor } from "@whsha/classes/v2/block";
 import { useObserver } from "mobx-react-lite";
 import React from "react";
 import { ColorblindLabelText, MiddleClassView } from "../../../styles/components/class";
 import usePreferences from "../../../util/hooks/usePreferences";
 
+/** The props for an AccessibilityLabel */
+interface IAccessibilityLabelProps {
+    /** The block color that this label is for */
+    block: BlockColor;
+}
+
 /** The accessability label for classes */
-export default function AccessibilityLabel({ block }: IColored) {
+export default function AccessibilityLabel({ block }: IAccessibilityLabelProps) {
     const preferences = usePreferences();
 
     return useObserver(() => {

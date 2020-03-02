@@ -6,7 +6,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#efeff4",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -131,7 +131,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#ffffff",
+        "backgroundColor": "#efeff4",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,

@@ -2,18 +2,20 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 import dayjs from "dayjs";
 import ICal from "ical.js";
 import { ICalendarInformation, ICalendarSchoolDay } from "./types";
 
 /** The regex used to match school days */
-const schoolDayRegex = /^(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
+const schoolDayRegex = /^(MCAS )?(HALF )?DAY ([1-7])(?: - )?(.*)$/i;
 
 /** The values in the array of the school day match */
 enum SchoolDayRegexMatch {
     /** All of the summary matched against */
     All,
+    /** If the school day is a mcas day */
+    IsMCAS,
     /** If the school day is a half day */
     IsHalf,
     /** The shchool day */
@@ -55,9 +57,14 @@ export default function parseCalendar(rawical: string): ICalendarInformation {
                 dayNumber: parseInt(match[SchoolDayRegexMatch.SchoolDay], 10) as SchoolDay,
                 // If the day is a half day
                 isHalf: (match[SchoolDayRegexMatch.IsHalf] as string | undefined) !== undefined,
+                // If the day is a mcas day
+                isMCAS: (match[SchoolDayRegexMatch.IsMCAS] as string | undefined) !== undefined,
                 // Any metadata about the school day
                 meta: match[SchoolDayRegexMatch.Meta]
             });
+        } else {
+            // TODO: Handle more types of days
+            // console.warn("School day regex match failed on", summary);
         }
     }
 

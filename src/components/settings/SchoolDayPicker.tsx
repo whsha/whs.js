@@ -2,11 +2,11 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
-import { SchoolDay } from "@whsha/classes/v1/calendar/types";
-import { IrregularMeetDays } from "@whsha/classes/v1/class/primitives";
-import { getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
-import React, { memo, useEffect, useMemo, } from "react";
+import { BlockColor } from "@whsha/classes/v2/block";
+import { MeetDays } from "@whsha/classes/v2/class";
+import { getSchoolDaysThatHaveColor } from "@whsha/classes/v2/days";
+import { SchoolDay } from "@whsha/classes/v2/schoolDay";
+import React, { memo, useEffect, useMemo } from "react";
 import { ButtonCell, Section } from "../../styles/components/tableview";
 
 /** The props for a SchoolDayPicker */
@@ -14,7 +14,7 @@ interface ISchoolDayPickerProps {
     /** The callback for when a day is toggled */
     onToggle(day: SchoolDay): void;
     /** The value of the picker */
-    value: IrregularMeetDays;
+    value: MeetDays;
     /** The restraint to lock the block colors to */
     blockColorRestraint: BlockColor;
 }
@@ -41,7 +41,7 @@ interface IDayPickerProps<D extends SchoolDay> {
     /** The day for the picker */
     day: D;
     /** The current selected value */
-    value: IrregularMeetDays;
+    value: MeetDays;
     /** The callback to use to pick a new day */
     toggle(day: D): void;
     /** The school days that are enabled */

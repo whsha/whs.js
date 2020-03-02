@@ -2,21 +2,24 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
-import { ITimes } from "@whsha/classes/v1/class/extentions";
-import { IColored, INamed } from "@whsha/classes/v1/class/primitives";
+import { BlockColor } from "@whsha/classes/v2/block";
 import React from "react";
 import { ClassTitleText, ClassViewRow, TimesText, TimesView } from "../../../styles/components/class";
+import { ITimes } from "../times";
 import AccessibilityLabel from "./AccessibilityLabel";
 
 /** Interface for props for TitleTimes */
-interface IShowAccessibilityLabel {
+interface ITitleTimes extends ITimes {
     /** Weather or not the accessibility label should be shown for this row */
-    showAccessibilityLabel: boolean;
+    showAccessibilityLabel?: boolean;
+    /** The name of the class */
+    name: string;
+    /** The block to display */
+    block?: BlockColor;
 }
 
 /** The title and times section of the class */
-export default function TitleTimes({ name, start, end, block, showAccessibilityLabel = false }: ITimes & INamed & Partial<IColored> & Partial<IShowAccessibilityLabel>) {
+export default function TitleTimes({ name, start, end, block, showAccessibilityLabel = false }: ITitleTimes) {
     return (
         <ClassViewRow>
             <ClassTitleText

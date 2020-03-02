@@ -23,17 +23,18 @@
         "todo": "git grep --heading -EIn \"(TODO|FIXME):\"",
         "test": "jest --verbose",
         "testcov": "jest --coverage --verbose",
-        "postinstall": "rimraf ./node_modules/hoist-non-react-statics/index.d.ts"
+        "postinstall": "rimraf ./node_modules/hoist-non-react-statics/index.d.ts",
+        "release": "standard-version --sign"
     },
     "dependencies": {
         "@babel/preset-env": "^7.6.0",
         "@badrap/result": "^0.2.5",
         "@expo/vector-icons": "^10.0.0",
         "@react-native-community/masked-view": "0.1.5",
-        "@react-navigation/bottom-tabs": "^5.0.0-alpha.19",
-        "@react-navigation/core": "^5.0.0-alpha.20",
-        "@react-navigation/native": "^5.0.0-alpha.14",
-        "@react-navigation/stack": "^5.0.0-alpha.34",
+        "@react-navigation/bottom-tabs": "^5.1.0",
+        "@react-navigation/core": "^5.2.0",
+        "@react-navigation/native": "^5.0.8",
+        "@react-navigation/stack": "^5.1.0",
         "@whsha/classes": "^2.0.1",
         "babel-jest": "^24.9.0",
         "babel-preset-expo": "^8.0.0",

@@ -39,7 +39,7 @@ export default function ClassConfigureView() {
                     <TableView>
                         <Section header="Options" />
                         <Section header="Example">
-                            <ClassComponent block={clazz.temp.block} name={clazz.temp.name} teacher={clazz.temp.teacher} room={clazz.temp.room} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")} />
+                            <ClassComponent clazz={clazz.temp} start={dayjs("9:38 AM", "h:mm A")} end={dayjs("9:46 AM", "h:mm A")} />
                         </Section>
                         <Section>
                             <RedCell title="Delete" onPress={pomptDelete} />

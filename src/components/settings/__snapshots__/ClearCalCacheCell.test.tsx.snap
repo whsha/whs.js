@@ -22,7 +22,7 @@ exports[`Renders <ClearCalCacheCell/> 1`] = `
           "flex": 1,
         },
         Object {
-          "backgroundColor": "#FFF",
+          "backgroundColor": "#ffffff",
         },
       ]
     }
@@ -38,7 +38,7 @@ exports[`Renders <ClearCalCacheCell/> 1`] = `
             "paddingRight": 20,
           },
           Object {
-            "backgroundColor": "#FFF",
+            "backgroundColor": "#ffffff",
           },
           Object {},
         ]
@@ -79,13 +79,9 @@ exports[`Renders <ClearCalCacheCell/> 1`] = `
                   "letterSpacing": -0.32,
                 },
                 Object {
-                  "color": "#000",
+                  "color": "#ff5050",
                 },
-                Array [
-                  Object {
-                    "color": "#ff5050",
-                  },
-                ],
+                Object {},
               ]
             }
           >
@@ -101,7 +97,7 @@ exports[`Renders <ClearCalCacheCell/> 1`] = `
                   "letterSpacing": 0.066,
                 },
                 Object {
-                  "color": "#000",
+                  "color": "#808080",
                 },
                 Object {},
               ]

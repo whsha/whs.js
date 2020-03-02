@@ -4,6 +4,8 @@
 
 import { InitialState, NavigationState } from "@react-navigation/core";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import migratetov2 from "@whsha/classes/migrate/tov2";
+import { ClassesStorev1 } from "@whsha/classes/v1/store";
 import { default as Constants } from "expo-constants";
 import { create } from "mobx-persist";
 import { useObserver } from "mobx-react-lite";
@@ -14,13 +16,15 @@ import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
 import { ThemeProvider } from "styled-components";
-import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import { CalendarContext, PreferencesStoreContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
 import { Theme } from "./stores/preferencesStore";
 import { darkTheme, lightTheme } from "./styles/theme";
+import { classesMigratedAlert } from "./util/alerts";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
+import usePreparedClasses from "./util/hooks/usePreparedClasses";
 import useTheme from "./util/hooks/useTheme";
 import LoadingView from "./views/LoadingView";
 
@@ -55,12 +59,12 @@ export default function App() {
     const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     // The hydrated stores
     const calendar = useContext(CalendarContext);
-    const classes = useContext(ClassesContext);
+    const preparedClasses = usePreparedClasses();
     const tempClasses = useContext(TempClassesContext);
-    const preparedClasses = useContext(PreparedClassesContext);
     const preferences = useContext(PreferencesStoreContext);
 
     /** Async function to initialize the app and all needed stores */
+    // FIXME: BETTER ERRORS
     const Load = async (reset = false) => {
         setCurrentTask(ApplicationState.PreparingMP);
 
@@ -76,7 +80,7 @@ export default function App() {
         await hydrate(StorageKey.Calendar, calendar);
 
         // If not loaded, download it
-        if (calendar.updated.getTime() === 0 || reset) {
+        if (calendar.updated.getTime() === 0 || reset || Date.now() - calendar.updated.getTime() >= 604800000 /* == 7 * 24 * 60 * 60 * 1000 */) {
             setCurrentTask(ApplicationState.DownloadingCal);
 
             // Fetch the calendar off of the interweb
@@ -104,13 +108,30 @@ export default function App() {
         await hydrate(StorageKey.Preferences, preferences);
 
         setCurrentTask(ApplicationState.LoadingClasses);
-        // Hydrate the classes store
-        await hydrate(StorageKey.Classes, classes);
-        // Hydrate the temp classes to = the saved classes
-        tempClasses.hydrateFrom(classes);
+        if (await AsyncStorage.getItem(StorageKey.ClassesV2) !== null) {
+            // If has v2 classes, load them
+            await hydrate(StorageKey.ClassesV2, preparedClasses);
+            // Hydrate temp classes from prepared classes
+            tempClasses.hydrateFrom(preparedClasses);
+        } else {
+            // If no v2 classes, upgrade
+            await hydrate(StorageKey.ClassesV2, preparedClasses);
 
-        // Hydrate the prepared classes store
-        await hydrate(StorageKey.PreparedClasses, preparedClasses);
+            // Load old classes
+            const oldClasses = new ClassesStorev1();
+            await hydrate(StorageKey.ClassesV1, oldClasses);
+
+            // Migrate the classes
+            const newClasses = migratetov2(oldClasses);
+
+            // Hydrate the new classes into the temp classes
+            tempClasses.hydrateFrom(newClasses);
+            // Prepare the new classes
+            preparedClasses.prepare(tempClasses);
+
+            // Alert the user of the happenings
+            await classesMigratedAlert();
+        }
 
         setCurrentTask(ApplicationState.Opening);
         // Restore current navigation state in development only

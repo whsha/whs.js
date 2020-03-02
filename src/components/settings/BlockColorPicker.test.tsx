@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { BlockColor } from "@whsha/classes/v2/block";
 import React from "react";
 import { render } from "react-native-testing-library";
 import ThemeWrapper from "../test-helpers/ThemeWrapper";

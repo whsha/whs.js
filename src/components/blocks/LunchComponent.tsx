@@ -2,10 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { ITimes } from "@whsha/classes/v1/class/extentions";
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
 import TitleTimes from "./parts/TitleTimes";
+import { ITimes } from "./times";
 
 /** A component to display a lunch block */
 function LunchComponent({ start, end }: ITimes) {

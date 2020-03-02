@@ -2,14 +2,20 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { ITimes } from "@whsha/classes/v1/class/extentions";
-import { IColored } from "@whsha/classes/v1/class/primitives";
+import { BlockColor } from "@whsha/classes/v2/block";
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
 import TitleTimes from "./parts/TitleTimes";
+import { ITimes } from "./times";
+
+/** The props for a free component */
+interface IDisplayFree extends ITimes {
+    /** The block color to display */
+    block: BlockColor;
+}
 
 /** A component to display a free block */
-function FreeComponent({ start, end, block }: ITimes & IColored) {
+function FreeComponent({ start, end, block }: IDisplayFree) {
     return (
         <ClassContainerView>
             <TitleTimes start={start} end={end} name="Free" block={block} showAccessibilityLabel={true} />

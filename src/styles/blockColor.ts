@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { BlockColor } from "@whsha/classes/v2/block";
 
 /** A map of the block colors to their display colors */
 type BlockColorColorMap = {

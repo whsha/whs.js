@@ -11,6 +11,7 @@ node_modules/**/*
 *.p12
 *.key
 *.mobileprovision
+.vscode/.react
 
 # Yarn
 *.log

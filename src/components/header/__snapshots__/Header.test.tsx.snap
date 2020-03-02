@@ -149,6 +149,7 @@ exports[`Tests different variations of <MultilineHeader> Renders <MultilineHeade
     style={
       Array [
         Object {
+          "color": "#000000",
           "fontSize": 15,
           "fontWeight": "bold",
           "textAlign": "center",
