@@ -15,7 +15,7 @@ import { SettingsParams } from "../../navigators/SettingsNavigator";
 import StorageKey from "../../storageKey";
 import { DimText } from "../../styles/components/common";
 import { SettingsScrollView } from "../../styles/components/settings";
-import { Cell, Section, TableView, YellowCell } from "../../styles/components/tableview";
+import { Cell, RedCell, Section, TableView } from "../../styles/components/tableview";
 import { copiedToClipboardAlert, importFromClipboardAlert, invalidClassesAlert } from "../../util/alerts";
 import useClasses from "../../util/hooks/useClasses";
 
@@ -45,7 +45,6 @@ export default function MainSettingsView() {
                 const oldClasses = parsev1(JSON.parse(str));
                 const newClasses = migratetov2(oldClasses);
                 classes.temp.hydrateFrom(newClasses);
-                classes.saved.prepare(classes.temp);
 
                 navigation.navigate("ClassesList");
             } catch {
@@ -61,8 +60,8 @@ export default function MainSettingsView() {
                     <Cell title="Edit Classes" accessory="DisclosureIndicator" onPress={navigateTo("ClassesList")} />
                     <Cell title="Export Classes" accessory="DisclosureIndicator" onPress={exportClasses} />
                     <Cell title="Import Classes" accessory="DisclosureIndicator" isDisabled={true} />
-                    <YellowCell title="Recover Legacy Classes" accessory="DisclosureIndicator" onPress={exportLegacyClasses} />
-                    <YellowCell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={importLegacyClasses} />
+                    <RedCell title="Recover Legacy Classes" accessory="DisclosureIndicator" onPress={exportLegacyClasses} />
+                    <RedCell title="Import Legacy Classes" accessory="DisclosureIndicator" onPress={importLegacyClasses} />
                 </Section>
                 <Section header="Accessibility">
                     <Cell title="Accessibility Options" accessory="DisclosureIndicator" onPress={navigateTo("Accessibility")} />

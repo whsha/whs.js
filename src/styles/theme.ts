@@ -10,6 +10,7 @@ export const lightTheme: DefaultTheme = {
         background: "#efeff4",
         border: "#A0A0A0",
         button: "#1f85cc", // "#2f95dc",
+        classBackground: "#ffffff",
         dimText: "#808080",
         disabled: "#dadada",
         error: "#ff5050",
@@ -27,6 +28,7 @@ export const darkTheme: DefaultTheme = {
         background: "#000000",
         border: "#3d3d41", // 48484a
         button: "#1f85cc",
+        classBackground: "#000000",
         dimText: "#98989e",
         disabled: "#7a7a7a",
         error: "#ff5050",
