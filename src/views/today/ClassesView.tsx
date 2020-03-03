@@ -16,7 +16,7 @@ import BlockComponent from "../../components/blocks/BlockComponent";
 import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
 import { SettingsScrollView } from "../../styles/components/settings";
 import { ICalendarSchoolDay } from "../../util/calendar/types";
-import usePreparedClasses from "../../util/hooks/usePreparedClasses";
+import useClasses from "../../util/hooks/useClasses";
 
 dayjs.extend(useCustomFormat);
 
@@ -28,16 +28,16 @@ interface IClassesViewProps {
 
 /** The today view when there are classes that day */
 export default function ClassesView({ schoolDay }: IClassesViewProps) {
-    const preparedClasses = usePreparedClasses();
+    const { saved } = useClasses();
 
     const colors = getBlockColorsForDay(schoolDay.dayNumber);
 
     const properties: IBlocksViewProps = {
-        advisory: preparedClasses.advisory,
-        classes: preparedClasses.classes,
+        advisory: saved.advisory,
+        classes: saved.classes,
         colors,
-        lunch: preparedClasses.lunches[schoolDay.dayNumber],
-        prepared: preparedClasses.prepared[schoolDay.dayNumber]
+        lunch: saved.lunches[schoolDay.dayNumber],
+        prepared: saved.prepared[schoolDay.dayNumber]
     };
 
     return (

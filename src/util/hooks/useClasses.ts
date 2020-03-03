@@ -13,12 +13,11 @@ import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { DeepReadonly } from "ts-essentials";
 import uuid from "uuid";
-import { TempClassesContext } from "../../contexts";
-import usePreparedClasses from "./usePreparedClasses";
+import { PreparedClassesContext, TempClassesContext } from "../../contexts";
 
 /** A hook to access and manipulate the users classes */
 export default function useClasses() {
-    const savedClasses = usePreparedClasses();
+    const savedClasses = useContext(PreparedClassesContext);
     const tempClasses = useContext(TempClassesContext);
 
     return useObserver(() => ({

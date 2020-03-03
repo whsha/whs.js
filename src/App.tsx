@@ -16,7 +16,7 @@ import { SafeAreaProvider } from "react-native-safe-area-view";
 import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
 import { ThemeProvider } from "styled-components";
-import { CalendarContext, PreferencesStoreContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
+import { CalendarContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
 import { Theme } from "./stores/preferencesStore";
@@ -24,7 +24,6 @@ import { darkTheme, lightTheme } from "./styles/theme";
 import { classesMigratedAlert } from "./util/alerts";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
-import usePreparedClasses from "./util/hooks/usePreparedClasses";
 import useTheme from "./util/hooks/useTheme";
 import LoadingView from "./views/LoadingView";
 
@@ -59,7 +58,7 @@ export default function App() {
     const [initialNavState, setInitialNavState] = useState<InitialState | undefined>();
     // The hydrated stores
     const calendar = useContext(CalendarContext);
-    const preparedClasses = usePreparedClasses();
+    const preparedClasses = useContext(PreparedClassesContext);
     const tempClasses = useContext(TempClassesContext);
     const preferences = useContext(PreferencesStoreContext);
 
