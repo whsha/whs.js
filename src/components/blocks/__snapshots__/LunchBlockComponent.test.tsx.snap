@@ -6,7 +6,7 @@ exports[`Renders BlockComponent with a class 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#efeff4",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -132,7 +132,7 @@ exports[`Renders BlockComponent with a free 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#efeff4",
+        "backgroundColor": "#ffffff",
         "justifyContent": "center",
         "paddingBottom": 10,
         "paddingLeft": 10,
@@ -214,7 +214,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#efeff4",
+          "backgroundColor": "#ffffff",
           "justifyContent": "center",
           "paddingBottom": 10,
           "paddingLeft": 10,
@@ -291,7 +291,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#efeff4",
+          "backgroundColor": "#ffffff",
           "justifyContent": "center",
           "paddingBottom": 10,
           "paddingLeft": 10,
@@ -419,7 +419,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#efeff4",
+          "backgroundColor": "#ffffff",
           "justifyContent": "center",
           "paddingBottom": 10,
           "paddingLeft": 10,
@@ -500,7 +500,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#efeff4",
+          "backgroundColor": "#ffffff",
           "justifyContent": "center",
           "paddingBottom": 10,
           "paddingLeft": 10,
@@ -577,7 +577,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#efeff4",
+          "backgroundColor": "#ffffff",
           "justifyContent": "center",
           "paddingBottom": 10,
           "paddingLeft": 10,
