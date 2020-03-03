@@ -9,3 +9,6 @@ import jestFetch, { FetchMock, GlobalWithFetchMock } from "jest-fetch-mock";
 const customGlobal: GlobalWithFetchMock = global as GlobalWithFetchMock;
 customGlobal.fetch = jestFetch as FetchMock;
 customGlobal.fetchMock = customGlobal.fetch;
+
+// Supress the warning about the native driver in tests
+jest.mock("react-native/Libraries/Animated/src/NativeAnimatedHelper");
