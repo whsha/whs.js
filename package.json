@@ -18,7 +18,7 @@
         "upload:android": "expo upload:ios",
         "upload": "yarn upload:ios && yarn upload:android",
         "lint": "tslint --project ./tsconfig.json",
-        "exportlint": "ts-unused-exports tsconfig.json --ignorePaths=App.ts --showLineNumber",
+        "exportlint": "ts-unused-exports tsconfig.json --showLineNumber",
         "typecheck": "tsc --noEmit",
         "todo": "git grep --heading -EIn \"(TODO|FIXME):\"",
         "test": "jest --verbose",

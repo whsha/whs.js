@@ -3,4 +3,6 @@
  */
 
 import App from "./src/App";
+
+// ts-unused-exports:disable-next-line
 export default App;
