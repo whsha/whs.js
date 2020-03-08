@@ -100,6 +100,6 @@ export function copiedToClipboardAlert() {
 }
 
 /** Alert the user that their classes were not in their clipboard */
-export function invalidClassesAlert() {
-    Alert.alert("Failed to load from clipboard", "The clipboard contents were not valid classes or there was a problem loading them");
+export function invalidClassesAlert(reason = "The clipboard contents were not valid classes or there was a problem loading them") {
+    Alert.alert("Failed to load from clipboard", reason);
 }

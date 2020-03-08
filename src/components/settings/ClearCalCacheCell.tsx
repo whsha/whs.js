@@ -7,6 +7,7 @@ import { default as relativeTime } from "dayjs/plugin/relativeTime";
 import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext, ReloadFunctionContext } from "../../contexts";
 import { RedCell } from "../../styles/components/tableview";
+import withHaptics from "../../util/withHaptics";
 
 dayjs.extend(relativeTime);
 
@@ -22,9 +23,9 @@ export default function ClearCalCacheCell() {
         return () => clearInterval(interval);
     }, []);
 
-    const clearCalendarCache = () => {
+    const clearCalendarCache = withHaptics(() => {
         load(true).catch((e) => console.warn("Failed to reload app", e));
-    };
+    });
 
     return (
         <RedCell

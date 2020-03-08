@@ -3,7 +3,7 @@
  */
 
 import { BlockColor } from "@whsha/classes/v2/block";
-import { IClass } from "@whsha/classes/v2/class";
+import { IAdvisory, IClass } from "@whsha/classes/v2/class";
 import { SchoolDay } from "@whsha/classes/v2/schoolDay";
 import { Semester } from "@whsha/classes/v2/semester";
 import { ClassesStorev2, PreparedClassesStorev2 } from "@whsha/classes/v2/store";
@@ -12,7 +12,7 @@ import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { DeepReadonly } from "ts-essentials";
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { PreparedClassesContext, TempClassesContext } from "../../contexts";
 
 /** A hook to access and manipulate the users classes */
@@ -30,12 +30,12 @@ export default function useClasses() {
             tempClasses.hydrateFrom(savedClasses);
         },
         updated:
-            !deepEqual(toJS(savedClasses.advisory), toJS(tempClasses.advisory), { strict: true }) &&
+            !deepEqual(toJS(savedClasses.advisories), toJS(tempClasses.advisories), { strict: true }) ||
             !deepEqual(toJS(savedClasses.classes), toJS(tempClasses.classes), { strict: true }),
         addClass() {
             const clazz: IClass = {
                 // ID
-                uuid: uuid(),
+                uuid: uuidv4(),
 
                 // Informational
                 name: "",
@@ -64,6 +64,31 @@ export default function useClasses() {
             tempClasses.classes.set(clazz.uuid, clazz);
 
             return clazz;
+        },
+        addAdvisory() {
+            const advisory: IAdvisory = {
+                // ID
+                uuid: uuidv4(),
+
+                // Informational
+                advisor: "",
+                room: "",
+
+                // Positional
+                meets: {
+                    [SchoolDay.One]: false,
+                    [SchoolDay.Two]: false,
+                    [SchoolDay.Three]: false,
+                    [SchoolDay.Four]: false,
+                    [SchoolDay.Five]: false,
+                    [SchoolDay.Six]: false,
+                    [SchoolDay.Seven]: false,
+                }
+            };
+
+            tempClasses.advisories.set(advisory.uuid, advisory);
+
+            return advisory;
         }
     }));
 }

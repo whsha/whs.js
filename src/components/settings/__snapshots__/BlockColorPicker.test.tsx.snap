@@ -61,7 +61,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },
@@ -173,7 +173,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -278,7 +278,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -383,7 +383,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -519,7 +519,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -624,7 +624,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -729,7 +729,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -833,7 +833,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },
@@ -905,7 +905,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },
@@ -1017,7 +1017,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1122,7 +1122,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1227,7 +1227,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1363,7 +1363,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1468,7 +1468,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1573,7 +1573,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1678,7 +1678,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -1782,7 +1782,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },
@@ -1854,7 +1854,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },
@@ -1966,7 +1966,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2071,7 +2071,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2176,7 +2176,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2281,7 +2281,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2386,7 +2386,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2491,7 +2491,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
                 "height": 0.5,
               },
               Object {
-                "backgroundColor": "#A0A0A0",
+                "backgroundColor": "#CECED0",
                 "marginLeft": 15,
                 "marginRight": 0,
               },
@@ -2595,7 +2595,7 @@ exports[`Tests different variations of <BlockColorPicker> Renders BlockColorPick
             "height": 0.5,
           },
           Object {
-            "backgroundColor": "#A0A0A0",
+            "backgroundColor": "#CECED0",
             "marginLeft": 0,
             "marginRight": 0,
           },

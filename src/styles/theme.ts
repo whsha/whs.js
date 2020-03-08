@@ -8,7 +8,7 @@ import { DefaultTheme } from "styled-components";
 export const lightTheme: DefaultTheme = {
     colors: {
         background: "#efeff4",
-        border: "#A0A0A0",
+        border: "#CECED0",
         button: "#1f85cc", // "#2f95dc",
         classBackground: "#ffffff",
         dimText: "#808080",

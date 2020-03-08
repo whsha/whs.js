@@ -10,6 +10,7 @@ import { SettingsScrollView } from "../../styles/components/settings";
 import { Cell, Section, TableView } from "../../styles/components/tableview";
 import usePreferences from "../../util/hooks/usePreferences";
 import useTheme from "../../util/hooks/useTheme";
+import withHaptics from "../../util/withHaptics";
 
 /** The settings to control different accessibility functionalitys of the app */
 export default function AccessibilitySettingsView() {
@@ -31,28 +32,28 @@ export default function AccessibilitySettingsView() {
     const TextLabelsSwitch = useObserver(() => (
         <Switch
             value={preferences.accessibility.labelColors}
-            onValueChange={updateLabelColors}
+            onValueChange={withHaptics(updateLabelColors)}
         />
     ));
 
     const MatchColorsSwitch = useObserver(() => (
         <Switch
             value={preferences.accessibility.matchLabelColors}
-            onValueChange={updateMatchLabelColors}
+            onValueChange={withHaptics(updateMatchLabelColors)}
         />
     ));
 
     const DarkThemeSwitch = useObserver(() => (
         <Switch
             value={preferences.theme.theme === Theme.Dark}
-            onValueChange={updateTheme}
+            onValueChange={withHaptics(updateTheme)}
         />
     ));
 
     const SystemThemeSwitch = useObserver(() => (
         <Switch
             value={preferences.theme.matchSystemTheme}
-            onValueChange={updateMatchTheme}
+            onValueChange={withHaptics(updateMatchTheme)}
         />
     ));
 

@@ -10,7 +10,7 @@ import TitleTimes from "./parts/TitleTimes";
 import { ITimes } from "./times";
 
 /** A component to display the advisory */
-function AdvisoryComponent({ advisor, room, end, start }: IAdvisory & ITimes) {
+function AdvisoryComponent({ advisor, room, end, start }: Omit<IAdvisory, "uuid" | "meets"> & ITimes) {
     return (
         <ClassContainerView>
             <TitleTimes name="Advisory" start={start} end={end} />

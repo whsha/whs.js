@@ -8,6 +8,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../../contexts";
 import { DimText } from "../../styles/components/common";
 import { GoToNextSchoolDayButton, GoToNextSchoolDayText, NoSchoolContainerView } from "../../styles/components/noschool";
+import withHaptics from "../../util/withHaptics";
 
 dayjs.extend(relativeTime);
 
@@ -28,7 +29,7 @@ export default function NoSchoolView({ selectedDate, setDate }: INoSchoolViewPro
         (async () => setNextSchoolDay(calendar.nextSchoolDayAfter(selectedDate)))().catch((e) => console.warn("Failed to get next school day", e));
     }, [selectedDate, calendar]);
 
-    const goToNextSchoolDay = () => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay);
+    const goToNextSchoolDay = withHaptics(() => nextSchoolDay === undefined ? void 0 : setDate(nextSchoolDay));
 
     return (
         <NoSchoolContainerView>

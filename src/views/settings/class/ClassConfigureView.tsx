@@ -7,10 +7,12 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import dayjs from "dayjs";
 import { default as useCustomFormat } from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { Button, SafeAreaView, ScrollView } from "react-native";
 import ClassComponent from "../../../components/blocks/ClassComponent";
 import NavigationKeyboardAvoidingView from "../../../components/NavigationKeyboardAvoidingView";
 import { SettingsParams } from "../../../navigators/SettingsNavigator";
+import { Text } from "../../../styles/components/common";
+import { NoSchoolContainerView } from "../../../styles/components/noschool";
 import { RedCell, Section, TableView } from "../../../styles/components/tableview";
 import { deleteClassAlert } from "../../../util/alerts";
 import useClass from "../../../util/hooks/useClass";
@@ -24,12 +26,23 @@ export default function ClassConfigureView() {
     const route = useRoute<RouteProp<SettingsParams, "ConfigureClass">>();
     const clazz = useClass(route.params.uuid);
 
-    useOverrideBackButton(() => navigation.goBack());
+    const goback = () => navigation.goBack();
+    useOverrideBackButton(goback);
+
+    /// If class had been deleted
+    if (clazz === undefined) {
+        return (
+            <NoSchoolContainerView>
+                <Text>This class has been deleted</Text>
+                <Button onPress={goback} title="Go Back" />
+            </NoSchoolContainerView>
+        );
+    }
 
     const pomptDelete = () =>
         deleteClassAlert(() => {
-            clazz.delete();
             navigation.goBack();
+            clazz.delete();
         });
 
     return (

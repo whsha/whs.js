@@ -21,12 +21,15 @@ export default function CreditsView() {
             </CreditsItem>
             <CreditsHeader>Sponsors:</CreditsHeader>
             <CreditsItem>
-                <CreditsName>Elliot Kovacs 😎</CreditsName> - Assistant to the Lead Developer
+                <CreditsName>Michael Kohnen</CreditsName>
+            </CreditsItem>
+            <CreditsItem>
+                <CreditsName>Elliot Kovacs</CreditsName> - Assistant to the Lead Developer
             </CreditsItem>
             <CreditsHeader>Alpha Testers:</CreditsHeader>
             <CreditsItem>
                 <CreditsName>iOS</CreditsName>
-                </CreditsItem>
+            </CreditsItem>
             <CreditsItem>Yasin Akbashev</CreditsItem>
             <CreditsItem>Abby Duffy</CreditsItem>
             <CreditsItem>Elliot Kovacs</CreditsItem>

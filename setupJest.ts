@@ -3,11 +3,11 @@
  */
 
 // tslint:disable-next-line: no-implicit-dependencies
-import jestFetch, { FetchMock, GlobalWithFetchMock } from "jest-fetch-mock";
+import fetchMock, { GlobalWithFetchMock } from "jest-fetch-mock";
 
 /** Typed global */
 const customGlobal: GlobalWithFetchMock = global as GlobalWithFetchMock;
-customGlobal.fetch = jestFetch as FetchMock;
+customGlobal.fetch = fetchMock;
 customGlobal.fetchMock = customGlobal.fetch;
 
 // Supress the warning about the native driver in tests

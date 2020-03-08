@@ -6,21 +6,34 @@ import { IClass } from "@whsha/classes/v2/class";
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
-import { useContext } from "react";
-import { DeepReadonly } from "ts-essentials";
-import { PreparedClassesContext, TempClassesContext } from "../../contexts";
+import useClasses from "./useClasses";
 
 /** A hook to access and manipulate a single class */
 export default function useClass(uuid: string) {
-    const savedClasses = useContext(PreparedClassesContext);
-    const tempClasses = useContext(TempClassesContext);
+    const classes = useClasses();
 
-    return useObserver(() => ({
-        saved: savedClasses.classes.get(uuid) as DeepReadonly<IClass>,
-        temp: tempClasses.classes.get(uuid) as Readonly<IClass>,
-        updated: !deepEqual(toJS(savedClasses.classes.get(uuid)), toJS(tempClasses.classes.get(uuid)), { strict: true }),
-        delete() {
-            tempClasses.classes.delete(uuid);
+    return useObserver(() => {
+        const saved = classes.saved.classes.get(uuid);
+        const temp = classes.temp.classes.get(uuid) as Readonly<IClass | undefined>;
+
+        if (temp === undefined) {
+            return undefined;
+        } else {
+            return {
+                saved,
+                temp,
+                updated: !deepEqual(toJS(saved), toJS(temp), { strict: true }),
+                delete() {
+                    classes.temp.classes.delete(uuid);
+                },
+                update(data: Partial<IClass> | ((pre: IClass | undefined) => IClass)) {
+                    if (typeof data === "function") {
+                        classes.temp.classes.set(uuid, { ...temp, ...data(temp) });
+                    } else {
+                        classes.temp.classes.set(uuid, { ...temp, ...data });
+                    }
+                },
+            };
         }
-    }));
+    });
 }

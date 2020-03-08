@@ -9,17 +9,18 @@ import { TempClassesContext } from "../../contexts";
 import { SettingsParams } from "../../navigators/SettingsNavigator";
 import { RedCell } from "../../styles/components/tableview";
 import { clearClassesAlert } from "../../util/alerts";
+import withHaptics from "../../util/withHaptics";
 
 /** A settings cell to clear the classes */
 export default function ClearClassesCell() {
     const navigation = useNavigation<StackNavigationProp<SettingsParams>>();
     const tempClasses = useContext(TempClassesContext);
 
-    const clear = () => clearClassesAlert(() => {
+    const clear = withHaptics(() => clearClassesAlert(() => {
         tempClasses.clear();
 
         navigation.navigate("ClassesList");
-    });
+    }));
 
     return (
         <RedCell title="Clear Classes" onPress={clear} />

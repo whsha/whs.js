@@ -7,11 +7,12 @@ import { Linking } from "react-native";
 import { SettingsScrollView } from "../../styles/components/settings";
 import { ButtonCell, Section, TableView } from "../../styles/components/tableview";
 import { openLinkInBrowserAlert } from "../../util/alerts";
+import withHaptics from "../../util/withHaptics";
 
 /** A view containing many links */
 export default function LinksView() {
     const openLink = (link: string) =>
-        () => openLinkInBrowserAlert(() => Linking.openURL(link));
+        withHaptics(() => openLinkInBrowserAlert(() => Linking.openURL(link)));
 
     return (
         <SettingsScrollView>

@@ -15,6 +15,7 @@ import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
 import { FlexView } from "../styles/components/general";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
+import withHaptics from "../util/withHaptics";
 import ClassesView from "../views/today/ClassesView";
 import NoSchoolView from "../views/today/NoSchoolView";
 import { MainTabParams } from "./MainNavigator";
@@ -41,7 +42,7 @@ export default function TodayNavigator() {
             // Prevent default behavior
             e.preventDefault();
 
-            navigation.navigate("Today", { day: dayjs().startOf("day").format(TODAY_DAY_FORMAT) });
+            goToToday();
         }
     });
 
@@ -55,31 +56,19 @@ export default function TodayNavigator() {
         }
     };
 
-    const goToToday = () => {
-        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
-        navigation.navigate("Today", { day: dayjs().startOf("day").format(TODAY_DAY_FORMAT) });
-    };
-    const goTo = (date: Dayjs) => {
-        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
-        navigation.navigate("Today", { day: date.format(TODAY_DAY_FORMAT) });
-    };
-    const left = () => {
-        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
-        navigation.navigate("Today", { day: day.subtract(1, "day").format(TODAY_DAY_FORMAT) });
-    };
-    const right = () => {
-        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
-        navigation.navigate("Today", { day: day.add(1, "day").format(TODAY_DAY_FORMAT) });
-    };
+    const goToToday = () => navigation.navigate("Today", { day: dayjs().startOf("day").format(TODAY_DAY_FORMAT) });
+    const goTo = (date: Dayjs) => navigation.navigate("Today", { day: date.format(TODAY_DAY_FORMAT) });
+    const left = () => navigation.navigate("Today", { day: day.subtract(1, "day").format(TODAY_DAY_FORMAT) });
+    const right = () => navigation.navigate("Today", { day: day.add(1, "day").format(TODAY_DAY_FORMAT) });
 
     const screenOptions: StackNavigationOptions = {
-        headerLeft: () => <HeaderLeftArrow onPress={left} />,
-        headerRight: () => <HeaderRightArrow onPress={right} />,
+        headerLeft: () => <HeaderLeftArrow onPress={withHaptics(left)} />,
+        headerRight: () => <HeaderRightArrow onPress={withHaptics(right)} />,
         headerTitle: () => (
             <MultilineHeaderTitle
                 title={schoolDay === undefined ? "No School" : `${schoolDay.isMCAS ? "MCAS " : ""}${schoolDay.isHalf ? "Half " : ""}Day ${schoolDay.dayNumber}`}
                 subtitle={day.format("dddd, MMMM D")}
-                onClick={goToToday}
+                onClick={withHaptics(goToToday)}
             />
         ),
         ...navigationHeaderPaddingStyle
@@ -88,8 +77,8 @@ export default function TodayNavigator() {
     /** The internal wrapper around the classes view */
     const ClassesViewInternal = () => {
         return (
-            <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(right)} direction={Directions.LEFT}>
-                <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(left)} direction={Directions.RIGHT}>
+            <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(withHaptics(right))} direction={Directions.LEFT}>
+                <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(withHaptics(left))} direction={Directions.RIGHT}>
                     <FlexView>
                         {schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />}
                     </FlexView>

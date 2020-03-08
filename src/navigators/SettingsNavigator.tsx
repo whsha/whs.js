@@ -5,9 +5,9 @@
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/core";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as Haptics from "expo-haptics";
 import React from "react";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
+import withHaptics from "../util/withHaptics";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
 import AdvisoryConfigureView from "../views/settings/class/AdvisoryConfigureView";
 import ClassConfigureView from "../views/settings/class/ClassConfigureView";
@@ -37,7 +37,10 @@ interface ISettingsParams {
     /** The classes list view */
     ClassesList: undefined;
     /** The advisory edit view */
-    ConfigureAdvisory: undefined;
+    ConfigureAdvisory: {
+        /** The id of the advisory to configure */
+        uuid: string;
+    };
     /** The class edit view */
     ConfigureClass: {
         /** The id of the class to configure */
@@ -49,9 +52,7 @@ interface ISettingsParams {
 export default function SettingsNavigator() {
     const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Settings">>();
 
-    navigation.addListener("tabPress", () => {
-        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
-    });
+    navigation.addListener("tabPress", withHaptics(() => void 0));
 
     return (
         <Stack.Navigator>
