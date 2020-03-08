@@ -4,7 +4,7 @@
 
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { IAdvisory, IClass } from "@whsha/classes/v2/class";
+import { daysClassMeets, IAdvisory, IClass } from "@whsha/classes/v2/class";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import { HeaderCancelButton, HeaderSaveButton } from "../../../components/header/HeaderButtons";
@@ -94,7 +94,7 @@ export default function ClassesListView() {
     const AdvisoryCell: React.FC<IAdvisoryCellProps> = ({ advisory }) => (
         <Cell
             title={`Advisory ${advisory.advisor === "" ? "" : `with ${advisory.advisor} `}`}
-            detail={advisory.room === "" ? "" : isNaN(parseInt(advisory.room, 10)) ? `in the ${advisory.room}` : `in room ${advisory.room}`}
+            detail={`${advisory.room === "" ? "" : isNaN(parseInt(advisory.room, 10)) ? `in the ${advisory.room} and ` : `in room ${advisory.room} and `}${daysClassMeets(advisory.meets).length > 0 ? `meets on days ${daysClassMeets(advisory.meets).join(", ").replace(/, ([^,]*)$/, " and $1")}` : "never meets"}`}
             cellStyle={advisory.room === "" ? undefined: "Subtitle"}
             accessory="DisclosureIndicator"
             onPress={goTo("ConfigureAdvisory", { uuid: advisory.uuid })}
