@@ -73,7 +73,7 @@
         "max-file-line-count": false,
         "max-line-length": false,
         "member-access": true,
-        "member-ordering": true,
+        "member-ordering": false,
         "new-parens": true,
         "newline-before-return": true,
         "newline-per-chained-call": false,
