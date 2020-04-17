@@ -8,12 +8,12 @@ import { createStackNavigator, StackNavigationOptions } from "@react-navigation/
 import dayjs, { Dayjs } from "dayjs";
 import * as Haptics from "expo-haptics";
 import React, { useContext } from "react";
-import { View } from "react-native";
 import { Directions, FlingGestureHandler, FlingGestureHandlerStateChangeEvent, State } from "react-native-gesture-handler";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
 import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
 import { CalendarContext } from "../contexts";
-import { navigationHeaderPaddingStyle, settingsViewStyles } from "../styles/layout/default";
+import { FlexView } from "../styles/components/general";
+import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import ClassesView from "../views/today/ClassesView";
 import NoSchoolView from "../views/today/NoSchoolView";
 import { MainTabParams } from "./MainNavigator";
@@ -29,6 +29,8 @@ export default function TodayNavigator() {
     const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Today">>();
 
     navigation.addListener("tabPress", e => {
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
+
         if (navigation.isFocused()) {
             // Prevent default behavior
             e.preventDefault();
@@ -81,9 +83,9 @@ export default function TodayNavigator() {
         return (
             <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(right)} direction={Directions.LEFT}>
                 <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(left)} direction={Directions.RIGHT}>
-                    <View style={settingsViewStyles.container}>
-                        {schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />}
-                    </View>
+                    <FlexView>
+                        {day.format("dddd").match(/(Saturday|Sunday)/) !== null ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={day} />}
+                    </FlexView>
                 </FlingGestureHandler>
             </FlingGestureHandler>
         );

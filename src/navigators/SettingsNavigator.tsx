@@ -2,9 +2,12 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/core";
 import { createStackNavigator } from "@react-navigation/stack";
+import * as Haptics from "expo-haptics";
 import React from "react";
-import { navigationHeaderPaddingStyle } from "../styles/layout/default";
+import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import AccessibilitySettingsView from "../views/settings/AccessibilitySettingsView";
 import AdvisoryConfigureView from "../views/settings/class/AdvisoryEditView";
 import ClassesListView from "../views/settings/class/ClassesListView";
@@ -12,7 +15,10 @@ import DREditView from "../views/settings/class/DREditView";
 import LunchEditView from "../views/settings/class/LunchEditView";
 import MajorEditView from "../views/settings/class/MajorEditView";
 import MinorEditView from "../views/settings/class/MinorEditView";
+import CreditsView from "../views/settings/CreditsView";
+import LinksView from "../views/settings/LinksView";
 import MainView from "../views/settings/MainSettingsView";
+import { MainTabParams } from "./MainNavigator";
 
 /** The settings view stack navigator */
 const Stack = createStackNavigator<SettingsParams>();
@@ -47,10 +53,20 @@ interface ISettingsParams {
     };
     /** The lunches configure view */
     ConfigureLunches: undefined;
+    /** The credits view */
+    Credits: undefined;
+    /** The links page */
+    Links: undefined;
 }
 
 /** The view for the settings tab */
 export default function SettingsNavigator() {
+    const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Settings">>();
+
+    navigation.addListener("tabPress", () => {
+        Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
+    });
+
     return (
         <Stack.Navigator>
             <Stack.Screen name="AllSettings" component={MainView} options={{ title: "Settings" }} />
@@ -61,6 +77,8 @@ export default function SettingsNavigator() {
             <Stack.Screen name="ConfigureMinor" component={MinorEditView} options={{ title: "Edit Minor", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureDR" component={DREditView} options={{ title: "Edit DR", gestureEnabled: false, ...navigationHeaderPaddingStyle }} />
             <Stack.Screen name="ConfigureLunches" component={LunchEditView} options={{ title: "Edit Lunches" }} />
+            <Stack.Screen name="Credits" component={CreditsView} options={{ title: "Credits" }} />
+            <Stack.Screen name="Links" component={LinksView} options={{ title: "Links" }} />
         </Stack.Navigator>
     );
 }

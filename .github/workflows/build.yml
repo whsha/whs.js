@@ -5,7 +5,11 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: https://npm.pkg.github.com/
+          scope: "@whsha"
       - name: Cache yarn
         uses: actions/cache@v1
         with:
@@ -16,17 +20,23 @@ jobs:
       - name: Cache node
         uses: actions/cache@v1
         with:
-          path: /home/runner/.cache/yarn/v6
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - run: yarn
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn run typecheck
   test:
     runs-on: ubuntu-latest
     needs: typecheck
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: https://npm.pkg.github.com/
+          scope: "@whsha"
       - name: Cache yarn
         uses: actions/cache@v1
         with:
@@ -37,11 +47,13 @@ jobs:
       - name: Cache node
         uses: actions/cache@v1
         with:
-          path: /home/runner/.cache/yarn/v6
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - run: yarn
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn run testcov --forceExit
       - uses: codecov/codecov-action@v1.0.2
         with:
@@ -50,7 +62,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: typecheck
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: https://npm.pkg.github.com/
+          scope: "@whsha"
       - name: Cache yarn
         uses: actions/cache@v1
         with:
@@ -61,19 +77,24 @@ jobs:
       - name: Cache node
         uses: actions/cache@v1
         with:
-          path: /home/runner/.cache/yarn/v6
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - run: yarn
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn run lint
       - run: yarn run exportlint
   deploy:
     runs-on: ubuntu-latest
     needs: [test, lint, typecheck]
     steps:
-      - run: yarn global add expo-cli
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: https://npm.pkg.github.com/
+          scope: "@whsha"
       - name: Cache yarn
         uses: actions/cache@v1
         with:
@@ -84,17 +105,18 @@ jobs:
       - name: Cache node
         uses: actions/cache@v1
         with:
-          path: /home/runner/.cache/yarn/v6
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - run: yarn
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Fix inotify max_user_watches
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: Install Sentry CLI
         run: curl -sL https://sentry.io/get-cli/ | bash
       - name: Publish
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/stable')
         run: sh .github/workflows/publish.sh
         env:
           # Expo data
@@ -111,5 +133,7 @@ jobs:
           SENDER_USERNAME: ${{github.events.sender.login}}
           SENDER_URL: ${{github.events.sender.url}}
           SENDER_AVATAR: ${{github.events.sender.avatar_url}}
+          # Webhook urls
           WEBHOOK_URL: ${{secrets.release_webhook}}
+          ALPHA_WEBHOOK_URL: ${{secrets.alpha_release_webhook}}
           STABLE_WEBHOOK_URL: ${{secrets.stable_release_webhook}}

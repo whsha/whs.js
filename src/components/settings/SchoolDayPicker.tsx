@@ -2,13 +2,13 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import React, { memo, useEffect, useMemo, } from "react";
-import { Cell, Section } from "react-native-tableview-simple";
-import { tabBarIconSelectedColor } from "../../styles/layout/default";
-import { BlockColor } from "../../util/blocks/blockColor";
-import { SchoolDay } from "../../util/calendar/types";
-import { IrregularMeetDays } from "../../util/class/primitives";
-import { getSchoolDaysThatHaveColor } from "../../util/schoolDays";
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IrregularMeetDays } from "@whsha/classes/v1/class/primitives";
+import { getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
+import React, { memo, useEffect, useMemo } from "react";
+import { Section } from "react-native-tableview-simple";
+import { ButtonCell } from "../../styles/components/tableview";
 
 /** The props for a SchoolDayPicker */
 interface ISchoolDayPickerProps {
@@ -62,10 +62,9 @@ const DayPicker = memo(<D extends SchoolDay>({ day, enabledDays, toggle, value }
     }, [disabled, selected]);
 
     return (
-        <Cell
+        <ButtonCell
             title={`Day ${day}`}
             onPress={toggleCallback}
-            titleTextColor={tabBarIconSelectedColor}
             accessory={selected ? "Checkmark" : undefined}
             isDisabled={disabled}
         />

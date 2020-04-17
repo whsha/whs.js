@@ -3,8 +3,8 @@
  */
 
 import React, { memo } from "react";
-import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
-import { headerStyles } from "../../styles/layout/default";
+import { GestureResponderEvent, TouchableOpacity } from "react-native";
+import { HeaderSubtitleText, HeaderTitleText } from "../../styles/components/header";
 
 /** The props for a multiline header */
 interface IMultilineHeaderProps {
@@ -20,8 +20,8 @@ interface IMultilineHeaderProps {
 function MultilineHeaderTitle({ title, subtitle, onClick }: IMultilineHeaderProps) {
     return (
         <TouchableOpacity onPress={onClick}>
-            <Text style={headerStyles.headerTitle}>{title}</Text>
-            <Text style={headerStyles.headerSubtitle}>{subtitle}</Text>
+            <HeaderTitleText>{title}</HeaderTitleText>
+            <HeaderSubtitleText>{subtitle}</HeaderSubtitleText>
         </TouchableOpacity>
     );
 }

@@ -13,9 +13,7 @@ enum StorageKey {
     /** The user's preferences */
     Preferences = "@whs.js/preferences",
     /** The saved navigation state */
-    Navigation = "@whs.js/navigation",
-    /** The key used to track the first opening of the app */
-    HasOpened = "@whs.js/has-opened"
+    Navigation = "@whs.js/navigation"
 }
 
 export default StorageKey;

@@ -3,12 +3,11 @@
  */
 
 import { Ionicons } from "@expo/vector-icons";
-import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RouteProp } from "@react-navigation/core";
 import dayjs from "dayjs";
 import React from "react";
 import { Platform } from "react-native";
-import { tabBarIconNotSelectedColor, tabBarIconSelectedColor } from "../styles/layout/default";
 import SettingsNavigator, { SettingsParams } from "./SettingsNavigator";
 import TodayNavigator from "./TodayNaviator";
 
@@ -37,7 +36,7 @@ export default function MainNavigator() {
         /** idk and idc */
         navigation: {};
     }) => BottomTabNavigationOptions) = ({ route }) => {
-        const routeName: keyof IMainTabParams | keyof SettingsParams =
+        const routeName: keyof IMainTabParams | keyof SettingsParams | "Classes" =
             // @ts-ignore
             // tslint:disable-next-line: no-unsafe-any
             route.state ? route.state.routes[route.state.index].name : "Today";
@@ -57,27 +56,16 @@ export default function MainNavigator() {
 
                 return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarVisible: !(
-                routeName === "ClassesList"
-                || routeName === "ConfigureDR"
-                || routeName === "ConfigureAdvisory"
-                || routeName === "ConfigureLunches"
-                || routeName === "ConfigureMajor"
-                || routeName === "ConfigureMinor"
-            )
+            tabBarVisible:
+                routeName === "AllSettings" || routeName === "Classes" ||
+                routeName === "Today" || routeName === "Settings"
         };
-    };
-
-    const tabBarOptions: BottomTabBarOptions = {
-        activeTintColor: tabBarIconSelectedColor,
-        inactiveTintColor: tabBarIconNotSelectedColor
     };
 
     return (
         <Tab.Navigator
             initialRouteName="Today"
             screenOptions={screenOptions}
-            tabBarOptions={tabBarOptions}
         >
             <Tab.Screen name="Today" component={TodayNavigator} initialParams={{ day: dayjs().startOf("day").toDate() }} />
             <Tab.Screen name="Settings" component={SettingsNavigator} />

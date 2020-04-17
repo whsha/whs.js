@@ -3,10 +3,10 @@
  */
 
 import React, { memo, useEffect, useState } from "react";
-import { Image, StatusBar, Text, View } from "react-native";
+import { StatusBar, View } from "react-native";
 import Splash from "../../assets/splash.png";
 import { ApplicationState } from "../App";
-import { loadingViewStyle } from "../styles/layout/default";
+import { LoadingImage, LoadingOverlayView, TaskText } from "../styles/components/loading";
 
 /** The props for the LoadingView */
 interface ILoadingProps {
@@ -27,10 +27,10 @@ function LoadingView({ task }: ILoadingProps) {
     return (
         <View>
             <StatusBar barStyle="light-content" />
-            <Image source={Splash} style={loadingViewStyle.image} resizeMode={"contain"} />
-            <View style={[loadingViewStyle.overlay, { display: displayStatus ? "flex" : "none" }]}>
-                <Text style={loadingViewStyle.taskText}>{task}...</Text>
-            </View>
+            <LoadingImage source={Splash} resizeMode={"contain"} />
+            <LoadingOverlayView display={displayStatus}>
+                <TaskText>{task}...</TaskText>
+            </LoadingOverlayView>
         </View>
     );
 }

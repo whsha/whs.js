@@ -2,9 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import React, { memo } from "react";
 import { Cell, Section } from "react-native-tableview-simple";
-import { BlockColor, getDisplayColorForBlock } from "../../util/blocks/blockColor";
+import { getDisplayColorForBlock } from "../../util/blocks/blockColor";
 
 /** The props for BlockColorPicker */
 interface IBlockColorPickerProps {

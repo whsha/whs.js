@@ -2,15 +2,15 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { Lunch } from "@whsha/classes/v1/class/lunch";
+import { getLunchBlockColorForDay } from "@whsha/classes/v1/schoolDays";
 import { useObserver } from "mobx-react-lite";
 import React from "react";
-import { FlatList, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { settingsViewStyles } from "../../../styles/layout/default";
-import { SchoolDay } from "../../../util/calendar/types";
-import { Lunch } from "../../../util/class/lunch";
+import { SettingsScrollView } from "../../../styles/components/settings";
 import useClasses from "../../../util/hooks/classes/useClasses";
-import { getLunchBlockColorForDay } from "../../../util/schoolDays";
 
 /** The day selector properties */
 interface IDaySelectorProps {
@@ -49,18 +49,13 @@ export default function LunchEditView() {
         </Section>
     ));
 
-    const renderItem = ({ item }: IDaySelectorProps) => <DaySelector item={item} />;
-    const keyExtractor = (_: SchoolDay, index: number) => index.toString();
-
     return (
-        <ScrollView style={settingsViewStyles.container}>
-            <TableView>
-                <FlatList
-                    data={[SchoolDay.One, SchoolDay.Two, SchoolDay.Three, SchoolDay.Four, SchoolDay.Five, SchoolDay.Six, SchoolDay.Seven]}
-                    renderItem={renderItem}
-                    keyExtractor={keyExtractor}
-                />
-            </TableView>
-        </ScrollView>
+        <SettingsScrollView contentInsetAdjustmentBehavior="automatic">
+            <SafeAreaView>
+                <TableView>
+                    {[SchoolDay.One, SchoolDay.Two, SchoolDay.Three, SchoolDay.Four, SchoolDay.Five, SchoolDay.Six, SchoolDay.Seven].map((x, i) => <DaySelector item={x} key={i} />)}
+                </TableView>
+            </SafeAreaView>
+        </SettingsScrollView>
     );
 }

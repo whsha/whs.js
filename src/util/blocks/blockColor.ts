@@ -2,17 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-/** Colors of the blocks */
-export enum BlockColor {
-    Red = "Red",
-    Orange = "Orange",
-    Yellow = "Yellow",
-    Green = "Green",
-    Blue = "Blue",
-    Purple = "Purple",
-    Tan = "Tan",
-    None = "No Color"
-}
+import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 
 /** A map of the block colors to their display colors */
 type BlockColorColorMap = {
@@ -23,15 +13,14 @@ type BlockColorColorMap = {
  * The display colors that corispond to each of the block colors
  */
 const BlockColorDisplayColors: BlockColorColorMap = {
-    // TODO: Custom hex
-    [BlockColor.Blue]: "blue",
-    [BlockColor.Green]: "green",
-    [BlockColor.None]: "#C0C0C0",
-    [BlockColor.Orange]: "orange",
-    [BlockColor.Purple]: "purple",
-    [BlockColor.Red]: "red",
-    [BlockColor.Tan]: "tan",
-    [BlockColor.Yellow]: "gold"
+    [BlockColor.Blue]: "#2b5cbf",
+    [BlockColor.Green]: "#5da539",
+    [BlockColor.None]: "#999999",
+    [BlockColor.Orange]: "#eb8a29",
+    [BlockColor.Purple]: "#8848ad",
+    [BlockColor.Red]: "#c93a3a",
+    [BlockColor.Tan]: "#ad855e",
+    [BlockColor.Yellow]: "#ebd124"
 };
 
 /** Lookup the display color for the given block color */

@@ -2,19 +2,17 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { IColored } from "@whsha/classes/v1/class/primitives";
 import React, { memo } from "react";
-import { View } from "react-native";
-import { classesStyle } from "../../styles/layout/default";
-import { ITimes } from "../../util/class/extentions";
-import { IColored } from "../../util/class/primitives";
+import { ClassContainerView } from "../../styles/components/class";
 import TitleTimes from "./parts/TitleTimes";
 
 /** A component to display a free block */
-function FreeComponent({ start, end, block }: ITimes & IColored) {
+function FreeComponent({ block }: IColored) {
     return (
-        <View style={classesStyle.outerContainer}>
-            <TitleTimes start={start} end={end} name="Free" block={block} showAccessibilityLabel={true} />
-        </View>
+        <ClassContainerView>
+            <TitleTimes name="Possibly Free" block={block} showAccessibilityLabel={true} />
+        </ClassContainerView>
     );
 }
 

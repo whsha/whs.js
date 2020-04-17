@@ -2,16 +2,16 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { SchoolDay } from "@whsha/classes/v1/calendar/types";
+import { IAdvisory, IDR, IMajor,IMinor } from "@whsha/classes/v1/class/classes";
+import { DayLunchMap, Lunch } from "@whsha/classes/v1/class/lunch";
+import { validateDRs, validateMajors, validateMinors, ValidationError, ValidationWarning } from "@whsha/classes/v1/class/validation";
+import ProblemMap from "@whsha/classes/v1/problemMap";
 import deepEqual from "deep-equal";
 import { toJS } from "mobx";
 import { useObserver } from "mobx-react-lite";
 import { useContext } from "react";
 import { ClassesContext, TempClassesContext } from "../../../contexts";
-import { SchoolDay } from "../../calendar/types";
-import { IAdvisory, IDR, IMajor,IMinor } from "../../class/classes";
-import { DayLunchMap, Lunch } from "../../class/lunch";
-import { validateDRs, validateMajors, validateMinors, ValidationError, ValidationWarning } from "../../class/validation";
-import ProblemMap from "../../problemMap";
 
 /** An interface of the different classes */
 export interface IClasses {

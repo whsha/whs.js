@@ -2,9 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "@whsha/classes/v1/class/validation";
 import React, { memo } from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
-import { ValidationError, ValidationErrorMessage, ValidationWarning, ValidationWarningMessage } from "../../util/class/validation";
+import { Alert } from "react-native";
+import {ErrorsCount, ProblemsButton, ProblemsIconsView, WarningsCount} from "../../styles/components/problemsicons";
 import IconComponent from "../IconComponent";
 
 /** The props for the ProblemsIcons */
@@ -28,16 +29,16 @@ function ProblemsIcons({ errors = [], warnings = [] }: IProblemsIconsProps) {
     const showErrors = () => Alert.alert(`${errors.length} Validation Error${errors.length === 1 ? "" : "s"}`, errors.map(x => `• ${ValidationErrorMessage[x]} (${ValidationError[x as unknown as keyof typeof ValidationError]})`).join("\n"));
 
     return (
-        <View style={{ flexDirection: "row", paddingRight: 10 }}>
-            <TouchableOpacity onPress={showWarns} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10, display: haswarns ? "flex" : "none" }}>
-                <Text style={{ color: "gold", alignSelf: "center", paddingRight: 5 }}>{warnings.length}</Text>
-                <IconComponent name="warning" color={"gold"} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={showErrors} style={{ flexDirection: "row", paddingRight: 10, paddingLeft: 10, display: haserrors ? "flex" : "none" }}>
-                <Text style={{ color: "red", alignSelf: "center", paddingRight: 5 }}>{errors.length}</Text>
-                <IconComponent name="alert" color={"red"} style={{ alignSelf: "center" }} />
-            </TouchableOpacity>
-        </View>
+        <ProblemsIconsView>
+            <ProblemsButton onPress={showWarns} display={haswarns}>
+                <WarningsCount>{warnings.length}</WarningsCount>
+                <IconComponent name="warning" color="gold" />
+            </ProblemsButton>
+            <ProblemsButton onPress={showErrors} display={haserrors}>
+                <ErrorsCount>{errors.length}</ErrorsCount>
+                <IconComponent name="alert" color="red" />
+            </ProblemsButton>
+        </ProblemsIconsView>
     );
 }
 

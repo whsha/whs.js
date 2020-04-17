@@ -3,7 +3,9 @@
 exports[`Renders <ClearCalCacheCell/> 1`] = `
 <View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -79,9 +81,11 @@ exports[`Renders <ClearCalCacheCell/> 1`] = `
                 Object {
                   "color": "#000",
                 },
-                Object {
-                  "color": "#FF5050",
-                },
+                Array [
+                  Object {
+                    "color": "#ff5050",
+                  },
+                ],
               ]
             }
           >

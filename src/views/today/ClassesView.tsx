@@ -2,60 +2,56 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import dayjs from "dayjs";
+import { IDR, IMajor, IMinor } from "@whsha/classes/v1/class/classes";
+import dayjs, { Dayjs } from "dayjs";
 import useCustomFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
-import { ScrollView } from "react-native";
-import AdvisoryComponent from "../../components/blocks/AdvisoryComponent";
+import { Text } from "react-native";
 import BlockComponent from "../../components/blocks/BlockComponent";
-import LunchBlockComponent from "../../components/blocks/LunchBlockComponent";
-import { PreparedClasses } from "../../stores/preparedClassesStore";
-import { settingsViewStyles } from "../../styles/layout/default";
-import { Block } from "../../util/blocks/block";
-import { ICalendarSchoolDay, SchoolDay } from "../../util/calendar/types";
-import { IAdvisory } from "../../util/class/classes";
-import { Lunch } from "../../util/class/lunch";
-import usePreparedClasses from "../../util/hooks/classes/usePreparedClasses";
-import { BlockColorsForDay, getBlockColorsForDay } from "../../util/schoolDays";
+import { SettingsScrollView } from "../../styles/components/settings";
+import { BlockColorsForDay, CoronaBlock, DayOfWeek, getBlockColorsForDay } from "../../util/coronaDay";
+import useClasses from "../../util/hooks/classes/useClasses";
 
 dayjs.extend(useCustomFormat);
 
 /** The props for the classes view */
 interface IClassesViewProps {
     /** The school day to show */
-    schoolDay: ICalendarSchoolDay;
+    schoolDay: Dayjs;
 }
 
 /** The today view when there are classes that day */
 export default function ClassesView({ schoolDay }: IClassesViewProps) {
-    const preparedClasses = usePreparedClasses();
+    const classes = useClasses();
 
-    const colors = getBlockColorsForDay(schoolDay.dayNumber);
+    const colors = getBlockColorsForDay(schoolDay.format("dddd") as DayOfWeek);
+
+    const compClasses = {
+        [CoronaBlock.First]: Array.from(classes.saved.majors.values()).find(x => x.block === colors[CoronaBlock.First]),
+        [CoronaBlock.Second]: Array.from(classes.saved.majors.values()).find(x => x.block === colors[CoronaBlock.Second]),
+        [CoronaBlock.Third]: Array.from(classes.saved.majors.values()).find(x => x.block === colors[CoronaBlock.Third])
+    };
 
     const properties: IBlocksViewProps = {
-        advisory: preparedClasses.advisory,
-        classes: preparedClasses.classes[schoolDay.dayNumber],
+        classes: compClasses,
         colors,
-        lunch: preparedClasses.lunches[schoolDay.dayNumber]
     };
 
     return (
-        <ScrollView style={settingsViewStyles.container}>
-            {schoolDay.isHalf ? <HalfDayClasses {...properties} /> : <FullDayClasses {...properties} />}
-        </ScrollView>
+        <SettingsScrollView>
+            <FullDayClasses {...properties} />
+            <Text>DISCLAIMER: The above classes are only your major classes,</Text>
+            <Text>For 3/cycle classes, check with online resources for the more specific schedule.</Text>
+        </SettingsScrollView>
     );
 }
 
 /** The props for a class view */
 interface IBlocksViewProps {
-    /** The advisory for the day */
-    advisory: IAdvisory;
     /** The colors as backups */
     colors: BlockColorsForDay;
     /** The classes to display */
-    classes: PreparedClasses[SchoolDay];
-    /** The lunch fot the day */
-    lunch: Lunch;
+    classes: { [B in CoronaBlock]?: IMajor | IMinor | IDR };
 }
 
 /*
@@ -69,108 +65,20 @@ Block F 1:31-2:30 PM
 */
 
 /** The display component for a full day */
-function FullDayClasses({ advisory, classes, colors, lunch }: IBlocksViewProps) {
+function FullDayClasses({ classes, colors }: IBlocksViewProps) {
     return (
         <>
             <BlockComponent
-                block={colors[Block.A]}
-                clazz={classes[Block.A]}
-                start={dayjs("7:30 AM", "h:mm A")}
-                end={dayjs("8:29 AM", "h:mm A")}
+                block={colors[CoronaBlock.First]}
+                clazz={classes[CoronaBlock.First]}
             />
             <BlockComponent
-                block={colors[Block.B]}
-                clazz={classes[Block.B]}
-                start={dayjs("8:34 AM", "h:mm A")}
-                end={dayjs("9:33 AM", "h:mm A")}
-            />
-            <AdvisoryComponent
-                {...advisory}
-                start={dayjs("9:38 AM", "h:mm A")}
-                end={dayjs("9:46 AM", "h:mm A")}
+                block={colors[CoronaBlock.Second]}
+                clazz={classes[CoronaBlock.Second]}
             />
             <BlockComponent
-                block={colors[Block.C]}
-                clazz={classes[Block.C]}
-                start={dayjs("9:51 AM", "h:mm A")}
-                end={dayjs("10:50 AM", "h:mm A")}
-            />
-            <LunchBlockComponent
-                block={colors[Block.D]}
-                clazz={classes[Block.D]}
-                lunch={lunch}
-            />
-            <BlockComponent
-                block={colors[Block.E]}
-                clazz={classes[Block.E]}
-                start={dayjs("12:27 PM", "h:mm A")}
-                end={dayjs("1:26 PM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.F]}
-                clazz={classes[Block.F]}
-                start={dayjs("1:31 PM", "h:mm A")}
-                end={dayjs("2:30 PM", "h:mm A")}
-            />
-        </>
-    );
-}
-
-/*
-Early Release Schedule
-Lunch is not served - 11:30 AM Dissmissal
-Block A-7:30 - 8:00 AM
-Block B-8:05-8:35 AM
-Block C-8:40-9:10 AM
-Block D-9:15-9:45 AM
-Block E-9:50-10:20 AM
-Block F-10:25-10:55 AM
-Advisory-11:00-11:30 AM
-*/
-/** The display component for a half day */
-function HalfDayClasses({ advisory, colors, classes }: IBlocksViewProps) {
-    return (
-        <>
-            <BlockComponent
-                block={colors[Block.A]}
-                clazz={classes[Block.A]}
-                start={dayjs("7:30 AM", "h:mm A")}
-                end={dayjs("8:00 AM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.B]}
-                clazz={classes[Block.B]}
-                start={dayjs("8:05 AM", "h:mm A")}
-                end={dayjs("8:35 AM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.C]}
-                clazz={classes[Block.C]}
-                start={dayjs("8:40 AM", "h:mm A")}
-                end={dayjs("9:10 AM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.D]}
-                clazz={classes[Block.D]}
-                start={dayjs("9:15 AM", "h:mm A")}
-                end={dayjs("9:45 PM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.E]}
-                clazz={classes[Block.E]}
-                start={dayjs("9:50 PM", "h:mm A")}
-                end={dayjs("10:20 PM", "h:mm A")}
-            />
-            <BlockComponent
-                block={colors[Block.F]}
-                clazz={classes[Block.F]}
-                start={dayjs("10:25 PM", "h:mm A")}
-                end={dayjs("10:55 PM", "h:mm A")}
-            />
-            <AdvisoryComponent
-                {...advisory}
-                start={dayjs("11:00 PM", "h:mm A")}
-                end={dayjs("11:30 PM", "h:mm A")}
+                block={colors[CoronaBlock.Third]}
+                clazz={classes[CoronaBlock.Third]}
             />
         </>
     );

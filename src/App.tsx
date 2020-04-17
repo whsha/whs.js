@@ -3,20 +3,25 @@
  */
 
 import { InitialState, NavigationState } from "@react-navigation/core";
-import { DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
-import { Updates } from "expo";
+import { DarkTheme, DefaultTheme, NavigationNativeContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { create } from "mobx-persist";
+import { useObserver } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import { AsyncStorage, StatusBar } from "react-native";
+import { AppearanceProvider } from "react-native-appearance";
 import { SafeAreaProvider } from "react-native-safe-area-view";
-import { useScreens } from "react-native-screens";
+import { enableScreens } from "react-native-screens";
 import * as Sentry from "sentry-expo";
+import { ThemeProvider } from "styled-components";
 import { CalendarContext, ClassesContext, PreferencesStoreContext, PreparedClassesContext, ReloadFunctionContext, TempClassesContext } from "./contexts";
 import MainNavigator from "./navigators/MainNavigator";
 import StorageKey from "./storageKey";
+import { Theme } from "./stores/preferencesStore";
+import { darkTheme, lightTheme } from "./styles/theme";
 import fetchCalendar from "./util/calendar/fetch";
 import parseCalendar from "./util/calendar/parse";
+import useTheme from "./util/hooks/useTheme";
 import LoadingView from "./views/LoadingView";
 
 /** The internal state of the application setup */
@@ -34,7 +39,7 @@ export enum ApplicationState {
     Errored = "ERRORED",
 }
 
-useScreens();
+enableScreens(true);
 
 Sentry.init({
     dsn: "https://55a644a01c154f0ca6b19f18849b9b51@sentry.io/1480747",
@@ -57,13 +62,6 @@ export default function App() {
 
     /** Async function to initialize the app and all needed stores */
     const Load = async (reset = false) => {
-        if (await AsyncStorage.getItem(StorageKey.HasOpened) === null) {
-            await AsyncStorage.setItem(StorageKey.HasOpened, "yah");
-            await Updates.reload();
-
-            return;
-        }
-
         setCurrentTask(ApplicationState.PreparingMP);
 
         // Setup Mobx-Persist
@@ -101,6 +99,7 @@ export default function App() {
         }
 
         setCurrentTask(ApplicationState.LoadingPreferences);
+
         // Hydrate the preferences store
         await hydrate(StorageKey.Preferences, preferences);
 
@@ -138,8 +137,14 @@ export default function App() {
         });
     }, []);
 
+    const theme = useTheme();
+
+    const apptheme = useObserver(() => theme.computed === Theme.Light ? lightTheme : darkTheme);
+    const navTheme = useObserver(() => theme.computed === Theme.Light ? DefaultTheme : DarkTheme);
+    const barStyle = useObserver(() => theme.computed === Theme.Light ? "dark-content" : "light-content");
+
     const MainViewContents = () => (
-        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={DefaultTheme}>
+        <NavigationNativeContainer initialState={initialNavState} onStateChange={changeNavState} theme={navTheme}>
             <ReloadFunctionContext.Provider value={Load}>
                 <MainNavigator />
             </ReloadFunctionContext.Provider>
@@ -148,8 +153,12 @@ export default function App() {
 
     return (
         <SafeAreaProvider>
-            <StatusBar barStyle="dark-content" translucent={false} hidden={false} />
-            {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+            <AppearanceProvider>
+                <ThemeProvider theme={apptheme}>
+                    <StatusBar barStyle={barStyle} translucent={false} hidden={false} />
+                    {currentTask === ApplicationState.Loaded ? <MainViewContents /> : <LoadingView task={currentTask} />}
+                </ThemeProvider>
+            </AppearanceProvider>
         </SafeAreaProvider>
     );
 }
