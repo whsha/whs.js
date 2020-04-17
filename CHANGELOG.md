@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/whsha/whs.js/compare/v1.1.2...v1.2.0) (2020-04-17)
+
+
+### Features
+
+* added more info on readme ([fc8f5bb](https://github.com/whsha/whs.js/commit/fc8f5bba736970da308d87e6bafd21e5701b648d))
+* update sponsors list ([9af7b0d](https://github.com/whsha/whs.js/commit/9af7b0dabd2865def04967f4263de5d5f82c05cd))
+
+
+### Bug Fixes
+
+* remove overlapping props ([62867be](https://github.com/whsha/whs.js/commit/62867bebbb8dbc2642f7dcd821217ae3b4b61eae))
+* **hotfix:** coronacation support ([a605eed](https://github.com/whsha/whs.js/commit/a605eed1a0ab239cc3523e4fb86b0cf22b329249))
+* **readme:** fix discord link ([7d4402e](https://github.com/whsha/whs.js/commit/7d4402e5e2923feb65f7be809feaaef385499106))
+* **readme:** spelling mistakes ([555ce93](https://github.com/whsha/whs.js/commit/555ce93d6a7045b9eaefc5b1b5b794a8e91efcc1))
+* removed unused consts to save space ([829764b](https://github.com/whsha/whs.js/commit/829764b5235abe25e938190786cd210620edde07))
+
 ### [1.1.2](https://github.com/whsha/whs.js/compare/v1.1.1...v1.1.2) (2020-01-21)
 
 ### [1.1.1](https://github.com/whsha/whs.js/compare/v1.2.0...v1.1.1) (2020-01-21)
