@@ -19,12 +19,6 @@ export const RightClassText = styled(DimText)({
     textAlign: "right",
 });
 
-/** Text to be placed for display as times */
-export const TimesText = styled(DimText)({
-    paddingLeft: 5,
-    textAlign: "right"
-});
-
 /** Properties for a styled component with a class color prop */
 interface IClassColoredComponentProps {
     /** The class color to show */
