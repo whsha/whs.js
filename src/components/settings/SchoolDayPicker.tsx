@@ -6,7 +6,7 @@ import { BlockColor } from "@whsha/classes/v1/blocks/blockColor";
 import { SchoolDay } from "@whsha/classes/v1/calendar/types";
 import { IrregularMeetDays } from "@whsha/classes/v1/class/primitives";
 import { getSchoolDaysThatHaveColor } from "@whsha/classes/v1/schoolDays";
-import React, { memo, useEffect, useMemo, } from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import { Section } from "react-native-tableview-simple";
 import { ButtonCell } from "../../styles/components/tableview";
 

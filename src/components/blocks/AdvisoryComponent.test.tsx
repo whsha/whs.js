@@ -18,8 +18,6 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
                 <AdvisoryComponent
                     room="Office"
                     teacher="Mr. Teacher Man"
-                    start={dayjs("9:38 AM", "h:mm A")}
-                    end={dayjs("9:46 AM", "h:mm A")}
                 />
             ),
             { wrapper: ThemeWrapper }
@@ -33,8 +31,6 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
                 < AdvisoryComponent
                     room="132"
                     teacher="Mr. Teacher Man"
-                    start={dayjs("11:00 PM", "h:mm A")}
-                    end={dayjs("11:30 PM", "h:mm A")}
                 />
             ),
             { wrapper: ThemeWrapper }

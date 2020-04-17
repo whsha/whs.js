@@ -58,24 +58,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           },
         ]
       }
-    >
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#808080",
-              "paddingLeft": 5,
-              "textAlign": "right",
-            },
-          ]
-        }
-      >
-        11:00
-         - 
-        11:30 PM
-      </Text>
-    </View>
+    />
   </View>
   <View
     style={
@@ -183,24 +166,7 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           },
         ]
       }
-    >
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#808080",
-              "paddingLeft": 5,
-              "textAlign": "right",
-            },
-          ]
-        }
-      >
-        9:38
-         - 
-        9:46 AM
-      </Text>
-    </View>
+    />
   </View>
   <View
     style={

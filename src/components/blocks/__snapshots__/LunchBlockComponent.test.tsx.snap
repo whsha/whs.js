@@ -60,24 +60,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          10:55
-           - 
-          11:22 AM
-        </Text>
-      </View>
+      />
     </View>
     <View
       style={
@@ -182,24 +165,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:25
-           - 
-          11:52 AM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
   <View
@@ -260,24 +226,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:55
-           - 
-          12:22 PM
-        </Text>
-      </View>
+      />
     </View>
     <View
       style={
@@ -375,7 +324,7 @@ Array [
           ]
         }
       >
-        Free
+        Possibly Free
       </Text>
       <View
         doFlex={true}
@@ -391,24 +340,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          10:55
-           - 
-          11:22 AM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
   <View
@@ -468,24 +400,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:25
-           - 
-          11:52 AM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
   <View
@@ -533,7 +448,7 @@ Array [
           ]
         }
       >
-        Free
+        Possibly Free
       </Text>
       <View
         doFlex={true}
@@ -549,24 +464,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:55
-           - 
-          12:22 PM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
 ]
@@ -631,24 +529,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          10:55
-           - 
-          11:22 AM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
   <View
@@ -709,24 +590,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:25
-           - 
-          12:22 PM
-        </Text>
-      </View>
+      />
     </View>
     <View
       style={
@@ -837,24 +701,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          10:55
-           - 
-          11:52 AM
-        </Text>
-      </View>
+      />
     </View>
     <View
       style={
@@ -959,24 +806,7 @@ Array [
             },
           ]
         }
-      >
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#808080",
-                "paddingLeft": 5,
-                "textAlign": "right",
-              },
-            ]
-          }
-        >
-          11:55
-           - 
-          12:22 PM
-        </Text>
-      </View>
+      />
     </View>
   </View>,
 ]

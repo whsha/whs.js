@@ -84,7 +84,7 @@ export default function TodayNavigator() {
             <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(right)} direction={Directions.LEFT}>
                 <FlingGestureHandler onHandlerStateChange={gestureHandlerWrapper(left)} direction={Directions.RIGHT}>
                     <FlexView>
-                        {schoolDay === undefined ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={schoolDay} />}
+                        {day.format("dddd").match(/(Saturday|Sunday)/) !== null ? <NoSchoolView selectedDate={day} setDate={goTo} /> : <ClassesView schoolDay={day} />}
                     </FlexView>
                 </FlingGestureHandler>
             </FlingGestureHandler>

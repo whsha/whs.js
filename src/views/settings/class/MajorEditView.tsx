@@ -75,7 +75,7 @@ export default function MajorEditView() {
                             <Cell title="Has a lab block?" accessory={major.tempValue.lab ? "Checkmark" : undefined} onPress={toggleLab} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} start={dayjs("9:51 AM", "h:mm A")} end={dayjs("10:50 AM", "h:mm A")} />} />
+                            <Cell cellContentView={<ClassComponent block={major.tempValue.block} name={major.tempValue.name} room={major.tempValue.room} teacher={major.tempValue.teacher} />} />
                         </Section>
                         <Section>
                             <RedCell title={"Delete"} onPress={pomptDelete} />
