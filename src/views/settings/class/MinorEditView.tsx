@@ -77,7 +77,7 @@ export default function MinorEditView() {
                             <Cell cellContentView={<SettingsTextInput placeholder="Room" value={minor.tempValue.room} onChangeText={updateRoom} />} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<ClassComponent block={minor.tempValue.block} name={minor.tempValue.name} room={minor.tempValue.room} teacher={minor.tempValue.teacher} />} />
+                            <Cell cellContentView={<ClassComponent morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }} afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A") }} block={minor.tempValue.block} name={minor.tempValue.name} room={minor.tempValue.room} teacher={minor.tempValue.teacher} />} />
                         </Section>
                         <Section>
                             <RedCell title={"Delete"} onPress={pomptDelete} />

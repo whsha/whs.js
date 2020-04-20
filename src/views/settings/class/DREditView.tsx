@@ -75,7 +75,7 @@ export default function DREditView() {
                             <Cell cellContentView={<SettingsTextInput placeholder="Room" value={DR.tempValue.room} onChangeText={updateRoom} />} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<ClassComponent block={DR.tempValue.block} name="DR" room={DR.tempValue.room} teacher={DR.tempValue.teacher} />} />
+                            <Cell cellContentView={<ClassComponent morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }} afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A")}} block={DR.tempValue.block} name="DR" room={DR.tempValue.room} teacher={DR.tempValue.teacher} />} />
                         </Section>
                         <Section>
                             <RedCell title={"Delete"} onPress={pomptDelete} />

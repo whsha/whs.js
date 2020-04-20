@@ -16,6 +16,8 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
         const comp = render(
             (
                 <AdvisoryComponent
+                    morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }}
+                    afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A") }}
                     room="Office"
                     teacher="Mr. Teacher Man"
                 />
@@ -29,6 +31,8 @@ describe("Tests different variations of <AdvisoryComponent>", () => {
         const comp = render(
             (
                 < AdvisoryComponent
+                    morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }}
+                    afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A") }}
                     room="132"
                     teacher="Mr. Teacher Man"
                 />

@@ -6,14 +6,14 @@ import { IAdvisedClass, IColored, INamed } from "@whsha/classes/v1/class/primiti
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
 import ExtraInfo from "./parts/ExtraInfo";
-import TitleTimes from "./parts/TitleTimes";
+import TitleTimes, { ICoronaTimes } from "./parts/TitleTimes";
 
 /** A component that will display a class */
-function ClassComponent({ name, block, teacher, room }: IAdvisedClass & IColored & INamed) {
+function ClassComponent({ morning, afternoon, name, block, teacher, room }: ICoronaTimes & IAdvisedClass & IColored & INamed) {
     return (
         <ClassContainerView>
-            <TitleTimes block={block} name={name} />
-            <ExtraInfo room={room} teacher={teacher} block={block} />
+            <TitleTimes morning={morning} block={block} name={name} />
+            <ExtraInfo afternoon={afternoon} room={room} teacher={teacher} block={block} />
         </ClassContainerView>
     );
 }

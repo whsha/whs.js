@@ -60,7 +60,7 @@ export default function AdvisoryConfigureView() {
                             <Cell cellContentView={<SettingsTextInput placeholder="Room" value={tempAdvisory.room} onChangeText={setRoom} />} />
                         </Section>
                         <Section header="Example">
-                            <Cell cellContentView={<AdvisoryComponent teacher={tempAdvisory.teacher} room={tempAdvisory.room} />} />
+                            <Cell cellContentView={<AdvisoryComponent morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }} afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A") }} teacher={tempAdvisory.teacher} room={tempAdvisory.room} />} />
                         </Section>
                     </TableView>
                 </SafeAreaView>
