@@ -7,12 +7,11 @@ import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import dayjs, { Dayjs } from "dayjs";
 import * as Haptics from "expo-haptics";
-import React, { useContext } from "react";
-import { Directions, FlingGestureHandler, FlingGestureHandlerStateChangeEvent, State } from "react-native-gesture-handler";
+import React from "react";
+import { Directions, FlingGestureHandler, FlingGestureHandlerStateChangeEvent, State, TouchableOpacity } from "react-native-gesture-handler";
 import { HeaderLeftArrow, HeaderRightArrow } from "../components/header/HeaderButtons";
-import MultilineHeaderTitle from "../components/header/MultilineHeaderTitle";
-import { CalendarContext } from "../contexts";
 import { FlexView } from "../styles/components/general";
+import { HeaderTitleText } from "../styles/components/header";
 import { navigationHeaderPaddingStyle } from "../styles/navigation";
 import ClassesView from "../views/today/ClassesView";
 import NoSchoolView from "../views/today/NoSchoolView";
@@ -23,8 +22,6 @@ const TodayStack = createStackNavigator();
 
 /** The today tab view */
 export default function TodayNavigator() {
-    const calendar = useContext(CalendarContext);
-
     const { params } = useRoute<RouteProp<MainTabParams, "Today">>();
     const navigation = useNavigation<BottomTabNavigationProp<MainTabParams, "Today">>();
 
@@ -40,8 +37,6 @@ export default function TodayNavigator() {
     });
 
     const day = dayjs(params.day);
-
-    const schoolDay = calendar.schoolDay(day);
 
     const goToToday = () => {
         Haptics.impactAsync().catch(() => console.warn("Haptics failed to fire"));
@@ -64,11 +59,9 @@ export default function TodayNavigator() {
         headerLeft: () => <HeaderLeftArrow onPress={left} />,
         headerRight: () => <HeaderRightArrow onPress={right} />,
         headerTitle: () => (
-            <MultilineHeaderTitle
-                title={schoolDay === undefined ? "No School" : `${schoolDay.isHalf ? "Half " : ""}Day ${schoolDay.dayNumber}`}
-                subtitle={day.format("dddd, MMMM D")}
-                onClick={goToToday}
-            />
+            <TouchableOpacity onPress={goToToday}>
+                <HeaderTitleText>{day.format("dddd, MMMM D")}</HeaderTitleText>
+            </TouchableOpacity>
         ),
         ...navigationHeaderPaddingStyle
     };
