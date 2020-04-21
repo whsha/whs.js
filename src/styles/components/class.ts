@@ -91,3 +91,9 @@ export const ClassContainerView = styled.View(props => ({
     padding: 10,
     width: "100%"
 }));
+
+/** Text to be placed for display as times */
+export const TimesText = styled(DimText)({
+    paddingLeft: 5,
+    textAlign: "right"
+});

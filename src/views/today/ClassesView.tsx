@@ -40,8 +40,15 @@ export default function ClassesView({ schoolDay }: IClassesViewProps) {
     return (
         <SettingsScrollView>
             <FullDayClasses {...properties} />
-            <Text>DISCLAIMER: The above classes are only your major classes,</Text>
-            <Text>For 3/cycle classes, check with online resources for the more specific schedule.</Text>
+            <Text style={{ textAlign: "center", paddingTop: 30, paddingHorizontal: 20, fontWeight: "bold", lineHeight: 20 }}>
+                DISCLAIMER:
+            </Text>
+            <Text style={{ textAlign: "center", paddingBottom: 30, paddingHorizontal: 20, fontSize: 13, fontWeight: "700", lineHeight: 20 }}>
+                The above classes are only your major classes.
+                For 3/cycle classes, check with online resources for the more specific schedule.
+                The times listed above, are the possible times that the classes could meet.
+                <Text style={{ fontWeight: "900" }}> Please check with your canvas calendar for the correct times.</Text>
+            </Text>
         </SettingsScrollView>
     );
 }
@@ -71,14 +78,20 @@ function FullDayClasses({ classes, colors }: IBlocksViewProps) {
             <BlockComponent
                 block={colors[CoronaBlock.First]}
                 clazz={classes[CoronaBlock.First]}
+                morning={{ start: dayjs("9:00 AM", "h:mm A"), end: dayjs("9:50 AM", "h:mm A") }}
+                afternoon={{ start: dayjs("12:30 PM", "h:mm A"), end: dayjs("1:20 PM", "h:mm A") }}
             />
             <BlockComponent
                 block={colors[CoronaBlock.Second]}
                 clazz={classes[CoronaBlock.Second]}
+                morning={{ start: dayjs("10:00 AM", "h:mm A"), end: dayjs("10:50 AM", "h:mm A") }}
+                afternoon={{ start: dayjs("1:30 PM", "h:mm A"), end: dayjs("2:20 PM", "h:mm A") }}
             />
             <BlockComponent
                 block={colors[CoronaBlock.Third]}
                 clazz={classes[CoronaBlock.Third]}
+                morning={{ start: dayjs("11:00 AM", "h:mm A"), end: dayjs("11:50 AM", "h:mm A") }}
+                afternoon={{ start: dayjs("2:30 PM", "h:mm A"), end: dayjs("3:20 PM", "h:mm A") }}
             />
         </>
     );

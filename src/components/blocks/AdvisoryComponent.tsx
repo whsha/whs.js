@@ -6,14 +6,14 @@ import { IAdvisory } from "@whsha/classes/v1/class/classes";
 import React, { memo } from "react";
 import { ClassContainerView } from "../../styles/components/class";
 import ExtraInfo from "./parts/ExtraInfo";
-import TitleTimes from "./parts/TitleTimes";
+import TitleTimes, { ICoronaTimes } from "./parts/TitleTimes";
 
 /** A component to display the advisory */
-function AdvisoryComponent({ teacher, room }: IAdvisory) {
+function AdvisoryComponent({ morning, afternoon, teacher, room }: ICoronaTimes & IAdvisory) {
     return (
         <ClassContainerView>
-            <TitleTimes name="Advisory" />
-            <ExtraInfo room={room} teacher={teacher} />
+            <TitleTimes morning={morning} name="Advisory" />
+            <ExtraInfo afternoon={afternoon} room={room} teacher={teacher} />
         </ClassContainerView>
     );
 }
