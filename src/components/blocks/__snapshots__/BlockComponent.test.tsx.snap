@@ -59,7 +59,72 @@ exports[`Renders a free 1`] = `
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+          "marginTop": 5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      No Teacher
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#808080",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
+    </Text>
   </View>
 </View>
 `;
@@ -123,7 +188,24 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -167,7 +249,10 @@ exports[`Tests different variations of classes Renders BlockComponent with a dr 
         ]
       }
     >
-      Room 102
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
     </Text>
   </View>
 </View>
@@ -232,7 +317,24 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -276,7 +378,10 @@ exports[`Tests different variations of classes Renders BlockComponent with a maj
         ]
       }
     >
-      Fitness center
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
     </Text>
   </View>
 </View>
@@ -341,7 +446,24 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -385,7 +507,10 @@ exports[`Tests different variations of classes Renders BlockComponent with a min
         ]
       }
     >
-      Room 334
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
     </Text>
   </View>
 </View>

@@ -58,7 +58,24 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -102,7 +119,10 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         ]
       }
     >
-      Room 132
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
     </Text>
   </View>
 </View>
@@ -166,7 +186,24 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#808080",
+              "paddingLeft": 5,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Morning: 
+        9:00
+         - 
+        9:50 AM
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -210,7 +247,10 @@ exports[`Tests different variations of <AdvisoryComponent> Renders AdvisoryCompo
         ]
       }
     >
-      Office
+      Afternoon: 
+      12:30
+       - 
+      1:20 PM
     </Text>
   </View>
 </View>
